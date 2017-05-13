@@ -1,0 +1,85 @@
+- Visuals, Images:
+
+Image files are defined as local or remote URL's, and include any format supported by your browser.
+Animations are obtained by using animated image files.
+You must include them inside url() tags! Example: "url(http://foo.com/bar.png)", not "http://foo.com/bar.png".
+You can also use special types of images here. Example: "linear-gradient(to right, red, green)" will create a gradient that's red and green from left to right.
+
+- Visuals, Colors:
+
+Colors are defined in hex format. Example: "#ff0000" is red.
+Note: If an image has transparent areas, images (explained above) can be layered on top of this color.
+
+- Visuals, Alpha:
+
+Alpha is the transparency of an object, defined as a value between 0 and 1. Example: 0.5 is half transparent.
+Note: This affects both images and colors (explained above).
+
+- Visuals, Geometry:
+
+The geometries of bars sprites and layers are defined in a string, each value separated by a space.
+Format: "left top width height z-index"; The first two define the top-left corner, the second two define the size, the last defines the draw order.
+The default is "0% 0% 100% 100% auto". You can exclude any property you don't wish to set. Example: "25% 75%" will only set the top-left corner.
+The first four values can be defined in either pixels or percentages. Example: "50% 100px 150% 300px". The fifth value is an integer.
+Note: If the z-index is negative, the image will scroll with the screen. Use this if you want a background layer to have a parallax effect!
+
+- Variables:
+
+You will normally create and use your own variables, but the engine has a few special variables builtin. The following variables can be read or modified to obtain special effects:
+
+"sprite_<sprite_name>": When set, theis replaces the sprite with the same name. Set back to null to disable and use the default sprite again.
+"bar_<variable_name>": When set, this replaces the bar with the same name. Set back to null to disable and use the default bar again.
+"time_start": The time when the world was created. Do not modify!
+"time_last": The time when the world was last opened. Do not modify!
+"date_hours": The current hour. Do not modify!
+"date_minutes": The current minute. Do not modify!
+"date_seconds": The current second. Do not modify!
+
+- Objects:
+
+Data and mods are defined in json files. Those files are specified in the mods menu before the world is created. The following structure is used:
+
+"data_bars": The global data object for bars. Bar definitions:
+	"<bar_name>": The name of this bar, by which it will be referenced. Bar definition:
+		"layer": Object which defines the visual information of this bar. Layer definition:
+			"geometry": The geometry string of this bar. This is applied in relation to the parent, which is the mod that defines the variable.
+			"shape": How round the corners are, in pixels or a percentage.
+			"alpha": The transparency of the bar between 0 and 1.
+			"color1": The color of the full side of the bar.
+			"color2": The color of the empty side of the bar.
+			"direction": The direction of the gradient. Can be: left, right, top, bottom.
+		"text": Object which defines the text of this bar. Text definition:
+			"content_prefix": Text to prefix the value of the bar. If for example this is "My variable: ", the text on the bar may show "My variable: 50".
+			"content_suffix": Text to suffix the value of the bar. If for example this is "%", the text on the bar may show "50%".
+			"content_multiplier": How much to visually multiply the variables by. If you want a percentage, this would be 100. If this is set, decimals will be hidden.
+			"color": Color of the text specified above.
+			"size": Size of the text specified above.
+"data_sprites": The global data object for sprites. Sprite definitions:
+	"<sprite_name>": The name of this sprite array, by which it will be referenced. Layers definition:
+		"layer": Object which defines the visual information of this sprite. Layer definition:
+			"geometry": Optional geometry string. If not defined, the layer will cover the entire area of the sprite.
+			"color": The fill color of this layer.
+			"image": The image on this layer.
+			"alpha": The transparency of the layer between 0 and 1.
+			"shape": How round the corners are, in pixels or a percentage.
+		"text": Object which defines the text of this layer. Text definition:
+			"content": Text to appear inside the element. This can be an array, in which case a random text will be chosen.
+			"color": Color of the text specified above.
+			"size": Size of the text specified above.
+		"actions": An object containing actions that can be set for this layer. Note that actions are evaluated in order, so later ones will override earlier ones! Action definition:
+			"trigger": What event will cause this action to fire. Can be: click, hover_start, hover_end, load, interval.
+			"conditional": Only execute this action if the conditional is true. The string may contain a property, a comparison, and a value. Example: "my_var >= 0.5" or "my_str == foo_bar". Valid comparison types: ==, !=, <, <=, >, >=.
+			"action": The action to execute. The string may contain a property, an action, and a value. Example: "my_var += 0.1" or "my_str = foo_bar". Valid action types: =, -=, +=, *=, /=. Note: If action or value are null, this deletes the property.
+			"probability": The likelyhood of the action occurring, between 0 and 1.
+			"delay": If a number (like "4") the action will be delayed by that many seconds. If a name and a number (like "mydelay 4"), the delay previously assigned to that name will be replaced by this one.
+"<mod_category>": The global data object for mods. Each mod will create an unique element in the scene. Mods definition:
+	"<mod_name>": The name of this mod, by which it will be referenced. Mod definition:
+		"geometries": Contains an object of geometry strings for mods. The element of each mod will be given a random position from this list when the scene loads. Example: Defining "mods_mymod":["25% 25% 10% 10% 1"] will always give the object of mods_mymod this geometry.
+		"sprite": Object which defines the sprites (defined in data_sprites) this mod uses. The name may be anything you wish to set, while the string must be the name of a sprite from data_sprites.
+		"variables": Object containing a list of variables with rules. Variable definition:
+			"bar": Name of the bar element (defined in data_bars) that represents this value.
+			"value": The initial value this variable will have when created.
+			"value_min": The maximum value this variable may reach. You'll usually want this to be 0 (default).
+			"value_max": The minimum value this variable may reach. You'll usually want this to be 1 (default).
+			"per_second": The variable increases or decreases by this amount every second.
+			"for_<variable_name>": The variable increases or decreases by this amount based on another variable, as follows: -this if the other variable is 0%, no effect if it's 50%, +this if it's 100%. Only use this for variables defined above it!

@@ -1,0 +1,117 @@
+{
+	"data_bars":{
+		"light":{
+			"layer":{ "geometry":"0% 0% 50% 2.5% 1", "shape":"10px", "alpha":"1.0", "color1":"#00aaaa", "color2":"#001111", "direction":"right" },
+			"text":{ "content_prefix":"Light: ", "content_suffix":" lx", "content_multiplier":"1000", "color":"#ffffff", "size":"100%" }
+		},
+		"temperature":{
+			"layer":{ "geometry":"50% 0% 50% 2.5% 1", "shape":"10px", "alpha":"1.0", "color1":"#0000aa", "color2":"#000011", "direction":"left" },
+			"text":{ "content_prefix":"Temperature: ", "content_suffix":" C*", "content_multiplier":"30", "color":"#ffffff", "size":"100%" }
+		}
+	},
+	"data_sprites":{
+		"environment_default_background_day":[
+			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"1.00", "color":"#ddeeff" } },
+			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"1.00", "image":"url(data/default_environment/clouds.png)" } },
+			{ "layer":{ "geometry":"0% 0% 100% 100% 0", "alpha":"1.00", "image":"url(data/default_environment/mountains.png)" } },
+			{ "layer":{ "geometry":"0% 0% 100% 100% 2", "alpha":"1.00", "image":"url(data/default_environment/ground.png)" } },
+			{ "layer":{ "geometry":"0% 0% 100% 100% 3", "alpha":"0.25", "image":"url(data/default_environment/tint_day.png)" } }
+		],
+		"environment_default_background_dusk":[
+			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"1.00", "color":"#ff9988" } },
+			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"0.75", "image":"url(data/default_environment/clouds.png)" } },
+			{ "layer":{ "geometry":"0% 0% 100% 100% 0", "alpha":"1.00", "image":"url(data/default_environment/mountains.png)" } },
+			{ "layer":{ "geometry":"0% 0% 100% 100% 2", "alpha":"1.00", "image":"url(data/default_environment/ground.png)" } },
+			{ "layer":{ "geometry":"0% 0% 100% 100% 3", "alpha":"0.25", "image":"url(data/default_environment/tint_dusk.png)" } }
+		],
+		"environment_default_background_night":[
+			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"1.00", "color":"#000011" } },
+			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"0.25", "image":"url(data/default_environment/clouds.png)" } },
+			{ "layer":{ "geometry":"0% 0% 100% 100% 0", "alpha":"1.00", "image":"url(data/default_environment/mountains.png)" } },
+			{ "layer":{ "geometry":"0% 0% 100% 100% 2", "alpha":"1.00", "image":"url(data/default_environment/ground.png)" } },
+			{ "layer":{ "geometry":"0% 0% 100% 100% 3", "alpha":"0.50", "image":"url(data/default_environment/tint_night.png)" } }
+		],
+		"environment_default_background_dawn":[
+			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"1.00", "color":"#ffeedd" } },
+			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"0.50", "image":"url(data/default_environment/clouds.png)" } },
+			{ "layer":{ "geometry":"0% 0% 100% 100% 0", "alpha":"1.00", "image":"url(data/default_environment/mountains.png)" } },
+			{ "layer":{ "geometry":"0% 0% 100% 100% 2", "alpha":"1.00", "image":"url(data/default_environment/ground.png)" } },
+			{ "layer":{ "geometry":"0% 0% 100% 100% 3", "alpha":"0.50", "image":"url(data/default_environment/tint_dawn.png)" } },
+			{ "layer":{ "geometry":"0% 0% 100% 100% 3", "alpha":"0.75", "image":"url(data/default_environment/sun.png)" } }
+		],
+		"environment_default_control":[
+			{ "actions":[
+				{ "trigger":"interval", "conditional":"date_hours == 00", "action":"light = 0.00" },
+				{ "trigger":"interval", "conditional":"date_hours == 01", "action":"light = 0.00" },
+				{ "trigger":"interval", "conditional":"date_hours == 02", "action":"light = 0.00" },
+				{ "trigger":"interval", "conditional":"date_hours == 03", "action":"light = 0.00" },
+				{ "trigger":"interval", "conditional":"date_hours == 04", "action":"light = 0.05" },
+				{ "trigger":"interval", "conditional":"date_hours == 05", "action":"light = 0.10" },
+				{ "trigger":"interval", "conditional":"date_hours == 06", "action":"light = 0.25" },
+				{ "trigger":"interval", "conditional":"date_hours == 07", "action":"light = 0.50" },
+				{ "trigger":"interval", "conditional":"date_hours == 08", "action":"light = 0.75" },
+				{ "trigger":"interval", "conditional":"date_hours == 09", "action":"light = 0.90" },
+				{ "trigger":"interval", "conditional":"date_hours == 10", "action":"light = 0.95" },
+				{ "trigger":"interval", "conditional":"date_hours == 11", "action":"light = 1.00" },
+				{ "trigger":"interval", "conditional":"date_hours == 12", "action":"light = 1.00" },
+				{ "trigger":"interval", "conditional":"date_hours == 13", "action":"light = 1.00" },
+				{ "trigger":"interval", "conditional":"date_hours == 14", "action":"light = 1.00" },
+				{ "trigger":"interval", "conditional":"date_hours == 15", "action":"light = 1.00" },
+				{ "trigger":"interval", "conditional":"date_hours == 16", "action":"light = 0.95" },
+				{ "trigger":"interval", "conditional":"date_hours == 17", "action":"light = 0.90" },
+				{ "trigger":"interval", "conditional":"date_hours == 18", "action":"light = 0.75" },
+				{ "trigger":"interval", "conditional":"date_hours == 19", "action":"light = 0.50" },
+				{ "trigger":"interval", "conditional":"date_hours == 20", "action":"light = 0.25" },
+				{ "trigger":"interval", "conditional":"date_hours == 21", "action":"light = 0.10" },
+				{ "trigger":"interval", "conditional":"date_hours == 22", "action":"light = 0.05" },
+				{ "trigger":"interval", "conditional":"date_hours == 23", "action":"light = 0.00" },
+				{ "trigger":"interval", "conditional":"date_hours == 00", "action":"sprite_environment_background = environment_default_background_night" },
+				{ "trigger":"interval", "conditional":"date_hours == 01", "action":"sprite_environment_background = environment_default_background_night" },
+				{ "trigger":"interval", "conditional":"date_hours == 02", "action":"sprite_environment_background = environment_default_background_night" },
+				{ "trigger":"interval", "conditional":"date_hours == 03", "action":"sprite_environment_background = environment_default_background_night" },
+				{ "trigger":"interval", "conditional":"date_hours == 04", "action":"sprite_environment_background = environment_default_background_night" },
+				{ "trigger":"interval", "conditional":"date_hours == 05", "action":"sprite_environment_background = environment_default_background_night" },
+				{ "trigger":"interval", "conditional":"date_hours == 06", "action":"sprite_environment_background = environment_default_background_dawn" },
+				{ "trigger":"interval", "conditional":"date_hours == 07", "action":"sprite_environment_background = environment_default_background_dawn" },
+				{ "trigger":"interval", "conditional":"date_hours == 08", "action":"sprite_environment_background = environment_default_background_dawn" },
+				{ "trigger":"interval", "conditional":"date_hours == 09", "action":"sprite_environment_background = environment_default_background_day" },
+				{ "trigger":"interval", "conditional":"date_hours == 10", "action":"sprite_environment_background = environment_default_background_day" },
+				{ "trigger":"interval", "conditional":"date_hours == 11", "action":"sprite_environment_background = environment_default_background_day" },
+				{ "trigger":"interval", "conditional":"date_hours == 12", "action":"sprite_environment_background = environment_default_background_day" },
+				{ "trigger":"interval", "conditional":"date_hours == 13", "action":"sprite_environment_background = environment_default_background_day" },
+				{ "trigger":"interval", "conditional":"date_hours == 14", "action":"sprite_environment_background = environment_default_background_day" },
+				{ "trigger":"interval", "conditional":"date_hours == 15", "action":"sprite_environment_background = environment_default_background_day" },
+				{ "trigger":"interval", "conditional":"date_hours == 16", "action":"sprite_environment_background = environment_default_background_day" },
+				{ "trigger":"interval", "conditional":"date_hours == 17", "action":"sprite_environment_background = environment_default_background_day" },
+				{ "trigger":"interval", "conditional":"date_hours == 18", "action":"sprite_environment_background = environment_default_background_dusk" },
+				{ "trigger":"interval", "conditional":"date_hours == 19", "action":"sprite_environment_background = environment_default_background_dusk" },
+				{ "trigger":"interval", "conditional":"date_hours == 20", "action":"sprite_environment_background = environment_default_background_dusk" },
+				{ "trigger":"interval", "conditional":"date_hours == 21", "action":"sprite_environment_background = environment_default_background_night" },
+				{ "trigger":"interval", "conditional":"date_hours == 22", "action":"sprite_environment_background = environment_default_background_night" },
+				{ "trigger":"interval", "conditional":"date_hours == 23", "action":"sprite_environment_background = environment_default_background_night" }
+			] }
+		]
+	},
+	"mods_environments":{
+		"default_environment":{
+			"sprites":{
+				"environment_background":"",
+				"environment_control":"environment_default_control"
+			},
+			"geometries":{
+				"mods_pets":[
+					"40% 20% 30% 70% 1",
+					"40% 10% 40% 80% 2"
+				],
+				"mods_people":[
+					"00% 20% 30% 70% 1",
+					"00% 10% 40% 80% 2"
+				]
+			},
+			"variables":{
+				"light":{"bar":"light", "value":"0.5" },
+				"temperature":{"bar":"temperature", "value":"0.5", "for_light":"0.0001" }
+			}
+		}
+	}
+}

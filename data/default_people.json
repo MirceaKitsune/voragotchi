@@ -1,0 +1,152 @@
+{
+	"data_bars":{
+		"money":{
+			"layer":{ "geometry":"10% 37.5% 80% 2.5% 1", "shape":"10px", "alpha":"1.0", "color1":"#aaaa00", "color2":"#111100", "direction":"right" },
+			"text":{ "content_prefix":"Money: ", "content_suffix":" $", "content_multiplier":"1000000", "color":"#ffffff", "size":"75%" }
+		}
+	},
+	"data_sprites":{
+		"background_people_default":[{}],
+		"background_people_default_1_1":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 1", "alpha":"1.00", "image":"url(data/default_people/people_1_1.png)" } }
+		],
+		"background_people_default_1_2":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 1", "alpha":"1.00", "image":"url(data/default_people/people_1_2.png)" } }
+		],
+		"menu_people_default":[
+			{
+				"actions":[
+					{ "trigger":"load", "action":"bar_money = " },
+					{ "trigger":"load", "action":"sprite_background_people = " },
+					{ "trigger":"interval", "probability":"0.005", "action":"sprite_menu_people = menu_people_default_1" }
+				]
+			}
+		],
+		"menu_people_default_1":[
+			{
+				"layer":{ "geometry":"10% 5% 80% 20% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff" },
+				"text":{
+					"color":"#000000", "size":"100%", "content":"Person 1 wants to see you, about apples."
+				},
+				"actions":[
+					{ "trigger":"load", "action":"bar_money = " },
+					{ "trigger":"load", "action":"sprite_background_people = " },
+					{ "trigger":"load", "delay":"menu_people 10", "action":"sprite_menu_people = menu_people_default" }
+				]
+			},
+			{
+				"layer":{ "geometry":"10% 20% 40% 5% 1", "shape":"10px", "alpha":"0.75", "color":"#00aa00" },
+				"text":{
+					"color":"#ffffff", "size":"100%", "content":"Accept"
+				},
+				"actions":[
+					{ "trigger":"click", "conditional":"money < 0.00001", "action":"sprite_menu_people = menu_people_default_1_apple_unavailable" },
+					{ "trigger":"click", "conditional":"money >= 0.00001", "action":"sprite_menu_people = menu_people_default_1_apple_available" }
+				]
+			},
+			{
+				"layer":{ "geometry":"50% 20% 40% 5% 1", "shape":"10px", "alpha":"0.75", "color":"#aa0000" },
+				"text":{
+					"color":"#ffffff", "size":"100%", "content":"Reject"
+				},
+				"actions":[
+					{ "trigger":"click", "action":"sprite_menu_people = " }
+				]
+			}
+		],
+		"menu_people_default_1_apple_unavailable":[
+			{
+				"layer":{ "geometry":"10% 5% 80% 40% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff" },
+				"text":{
+					"color":"#000000", "size":"100%", "content":[
+						"Hi. Would you like to buy some apples? Only 10$ for 5!"
+					]
+				},
+				"actions":[
+					{ "trigger":"load", "action":"bar_money = money" },
+					{ "trigger":"load", "action":"sprite_background_people = background_people_default_1_1" }
+				]
+			},
+			{
+				"layer":{ "geometry":"10% 40% 80% 5% 1", "shape":"10px", "alpha":"0.75", "color":"#aaaa00" },
+				"text":{
+					"color":"#ffffff", "size":"100%", "content":"Don't buy (not enough $)"
+				},
+				"actions":[
+					{ "trigger":"click", "action":"sprite_menu_people = menu_people_default_1_apple_no" }
+				]
+			}
+		],
+		"menu_people_default_1_apple_available":[
+			{
+				"layer":{ "geometry":"10% 5% 80% 40% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff" },
+				"text":{
+					"color":"#000000", "size":"100%", "content":[
+						"Hi. Would you like to buy some apples? Only 10$ for 5!"
+					]
+				},
+				"actions":[
+					{ "trigger":"load", "action":"bar_money = money" },
+					{ "trigger":"load", "action":"sprite_background_people = background_people_default_1_1" }
+				]
+			},
+			{
+				"layer":{ "geometry":"10% 40% 40% 5% 1", "shape":"10px", "alpha":"0.75", "color":"#aa0000" },
+				"text":{
+					"color":"#ffffff", "size":"100%", "content":"Don't buy"
+				},
+				"actions":[
+					{ "trigger":"click", "action":"sprite_menu_people = menu_people_default_1_apple_no" }
+				]
+			},
+			{
+				"layer":{ "geometry":"50% 40% 40% 5% 1", "shape":"10px", "alpha":"0.75", "color":"#00aa00" },
+				"text":{
+					"color":"#ffffff", "size":"100%", "content":"Buy"
+				},
+				"actions":[
+					{ "trigger":"click", "conditional":"money >= 0.00001", "action":"sprite_menu_people = menu_people_default_1_apple_yes" }
+				]
+			}
+		],
+		"menu_people_default_1_apple_no":[
+			{
+				"layer":{ "geometry":"10% 5% 80% 40% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff" },
+				"text":{
+					"color":"#000000", "size":"100%", "content":[
+						"Okay... maybe later!"
+					]
+				},
+				"actions":[
+					{ "trigger":"load", "delay":"menu_people 5", "action":"sprite_menu_people = menu_people_default" }
+				]
+			}
+		],
+		"menu_people_default_1_apple_yes":[
+			{
+				"layer":{ "geometry":"10% 5% 80% 40% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff" },
+				"text":{
+					"color":"#000000", "size":"100%", "content":[
+						"Here you go. Thanks!"
+					]
+				},
+				"actions":[
+					{ "trigger":"load", "action":"money -= 0.00001" },
+					{ "trigger":"load", "action":"stock_apple += 0.05" },
+					{ "trigger":"load", "delay":"menu_people 5", "action":"sprite_menu_people = menu_people_default" }
+				]
+			}
+		]
+	},
+	"mods_people":{
+		"default_people":{
+			"sprites":{
+				"background_people":"background_people_default",
+				"menu_people":"menu_people_default"
+			},
+			"variables":{
+				"money":{"bar":"hidden", "value":"0.00005" }
+			}
+		}
+	}
+}
