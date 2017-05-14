@@ -32,25 +32,16 @@ function get_geometry(string) {
 
 // converts actions into a function string
 // this lets elements call the scene_action function in scene.js and set scene variables
+// id1 represents the name of the sprite, id2 represents the name of the action
 // if update is true, also execute the scene_interval function immediately
-function get_action(action, update) {
+function get_action(id1, id2, action, update) {
 	var text = "scene_action(\"" + action.conditional + "\", \"" + action.action + "\"); ";
 	if (update) {
-		text += "scene_interval(); ";
+		text = text + "scene_interval(); ";
 	}
 	if (action.delay) {
-		// if the delay contains both a name and a number, replace that delay
-		var table = action.delay.split(" ") || [];
-		var delay_name = table[0];
-		var delay_amount = table[1];
-		if (delay_name && delay_amount) {
-			sprite_delay[delay_name] = sprite_delay[delay_name] || 0;
-			text = "sprite_delay[\"" + delay_name + "\"] = setTimeout(function() {" + text + "}, " + (Number(delay_amount) * 1000) + "); ";
-			text = "clearTimeout(sprite_delay[\"" + delay_name + "\"]); " + text;
-		// if the delay is a single value, set an unnamed delay instead
-		} else {
-			text = "setTimeout(function() {" + text + "}, " + (Number(action.delay) * 1000) + "); ";
-		}
+		text = "sprite_delay[\"" + id1 + "\"][\"" + id2 + "\"] = setTimeout(function() {" + text + "}, " + (Number(action.delay) * 1000) + "); ";
+		text = "clearTimeout(sprite_delay[\"" + id1 + "\"][\"" + id2 + "\"]); " + text;
 	}
 	if (action.probability) {
 		text = "if(" + action.probability + " >= Math.random()) {" + text + "}";
@@ -208,18 +199,32 @@ function sprite_set(id, sprite, parent, sprite_def) {
 					var index = Math.floor(Math.random() * text.length);
 					text = text[index];
 				}
+
 				element_layer.innerText = text;
 			}
 
 			// configure the actions of this layer
 			if (layer_new.actions) {
+				var clear_delay = false;
 				var actions = {};
 				for(var action in layer_new.actions) {
 					var action_new = layer_new.actions[action];
 					var type = action_new.trigger;
-					var string = get_action(action_new, (type == "click" || type == "hover_start" || type == "hover_end"));
+					var string = get_action(id, action, action_new, (type == "click" || type == "hover_start" || type == "hover_end"));
 					actions[type] = actions[type] ? actions[type] + string : string;
+
+					if (action_new.delay) {
+						clear_delay = true;
+					}
 				}
+
+				if (clear_delay) {
+					for(var entry in sprite_delay[id]) {
+						clearTimeout(sprite_delay[id][entry]);
+					}
+					sprite_delay[id] = [];
+				}
+
 				element_layer.setAttribute("onclick", actions["click"]);
 				element_layer.setAttribute("onmouseover", actions["hover_start"]);
 				element_layer.setAttribute("onmouseout", actions["hover_end"]);

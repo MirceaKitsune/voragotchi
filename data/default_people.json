@@ -24,7 +24,7 @@
 				"actions":[
 					{ "trigger":"load", "action":"bar_money = " },
 					{ "trigger":"load", "action":"sprite_background_people = " },
-					{ "trigger":"load", "delay":"chat_people 10", "action":"sprite_chat_people = chat_people_default" }
+					{ "trigger":"load", "delay":"10", "action":"sprite_chat_people = chat_people_default" }
 				]
 			},
 			{
@@ -58,8 +58,8 @@
 				"actions":[
 					{ "trigger":"load", "action":"bar_money = money" },
 					{ "trigger":"load", "action":"sprite_background_people = background_people_default_1_1" },
-					{ "trigger":"load", "action":"sprite_actions_button_apple = actions_default_button_apple_selected" },
-					{ "trigger":"load", "delay":"chat_people 20", "action":"sprite_chat_people = chat_people_default" }
+					{ "trigger":"load", "conditional":"stock_apple >= 0.01", "action":"sprite_actions_button_apple = actions_default_button_apple_selected" },
+					{ "trigger":"load", "delay":"20", "action":"sprite_chat_people = chat_people_default" }
 				]
 			},
 			{
@@ -83,8 +83,8 @@
 				"actions":[
 					{ "trigger":"load", "action":"bar_money = money" },
 					{ "trigger":"load", "action":"sprite_background_people = background_people_default_1_1" },
-					{ "trigger":"load", "action":"sprite_actions_button_apple = actions_default_button_apple_selected" },
-					{ "trigger":"load", "delay":"chat_people 20", "action":"sprite_chat_people = chat_people_default" }
+					{ "trigger":"load", "conditional":"stock_apple >= 0.01", "action":"sprite_actions_button_apple = actions_default_button_apple_selected" },
+					{ "trigger":"load", "delay":"20", "action":"sprite_chat_people = chat_people_default" }
 				]
 			},
 			{
@@ -116,7 +116,7 @@
 				},
 				"actions":[
 					{ "trigger":"load", "action":"bar_money = " },
-					{ "trigger":"load", "delay":"chat_people 5", "action":"sprite_chat_people = chat_people_default" }
+					{ "trigger":"load", "delay":"5", "action":"sprite_chat_people = chat_people_default" }
 				]
 			}
 		],
@@ -132,7 +132,7 @@
 					{ "trigger":"load", "action":"bar_money = money" },
 					{ "trigger":"load", "action":"money -= 0.00001" },
 					{ "trigger":"load", "action":"stock_apple += 0.05" },
-					{ "trigger":"load", "delay":"chat_people 5", "action":"sprite_chat_people = chat_people_default" }
+					{ "trigger":"load", "delay":"5", "action":"sprite_chat_people = chat_people_default" }
 				]
 			}
 		],

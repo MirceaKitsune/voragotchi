@@ -12,6 +12,7 @@
 				"actions":[
 					{ "trigger":"load", "action":"bar_stock_apple = stock_apple" },
 					{ "trigger":"load", "action":"selection = 1" },
+					{ "trigger":"interval", "conditional":"stock_apple < 0.01", "action":"sprite_actions_button_apple = actions_default_button_apple_inactive" },
 					{ "trigger":"click", "action":"sprite_actions_button_apple = actions_default_button_apple_inactive" }
 				]
 			}
@@ -22,7 +23,7 @@
 				"actions":[
 					{ "trigger":"load", "action":"bar_stock_apple = stock_apple" },
 					{ "trigger":"load", "action":"selection = 0" },
-					{ "trigger":"click", "action":"sprite_actions_button_apple = actions_default_button_apple_selected" },
+					{ "trigger":"click", "conditional":"stock_apple >= 0.01", "action":"sprite_actions_button_apple = actions_default_button_apple_selected" },
 					{ "trigger":"hover_end", "action":"sprite_actions_button_apple = actions_default_button_apple_inactive" }
 				]
 			}
@@ -33,7 +34,7 @@
 				"actions":[
 					{ "trigger":"load", "action":"bar_stock_apple = " },
 					{ "trigger":"load", "action":"selection = 0" },
-					{ "trigger":"click", "action":"sprite_actions_button_apple = actions_default_button_apple_selected" },
+					{ "trigger":"click", "conditional":"stock_apple >= 0.01", "action":"sprite_actions_button_apple = actions_default_button_apple_selected" },
 					{ "trigger":"hover_start", "action":"sprite_actions_button_apple = actions_default_button_apple_hover" }
 				]
 			}
@@ -45,8 +46,8 @@
 				"actions_button_apple":"actions_default_button_apple_inactive"
 			},
 			"variables":{
-				"selection":{"value":"0" },
-				"stock_apple":{"bar":"hidden", "value":"0.1" }
+				"selection":{ "value":"0" },
+				"stock_apple":{ "bar":"hidden", "value":"0.1" }
 			}
 		}
 	}

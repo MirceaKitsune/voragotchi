@@ -10,69 +10,87 @@ var scene_interval_timer = null;
 // this function is called by sprites, as defined in sprite.js
 // if a conditional string is defined, evaluate it
 function scene_action(conditional, action) {
+	// verify the conditionals
+	// first separate by logical OR, then separate by logical AND, then evaluate each condition
 	if (typeof conditional == "string" && conditional != "undefined") {
-		//check the conditional
-		var table = conditional.split(" ") || [];
-		var prop = scene_data.variables[table[0]];
-		var type = table[1];
-		var val = table[2];
-		if ((typeof prop != "number" && typeof prop != "string") || !type || !val) {
-			// the conditional is invalid, ignore it and move on
-		} else if (type == "==" && (prop == Number(val) || prop == val)) {
-			// property is equal, move on
-		} else if (type == "!=" && (prop != Number(val) && prop != val)) {
-			// property is not equal, move on
-		} else if (type == "<" && prop < Number(val)) {
-			// property is lesser, move on
-		} else if (type == "<=" && prop <= Number(val)) {
-			// property is lesser or equal, move on
-		} else if (type == ">" && prop > Number(val)) {
-			// property is greater, move on
-		} else if (type == ">=" && prop >= Number(val)) {
-			// property is greater or equal, move on
-		} else {
+		var passed = false;
+		var table_or = conditional.split(" || ");
+		for(var entry_or in table_or) {
+			passed = true;
+			var table_and = table_or[entry_or].split(" && ");
+			for(var entry_and in table_and) {
+				var table = table_and[entry_and].split(" ");
+				var type = table[1];
+				var val1 = (!scene_data.variables[table[0]] || scene_data.variables[table[0]] == "undefined") ? table[0] : scene_data.variables[table[0]];
+				var val2 = (!scene_data.variables[table[2]] || scene_data.variables[table[2]] == "undefined") ? table[2] : scene_data.variables[table[2]];
+				if ((typeof val1 != "number" && typeof val1 != "string") || !type || !val2) {
+					// the conditional is invalid, ignore it and move on
+				} else if (type == "==" && (val1 == val2 || Number(val1) == Number(val2))) {
+					// property is equal, move on
+				} else if (type == "!=" && (val1 != val2 && Number(val1) != Number(val2))) {
+					// property is not equal, move on
+				} else if (type == "<" && Number(val1) < Number(val2)) {
+					// property is lesser, move on
+				} else if (type == "<=" && Number(val1) <= Number(val2)) {
+					// property is lesser or equal, move on
+				} else if (type == ">" && Number(val1) > Number(val2)) {
+					// property is greater, move on
+				} else if (type == ">=" && Number(val1) >= Number(val2)) {
+					// property is greater or equal, move on
+				} else {
+					// the conditional didn't pass, stop here
+					passed = false;
+					break;
+				}
+			}
+			if (passed) {
+				break;
+			}
+		}
+		if (!passed) {
 			return;
 		}
 	}
 
+	// execute the actions
 	if (typeof action == "string" && action != "undefined") {
-		// execute the action
-		var table = action.split(" ") || [];
-		var prop = scene_data.variables[table[0]];
-		var type = table[1];
-		var val = table[2];
-		if (!type || !val) {
-			// delete the value
-			delete scene_data.variables[table[0]];
-		} else if (type == "=") {
-			// the action is set
-			if (typeof prop == "number") {
-				scene_data.variables[table[0]] = Number(val);
-			} else {
-				scene_data.variables[table[0]] = val;
+		var table_all = action.split(";");
+		for(var entry_all in table_all) {
+			var table = table_all[entry_all].split(" ");
+			var type = table[1];
+			var prop = scene_data.variables[table[0]];
+			var val = table[2];
+			if (!type || !val) {
+				// delete the value
+				delete scene_data.variables[table[0]];
+			} else if (type == "=") {
+				// the action is set
+				if (typeof prop == "number") {
+					scene_data.variables[table[0]] = Number(val);
+				} else {
+					scene_data.variables[table[0]] = val;
+				}
+			} else if (type == "+=") {
+				// the action is add
+				if (typeof prop == "number") {
+					scene_data.variables[table[0]] += Number(val);
+				}
+			} else if (type == "-=") {
+				// the action is subtract
+				if (typeof prop == "number") {
+					scene_data.variables[table[0]] -= Number(val);
+				}
+			} else if (type == "*=") {
+				// the action is multiply
+				if (typeof prop == "number") {
+					scene_data.variables[table[0]] *= Number(val);
+				}
+			} else if (type == "/=") {
+				// the action is divide
+				if (typeof prop == "number") {
+					scene_data.variables[table[0]] /= Number(val);
+				}
 			}
-		} else if (type == "+=") {
-			// the action is add
-			if (typeof prop == "number") {
-				scene_data.variables[table[0]] += Number(val);
-			}
-		} else if (type == "-=") {
-			// the action is subtract
-			if (typeof prop == "number") {
-				scene_data.variables[table[0]] -= Number(val);
-			}
-		} else if (type == "*=") {
-			// the action is multiply
-			if (typeof prop == "number") {
-				scene_data.variables[table[0]] *= Number(val);
-			}
-		} else if (type == "/=") {
-			// the action is divide
-			if (typeof prop == "number") {
-				scene_data.variables[table[0]] /= Number(val);
-			}
-		} else {
-			return;
 		}
 	}
 }
