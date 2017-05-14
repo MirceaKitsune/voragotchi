@@ -9,6 +9,11 @@ pzUH
 CC0
 http://opengameart.org/content/cat-dog-free-sprites
 
+- default_actions
+yamachem
+CC0
+https://openclipart.org/detail/215910/apple-02
+
 - default_people
 anarres
 CC0

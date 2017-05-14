@@ -132,8 +132,7 @@ function scene_interval() {
 	// execute the interval function strings of sprites
 	for (var sprite in sprite_interval) {
 		if (sprite_interval[sprite]) {
-			var on_interval = sprite_interval[sprite];
-			eval(on_interval);
+			eval(sprite_interval[sprite]);
 		}
 	}
 
@@ -175,9 +174,6 @@ function scene_interval() {
 	scene_data.variables.date_hours = date_hours;
 	scene_data.variables.date_minutes = date_minutes;
 	scene_data.variables.date_seconds = date_seconds;
-
-	// temporarily force daytime for easier development
-	//scene_data.variables.date_hours = 16;
 }
 
 // unload the scene

@@ -6,7 +6,7 @@
 		},
 		"temperature":{
 			"layer":{ "geometry":"50% 0% 50% 2.5% 1", "shape":"10px", "alpha":"1.0", "color1":"#0000aa", "color2":"#000011", "direction":"left" },
-			"text":{ "content_prefix":"Temperature: ", "content_suffix":" C*", "content_multiplier":"30", "color":"#ffffff", "size":"100%" }
+			"text":{ "content_prefix":"Temperature: ", "content_suffix":" C*", "content_multiplier":"50", "color":"#ffffff", "size":"100%" }
 		}
 	},
 	"data_sprites":{
@@ -99,13 +99,16 @@
 				"environment_control":"environment_default_control"
 			},
 			"geometries":{
+				"mods_actions":[
+					"2.5% 2.5% 25% 40% 1"
+				],
 				"mods_pets":[
 					"40% 20% 30% 70% 1",
 					"40% 10% 40% 80% 2"
 				],
 				"mods_people":[
-					"00% 20% 30% 70% 1",
-					"00% 10% 40% 80% 2"
+					"0% 25% 20% 65% 1",
+					"0% 15% 30% 75% 2"
 				]
 			},
 			"variables":{

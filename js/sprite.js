@@ -35,7 +35,9 @@ function get_geometry(string) {
 // if update is true, also execute the scene_interval function immediately
 function get_action(action, update) {
 	var text = "scene_action(\"" + action.conditional + "\", \"" + action.action + "\"); ";
-	text += (update ? "scene_interval(); " : "");
+	if (update) {
+		text += "scene_interval(); ";
+	}
 	if (action.delay) {
 		// if the delay contains both a name and a number, replace that delay
 		var table = action.delay.split(" ") || [];
@@ -222,6 +224,7 @@ function sprite_set(id, sprite, parent, sprite_def) {
 				element_layer.setAttribute("onmouseover", actions["hover_start"]);
 				element_layer.setAttribute("onmouseout", actions["hover_end"]);
 				eval(actions["load"]);
+				eval(actions["interval"]);
 				sprite_interval[id] = sprite_interval[id] ? sprite_interval[id] + actions["interval"] : actions["interval"];
 
 				style += "pointer-events: all; ";

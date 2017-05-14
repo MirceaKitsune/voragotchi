@@ -5,6 +5,7 @@
 // mod objects
 var mods_menu_data_files =
 	"data/default_environment.json\n" +
+	"data/default_actions.json\n" +
 	"data/default_pet.json\n" +
 	"data/default_people.json";
 var mods_menu_data_mods = {};
