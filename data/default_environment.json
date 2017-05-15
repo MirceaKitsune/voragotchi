@@ -11,6 +11,7 @@
 	},
 	"data_sprites":{
 		"environment_default_background_day":[
+			{ "audio":{ "sound":"data/default_environment/ambience_day.ogg", "volume":"0.1", "loop":"true" } },
 			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"1.00", "color":"#ddeeff" } },
 			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"1.00", "image":"url(data/default_environment/clouds.png)" } },
 			{ "layer":{ "geometry":"0% 0% 100% 100% 0", "alpha":"1.00", "image":"url(data/default_environment/mountains.png)" } },
@@ -18,6 +19,7 @@
 			{ "layer":{ "geometry":"0% 0% 100% 100% 3", "alpha":"0.25", "image":"url(data/default_environment/tint_day.png)" } }
 		],
 		"environment_default_background_dusk":[
+			{ "audio":{ "sound":"data/default_environment/ambience_dusk.ogg", "volume":"0.1", "loop":"true" } },
 			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"1.00", "color":"#ff9988" } },
 			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"0.75", "image":"url(data/default_environment/clouds.png)" } },
 			{ "layer":{ "geometry":"0% 0% 100% 100% 0", "alpha":"1.00", "image":"url(data/default_environment/mountains.png)" } },
@@ -25,6 +27,7 @@
 			{ "layer":{ "geometry":"0% 0% 100% 100% 3", "alpha":"0.25", "image":"url(data/default_environment/tint_dusk.png)" } }
 		],
 		"environment_default_background_night":[
+			{ "audio":{ "sound":"data/default_environment/ambience_night.ogg", "volume":"0.1", "loop":"true" } },
 			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"1.00", "color":"#000011" } },
 			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"0.25", "image":"url(data/default_environment/clouds.png)" } },
 			{ "layer":{ "geometry":"0% 0% 100% 100% 0", "alpha":"1.00", "image":"url(data/default_environment/mountains.png)" } },
@@ -32,6 +35,7 @@
 			{ "layer":{ "geometry":"0% 0% 100% 100% 3", "alpha":"0.50", "image":"url(data/default_environment/tint_night.png)" } }
 		],
 		"environment_default_background_dawn":[
+			{ "audio":{ "sound":"data/default_environment/ambience_dawn.ogg", "volume":"0.1", "loop":"true" } },
 			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"1.00", "color":"#ffeedd" } },
 			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"0.50", "image":"url(data/default_environment/clouds.png)" } },
 			{ "layer":{ "geometry":"0% 0% 100% 100% 0", "alpha":"1.00", "image":"url(data/default_environment/mountains.png)" } },

@@ -183,6 +183,16 @@ function sprite_set(id, sprite, parent, sprite_def) {
 				element_layer.innerText = text;
 			}
 
+			// configure the audio of this layer
+			if (layer_new.audio) {
+				audio = document.createElement("audio");
+				element_layer.appendChild(audio);
+				audio.src = layer_new.audio.sound;
+				audio.volume = Number(layer_new.audio.volume);
+				audio.loop = (layer_new.audio.loop == "true");
+				audio.autoplay = true;
+			}
+
 			// configure the actions of this layer
 			if (layer_new.actions) {
 				var func_click = "";

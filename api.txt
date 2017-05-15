@@ -62,16 +62,20 @@ Data and mods are defined in json files. Those files are specified in the mods m
 			"image": The image on this layer.
 			"alpha": The transparency of the layer between 0 and 1.
 			"shape": How round the corners are, in pixels or a percentage.
+		"audio": Object which defines the audio of this sprite. The audio is always triggered when the sprite appears. Audio definition:
+			"sound": The sound file.
+			"volume": The volume of this sound, ranges between 0 and 1.
+			"loop": If true, this sound will loop.
 		"text": Object which defines the text of this layer. Text definition:
 			"content": Text to appear inside the element. This can be an array, in which case a random text will be chosen.
 			"color": Color of the text specified above.
 			"size": Size of the text specified above.
-		"actions": An object containing actions that can be set for this layer. Note that actions are evaluated in order, so later ones will override earlier ones! Action definition:
+		"actions": Object containing actions that can be set for this layer. Note that actions are evaluated in order, so later ones will override earlier ones! Action definition:
 			"trigger": What event will cause this action to fire. Can be: click, hover_start, hover_end, load, interval.
 			"conditional": Only execute those actions if the conditionals are true. The string must contain a property or value, a comparison type, and another property or value... all three may be separated by logical operators. Example: "my_var >= 0.5" or "my_str == foo_bar". Valid comparison types: ==, !=, <, <=, >, >=. Valid logical operators: &&, ||. Note: OR takes priotiry over AND, so "a == 1 || b == 2 && c == 3" will be treated as "a == 1 || (b == 2 && c == 3)", parenthesis are otherwise not supported by conditional strings.
 			"action": The actions to execute. The string must contain a property, an action, and a value... multiple actions may be separated by the ; operator (no spaces around this operator). Example: "my_var += 0.1" or "my_str = foo_bar". Valid action types: =, -=, +=, *=, /=. Note: If the action or value are null, this deletes the property.
 			"probability": The likelyhood of the action occurring, between 0 and 1.
-			"delay": If a number (like "4") the action will be delayed by that many seconds. If a name and a number (like "mydelay 4"), the delay previously assigned to that name will be replaced by this one.
+			"delay": The action will be delayed by this many seconds. If the sprite resets, the delay will be replaced and the old one is dropped.
 "<mod_category>": The global data object for mods. Each mod will create an unique element in the scene. Mods definition:
 	"<mod_name>": The name of this mod, by which it will be referenced. Mod definition:
 		"geometries": Contains an object of geometry strings for mods. The element of each mod will be given a random position from this list when the scene loads. Example: Defining "mods_mymod":["25% 25% 10% 10% 1"] will always give the object of mods_mymod this geometry.
