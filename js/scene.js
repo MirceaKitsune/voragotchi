@@ -8,13 +8,32 @@ var scene_interval_timer = null;
 
 // handler for sprite actions
 // this function is called by sprites, as defined in sprite.js
-// if a conditional string is defined, evaluate it
-function scene_action(conditional, action) {
+// id is the name of the action, update applies a forced update to the scene, delayed is used to check whether a delay was applied
+function scene_action(id, update, delayed) {
+	var action = sprite_action[id];
+	if (typeof action != "object") {
+		return;
+	}
+
+	// if this action has a delay, clear the existing delay if any, then reschedule it for later
+	if (action.delay && !delayed) {
+		if (sprite_delay[id] && sprite_delay[id] != "undefined") {
+			clearTimeout(sprite_delay[id]);
+		}
+		sprite_delay[id] = setTimeout(function() { scene_action(id, true, true) }, Number(action.delay) * 1000);
+		return;
+	}
+
+	// apply the probability if any
+	if (Number(action.probability) && Number(action.probability) < Math.random()) {
+		return;
+	}
+
 	// verify the conditionals
 	// first separate by logical OR, then separate by logical AND, then evaluate each condition
-	if (typeof conditional == "string" && conditional != "undefined") {
+	if (typeof action.conditional == "string" && action.conditional != "undefined") {
 		var passed = false;
-		var table_or = conditional.split(" || ");
+		var table_or = action.conditional.split(" || ");
 		for(var entry_or in table_or) {
 			passed = true;
 			var table_and = table_or[entry_or].split(" && ");
@@ -53,8 +72,8 @@ function scene_action(conditional, action) {
 	}
 
 	// execute the actions
-	if (typeof action == "string" && action != "undefined") {
-		var table_all = action.split(";");
+	if (typeof action.action == "string" && action.action != "undefined") {
+		var table_all = action.action.split(";");
 		for(var entry_all in table_all) {
 			var table = table_all[entry_all].split(" ");
 			var type = table[1];
@@ -92,6 +111,11 @@ function scene_action(conditional, action) {
 				}
 			}
 		}
+	}
+
+	// immediately update the scene for certain types of actions
+	if (update) {
+		scene_interval();
 	}
 }
 
@@ -147,10 +171,11 @@ function scene_interval() {
 	var pass_hours = Math.floor(pass_minutes / 60);
 	var pass_days = Math.floor(pass_hours / 24);
 
-	// execute the interval function strings of sprites
-	for (var sprite in sprite_interval) {
-		if (sprite_interval[sprite]) {
-			eval(sprite_interval[sprite]);
+	// execute the interval functions of sprites
+	for (var entry in sprite_action) {
+		var action = sprite_action[entry];
+		if (action.trigger == "interval") {
+			scene_action(entry, false, false);
 		}
 	}
 

@@ -5,7 +5,7 @@
 // common objects
 var bar_current = {};
 var sprite_current = {};
-var sprite_interval = {};
+var sprite_action = {};
 var sprite_delay = {};
 
 // converts a geometry string into style elements
@@ -27,25 +27,6 @@ function get_geometry(string) {
 		"z-index: " + (box[4] ? box[4] : "auto") + "; " +
 		"background-attachment: " + (box[4] < 0 ? "fixed" : "scroll") + "; " +
 		"background-size: 100% 100%; ";
-	return text;
-}
-
-// converts actions into a function string
-// this lets elements call the scene_action function in scene.js and set scene variables
-// id1 represents the name of the sprite, id2 represents the name of the action
-// if update is true, also execute the scene_interval function immediately
-function get_action(id1, id2, action, update) {
-	var text = "scene_action(\"" + action.conditional + "\", \"" + action.action + "\"); ";
-	if (update) {
-		text = text + "scene_interval(); ";
-	}
-	if (action.delay) {
-		text = "sprite_delay[\"" + id1 + "\"][\"" + id2 + "\"] = setTimeout(function() {" + text + "}, " + (Number(action.delay) * 1000) + "); ";
-		text = "clearTimeout(sprite_delay[\"" + id1 + "\"][\"" + id2 + "\"]); " + text;
-	}
-	if (action.probability) {
-		text = "if(" + action.probability + " >= Math.random()) {" + text + "}";
-	}
 	return text;
 }
 
@@ -160,10 +141,9 @@ function sprite_set(id, sprite, parent, sprite_def) {
 	// if the sprite changed, set the layers from the new sprite
 	if (sprite_current[id].sprite != sprite) {
 		element.innerHTML = "";
-		sprite_interval[id] = null;
 
-		for (var x = 0; x < sprite_new.length; x++) {
-			var layer_new = sprite_new[x];
+		for (var layer in sprite_new) {
+			var layer_new = sprite_new[layer];
 			var element_layer = document.createElement("div");
 			element.appendChild(element_layer);
 
@@ -205,32 +185,48 @@ function sprite_set(id, sprite, parent, sprite_def) {
 
 			// configure the actions of this layer
 			if (layer_new.actions) {
-				var clear_delay = false;
-				var actions = {};
-				for(var action in layer_new.actions) {
+				var func_click = "";
+				var func_hover_start = "";
+				var func_hover_end = "";
+				var func_load = [];
+				var func_interval = [];
+
+				for (var action in layer_new.actions) {
 					var action_new = layer_new.actions[action];
-					var type = action_new.trigger;
-					var string = get_action(id, action, action_new, (type == "click" || type == "hover_start" || type == "hover_end"));
-					actions[type] = actions[type] ? actions[type] + string : string;
+					var action_id = id + "_" + layer + "_" + action;
 
-					if (action_new.delay) {
-						clear_delay = true;
+					if(sprite_delay[action_id]) {
+						clearTimeout(sprite_delay[action_id]);
+					}
+					delete sprite_delay[action_id];
+
+					sprite_action[action_id] = action_new;
+					switch (action_new.trigger) {
+						case "click":
+							func_click += "scene_action(\"" + action_id + "\", true, false); ";
+							break;
+						case "hover_start":
+							func_hover_start += "scene_action(\"" + action_id + "\", true, false); ";
+							break;
+						case "hover_end":
+							func_hover_end += "scene_action(\"" + action_id + "\", true, false); ";
+							break;
+						case "load":
+							func_load.push(action_id);
+							break;
+						case "interval":
+							func_interval.push(action_id);
+							break;
+						default:
+							break;
 					}
 				}
 
-				if (clear_delay) {
-					for(var entry in sprite_delay[id]) {
-						clearTimeout(sprite_delay[id][entry]);
-					}
-					sprite_delay[id] = [];
-				}
-
-				element_layer.setAttribute("onclick", actions["click"]);
-				element_layer.setAttribute("onmouseover", actions["hover_start"]);
-				element_layer.setAttribute("onmouseout", actions["hover_end"]);
-				eval(actions["load"]);
-				eval(actions["interval"]);
-				sprite_interval[id] = sprite_interval[id] ? sprite_interval[id] + actions["interval"] : actions["interval"];
+				if (func_click != "") element_layer.setAttribute("onclick", func_click);
+				if (func_hover_start != "") element_layer.setAttribute("onmouseover", func_hover_start);
+				if (func_hover_end != "") element_layer.setAttribute("onmouseout", func_hover_end);
+				for (var func_load_action in func_load) scene_action(func_load[func_load_action], false, false);
+				for (var func_interval_action in func_interval) scene_action(func_interval[func_interval_action], false, false);
 
 				style += "pointer-events: all; ";
 			} else {
