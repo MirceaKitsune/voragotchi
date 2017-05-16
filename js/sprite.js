@@ -180,6 +180,18 @@ function sprite_set(id, sprite, parent, sprite_def) {
 					text = text[index];
 				}
 
+				// translate words beginning with $ into variables
+				var table = text.split(/[^a-zA-Z0-9$_]+/); // anything that's not: a-z,A-Z,0-9,$,_
+				for(var entry in table) {
+					var entry1 = table[entry].substring(0, 1);
+					if (entry1 == "$") {
+						var entry2 = table[entry].substring(1);
+						if (scene_data.variables[entry2] && scene_data.variables[entry2] != "undefined") {
+							text = text.replace(table[entry], scene_data.variables[entry2]);
+						}
+					}
+				}
+
 				element_layer.innerText = text;
 			}
 
