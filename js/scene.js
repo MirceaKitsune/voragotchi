@@ -137,6 +137,9 @@ function scene_interval_variables(rules, seconds) {
 			}
 		}
 
+		// multiply the offset based on the speed setting
+		offset *= scene_data.variables.game_speed;
+
 		// initiate this variable if it doesn't exist, then apply the offset and bounds
 		if (typeof scene_data.variables[rule] != "number") {
 			scene_data.variables[rule] = Number(rules[rule].value);
@@ -224,12 +227,13 @@ function scene_unload() {
 	clearInterval(scene_interval_timer);
 	scene_data = null;
 	canvas.innerHTML = "";
+
+	// set the page title
+	document.title = "Loading...";
 }
 
 // load the scene
 function scene_load() {
-	var date = new Date();
-	var date_time = date.getTime();
 	scene_unload();
 	scene_data = {};
 
@@ -263,11 +267,7 @@ function scene_load() {
 	}
 
 	// load the variables of the scene from the data
-	// if this is a new world, initiate it with the start and last timers
-	scene_data.variables = data_field_get("variables") || {
-		time_start: date_time,
-		time_last: date_time
-	};
+	scene_data.variables = data_field_get("variables");
 
 	// configure the geometries of mods
 	for (var item in scene_data) {
@@ -286,6 +286,9 @@ function scene_load() {
 	// run the inverval function
 	scene_interval();
 	scene_interval_timer = setInterval(scene_interval, 100); // 1000 = 1 second
+
+	// set the page title
+	document.title = scene_data.variables.game_name + "'s world";
 }
 
 // if data exists, initiate the scene

@@ -21,10 +21,11 @@ function mods_menu_button_load() {
 // mod management menu, start button
 // starts a new world with the selected options
 function mods_menu_button_start() {
+	var date = new Date();
+	var date_time = date.getTime();
 	var elements = document.forms["menu_form"].elements;
 
 	// store the indexes of the mods we've selected
-	var data_files = mods_menu_data_files.split("\n");
 	var data_mods = {};
 	for (var i = 0; i < elements.length; i++) {
 		if (elements[i].name.substring(0, 5) == "mods_" && elements[i].checked) {
@@ -33,14 +34,30 @@ function mods_menu_button_start() {
 		}
 	}
 
+	// store the starting variables
+	var data_variables = {
+		time_start: date_time,
+		time_last: date_time,
+		game_name: elements["menu_form_player"].value || "Player",
+		game_speed: elements["menu_form_difficulty"].value || "1"
+	};
+
 	// create new data with the selected files and mods
 	// note: we rely on the function below refreshing the page to load the scene
+	var data_files = mods_menu_data_files.split("\n");
 	var data_name = elements["menu_form_name"].value || "default";
 	var data_message =
 		"Notice: This world will be persisted under the name \"" + data_name + "\". " +
 		"Save the new URL to access it, or manually add ?data=" + data_name + " to the end of the URL.";
-	data = {files: data_files, mods: data_mods};
+	data = {files: data_files, mods: data_mods, variables: data_variables};
 	data_init(data_name, data_message);
+}
+
+// update the page title
+function mods_menu_title() {
+	var elements = document.forms["menu_form"].elements;
+	var name = elements["menu_form_player"].value || "Player";
+	document.title = name + "'s world (new)";
 }
 
 // remove the mod management menu
@@ -49,6 +66,9 @@ function mods_menu_remove() {
 	element && element.remove();
 	mods_menu_data_files = {};
 	mods_menu_data_mods = {};
+
+	// set the page title
+	document.title = "Loading...";
 }
 
 // add the mod management menu
@@ -78,6 +98,11 @@ function mods_menu_add() {
 		"<form id=\"menu_form\"" +
 		"style=\"overflow: auto; position:absolute; top: 0%; left: 50%;  width: 50%; height: 90%\">";
 	{
+		// menu HTML: form, name
+		text +=
+			"<p>data_name: " +
+			"<input type=\"text\" id=\"menu_form_name\" value=\"default\"></p>";
+		// menu HTML: form, mods
 		for (var item in mods_menu_data_mods) {
 			if (item.substring(0, 5) == "data_") {
 				// menu HTML: form, item (data)
@@ -98,10 +123,15 @@ function mods_menu_add() {
 				}
 			}
 		}
-		// menu HTML: form, name
+		text += "<hr\>";
+		// menu HTML: form, player
 		text +=
-			"<br\>name: " +
-			"<input type=\"text\" id=\"menu_form_name\">";
+			"<p>Player name: " +
+			"<input type=\"text\" id=\"menu_form_player\" value=\"Player\" onkeyup=\"mods_menu_title()\"></p>";
+		// menu HTML: form, difficulty
+		text +=
+			"<p>Difficulty: " +
+			"<input type=\"number\" id=\"menu_form_difficulty\" value=\"1\" step=\"0.1\" min=\"0.1\" max=\"10\"></p>";
 	}
 	text += "</form>";
 	// menu HTML: button (load)
@@ -126,6 +156,9 @@ function mods_menu_add() {
 		canvas.appendChild(element);
 	}
 	element.innerHTML = text;
+
+	// set the page title
+	mods_menu_title();
 }
 
 // if no data exists, show the mods menu

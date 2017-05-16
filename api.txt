@@ -34,6 +34,8 @@ You will normally create and use your own variables, but the engine has a few sp
 "date_hours": The current hour. Do not modify!
 "date_minutes": The current minute. Do not modify!
 "date_seconds": The current second. Do not modify!
+"game_name": Game setting, safe to modify. Specifies the name of the player. Note that this is not the same as the name of the world!
+"game_speed": Game setting, safe to modify. This is the speed offset, represents overall difficulty.
 
 - Objects:
 
