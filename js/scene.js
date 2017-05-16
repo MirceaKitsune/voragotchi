@@ -17,7 +17,7 @@ function scene_action(id, update, delayed) {
 
 	// if this action has a delay, clear the existing delay if any, then reschedule it for later
 	if (action.delay && !delayed) {
-		if (sprite_delay[id] && sprite_delay[id] != "undefined") {
+		if (sprite_delay[id] != null && sprite_delay[id] != "undefined") {
 			clearTimeout(sprite_delay[id]);
 		}
 		sprite_delay[id] = setTimeout(function() { scene_action(id, true, true) }, Number(action.delay) * 1000);
@@ -40,8 +40,8 @@ function scene_action(id, update, delayed) {
 			for(var entry_and in table_and) {
 				var table = table_and[entry_and].split(" ");
 				var type = table[1];
-				var val1 = (!scene_data.variables[table[0]] || scene_data.variables[table[0]] == "undefined") ? table[0] : scene_data.variables[table[0]];
-				var val2 = (!scene_data.variables[table[2]] || scene_data.variables[table[2]] == "undefined") ? table[2] : scene_data.variables[table[2]];
+				var val1 = (scene_data.variables[table[0]] != null && scene_data.variables[table[0]] != "undefined") ? scene_data.variables[table[0]] : table[0];
+				var val2 = (scene_data.variables[table[2]] != null && scene_data.variables[table[2]] != "undefined") ? scene_data.variables[table[2]] : table[2];
 				if ((typeof val1 != "number" && typeof val1 != "string") || !type || !val2) {
 					// the conditional is invalid, ignore it and move on
 				} else if (type == "==" && (val1 == val2 || Number(val1) == Number(val2))) {

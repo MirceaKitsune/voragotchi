@@ -162,9 +162,9 @@
 					{ "trigger":"load", "action":"sprite_pet_background = pet_default_baby_background_eat_apple" },
 					{ "trigger":"load", "action":"sprite_actions_button_apple = " },
 					{ "trigger":"load", "probability":"0.5", "action":"sprite_pet_chat = pet_default_baby_chat_apple_eat" },
-					{ "trigger":"load", "delay":"1", "action":"sprite_pet_interact = pet_default_baby_interact" },
 					{ "trigger":"load", "delay":"1", "action":"food += 0.1" },
-					{ "trigger":"load", "delay":"1", "action":"stock_apple -= 0.01" }
+					{ "trigger":"load", "delay":"1", "action":"stock_apple -= 0.01" },
+					{ "trigger":"load", "delay":"1", "action":"sprite_pet_interact = pet_default_baby_interact" }
 				]
 			}
 		],

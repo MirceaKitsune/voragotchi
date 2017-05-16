@@ -186,7 +186,7 @@ function sprite_set(id, sprite, parent, sprite_def) {
 					var entry1 = table[entry].substring(0, 1);
 					if (entry1 == "$") {
 						var entry2 = table[entry].substring(1);
-						if (scene_data.variables[entry2] && scene_data.variables[entry2] != "undefined") {
+						if (scene_data.variables[entry2] != null && scene_data.variables[entry2] != "undefined") {
 							text = text.replace(table[entry], scene_data.variables[entry2]);
 						}
 					}
@@ -197,7 +197,7 @@ function sprite_set(id, sprite, parent, sprite_def) {
 
 			// configure the audio of this layer
 			if (layer_new.audio) {
-				audio_id = (layer_new.audio.id && layer_new.audio.id != "undefined") ? layer_new.audio.id : "audio";
+				audio_id = (typeof layer_new.audio.id == "string" && layer_new.audio.id != "undefined") ? layer_new.audio.id : "audio";
 				audio = document.getElementById(audio_id);
 				if (!audio) {
 					audio = document.createElement("audio");
