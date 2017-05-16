@@ -9,6 +9,7 @@
 		"actions_default_button_apple_selected":[
 			{
 				"layer":{ "geometry":"0% 5% 10% 10% 1", "shape":"100%", "alpha":"1", "color":"#000000", "image":"url(data/default_actions/food_apple_selected.png)" },
+				"audio":{ "sound":"data/default_actions/click_1.wav", "volume":"0.5", "loop":"false", "id":"actions" },
 				"actions":[
 					{ "trigger":"load", "action":"bar_stock_apple = stock_apple" },
 					{ "trigger":"load", "action":"selection = 1" },
@@ -20,6 +21,7 @@
 		"actions_default_button_apple_hover":[
 			{
 				"layer":{ "geometry":"0% 5% 10% 10% 1", "shape":"100%", "alpha":"1", "color":"#000000", "image":"url(data/default_actions/food_apple_hover.png)" },
+				"audio":{ "sound":"data/default_actions/hover_1.wav", "volume":"0.5", "loop":"false", "id":"actions" },
 				"actions":[
 					{ "trigger":"load", "action":"bar_stock_apple = stock_apple" },
 					{ "trigger":"load", "action":"selection = 0" },

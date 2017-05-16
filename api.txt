@@ -66,6 +66,7 @@ Data and mods are defined in json files. Those files are specified in the mods m
 			"sound": The sound file.
 			"volume": The volume of this sound, ranges between 0 and 1.
 			"loop": If true, this sound will loop.
+			"id": Registered name of this sound. Any existing sound source with this id will be replaced by the sound defined here.
 		"text": Object which defines the text of this layer. Text definition:
 			"content": Text to appear inside the element. This can be an array, in which case a random text will be chosen.
 			"color": Color of the text specified above.

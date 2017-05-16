@@ -185,8 +185,14 @@ function sprite_set(id, sprite, parent, sprite_def) {
 
 			// configure the audio of this layer
 			if (layer_new.audio) {
-				audio = document.createElement("audio");
-				element_layer.appendChild(audio);
+				audio_id = (layer_new.audio.id && layer_new.audio.id != "undefined") ? layer_new.audio.id : "audio";
+				audio = document.getElementById(audio_id);
+				if (!audio) {
+					audio = document.createElement("audio");
+					audio.setAttribute("id", audio_id);
+					canvas.appendChild(audio);
+				}
+
 				audio.src = layer_new.audio.sound;
 				audio.volume = Number(layer_new.audio.volume);
 				audio.loop = (layer_new.audio.loop == "true");

@@ -34,7 +34,17 @@ yamachem
 CC0
 https://openclipart.org/detail/215910/apple-02
 
+- default_actions_sound
+Independent.nu
+CC0
+https://opengameart.org/content/16-button-clicks
+
 - default_people
 anarres
 CC0
 https://openclipart.org/detail/184601/mix-and-match-comic-characters
+
+- default_people_sound
+wobbleboxx
+CC0
+https://opengameart.org/content/level-up-power-up-coin-get-13-sounds
