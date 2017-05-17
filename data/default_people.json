@@ -2,7 +2,7 @@
 	"data_bars":{
 		"money":{
 			"layer":{ "geometry":"10% 37.5% 80% 2.5% 1", "shape":"10px", "alpha":"1.0", "color1":"#aaaa00", "color2":"#111100", "direction":"right" },
-			"text":{ "content_prefix":"Money: ", "content_suffix":" $", "content_multiplier":"1000000", "color":"#ffffff", "size":"75%" }
+			"text":{ "content_prefix":"Money: ", "content_suffix":" $", "content_multiplier":"1000000", "align":"center", "color":"#ffffff", "size":"75%" }
 		}
 	},
 	"data_sprites":{
@@ -31,7 +31,7 @@
 			{
 				"layer":{ "geometry":"10% 20% 40% 5% 1", "shape":"10px", "alpha":"0.75", "color":"#00aa00" },
 				"text":{
-					"color":"#ffffff", "size":"100%", "content":"Accept"
+					"align":"center", "color":"#ffffff", "size":"100%", "content":"Accept"
 				},
 				"actions":[
 					{ "trigger":"click", "conditional":"money < 0.00001", "action":"sprite_chat_people = chat_people_default_1_apple_unavailable" },
@@ -41,7 +41,7 @@
 			{
 				"layer":{ "geometry":"50% 20% 40% 5% 1", "shape":"10px", "alpha":"0.75", "color":"#aa0000" },
 				"text":{
-					"color":"#ffffff", "size":"100%", "content":"Reject"
+					"align":"center", "color":"#ffffff", "size":"100%", "content":"Reject"
 				},
 				"actions":[
 					{ "trigger":"click", "action":"sprite_chat_people = " }
@@ -67,7 +67,7 @@
 			{
 				"layer":{ "geometry":"10% 40% 80% 5% 1", "shape":"10px", "alpha":"0.75", "color":"#aaaa00" },
 				"text":{
-					"color":"#ffffff", "size":"100%", "content":"Don't buy (not enough $)"
+					"align":"center", "color":"#ffffff", "size":"100%", "content":"Don't buy (not enough $)"
 				},
 				"actions":[
 					{ "trigger":"click", "action":"sprite_chat_people = chat_people_default_1_apple_no" }
@@ -93,7 +93,7 @@
 			{
 				"layer":{ "geometry":"10% 40% 40% 5% 1", "shape":"10px", "alpha":"0.75", "color":"#aa0000" },
 				"text":{
-					"color":"#ffffff", "size":"100%", "content":"Don't buy"
+					"align":"center", "color":"#ffffff", "size":"100%", "content":"Don't buy"
 				},
 				"actions":[
 					{ "trigger":"click", "action":"sprite_chat_people = chat_people_default_1_apple_no" }
@@ -102,7 +102,7 @@
 			{
 				"layer":{ "geometry":"50% 40% 40% 5% 1", "shape":"10px", "alpha":"0.75", "color":"#00aa00" },
 				"text":{
-					"color":"#ffffff", "size":"100%", "content":"Buy"
+					"align":"center", "color":"#ffffff", "size":"100%", "content":"Buy"
 				},
 				"actions":[
 					{ "trigger":"click", "conditional":"money >= 0.00001", "action":"sprite_chat_people = chat_people_default_1_apple_yes" }

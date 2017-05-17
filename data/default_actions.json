@@ -2,7 +2,7 @@
 	"data_bars":{
 		"stock_apple":{
 			"layer":{ "geometry":"0% 25% 100% 5% 1", "shape":"10px", "alpha":"1.0", "color1":"#00aa00", "color2":"#001100", "direction":"right" },
-			"text":{ "content_prefix":"Stock: ", "content_suffix":" apples", "content_multiplier":"100", "color":"#ffffff", "size":"75%" }
+			"text":{ "content_prefix":"Stock: ", "content_suffix":" apples", "content_multiplier":"100", "align":"center", "color":"#ffffff", "size":"75%" }
 		}
 	},
 	"data_sprites":{

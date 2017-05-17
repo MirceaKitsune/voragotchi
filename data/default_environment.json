@@ -2,11 +2,11 @@
 	"data_bars":{
 		"light":{
 			"layer":{ "geometry":"0% 0% 50% 2.5% 1", "shape":"10px", "alpha":"1.0", "color1":"#00aaaa", "color2":"#001111", "direction":"right" },
-			"text":{ "content_prefix":"Light: ", "content_suffix":" lx", "content_multiplier":"1000", "color":"#ffffff", "size":"100%" }
+			"text":{ "content_prefix":"Light: ", "content_suffix":" lx", "content_multiplier":"1000", "align":"center", "color":"#ffffff", "size":"100%" }
 		},
 		"temperature":{
 			"layer":{ "geometry":"50% 0% 50% 2.5% 1", "shape":"10px", "alpha":"1.0", "color1":"#0000aa", "color2":"#000011", "direction":"left" },
-			"text":{ "content_prefix":"Temperature: ", "content_suffix":" C*", "content_multiplier":"50", "color":"#ffffff", "size":"100%" }
+			"text":{ "content_prefix":"Temperature: ", "content_suffix":" C*", "content_multiplier":"50", "align":"center", "color":"#ffffff", "size":"100%" }
 		}
 	},
 	"data_sprites":{

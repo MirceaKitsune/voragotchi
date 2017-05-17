@@ -54,8 +54,11 @@ Data and mods are defined in json files. Those files are specified in the mods m
 			"content_prefix": Text to prefix the value of the bar. If for example this is "My variable: ", the text on the bar may show "My variable: 50".
 			"content_suffix": Text to suffix the value of the bar. If for example this is "%", the text on the bar may show "50%".
 			"content_multiplier": How much to visually multiply the variables by. If you want a percentage, this would be 100. If this is set, decimals will be hidden.
-			"color": Color of the text specified above.
-			"size": Size of the text specified above.
+			"align": Alignment of the font inside the element. Valid values are: "left", "center", "right".
+			"size": Size of the text.
+			"weight": Thickness of the font. Example: "200", "400", "600", "800".
+			"family": Font family to be used. If a comma separated list is present, fonts are used in that order... if left empty, the default browser font is used. Example: "Times, serif".
+			"color": Color of the text.
 "data_sprites": The global data object for sprites. Sprite definitions:
 	"<sprite_name>": The name of this sprite array, by which it will be referenced. Layers definition:
 		"layer": Object which defines the visual information of this sprite. Layer definition:
@@ -64,6 +67,7 @@ Data and mods are defined in json files. Those files are specified in the mods m
 			"image": The image on this layer.
 			"alpha": The transparency of the layer between 0 and 1.
 			"shape": How round the corners are, in pixels or a percentage.
+			"cursor": The image or cursor style used by the mouse pointer, as it hovers over this layer. Always have a backup cursor specified when using images, if you want none use "auto"! Example: "crosshair" or "url(foo/bar.png), auto". Note: Only images of certain sizes are supported... 32px is most compatible, 128px is the known maximum.
 		"audio": Object which defines the audio of this sprite. The audio is always triggered when the sprite appears. Audio definition:
 			"sound": The sound file.
 			"volume": The volume of this sound, ranges between 0 and 1.
@@ -71,8 +75,11 @@ Data and mods are defined in json files. Those files are specified in the mods m
 			"id": Registered name of this sound. Any existing sound source with this id will be replaced by the sound defined here.
 		"text": Object which defines the text of this layer. Text definition:
 			"content": Text to appear inside the element. This can be an array, in which case a random text will be chosen each time. Words beginning with $ represent the variable with that name if one exists. Example: "$myvar" may become "1". Note: This only works for variables without special characters in their name (only a-z, A-Z, 0-9, _).
-			"color": Color of the text specified above.
-			"size": Size of the text specified above.
+			"align": Alignment of the font inside the element. Valid values are: "left", "center", "right".
+			"size": Size of the text.
+			"weight": Thickness of the font. Example: "200", "400", "600", "800".
+			"family": Font family to be used. If a comma separated list is present, fonts are used in that order... if left empty, the default browser font is used. Example: "Times, serif".
+			"color": Color of the text.
 		"actions": Object containing actions that can be set for this layer. Note that actions are evaluated in order, so later ones will override earlier ones! Action definition:
 			"trigger": What event will cause this action to fire. Can be: click, hover_start, hover_end, load, interval.
 			"conditional": Only execute those actions if the conditionals are true. The string must contain a property or value, a comparison type, and another property or value... all three may be separated by logical operators. Example: "my_var >= 0.5" or "my_str == foo_bar". Valid comparison types: ==, !=, <, <=, >, >=. Valid logical operators: &&, ||. Note: OR takes priotiry over AND, so "a == 1 || b == 2 && c == 3" will be treated as "a == 1 || (b == 2 && c == 3)", parenthesis are otherwise not supported by conditional strings.

@@ -87,9 +87,17 @@ function bar_set(id, bar, value, parent, bar_def) {
 
 		// configure the text of this bar
 		if (bar_new.text) {
-			style += "text-align: center; font-weight: bold; ";
+			if (bar_new.text.align) {
+				style += "text-align: " + bar_new.text.align + "; ";
+			}
 			if (bar_new.text.size) {
 				style += "font-size: " + bar_new.text.size + "; ";
+			}
+			if (bar_new.text.weight) {
+				style += "font-weight: " + bar_new.text.weight + "; ";
+			}
+			if (bar_new.text.family) {
+				style += "font-family: " + bar_new.text.family + "; ";
 			}
 			if (bar_new.text.color) {
 				style += "color: " + bar_new.text.color + "; ";
@@ -143,13 +151,15 @@ function sprite_set(id, sprite, parent, sprite_def) {
 		element.innerHTML = "";
 
 		for (var layer in sprite_new) {
+			var style = "";
+			var style_pointer = false;
 			var layer_new = sprite_new[layer];
-			var element_layer = document.createElement("div");
-			element.appendChild(element_layer);
+			var layer_element = document.createElement("div");
+			element.appendChild(layer_element);
 
 			// configure the visuals of this layer
 			if (layer_new.layer) {
-				var style = get_geometry(layer_new.layer.geometry);
+				style += get_geometry(layer_new.layer.geometry);
 				if (layer_new.layer.color) {
 					style += "background-color: " + layer_new.layer.color + "; ";
 				}
@@ -162,13 +172,25 @@ function sprite_set(id, sprite, parent, sprite_def) {
 				if (layer_new.layer.shape) {
 					style += "border-radius: " + layer_new.layer.shape + "; ";
 				}
+				if (layer_new.layer.cursor) {
+					style += "cursor: " + layer_new.layer.cursor + "; ";
+					style_pointer = true;
+				}
 			}
 
 			// configure the text of this layer
 			if (layer_new.text) {
-				style += "text-align: center; font-weight: bold; ";
+				if (layer_new.text.align) {
+					style += "text-align: " + layer_new.text.align + "; ";
+				}
 				if (layer_new.text.size) {
 					style += "font-size: " + layer_new.text.size + "; ";
+				}
+				if (layer_new.text.weight) {
+					style += "font-weight: " + layer_new.text.weight + "; ";
+				}
+				if (layer_new.text.family) {
+					style += "font-family: " + layer_new.text.family + "; ";
 				}
 				if (layer_new.text.color) {
 					style += "color: " + layer_new.text.color + "; ";
@@ -192,7 +214,7 @@ function sprite_set(id, sprite, parent, sprite_def) {
 					}
 				}
 
-				element_layer.innerText = text;
+				layer_element.innerText = text;
 			}
 
 			// configure the audio of this layer
@@ -232,12 +254,15 @@ function sprite_set(id, sprite, parent, sprite_def) {
 					switch (action_new.trigger) {
 						case "click":
 							func_click += "scene_action(\"" + action_id + "\", true, false); ";
+							style_pointer = true;
 							break;
 						case "hover_start":
 							func_hover_start += "scene_action(\"" + action_id + "\", true, false); ";
+							style_pointer = true;
 							break;
 						case "hover_end":
 							func_hover_end += "scene_action(\"" + action_id + "\", true, false); ";
+							style_pointer = true;
 							break;
 						case "load":
 							func_load.push(action_id);
@@ -250,18 +275,15 @@ function sprite_set(id, sprite, parent, sprite_def) {
 					}
 				}
 
-				if (func_click != "") element_layer.setAttribute("onclick", func_click);
-				if (func_hover_start != "") element_layer.setAttribute("onmouseover", func_hover_start);
-				if (func_hover_end != "") element_layer.setAttribute("onmouseout", func_hover_end);
+				if (func_click != "") layer_element.setAttribute("onclick", func_click);
+				if (func_hover_start != "") layer_element.setAttribute("onmouseover", func_hover_start);
+				if (func_hover_end != "") layer_element.setAttribute("onmouseout", func_hover_end);
 				for (var func_load_action in func_load) scene_action(func_load[func_load_action], false, false);
 				for (var func_interval_action in func_interval) scene_action(func_interval[func_interval_action], false, false);
-
-				style += "pointer-events: all; ";
-			} else {
-				style += "pointer-events: none; ";
 			}
 
-			element_layer.setAttribute("style", style);
+			style += style_pointer ? "pointer-events: all; " : "pointer-events: none; ";
+			layer_element.setAttribute("style", style);
 			sprite_current[id].sprite = sprite;
 		}
 	}
