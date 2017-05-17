@@ -1,10 +1,10 @@
 // script 4, sprite.js
 // Public Domain / CC0, MirceaKitsune 2016
-// contains functions for creating and updating bars and sprites
+// contains functions for creating and updating sprites
 
 // common objects
-var bar_current = {};
 var sprite_current = {};
+var sprite_variable = {};
 var sprite_action = {};
 var sprite_delay = {};
 
@@ -41,91 +41,29 @@ function get_gradient(color1, color2, direction, blend) {
 	return text;
 }
 
-// sets the bar of a number variable
-function bar_set(id, bar, value, parent, bar_def) {
-	// if the element doesn't exist, create it
-	var element = document.getElementById(id);
-	if (!bar || !bar_def || !bar_def[bar]) {
-		element && element.remove();
-		delete bar_current[id];
-		return;
-	// if a sprite is not defined, erase the element
-	} else if (!element) {
-		element = document.createElement("div");
-		element.setAttribute("id", id);
-		delete bar_current[id];
-	}
+// replaces variable names with their values in a text field
+function get_text(text) {
+	var table_all = text.split(/[^a-zA-Z0-9$_]+/); // anything that's not: a-z,A-Z,0-9,$,_
+	for(var entry_all in table_all) {
+		// table[1] is the variable name, table[2] is the optional visual multiplier
+		var table = table_all[entry_all].split("$");
+		if (scene_data.variables[table[1]] != null && scene_data.variables[table[1]] != "undefined") {
+			var value = scene_data.variables[table[1]];
+			if (Number(value) != NaN && Number(value) > 0) {
+				value = Number(value);
 
-	var bar_new = bar_def[bar];
-	bar_current[id] = bar_current[id] || {};
-
-	// if the bar or value changed, set the new bar and value
-	if (bar_current[id].bar != bar || bar_current[id].value != value) {
-		// configure the visuals of this bar
-		if (bar_new.layer) {
-			var style = get_geometry(bar_new.layer.geometry);
-			if (value <= 0) {
-				style += "background-color: " + bar_new.layer.color2 + "; ";
-			} else if (value >= 1) {
-				style += "background-color: " + bar_new.layer.color1 + "; ";
-			} else {
-				style += "background-image: " + get_gradient(
-					bar_new.layer.color1,
-					bar_new.layer.color2,
-					bar_new.layer.direction,
-					(value * 100)
-				);
+				var multiplier = Number(table[2]);
+				if (multiplier != NaN && multiplier > 0) {
+					value = value * multiplier;
+					value = Math.floor(value) // treat as integer
+				} else {
+					value = value.toFixed(2); // treat as float, 2 decimals
+				}
 			}
-
-			if (bar_new.layer.alpha) {
-				style += "opacity: " + bar_new.layer.alpha + "; ";
-			}
-			if (bar_new.layer.shape) {
-				style += "border-radius: " + bar_new.layer.shape + "; ";
-			}
+			text = text.replace(table_all[entry_all], value);
 		}
-
-		// configure the text of this bar
-		if (bar_new.text) {
-			if (bar_new.text.align) {
-				style += "text-align: " + bar_new.text.align + "; ";
-			}
-			if (bar_new.text.size) {
-				style += "font-size: " + bar_new.text.size + "; ";
-			}
-			if (bar_new.text.weight) {
-				style += "font-weight: " + bar_new.text.weight + "; ";
-			}
-			if (bar_new.text.family) {
-				style += "font-family: " + bar_new.text.family + "; ";
-			}
-			if (bar_new.text.color) {
-				style += "color: " + bar_new.text.color + "; ";
-			}
-
-			var prefix = bar_new.text.content_prefix || "";
-			var suffix = bar_new.text.content_suffix || "";
-			var value_multiplier = bar_new.text.content_multiplier;
-			var value_text = value_multiplier ? Math.floor(value * value_multiplier) : value.toFixed(2);
-			var text = prefix + value_text + suffix;
-			element.innerText = text;
-		}
-
-		element.setAttribute("style", style);
-		bar_current[id].bar = bar;
-		bar_current[id].value = value;
 	}
-
-	// if the parent changed, set the new parent
-	if (bar_current[id].parent != parent) {
-		var element_parent = document.getElementById(parent);
-		if (element_parent) {
-			element_parent.appendChild(element);
-		} else {
-			canvas.appendChild(element);
-		}
-		bar_current[id].parent = parent;
-	}
+	return text;
 }
 
 // sets the sprite of an element
@@ -146,9 +84,27 @@ function sprite_set(id, sprite, parent, sprite_def) {
 	var sprite_new = sprite_def[sprite];
 	sprite_current[id] = sprite_current[id] || {};
 
-	// if the sprite changed, set the layers from the new sprite
+	// decide whether to update the sprite, based on whether the sprite has changed or any tracked variable has been modified
+	var update = false;
 	if (sprite_current[id].sprite != sprite) {
+		update = true;
+	} else {
+		for(var variable in sprite_variable[id]) {
+			if (scene_data.variables[variable] != null && scene_data.variables[variable] != "undefined") {
+				var value1 = sprite_variable[id][variable];
+				var value2 = scene_data.variables[variable];
+				if (value1 != value2 && Number(value1) != Number(value2)) {
+					update = true;
+					break;
+				}
+			}
+		}
+	}
+
+	// if we decided to update the sprite, set the layers from the new sprite
+	if (update) {
 		element.innerHTML = "";
+		sprite_variable[id] = {};
 
 		for (var layer in sprite_new) {
 			var style = "";
@@ -160,12 +116,36 @@ function sprite_set(id, sprite, parent, sprite_def) {
 			// configure the visuals of this layer
 			if (layer_new.layer) {
 				style += get_geometry(layer_new.layer.geometry);
-				if (layer_new.layer.color) {
-					style += "background-color: " + layer_new.layer.color + "; ";
+
+				// choose whether to draw a gradient image, or a normal background color plus image
+				if (layer_new.layer.gradient) {
+					var color1 = (layer_new.layer.gradient.color1 != null && layer_new.layer.gradient.color1 != "undefined") ? layer_new.layer.gradient.color1 : "#ffffff";
+					var color2 = (layer_new.layer.gradient.color2 != null && layer_new.layer.gradient.color2 != "undefined") ? layer_new.layer.gradient.color2 : "#000000";
+					var direction = (layer_new.layer.gradient.direction != null && layer_new.layer.gradient.direction != "undefined") ? layer_new.layer.gradient.direction : "right";
+
+					var value_name = layer_new.layer.gradient.value;
+					var value = value_name;
+					if (scene_data.variables[value_name] != null && scene_data.variables[value_name] != "undefined") {
+						value = scene_data.variables[value_name];
+						sprite_variable[id][value_name] = value; // track this variable
+					}
+
+					if (value <= 0) {
+						style += "background-color: " + color2 + "; ";
+					} else if (value >= 1) {
+						style += "background-color: " + color1 + "; ";
+					} else {
+						style += "background-image: " + get_gradient(color1, color2, direction, (value * 100));
+					}
+				} else {
+					if (layer_new.layer.color) {
+						style += "background-color: " + layer_new.layer.color + "; ";
+					}
+					if (layer_new.layer.image) {
+						style += "background-image:" + layer_new.layer.image + "; ";
+					}
 				}
-				if (layer_new.layer.image) {
-					style += "background-image:" + layer_new.layer.image + "; ";
-				}
+
 				if (layer_new.layer.alpha) {
 					style += "opacity: " + layer_new.layer.alpha + "; ";
 				}
@@ -201,20 +181,7 @@ function sprite_set(id, sprite, parent, sprite_def) {
 					var index = Math.floor(Math.random() * text.length);
 					text = text[index];
 				}
-
-				// translate words beginning with $ into variables
-				var table = text.split(/[^a-zA-Z0-9$_]+/); // anything that's not: a-z,A-Z,0-9,$,_
-				for(var entry in table) {
-					var entry1 = table[entry].substring(0, 1);
-					if (entry1 == "$") {
-						var entry2 = table[entry].substring(1);
-						if (scene_data.variables[entry2] != null && scene_data.variables[entry2] != "undefined") {
-							text = text.replace(table[entry], scene_data.variables[entry2]);
-						}
-					}
-				}
-
-				layer_element.innerText = text;
+				layer_element.innerText = get_text(text);
 			}
 
 			// configure the audio of this layer

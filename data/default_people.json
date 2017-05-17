@@ -1,15 +1,8 @@
 {
-	"data_bars":{
-		"money":{
-			"layer":{ "geometry":"10% 37.5% 80% 2.5% 1", "shape":"10px", "alpha":"1.0", "color1":"#aaaa00", "color2":"#111100", "direction":"right" },
-			"text":{ "content_prefix":"Money: ", "content_suffix":" $", "content_multiplier":"1000000", "align":"center", "color":"#ffffff", "size":"75%" }
-		}
-	},
 	"data_sprites":{
 		"chat_people_default":[
 			{
 				"actions":[
-					{ "trigger":"load", "action":"bar_money = " },
 					{ "trigger":"load", "action":"sprite_background_people = " },
 					{ "trigger":"interval", "probability":"0.0025", "action":"sprite_chat_people = chat_people_default_1" }
 				]
@@ -23,7 +16,6 @@
 					"color":"#000000", "size":"100%", "content":"Person 1 wants to see you, about apples."
 				},
 				"actions":[
-					{ "trigger":"load", "action":"bar_money = " },
 					{ "trigger":"load", "action":"sprite_background_people = " },
 					{ "trigger":"load", "delay":"10", "action":"sprite_chat_people = chat_people_default" }
 				]
@@ -58,9 +50,7 @@
 					]
 				},
 				"actions":[
-					{ "trigger":"load", "action":"bar_money = money" },
 					{ "trigger":"load", "action":"sprite_background_people = background_people_default_1_1" },
-					{ "trigger":"load", "conditional":"stock_apple >= 0.01", "action":"sprite_actions_button_apple = actions_default_button_apple_selected" },
 					{ "trigger":"load", "delay":"20", "action":"sprite_chat_people = chat_people_default" }
 				]
 			},
@@ -72,6 +62,14 @@
 				"actions":[
 					{ "trigger":"click", "action":"sprite_chat_people = chat_people_default_1_apple_no" }
 				]
+			},
+			{
+				"layer":{ "geometry":"10% 35% 40% 2.5% 1", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"money", "color1":"#aaaa00", "color2":"#111100", "direction":"right" } },
+				"text":{ "content":"Money: $money$1000000 $", "align":"center", "color":"#ffffff", "size":"75%" }
+			},
+			{
+				"layer":{ "geometry":"50% 35% 40% 2.5% 1", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"stock_apple", "color1":"#00aa00", "color2":"#001100", "direction":"right" } },
+				"text":{ "content":"Stock: $stock_apple$100 apples", "align":"center", "color":"#ffffff", "size":"75%" }
 			}
 		],
 		"chat_people_default_1_apple_available":[
@@ -84,9 +82,7 @@
 					]
 				},
 				"actions":[
-					{ "trigger":"load", "action":"bar_money = money" },
 					{ "trigger":"load", "action":"sprite_background_people = background_people_default_1_1" },
-					{ "trigger":"load", "conditional":"stock_apple >= 0.01", "action":"sprite_actions_button_apple = actions_default_button_apple_selected" },
 					{ "trigger":"load", "delay":"20", "action":"sprite_chat_people = chat_people_default" }
 				]
 			},
@@ -107,6 +103,14 @@
 				"actions":[
 					{ "trigger":"click", "conditional":"money >= 0.00001", "action":"sprite_chat_people = chat_people_default_1_apple_yes" }
 				]
+			},
+			{
+				"layer":{ "geometry":"10% 35% 40% 2.5% 1", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"money", "color1":"#aaaa00", "color2":"#111100", "direction":"right" } },
+				"text":{ "content":"Money: $money$1000000 $", "align":"center", "color":"#ffffff", "size":"75%" }
+			},
+			{
+				"layer":{ "geometry":"50% 35% 40% 2.5% 1", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"stock_apple", "color1":"#00aa00", "color2":"#001100", "direction":"right" } },
+				"text":{ "content":"Stock: $stock_apple$100 apples", "align":"center", "color":"#ffffff", "size":"75%" }
 			}
 		],
 		"chat_people_default_1_apple_no":[
@@ -119,7 +123,6 @@
 					]
 				},
 				"actions":[
-					{ "trigger":"load", "action":"bar_money = " },
 					{ "trigger":"load", "delay":"5", "action":"sprite_chat_people = chat_people_default" }
 				]
 			}
@@ -134,7 +137,6 @@
 					]
 				},
 				"actions":[
-					{ "trigger":"load", "action":"bar_money = money" },
 					{ "trigger":"load", "action":"money -= 0.00001" },
 					{ "trigger":"load", "action":"stock_apple += 0.05" },
 					{ "trigger":"load", "delay":"5", "action":"sprite_chat_people = chat_people_default" }
@@ -156,7 +158,7 @@
 				"background_people":"background_people_default"
 			},
 			"variables":{
-				"money":{"bar":"hidden", "value":"0.00005" }
+				"money":{"value":"0.00005" }
 			}
 		}
 	}

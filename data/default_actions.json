@@ -1,21 +1,18 @@
 {
-	"data_bars":{
-		"stock_apple":{
-			"layer":{ "geometry":"0% 25% 100% 5% 1", "shape":"10px", "alpha":"1.0", "color1":"#00aa00", "color2":"#001100", "direction":"right" },
-			"text":{ "content_prefix":"Stock: ", "content_suffix":" apples", "content_multiplier":"100", "align":"center", "color":"#ffffff", "size":"75%" }
-		}
-	},
 	"data_sprites":{
 		"actions_default_button_apple_selected":[
 			{
 				"layer":{ "geometry":"0% 5% 10% 10% 1", "shape":"100%", "alpha":"1", "color":"#000000", "image":"url(data/default_actions/food_apple_selected.png)" },
 				"audio":{ "sound":"data/default_actions/click_1.wav", "volume":"0.5", "loop":"false", "id":"actions" },
 				"actions":[
-					{ "trigger":"load", "action":"bar_stock_apple = stock_apple" },
 					{ "trigger":"load", "action":"selection = 1" },
 					{ "trigger":"interval", "conditional":"stock_apple < 0.01", "action":"sprite_actions_button_apple = actions_default_button_apple_inactive" },
 					{ "trigger":"click", "action":"sprite_actions_button_apple = actions_default_button_apple_inactive" }
 				]
+			},
+			{
+				"layer":{ "geometry":"0% 25% 100% 5% 1", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"stock_apple", "color1":"#00aa00", "color2":"#001100", "direction":"right" } },
+				"text":{ "content":"Stock: $stock_apple$100 apples", "align":"center", "color":"#ffffff", "size":"75%" }
 			}
 		],
 		"actions_default_button_apple_hover":[
@@ -23,18 +20,20 @@
 				"layer":{ "geometry":"0% 5% 10% 10% 1", "shape":"100%", "alpha":"1", "color":"#000000", "image":"url(data/default_actions/food_apple_hover.png)" },
 				"audio":{ "sound":"data/default_actions/hover_1.wav", "volume":"0.5", "loop":"false", "id":"actions" },
 				"actions":[
-					{ "trigger":"load", "action":"bar_stock_apple = stock_apple" },
 					{ "trigger":"load", "action":"selection = 0" },
 					{ "trigger":"click", "conditional":"stock_apple >= 0.01", "action":"sprite_actions_button_apple = actions_default_button_apple_selected" },
 					{ "trigger":"hover_end", "action":"sprite_actions_button_apple = actions_default_button_apple_inactive" }
 				]
+			},
+			{
+				"layer":{ "geometry":"0% 25% 100% 5% 1", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"stock_apple", "color1":"#00aa00", "color2":"#001100", "direction":"right" } },
+				"text":{ "content":"Stock: $stock_apple$100 apples", "align":"center", "color":"#ffffff", "size":"75%" }
 			}
 		],
 		"actions_default_button_apple_inactive":[
 			{
 				"layer":{ "geometry":"0% 5% 10% 10% 1", "shape":"100%", "alpha":"1", "color":"#000000", "image":"url(data/default_actions/food_apple_inactive.png)" },
 				"actions":[
-					{ "trigger":"load", "action":"bar_stock_apple = " },
 					{ "trigger":"load", "action":"selection = 0" },
 					{ "trigger":"click", "conditional":"stock_apple >= 0.01", "action":"sprite_actions_button_apple = actions_default_button_apple_selected" },
 					{ "trigger":"hover_start", "action":"sprite_actions_button_apple = actions_default_button_apple_hover" }
@@ -49,7 +48,7 @@
 			},
 			"variables":{
 				"selection":{ "value":"0" },
-				"stock_apple":{ "bar":"hidden", "value":"0.1" }
+				"stock_apple":{ "value":"0.1" }
 			}
 		}
 	}

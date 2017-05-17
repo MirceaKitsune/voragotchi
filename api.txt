@@ -17,7 +17,7 @@ Note: This affects both images and colors (explained above).
 
 - Visuals, Geometry:
 
-The geometries of bars sprites and layers are defined in a string, each value separated by a space.
+The geometries of sprites and layers are defined in a string, each value separated by a space.
 Format: "left top width height z-index"; The first two define the top-left corner, the second two define the size, the last defines the draw order.
 The default is "0% 0% 100% 100% auto". You can exclude any property you don't wish to set. Example: "25% 75%" will only set the top-left corner.
 The first four values can be defined in either pixels or percentages. Example: "50% 100px 150% 300px". The fifth value is an integer.
@@ -28,7 +28,6 @@ Note: If the z-index is negative, the image will scroll with the screen. Use thi
 You will normally create and use your own variables, but the engine has a few special variables builtin. The following variables can be read or modified to obtain special effects:
 
 "sprite_<sprite_name>": When set, theis replaces the sprite with the same name. Set back to null to disable and use the default sprite again.
-"bar_<variable_name>": When set, this replaces the bar with the same name. Set back to null to disable and use the default bar again.
 "time_start": The time when the world was created. Do not modify!
 "time_last": The time when the world was last opened. Do not modify!
 "date_hours": The current hour. Do not modify!
@@ -41,30 +40,17 @@ You will normally create and use your own variables, but the engine has a few sp
 
 Data and mods are defined in json files. Those files are specified in the mods menu before the world is created. The following structure is used:
 
-"data_bars": The global data object for bars. Bar definitions:
-	"<bar_name>": The name of this bar, by which it will be referenced. Bar definition:
-		"layer": Object which defines the visual information of this bar. Layer definition:
-			"geometry": The geometry string of this bar. This is applied in relation to the parent, which is the mod that defines the variable.
-			"shape": How round the corners are, in pixels or a percentage.
-			"alpha": The transparency of the bar between 0 and 1.
-			"color1": The color of the full side of the bar.
-			"color2": The color of the empty side of the bar.
-			"direction": The direction of the gradient. Can be: left, right, top, bottom.
-		"text": Object which defines the text of this bar. Text definition:
-			"content_prefix": Text to prefix the value of the bar. If for example this is "My variable: ", the text on the bar may show "My variable: 50".
-			"content_suffix": Text to suffix the value of the bar. If for example this is "%", the text on the bar may show "50%".
-			"content_multiplier": How much to visually multiply the variables by. If you want a percentage, this would be 100. If this is set, decimals will be hidden.
-			"align": Alignment of the font inside the element. Valid values are: "left", "center", "right".
-			"size": Size of the text.
-			"weight": Thickness of the font. Example: "200", "400", "600", "800".
-			"family": Font family to be used. If a comma separated list is present, fonts are used in that order... if left empty, the default browser font is used. Example: "Times, serif".
-			"color": Color of the text.
 "data_sprites": The global data object for sprites. Sprite definitions:
 	"<sprite_name>": The name of this sprite array, by which it will be referenced. Layers definition:
 		"layer": Object which defines the visual information of this sprite. Layer definition:
 			"geometry": Optional geometry string. If not defined, the layer will cover the entire area of the sprite.
 			"color": The fill color of this layer.
 			"image": The image on this layer.
+			"gradient": The gradient image of the layer. This overrides the "color" and "image" parameters when used. Gradient definition:
+				"value": The position of the gradient, ranging between 0 and 1. You'll almost always want this to be the name of a numeric variable.
+				"color1": The color of the full side of the bar.
+				"color2": The color of the empty side of the bar.
+				"direction": The direction of the gradient. Can be: "left", "right", "top", "bottom".
 			"alpha": The transparency of the layer between 0 and 1.
 			"shape": How round the corners are, in pixels or a percentage.
 			"cursor": The image or cursor style used by the mouse pointer, as it hovers over this layer. Always have a backup cursor specified when using images, if you want none use "auto"! Example: "crosshair" or "url(foo/bar.png), auto". Note: Only images of certain sizes are supported... 32px is most compatible, 128px is the known maximum.
@@ -74,7 +60,7 @@ Data and mods are defined in json files. Those files are specified in the mods m
 			"loop": If true, this sound will loop.
 			"id": Registered name of this sound. Any existing sound source with this id will be replaced by the sound defined here.
 		"text": Object which defines the text of this layer. Text definition:
-			"content": Text to appear inside the element. This can be an array, in which case a random text will be chosen each time. Words beginning with $ represent the variable with that name if one exists. Example: "$myvar" may become "1". Note: This only works for variables without special characters in their name (only a-z, A-Z, 0-9, _).
+			"content": Text to appear inside the element. This can be an array, in which case a random text will be chosen each time. Words beginning with $ represent the variable with that name if one exists. If followed by another $ and a number, that number acts as a visual multiplier for numeric variables. Example: "$myvar" becomes "1" if myvar is 1, "$myvar$5" becomes "15" if myvar is 3. Note: This only works for variables without special characters in their name (only a-z, A-Z, 0-9, _).
 			"align": Alignment of the font inside the element. Valid values are: "left", "center", "right".
 			"size": Size of the text.
 			"weight": Thickness of the font. Example: "200", "400", "600", "800".
@@ -91,7 +77,6 @@ Data and mods are defined in json files. Those files are specified in the mods m
 		"geometries": Contains an object of geometry strings for mods. The element of each mod will be given a random position from this list when the scene loads. Example: Defining "mods_mymod":["25% 25% 10% 10% 1"] will always give the object of mods_mymod this geometry.
 		"sprite": Object which defines the sprites (defined in data_sprites) this mod uses. The name may be anything you wish to set, while the string must be the name of a sprite from data_sprites.
 		"variables": Object containing a list of variables with rules. Variable definition:
-			"bar": Name of the bar element (defined in data_bars) that represents this value.
 			"value": The initial value this variable will have when created.
 			"value_min": The maximum value this variable may reach. You'll usually want this to be 0 (default).
 			"value_max": The minimum value this variable may reach. You'll usually want this to be 1 (default).

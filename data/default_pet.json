@@ -1,19 +1,21 @@
 {
-	"data_bars":{
-		"food":{
-			"layer":{ "geometry":"0% 2.5% 100% 2.5% 1", "shape":"10px", "alpha":"1.0", "color1":"#aaaa00", "color2":"#111100", "direction":"right" },
-			"text":{ "content_prefix":"Food: ", "content_suffix":"%", "content_multiplier":"100", "align":"center", "color":"#ffffff", "size":"75%" }
-		},
-		"health":{
-			"layer":{ "geometry":"0% 0% 100% 2.5% 1", "shape":"10px", "alpha":"1.0", "color1":"#aa0000", "color2":"#110000", "direction":"right" },
-			"text":{ "content_prefix":"Health: ", "content_suffix":"%", "content_multiplier":"100", "align":"center", "color":"#ffffff", "size":"75%" }
-		},
-		"hype_food":{
-			"layer":{ "geometry":"0% 5% 100% 2.5% 1", "shape":"10px", "alpha":"1.0", "color1":"#00aaaa", "color2":"#001111", "direction":"right" },
-			"text":{ "content_prefix":"Excitement: ", "content_suffix":"%", "content_multiplier":"100", "align":"center", "color":"#ffffff", "size":"75%" }
-		}
-	},
 	"data_sprites":{
+		"pet_default_bars":[
+			{
+				"layer":{ "geometry":"0% 0% 100% 2.5% 1", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"health", "color1":"#aa0000", "color2":"#110000", "direction":"right" } },
+				"text":{ "content":"Health: $health$100%", "align":"center", "color":"#ffffff", "size":"75%" }
+			},
+			{
+				"layer":{ "geometry":"0% 2.5% 100% 2.5% 1", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"food", "color1":"#aaaa00", "color2":"#111100", "direction":"right" } },
+				"text":{ "content":"Food: $food$100%", "align":"center", "color":"#ffffff", "size":"75%" }
+			}
+		],
+		"pet_default_bars_food":[
+			{
+				"layer":{ "geometry":"0% 5% 100% 2.5% 1", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"hype_food", "color1":"#00aaaa", "color2":"#001111", "direction":"right" } },
+				"text":{ "content":"Excitement: $hype_food$100%", "align":"center", "color":"#ffffff", "size":"75%" }
+			}
+		],
 		"pet_default_baby_chat":[{}],
 		"pet_default_baby_chat_apple_hype_0":[
 			{
@@ -88,7 +90,7 @@
 		"pet_default_baby_interact":[
 			{
 				"actions":[
-					{ "trigger":"load", "action":"bar_hype_food = " },
+					{ "trigger":"load", "action":"sprite_pet_bars_food = " },
 					{ "trigger":"load", "action":"sprite_pet_background = pet_default_baby_background" },
 					{ "trigger":"interval", "conditional":"selection == 1", "action":"sprite_pet_interact = pet_default_baby_interact_apple_hype_0" }
 				]
@@ -98,7 +100,7 @@
 			{
 				"layer":{ "geometry":"40% 55% 25% 20% 2", "shape":"100%", "alpha":"0.5", "color":"#ffffff", "cursor":"url(data/default_pet/cursor_food_apple.gif), auto" },
 				"actions":[
-					{ "trigger":"load", "action":"bar_hype_food = hype_food" },
+					{ "trigger":"load", "action":"sprite_pet_bars_food = pet_default_bars_food" },
 					{ "trigger":"load", "action":"sprite_pet_background = pet_default_baby_background_hype_0" },
 					{ "trigger":"interval", "conditional":"selection != 1", "action":"sprite_pet_interact = pet_default_baby_interact" },
 					{ "trigger":"interval", "conditional":"hype_food >= 0.25", "action":"sprite_pet_interact = pet_default_baby_interact_apple_hype_1" },
@@ -112,7 +114,7 @@
 			{
 				"layer":{ "geometry":"40% 55% 25% 20% 2", "shape":"100%", "alpha":"0.5", "color":"#00ff00", "cursor":"url(data/default_pet/cursor_food_apple.gif), auto" },
 				"actions":[
-					{ "trigger":"load", "action":"bar_hype_food = hype_food" },
+					{ "trigger":"load", "action":"sprite_pet_bars_food = pet_default_bars_food" },
 					{ "trigger":"load", "action":"sprite_pet_background = pet_default_baby_background_hype_1" },
 					{ "trigger":"interval", "conditional":"selection != 1", "action":"sprite_pet_interact = pet_default_baby_interact" },
 					{ "trigger":"interval", "conditional":"hype_food <= 0.25", "action":"sprite_pet_interact = pet_default_baby_interact_apple_hype_0" },
@@ -128,7 +130,7 @@
 			{
 				"layer":{ "geometry":"40% 55% 25% 20% 2", "shape":"100%", "alpha":"0.5", "color":"#ffff00", "cursor":"url(data/default_pet/cursor_food_apple.gif), auto" },
 				"actions":[
-					{ "trigger":"load", "action":"bar_hype_food = hype_food" },
+					{ "trigger":"load", "action":"sprite_pet_bars_food = pet_default_bars_food" },
 					{ "trigger":"load", "action":"sprite_pet_background = pet_default_baby_background_hype_2" },
 					{ "trigger":"interval", "conditional":"selection != 1", "action":"sprite_pet_interact = pet_default_baby_interact" },
 					{ "trigger":"interval", "conditional":"hype_food <= 0.5", "action":"sprite_pet_interact = pet_default_baby_interact_apple_hype_1" },
@@ -144,7 +146,7 @@
 			{
 				"layer":{ "geometry":"40% 55% 25% 20% 2", "shape":"100%", "alpha":"0.5", "color":"#ff0000", "cursor":"url(data/default_pet/cursor_food_apple.gif), auto" },
 				"actions":[
-					{ "trigger":"load", "action":"bar_hype_food = hype_food" },
+					{ "trigger":"load", "action":"sprite_pet_bars_food = pet_default_bars_food" },
 					{ "trigger":"load", "action":"sprite_pet_background = pet_default_baby_background_hype_3" },
 					{ "trigger":"interval", "conditional":"selection != 1", "action":"sprite_pet_interact = pet_default_baby_interact" },
 					{ "trigger":"interval", "conditional":"hype_food <= 0.75", "action":"sprite_pet_interact = pet_default_baby_interact_apple_hype_2" },
@@ -158,7 +160,7 @@
 		"pet_default_baby_interact_apple_eat":[
 			{
 				"actions":[
-					{ "trigger":"load", "action":"bar_hype_food = " },
+					{ "trigger":"load", "action":"sprite_pet_bars_food = " },
 					{ "trigger":"load", "action":"sprite_pet_background = pet_default_baby_background_eat_apple" },
 					{ "trigger":"load", "action":"sprite_actions_button_apple = " },
 					{ "trigger":"load", "probability":"0.5", "action":"sprite_pet_chat = pet_default_baby_chat_apple_eat" },
@@ -205,14 +207,16 @@
 	"mods_pets":{
 		"default_pet":{
 			"sprites":{
+				"pet_bars":"pet_default_bars",
+				"pet_bars_food":"",
 				"pet_chat":"pet_default_baby_chat",
 				"pet_interact":"pet_default_baby_interact",
 				"pet_background":"pet_default_baby_background"
 			},
 			"variables":{
-				"food":{ "bar":"food", "value":"0.5", "per_second":"-0.005" },
-				"health":{ "bar":"health", "value":"1", "for_food":"0.01" },
-				"hype_food":{ "bar":"hidden", "value":"0.0", "per_second":"-0.015", "for_food":"-0.02" }
+				"health":{ "value":"1", "for_food":"0.01" },
+				"food":{ "value":"0.5", "per_second":"-0.005" },
+				"hype_food":{ "value":"0.0", "per_second":"-0.015", "for_food":"-0.02" }
 			}
 		}
 	}

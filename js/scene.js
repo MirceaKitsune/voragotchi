@@ -152,7 +152,7 @@ function scene_interval_variables(rules, seconds) {
 }
 
 // interval function of the scene
-// executes every 1 second, updates variables bars and sprites
+// executes every 1 second, updates variables and sprites
 function scene_interval() {
 	var date = new Date();
 	var date_time = date.getTime();
@@ -197,17 +197,6 @@ function scene_interval() {
 				name = scene_data.variables["sprite_" + sprite];
 			}
 			sprite_set("sprite_" + sprite, name, item, scene_data.data_sprites);
-		}
-
-		// update bars
-		for(var variable in scene_data.variables) {
-			if (mod.variables && mod.variables[variable] && mod.variables[variable].bar) {
-				var bar = mod.variables[variable].bar;
-				if (typeof scene_data.variables["bar_" + variable] == "string") {
-					bar = scene_data.variables["bar_" + variable];
-				}
-				bar_set("bar_" + variable, bar, scene_data.variables[variable], item, scene_data.data_bars);
-			}
 		}
 	}
 

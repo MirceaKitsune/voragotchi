@@ -1,15 +1,15 @@
 {
-	"data_bars":{
-		"light":{
-			"layer":{ "geometry":"0% 0% 50% 2.5% 1", "shape":"10px", "alpha":"1.0", "color1":"#00aaaa", "color2":"#001111", "direction":"right" },
-			"text":{ "content_prefix":"Light: ", "content_suffix":" lx", "content_multiplier":"1000", "align":"center", "color":"#ffffff", "size":"100%" }
-		},
-		"temperature":{
-			"layer":{ "geometry":"50% 0% 50% 2.5% 1", "shape":"10px", "alpha":"1.0", "color1":"#0000aa", "color2":"#000011", "direction":"left" },
-			"text":{ "content_prefix":"Temperature: ", "content_suffix":" C*", "content_multiplier":"50", "align":"center", "color":"#ffffff", "size":"100%" }
-		}
-	},
 	"data_sprites":{
+		"default_environment_bars":[
+			{
+				"layer":{ "geometry":"0% 0% 50% 2.5% 1", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"light", "color1":"#00aaaa", "color2":"#001111", "direction":"right" } },
+				"text":{ "content":"Light: $light$1000 lx", "align":"center", "color":"#ffffff", "size":"100%" }
+			},
+			{
+				"layer":{ "geometry":"50% 0% 50% 2.5% 1", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"temperature", "color1":"#0000aa", "color2":"#000011", "direction":"left" } },
+				"text":{ "content":"Temperature: $temperature$50 C*", "align":"center", "color":"#ffffff", "size":"100%" }
+			}
+		],
 		"environment_default_background_day":[
 			{ "audio":{ "sound":"data/default_environment/ambience_day.ogg", "volume":"0.1", "loop":"true", "id":"ambience" } },
 			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"1.00", "color":"#ddeeff" } },
@@ -100,6 +100,7 @@
 		"default_environment":{
 			"sprites":{
 				"environment_background":"",
+				"environment_bars":"default_environment_bars",
 				"environment_control":"environment_default_control"
 			},
 			"geometries":{
@@ -116,8 +117,8 @@
 				]
 			},
 			"variables":{
-				"light":{"bar":"light", "value":"0.5" },
-				"temperature":{"bar":"temperature", "value":"0.5", "for_light":"0.0001" }
+				"light":{ "value":"0.5" },
+				"temperature":{ "value":"0.5", "for_light":"0.0001" }
 			}
 		}
 	}
