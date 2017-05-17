@@ -6,6 +6,39 @@
 var scene_data = null;
 var scene_interval_timer = null;
 
+// reads the given variable for a scene action
+// if the name starts with $ it represents a variable, otherwise it represent a sprite, if not then it represents a simple string
+function scene_action_get(name) {
+	if (name.substring(0, 1) == "$") {
+		if (scene_data.variables[name.substring(1)] != null && scene_data.variables[name.substring(1)] != "undefined") {
+			return scene_data.variables[name.substring(1)];
+		}
+	} else {
+		if (scene_data.sprites[name] != null && scene_data.sprites[name] != "undefined") {
+			return scene_data.sprites[name];
+		}
+	}
+	return name;
+}
+
+// writes the given variable for a scene action
+// if the name starts with $ it represents a variable, otherwise it represent a sprite
+function scene_action_set(name, value) {
+	if (name.substring(0, 1) == "$") {
+		if (value == null) {
+			delete scene_data.variables[name.substring(1)];
+		} else {
+			scene_data.variables[name.substring(1)] = value;
+		}
+	} else {
+		if (value == null) {
+			delete scene_data.sprites[name];
+		} else {
+			scene_data.sprites[name] = value;
+		}
+	}
+}
+
 // handler for sprite actions
 // this function is called by sprites, as defined in sprite.js
 // id is the name of the action, update applies a forced update to the scene, delayed is used to check whether a delay was applied
@@ -40,8 +73,8 @@ function scene_action(id, update, delayed) {
 			for(var entry_and in table_and) {
 				var table = table_and[entry_and].split(" ");
 				var type = table[1];
-				var val1 = (scene_data.variables[table[0]] != null && scene_data.variables[table[0]] != "undefined") ? scene_data.variables[table[0]] : table[0];
-				var val2 = (scene_data.variables[table[2]] != null && scene_data.variables[table[2]] != "undefined") ? scene_data.variables[table[2]] : table[2];
+				var val1 = scene_action_get(table[0]);
+				var val2 = scene_action_get(table[2]);
 				if ((typeof val1 != "number" && typeof val1 != "string") || !type || !val2) {
 					// the conditional is invalid, ignore it and move on
 				} else if (type == "==" && (val1 == val2 || Number(val1) == Number(val2))) {
@@ -77,37 +110,37 @@ function scene_action(id, update, delayed) {
 		for(var entry_all in table_all) {
 			var table = table_all[entry_all].split(" ");
 			var type = table[1];
-			var prop = scene_data.variables[table[0]];
-			var val = table[2];
+			var prop = scene_action_get(table[0]);
+			var val = scene_action_get(table[2]);
 			if (!type || !val) {
 				// delete the value
-				delete scene_data.variables[table[0]];
+				scene_action_set(table[0], null);
 			} else if (type == "=") {
 				// the action is set
 				if (typeof prop == "number") {
-					scene_data.variables[table[0]] = Number(val);
+					scene_action_set(table[0], Number(val));
 				} else {
-					scene_data.variables[table[0]] = val;
+					scene_action_set(table[0], val);
 				}
 			} else if (type == "+=") {
 				// the action is add
 				if (typeof prop == "number") {
-					scene_data.variables[table[0]] += Number(val);
+					scene_action_set(table[0], prop + Number(val));
 				}
 			} else if (type == "-=") {
 				// the action is subtract
 				if (typeof prop == "number") {
-					scene_data.variables[table[0]] -= Number(val);
+					scene_action_set(table[0], prop - Number(val));
 				}
 			} else if (type == "*=") {
 				// the action is multiply
 				if (typeof prop == "number") {
-					scene_data.variables[table[0]] *= Number(val);
+					scene_action_set(table[0], prop * Number(val));
 				}
 			} else if (type == "/=") {
 				// the action is divide
 				if (typeof prop == "number") {
-					scene_data.variables[table[0]] /= Number(val);
+					scene_action_set(table[0], prop / Number(val));
 				}
 			}
 		}
@@ -193,8 +226,8 @@ function scene_interval() {
 		// update sprites
 		for(var sprite in mod.sprites) {
 			var name = mod.sprites[sprite];
-			if (typeof scene_data.variables["sprite_" + sprite] == "string") {
-				name = scene_data.variables["sprite_" + sprite];
+			if (typeof scene_data.sprites[sprite] == "string") {
+				name = scene_data.sprites[sprite];
 			}
 			sprite_set("sprite_" + sprite, name, item, scene_data.data_sprites);
 		}
@@ -257,6 +290,7 @@ function scene_load() {
 
 	// load the variables of the scene from the data
 	scene_data.variables = data_field_get("variables");
+	scene_data.sprites = {};
 
 	// configure the geometries of mods
 	for (var item in scene_data) {

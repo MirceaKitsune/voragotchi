@@ -42,7 +42,7 @@ function get_gradient(color1, color2, direction, blend) {
 }
 
 // replaces variable names with their values in a text field
-function get_text(text) {
+function text_replace(text) {
 	var table_all = text.split(/[^a-zA-Z0-9$_]+/); // anything that's not: a-z,A-Z,0-9,$,_
 	for(var entry_all in table_all) {
 		// table[1] is the variable name, table[2] is the optional visual multiplier
@@ -81,12 +81,9 @@ function sprite_set(id, sprite, parent, sprite_def) {
 		delete sprite_current[id];
 	}
 
-	var sprite_new = sprite_def[sprite];
-	sprite_current[id] = sprite_current[id] || {};
-
 	// decide whether to update the sprite, based on whether the sprite has changed or any tracked variable has been modified
 	var update = false;
-	if (sprite_current[id].sprite != sprite) {
+	if (sprite_current[id] != sprite) {
 		update = true;
 	} else {
 		for(var variable in sprite_variable[id]) {
@@ -106,6 +103,7 @@ function sprite_set(id, sprite, parent, sprite_def) {
 		element.innerHTML = "";
 		sprite_variable[id] = {};
 
+		var sprite_new = sprite_def[sprite];
 		for (var layer in sprite_new) {
 			var style = "";
 			var style_pointer = false;
@@ -123,8 +121,8 @@ function sprite_set(id, sprite, parent, sprite_def) {
 					var color2 = (layer_new.layer.gradient.color2 != null && layer_new.layer.gradient.color2 != "undefined") ? layer_new.layer.gradient.color2 : "#000000";
 					var direction = (layer_new.layer.gradient.direction != null && layer_new.layer.gradient.direction != "undefined") ? layer_new.layer.gradient.direction : "right";
 
-					var value_name = layer_new.layer.gradient.value;
-					var value = value_name;
+					var value_name = layer_new.layer.gradient.value.substring(1);
+					var value = layer_new.layer.gradient.value;
 					if (scene_data.variables[value_name] != null && scene_data.variables[value_name] != "undefined") {
 						value = scene_data.variables[value_name];
 						sprite_variable[id][value_name] = value; // track this variable
@@ -181,7 +179,7 @@ function sprite_set(id, sprite, parent, sprite_def) {
 					var index = Math.floor(Math.random() * text.length);
 					text = text[index];
 				}
-				layer_element.innerText = get_text(text);
+				layer_element.innerText = text_replace(text);
 			}
 
 			// configure the audio of this layer
@@ -251,18 +249,15 @@ function sprite_set(id, sprite, parent, sprite_def) {
 
 			style += style_pointer ? "pointer-events: all; " : "pointer-events: none; ";
 			layer_element.setAttribute("style", style);
-			sprite_current[id].sprite = sprite;
+			sprite_current[id] = sprite;
 		}
-	}
 
-	// if the parent changed, set the new parent
-	if (sprite_current[id].parent != parent) {
+		// set the element parent
 		var element_parent = document.getElementById(parent);
 		if (element_parent) {
 			element_parent.appendChild(element);
 		} else {
 			canvas.appendChild(element);
 		}
-		sprite_current[id].parent = parent;
 	}
 }

@@ -23,8 +23,10 @@ The default is "0% 0% 100% 100% auto". You can exclude any property you don't wi
 The first four values can be defined in either pixels or percentages. Example: "50% 100px 150% 300px". The fifth value is an integer.
 Note: If the z-index is negative, the image will scroll with the screen. Use this if you want a background layer to have a parallax effect!
 
-- Variables:
+- Sprites and variables:
 
+Worlds are dynamically modified by changing two different things: Sprites and variables. Actions modify sprites to change the looks of an element, and variables to change values that persist world data.
+Sprites are collections of layers for the HTML elements defined by mods, defined in the data_sprites object of the json file, which can be swapped in between those elements.
 You will normally create and use your own variables, but the engine has a few special variables builtin. The following variables can be read or modified to obtain special effects:
 
 "sprite_<sprite_name>": When set, theis replaces the sprite with the same name. Set back to null to disable and use the default sprite again.
@@ -35,6 +37,14 @@ You will normally create and use your own variables, but the engine has a few sp
 "date_seconds": The current second. Do not modify!
 "game_name": Game setting, safe to modify. Specifies the name of the player. Note that this is not the same as the name of the world!
 "game_speed": Game setting, safe to modify. This is the speed offset, represents overall difficulty.
+
+Both sprites and variables are used by elements inside the "conditional" and "action" strings of actions, as explained further down. However there are a few fundamental differences between the two:
+First of all, sprites must be addressed directly by their name, whereas variables are addressed by $ followed by their name. "foobar" refers to a sprite, "$foobar" refers to a variable.
+Note that sprite values can only be read for sprites that were set by an element! If a mod initializes "foo: bar", "foo" will return null... but if an action sets "foo = bar", "foo" will return "bar".
+Variables may be set to either a string or a number, but sprites must always be thought of as strings (even if they consist of numbers). You may preform arithmetics on variables, but never do it on sprites.
+When referring to a sprite or variable, you'll get its value if it exist and the reference string if not. So if "$apples" is a variable set to 1, you'll get "1"... if it's not a variable, the string "$apples" is used.
+Also keep in mind that sprites are not persisted in save cookies, whereas variables are. If you refresh the page of a running game, all changes to sprites will be lost.
+Lastly be mindful of how many variables you define! Browsers have cookie save limits; If there are too many variables or their names and values are too long, you might get a corrupt save.
 
 - Objects:
 
@@ -47,7 +57,7 @@ Data and mods are defined in json files. Those files are specified in the mods m
 			"color": The fill color of this layer.
 			"image": The image on this layer.
 			"gradient": The gradient image of the layer. This overrides the "color" and "image" parameters when used. Gradient definition:
-				"value": The position of the gradient, ranging between 0 and 1. You'll almost always want this to be the name of a numeric variable.
+				"value": The position of the gradient, ranging between 0 and 1. You'll almost always want this to be the name of a numeric variable. When a variable is used, the sprite will also be refreshed whenever that variable changes.
 				"color1": The color of the full side of the bar.
 				"color2": The color of the empty side of the bar.
 				"direction": The direction of the gradient. Can be: "left", "right", "top", "bottom".
@@ -69,7 +79,7 @@ Data and mods are defined in json files. Those files are specified in the mods m
 		"actions": Object containing actions that can be set for this layer. Note that actions are evaluated in order, so later ones will override earlier ones! Action definition:
 			"trigger": What event will cause this action to fire. Can be: click, hover_start, hover_end, load, interval.
 			"conditional": Only execute those actions if the conditionals are true. The string must contain a property or value, a comparison type, and another property or value... all three may be separated by logical operators. Example: "my_var >= 0.5" or "my_str == foo_bar". Valid comparison types: ==, !=, <, <=, >, >=. Valid logical operators: &&, ||. Note: OR takes priotiry over AND, so "a == 1 || b == 2 && c == 3" will be treated as "a == 1 || (b == 2 && c == 3)", parenthesis are otherwise not supported by conditional strings.
-			"action": The actions to execute. The string must contain a property, an action, and a value... multiple actions may be separated by the ; operator (no spaces around this operator). Example: "my_var += 0.1" or "my_str = foo_bar". Valid action types: =, -=, +=, *=, /=. Note: If the action or value are null, this deletes the property.
+			"action": The actions to execute. The string must contain a property, an action, and a value... multiple actions may be separated by the ; operator (no spaces around this operator). Simple values represent sprites or strings, values starting with $ represent variables. Example: "$my_variable += 0.1" or "my_sprite = foo_bar". Valid action types: =, -=, +=, *=, /=. Note: If the action or value are null, this deletes the property.
 			"probability": The likelyhood of the action occurring, between 0 and 1.
 			"delay": The action will be delayed by this many seconds. If the sprite resets, its delays will be replaced and the old ones dropped... make sure you give each delay time to execute before another event can change the triggering sprite!
 "<mod_category>": The global data object for mods. Each mod will create an unique element in the scene. Mods definition:
