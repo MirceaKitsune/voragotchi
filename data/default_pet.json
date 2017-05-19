@@ -98,7 +98,7 @@
 		],
 		"pet_default_baby_interact_apple_hype_0":[
 			{
-				"layer":{ "geometry":"40% 55% 25% 20% 2", "shape":"100%", "alpha":"0.5", "color":"#ffffff", "cursor":"url(data/default_pet/cursor_food_apple.gif), auto" },
+				"layer":{ "geometry":"40% 55% 25% 20% 2", "shape":"100%", "alpha":"0", "color":"#ffffff", "cursor":"url(data/default_pet/cursor_food_apple.gif), auto" },
 				"actions":[
 					{ "trigger":"load", "action":"pet_bars_food = pet_default_bars_food" },
 					{ "trigger":"load", "action":"pet_background = pet_default_baby_background_hype_0" },
@@ -112,7 +112,7 @@
 		],
 		"pet_default_baby_interact_apple_hype_1":[
 			{
-				"layer":{ "geometry":"40% 55% 25% 20% 2", "shape":"100%", "alpha":"0.5", "color":"#00ff00", "cursor":"url(data/default_pet/cursor_food_apple.gif), auto" },
+				"layer":{ "geometry":"40% 55% 25% 20% 2", "shape":"100%", "alpha":"0", "color":"#00ff00", "cursor":"url(data/default_pet/cursor_food_apple.gif), auto" },
 				"actions":[
 					{ "trigger":"load", "action":"pet_bars_food = pet_default_bars_food" },
 					{ "trigger":"load", "action":"pet_background = pet_default_baby_background_hype_1" },
@@ -128,7 +128,7 @@
 		],
 		"pet_default_baby_interact_apple_hype_2":[
 			{
-				"layer":{ "geometry":"40% 55% 25% 20% 2", "shape":"100%", "alpha":"0.5", "color":"#ffff00", "cursor":"url(data/default_pet/cursor_food_apple.gif), auto" },
+				"layer":{ "geometry":"40% 55% 25% 20% 2", "shape":"100%", "alpha":"0", "color":"#ffff00", "cursor":"url(data/default_pet/cursor_food_apple.gif), auto" },
 				"actions":[
 					{ "trigger":"load", "action":"pet_bars_food = pet_default_bars_food" },
 					{ "trigger":"load", "action":"pet_background = pet_default_baby_background_hype_2" },
@@ -144,7 +144,7 @@
 		],
 		"pet_default_baby_interact_apple_hype_3":[
 			{
-				"layer":{ "geometry":"40% 55% 25% 20% 2", "shape":"100%", "alpha":"0.5", "color":"#ff0000", "cursor":"url(data/default_pet/cursor_food_apple.gif), auto" },
+				"layer":{ "geometry":"40% 55% 25% 20% 2", "shape":"100%", "alpha":"0", "color":"#ff0000", "cursor":"url(data/default_pet/cursor_food_apple.gif), auto" },
 				"actions":[
 					{ "trigger":"load", "action":"pet_bars_food = pet_default_bars_food" },
 					{ "trigger":"load", "action":"pet_background = pet_default_baby_background_hype_3" },
@@ -172,32 +172,32 @@
 		],
 		"pet_default_baby_background":[
 			{
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_baby.gif)" }
+				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat.gif)" }
 			}
 		],
 		"pet_default_baby_background_hype_0":[
 			{
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_baby.gif)" }
+				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat.gif)" }
 			}
 		],
 		"pet_default_baby_background_hype_1":[
 			{
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_baby.gif)" }
+				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_1.gif)" }
 			}
 		],
 		"pet_default_baby_background_hype_2":[
 			{
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_baby.gif)" }
+				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_2.gif)" }
 			}
 		],
 		"pet_default_baby_background_hype_3":[
 			{
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_baby.gif)" }
+				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_3.gif)" }
 			}
 		],
 		"pet_default_baby_background_eat_apple":[
 			{
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_baby_sleep.gif)" }
+				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_sleep.gif)" }
 			},
 			{
 				"layer":{ "geometry":"30% 80% 15% 15% 1", "alpha":"1", "image":"url(data/default_pet/food_apple.gif)" }
