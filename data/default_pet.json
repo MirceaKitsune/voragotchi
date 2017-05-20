@@ -105,7 +105,7 @@
 					{ "trigger":"interval", "conditional":"actions_button_apple != actions_default_button_apple_selected", "action":"pet_interact = pet_default_baby_interact" },
 					{ "trigger":"interval", "conditional":"$hype_food >= 0.25", "action":"pet_interact = pet_default_baby_interact_apple_hype_1" },
 					{ "trigger":"interval", "action":"$hype_food += 0.00125" },
-					{ "trigger":"hover_start", "probability":"0.1", "action":"pet_chat = pet_default_baby_chat_apple_hype_0" },
+					{ "trigger":"hover_start", "conditional":"0.1 > $random", "action":"pet_chat = pet_default_baby_chat_apple_hype_0" },
 					{ "trigger":"hover_start", "action":"$hype_food += 0.0025" }
 				]
 			}
@@ -120,7 +120,7 @@
 					{ "trigger":"interval", "conditional":"$hype_food <= 0.25", "action":"pet_interact = pet_default_baby_interact_apple_hype_0" },
 					{ "trigger":"interval", "conditional":"$hype_food >= 0.5", "action":"pet_interact = pet_default_baby_interact_apple_hype_2" },
 					{ "trigger":"interval", "action":"$hype_food += 0.0025" },
-					{ "trigger":"hover_start", "probability":"0.1", "action":"pet_chat = pet_default_baby_chat_apple_hype_1" },
+					{ "trigger":"hover_start", "conditional":"0.1 > $random", "action":"pet_chat = pet_default_baby_chat_apple_hype_1" },
 					{ "trigger":"hover_start", "action":"$hype_food += 0.00375" },
 					{ "trigger":"click", "action":"pet_interact = pet_default_baby_interact_apple_eat" }
 				]
@@ -136,7 +136,7 @@
 					{ "trigger":"interval", "conditional":"$hype_food <= 0.5", "action":"pet_interact = pet_default_baby_interact_apple_hype_1" },
 					{ "trigger":"interval", "conditional":"$hype_food >= 0.75", "action":"pet_interact = pet_default_baby_interact_apple_hype_3" },
 					{ "trigger":"interval", "action":"$hype_food += 0.00375" },
-					{ "trigger":"hover_start", "probability":"0.1", "action":"pet_chat = pet_default_baby_chat_apple_hype_2" },
+					{ "trigger":"hover_start", "conditional":"0.1 > $random", "action":"pet_chat = pet_default_baby_chat_apple_hype_2" },
 					{ "trigger":"hover_start", "action":"$hype_food += 0.005" },
 					{ "trigger":"click", "action":"pet_interact = pet_default_baby_interact_apple_eat" }
 				]
@@ -151,7 +151,7 @@
 					{ "trigger":"interval", "conditional":"actions_button_apple != actions_default_button_apple_selected", "action":"pet_interact = pet_default_baby_interact" },
 					{ "trigger":"interval", "conditional":"$hype_food <= 0.75", "action":"pet_interact = pet_default_baby_interact_apple_hype_2" },
 					{ "trigger":"interval", "action":"$hype_food += 0.005" },
-					{ "trigger":"hover_start", "probability":"0.1", "action":"pet_chat = pet_default_baby_chat_apple_hype_3" },
+					{ "trigger":"hover_start", "conditional":"0.1 > $random", "action":"pet_chat = pet_default_baby_chat_apple_hype_3" },
 					{ "trigger":"hover_start", "action":"$hype_food += 0.00625" },
 					{ "trigger":"click", "action":"pet_interact = pet_default_baby_interact_apple_eat" }
 				]
@@ -163,7 +163,7 @@
 					{ "trigger":"load", "action":"pet_bars_food = " },
 					{ "trigger":"load", "action":"pet_background = pet_default_baby_background_eat_apple" },
 					{ "trigger":"load", "action":"actions_button_apple = " },
-					{ "trigger":"load", "probability":"0.5", "action":"pet_chat = pet_default_baby_chat_apple_eat" },
+					{ "trigger":"load", "conditional":"0.5 > $random", "action":"pet_chat = pet_default_baby_chat_apple_eat" },
 					{ "trigger":"load", "delay":"1", "action":"$food += 0.1" },
 					{ "trigger":"load", "delay":"1", "action":"$stock_apple -= 0.01" },
 					{ "trigger":"load", "delay":"1", "action":"pet_interact = pet_default_baby_interact" }

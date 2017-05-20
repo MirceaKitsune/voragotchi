@@ -29,14 +29,14 @@ Worlds are dynamically modified by changing two different things: Sprites and va
 Sprites are collections of layers for the HTML elements defined by mods, defined in the data_sprites object of the json file, which can be swapped in between those elements.
 You will normally create and use your own variables, but the engine has a few special variables builtin. The following variables can be read or modified to obtain special effects:
 
-"sprite_<sprite_name>": When set, theis replaces the sprite with the same name. Set back to null to disable and use the default sprite again.
-"time_start": The time when the world was created. Do not modify!
-"time_last": The time when the world was last opened. Do not modify!
-"date_hours": The current hour. Do not modify!
-"date_minutes": The current minute. Do not modify!
-"date_seconds": The current second. Do not modify!
-"game_name": Game setting, safe to modify. Specifies the name of the player. Note that this is not the same as the name of the world!
-"game_speed": Game setting, safe to modify. This is the speed offset, represents overall difficulty.
+"$random": Returns a random number between 0 and 1. Readonly property, do not set this!
+"$date_hours": The current hour. Readonly property, do not set this!
+"$date_minutes": The current minute. Readonly property, do not set this!
+"$date_seconds": The current second. Readonly property, do not set this!
+"$time_start": The time when the world was created. Readonly property, do not set this!
+"$time_last": The time when the world was last opened. Readonly property, do not set this!
+"$game_name": Game setting, safe to set. Specifies the name of the player. Note that this is not the same as the name of the world!
+"$game_speed": Game setting, safe to set. This is the speed offset, represents overall difficulty.
 
 Both sprites and variables are used by elements inside the "conditional" and "action" strings of actions, as explained further down. However there are a few fundamental differences between the two:
 First of all, sprites must be addressed directly by their name, whereas variables are addressed by $ followed by their name. "foobar" refers to a sprite, "$foobar" refers to a variable.
@@ -79,9 +79,8 @@ Data and mods are defined in json files. Those files are specified in the mods m
 		"actions": Object containing actions that can be set for this layer. Note that actions are evaluated in order, so later ones will override earlier ones! Action definition:
 			"trigger": What event will cause this action to fire. Can be: click, hover_start, hover_end, load, interval.
 			"conditional": Only execute those actions if the conditionals are true. The string must contain a property or value, a comparison type, and another property or value... all three may be separated by logical operators. Example: "my_var >= 0.5" or "my_str == foo_bar". Valid comparison types: ==, !=, <, <=, >, >=. Valid logical operators: &&, ||. Note: OR takes priotiry over AND, so "a == 1 || b == 2 && c == 3" will be treated as "a == 1 || (b == 2 && c == 3)", parenthesis are otherwise not supported by conditional strings.
-			"action": The actions to execute. The string must contain a property, an action, and a value... multiple actions may be separated by the ; operator (no spaces around this operator). Simple values represent sprites or strings, values starting with $ represent variables. Example: "$my_variable += 0.1" or "my_sprite = foo_bar". Valid action types: =, -=, +=, *=, /=. Note: If the action or value are null, this deletes the property.
-			"probability": The likelyhood of the action occurring, between 0 and 1.
 			"delay": The action will be delayed by this many seconds. If the sprite resets, its delays will be replaced and the old ones dropped... make sure you give each delay time to execute before another event can change the triggering sprite!
+			"action": Actions to execute. The string must contain a property, an action, and another property or a value. Multiple actions may be separated by the ; operator (don't add spaces around it). Simple values represent sprites or strings, values starting with $ represent variables. Example: "$my_variable += 0.1" or "my_sprite = foo_bar". Valid action types: =, -=, +=, *=, /=. Note: If the action or value are null, this deletes the property.
 "<mod_category>": The global data object for mods. Each mod will create an unique element in the scene. Mods definition:
 	"<mod_name>": The name of this mod, by which it will be referenced. Mod definition:
 		"geometries": Contains an object of geometry strings for mods. The element of each mod will be given a random position from this list when the scene loads. Example: Defining "mods_mymod":["25% 25% 10% 10% 1"] will always give the object of mods_mymod this geometry.

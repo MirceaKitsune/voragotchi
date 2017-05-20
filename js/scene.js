@@ -9,6 +9,28 @@ var scene_interval_timer = null;
 // reads the given variable for a scene action
 // if the name starts with $ it represents a variable, otherwise it represent a sprite, if not then it represents a simple string
 function scene_action_get(name) {
+	if (typeof name != "string") return name;
+
+	// check if this is a special variable, and return its value if so
+	switch (name) {
+		case "$random":
+			return Math.random();
+		case "$date_hours":
+			var date = new Date();
+			var date_time = date.getTime();
+			return date.getHours();
+		case "$date_minutes":
+			var date = new Date();
+			var date_time = date.getTime();
+			return date.getMinutes();
+		case "$date_seconds":
+			var date = new Date();
+			var date_time = date.getTime();
+			return date.getSeconds();
+		default:
+			break;
+	}
+
 	if (name.substring(0, 1) == "$") {
 		if (scene_data.variables[name.substring(1)] != null && scene_data.variables[name.substring(1)] != "undefined") {
 			return scene_data.variables[name.substring(1)];
@@ -24,6 +46,11 @@ function scene_action_get(name) {
 // writes the given variable for a scene action
 // if the name starts with $ it represents a variable, otherwise it represent a sprite
 function scene_action_set(name, value) {
+	if (typeof name != "string") return;
+
+	// check if this is a potential variable or sprite, and use its value if so
+	value = scene_action_get(value);
+
 	if (name.substring(0, 1) == "$") {
 		if (value == null) {
 			delete scene_data.variables[name.substring(1)];
@@ -54,11 +81,6 @@ function scene_action(id, update, delayed) {
 			clearTimeout(sprite_delay[id]);
 		}
 		sprite_delay[id] = setTimeout(function() { scene_action(id, true, true) }, Number(action.delay) * 1000);
-		return;
-	}
-
-	// apply the probability if any
-	if (Number(action.probability) && Number(action.probability) < Math.random()) {
 		return;
 	}
 
@@ -187,25 +209,14 @@ function scene_interval_variables(rules, seconds) {
 // interval function of the scene
 // executes every 1 second, updates variables and sprites
 function scene_interval() {
+	// get the amount of time that passed since this function last executed
 	var date = new Date();
 	var date_time = date.getTime();
-	var date_hours = date.getHours();
-	var date_minutes = date.getMinutes();
-	var date_seconds = date.getSeconds();
-
-	// get the amount of time that passed since this function last executed
 	var last = date_time - scene_data.variables.time_last;
 	var last_seconds = Math.floor(last / 1000);
 	if (last_seconds > 0) {
 		scene_data.variables.time_last = date_time;
 	}
-
-	// get the amount of time that passed since this world was created
-	var pass = scene_data.variables.time_last - scene_data.variables.time_start;
-	var pass_seconds = Math.floor(pass / 1000);
-	var pass_minutes = Math.floor(pass_seconds / 60);
-	var pass_hours = Math.floor(pass_minutes / 60);
-	var pass_days = Math.floor(pass_hours / 24);
 
 	// execute the interval functions of sprites
 	for (var entry in sprite_action) {
@@ -234,14 +245,7 @@ function scene_interval() {
 	}
 
 	// update data
-	// note: dates are also unset then updated here, as they're not meant to be stored
-	delete scene_data.variables.date_hours;
-	delete scene_data.variables.date_minutes;
-	delete scene_data.variables.date_seconds;
 	data_field_set("variables", scene_data.variables);
-	scene_data.variables.date_hours = date_hours;
-	scene_data.variables.date_minutes = date_minutes;
-	scene_data.variables.date_seconds = date_seconds;
 }
 
 // unload the scene

@@ -4,7 +4,7 @@
 			{
 				"actions":[
 					{ "trigger":"load", "action":"background_people = " },
-					{ "trigger":"interval", "probability":"0.0025", "action":"chat_people = chat_people_default_1" }
+					{ "trigger":"interval", "conditional":"0.0025 > $random", "action":"chat_people = chat_people_default_1" }
 				]
 			}
 		],
