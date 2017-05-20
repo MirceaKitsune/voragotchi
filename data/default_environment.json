@@ -118,7 +118,7 @@
 			},
 			"variables":{
 				"light":{ "value":"0.5" },
-				"temperature":{ "value":"0.5", "for_light":"0.0001" }
+				"temperature":{ "value":"0.5", "per_variable":{ "$light":"0.0001" } }
 			}
 		}
 	}

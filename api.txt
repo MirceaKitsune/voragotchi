@@ -90,4 +90,4 @@ Data and mods are defined in json files. Those files are specified in the mods m
 			"value_min": The maximum value this variable may reach. You'll usually want this to be 0 (default).
 			"value_max": The minimum value this variable may reach. You'll usually want this to be 1 (default).
 			"per_second": The variable increases or decreases by this amount every second.
-			"for_<variable_name>": The variable increases or decreases by this amount based on another variable, as follows: -this if the other variable is 0%, no effect if it's 50%, +this if it's 100%. Only use this for variables defined above it!
+			"per_variable": The variables listed here increase or decrease this variable by the given amount, as follows: -this if the other variable is 0%, no effect if it's 50%, +this if it's 100%. Only use this for variables defined above it! Example: ""per_variable":{ "$myvar1":"0.01", "$myvar2":"-0.01" }".

@@ -214,9 +214,9 @@
 				"pet_background":"pet_default_baby_background"
 			},
 			"variables":{
-				"health":{ "value":"1", "for_food":"0.01" },
+				"health":{ "value":"1", "per_variable":{ "$food":"0.01" } },
 				"food":{ "value":"0.5", "per_second":"-0.005" },
-				"hype_food":{ "value":"0.0", "per_second":"-0.015", "for_food":"-0.02" }
+				"hype_food":{ "value":"0.0", "per_second":"-0.015", "per_variable":{ "$food":"-0.02" } }
 			}
 		}
 	}
