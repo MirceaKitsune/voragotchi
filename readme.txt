@@ -29,11 +29,6 @@ pzUH
 CC0
 http://opengameart.org/content/cat-dog-free-sprites
 
-- default_actions
-yamachem
-CC0
-https://openclipart.org/detail/215910/apple-02
-
 - default_actions_sound
 Independent.nu
 CC0
@@ -48,3 +43,13 @@ https://openclipart.org/detail/184601/mix-and-match-comic-characters
 wobbleboxx
 CC0
 https://opengameart.org/content/level-up-power-up-coin-get-13-sounds
+
+- cursor_hand
+3Dline
+CC0
+https://openclipart.org/detail/103567/pointer
+
+- cursor_apple
+yamachem
+CC0
+https://openclipart.org/detail/215910/apple-02

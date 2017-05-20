@@ -2,7 +2,7 @@
 	"data_sprites":{
 		"actions_default_button_apple_selected":[
 			{
-				"layer":{ "geometry":"0% 5% 10% 10% 1", "shape":"100%", "alpha":"1", "color":"#000000", "image":"url(data/default_actions/food_apple_selected.png)" },
+				"layer":{ "geometry":"0% 5% 10% 10% 1", "shape":"100%", "alpha":"1", "color":"#000000", "image":"url(data/default_actions/food_apple_selected.png)", "cursor":"url(data/default_actions/cursor_hand_on.gif), auto" },
 				"audio":{ "sound":"data/default_actions/click_1.wav", "volume":"0.5", "loop":"false", "id":"actions" },
 				"actions":[
 					{ "trigger":"interval", "conditional":"$stock_apple < 0.01", "action":"actions_button_apple = actions_default_button_apple_inactive" },
@@ -16,7 +16,7 @@
 		],
 		"actions_default_button_apple_hover":[
 			{
-				"layer":{ "geometry":"0% 5% 10% 10% 1", "shape":"100%", "alpha":"1", "color":"#000000", "image":"url(data/default_actions/food_apple_hover.png)" },
+				"layer":{ "geometry":"0% 5% 10% 10% 1", "shape":"100%", "alpha":"1", "color":"#000000", "image":"url(data/default_actions/food_apple_hover.png)", "cursor":"url(data/default_actions/cursor_hand_off.gif), auto" },
 				"audio":{ "sound":"data/default_actions/hover_1.wav", "volume":"0.5", "loop":"false", "id":"actions" },
 				"actions":[
 					{ "trigger":"click", "conditional":"$stock_apple >= 0.01", "action":"actions_button_apple = actions_default_button_apple_selected" },
@@ -30,7 +30,7 @@
 		],
 		"actions_default_button_apple_inactive":[
 			{
-				"layer":{ "geometry":"0% 5% 10% 10% 1", "shape":"100%", "alpha":"1", "color":"#000000", "image":"url(data/default_actions/food_apple_inactive.png)" },
+				"layer":{ "geometry":"0% 5% 10% 10% 1", "shape":"100%", "alpha":"1", "color":"#000000", "image":"url(data/default_actions/food_apple_inactive.png)", "cursor":"url(data/default_actions/cursor_hand_off.gif), auto" },
 				"actions":[
 					{ "trigger":"click", "conditional":"$stock_apple >= 0.01", "action":"actions_button_apple = actions_default_button_apple_selected" },
 					{ "trigger":"hover_start", "action":"actions_button_apple = actions_default_button_apple_hover" }
