@@ -29,6 +29,11 @@ pzUH
 CC0
 http://opengameart.org/content/cat-dog-free-sprites
 
+- default_pet_gurgle
+CC0
+Esther
+http://www.pdsounds.org/sounds/tummy_grumble
+
 - default_actions_sound
 Independent.nu
 CC0
