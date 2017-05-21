@@ -3,10 +3,25 @@
 // contains functions for creating and updating sprites
 
 // common objects
+var sprite_parent_distance = {};
 var sprite_current = {};
 var sprite_variable = {};
 var sprite_action = {};
 var sprite_delay = {};
+
+// returns the distance of a geometry string, based on the z-index
+function get_geometry_distance(string) {
+	var box = string ? string.split(" ") : [];
+	var distance = box[4] ? Number(box[4]) : 0;
+	if (distance >= 0) {
+		// normal falloff
+		distance = 1 + distance;
+	} else {
+		// reverse falloff
+		distance = 1 / (1 + Math.abs(distance));
+	}
+	return distance;
+}
 
 // converts a geometry string into style elements
 // format: "left top width height z-index"
@@ -69,6 +84,7 @@ function text_replace(text) {
 // sets the sprite of an element
 function sprite_set(id, sprite, parent, sprite_def) {
 	// if the element doesn't exist, create it
+	var element_parent = document.getElementById(parent);
 	var element = document.getElementById(id);
 	if (!sprite || !sprite_def || !sprite_def[sprite]) {
 		element && element.remove();
@@ -78,6 +94,7 @@ function sprite_set(id, sprite, parent, sprite_def) {
 	} else if (!element) {
 		element = document.createElement("div");
 		element.setAttribute("id", id);
+		element_parent.appendChild(element);
 		delete sprite_current[id];
 	}
 
@@ -184,18 +201,23 @@ function sprite_set(id, sprite, parent, sprite_def) {
 
 			// configure the audio of this layer
 			if (layer_new.audio) {
-				audio_id = (typeof layer_new.audio.id == "string" && layer_new.audio.id != "undefined") ? layer_new.audio.id : "audio";
-				audio = document.getElementById(audio_id);
-				if (!audio) {
-					audio = document.createElement("audio");
-					audio.setAttribute("id", audio_id);
-					canvas.appendChild(audio);
+				var distance = 1;
+				if (layer_new.audio.distance && sprite_parent_distance[parent]) {
+					distance = Math.pow(sprite_parent_distance[parent], layer_new.audio.distance);
 				}
 
-				audio.src = layer_new.audio.sound;
-				audio.volume = Number(layer_new.audio.volume);
-				audio.loop = (layer_new.audio.loop == "true");
-				audio.autoplay = true;
+				var audio_id = (typeof layer_new.audio.id == "string" && layer_new.audio.id != "undefined") ? layer_new.audio.id : "audio";
+				audio_element = document.getElementById(audio_id);
+				if (!audio_element) {
+					audio_element = document.createElement("audio");
+					audio_element.setAttribute("id", audio_id);
+					canvas.appendChild(audio_element);
+				}
+
+				audio_element.src = layer_new.audio.sound;
+				audio_element.volume = Math.min(Number(layer_new.audio.volume) * distance, 1);
+				audio_element.loop = (layer_new.audio.loop == "true");
+				audio_element.autoplay = true;
 			}
 
 			// configure the actions of this layer
@@ -250,14 +272,6 @@ function sprite_set(id, sprite, parent, sprite_def) {
 			style += style_pointer ? "pointer-events: all; " : "pointer-events: none; ";
 			layer_element.setAttribute("style", style);
 			sprite_current[id] = sprite;
-		}
-
-		// set the element parent
-		var element_parent = document.getElementById(parent);
-		if (element_parent) {
-			element_parent.appendChild(element);
-		} else {
-			canvas.appendChild(element);
 		}
 	}
 }

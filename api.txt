@@ -67,6 +67,7 @@ Data and mods are defined in json files. Those files are specified in the mods m
 		"audio": Object which defines the audio of this sprite. The audio is always triggered when the sprite appears. Audio definition:
 			"sound": The sound file.
 			"volume": The volume of this sound, ranges between 0 and 1.
+			"distance": Amount by which the distance of this sound source affects its volume. Distance is calculated based on the z-index of the mod this audio is on (not the layer). A z-index smaller than 0 gradually decreases the volume, whereas a z-index greater than 0 gradually increases it. This exist so that mods with probabilistic positioning can have different volumes... see "geometries" under the mods section below.
 			"loop": If true, this sound will loop.
 			"id": Registered name of this sound. Any existing sound source with this id will be replaced by the sound defined here.
 		"text": Object which defines the text of this layer. Text definition:

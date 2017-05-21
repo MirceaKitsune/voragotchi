@@ -301,13 +301,18 @@ function scene_load() {
 	// configure the geometries of mods
 	for (var item in scene_data) {
 		if (item.substring(0, 5) == "mods_" && scene_data[item].geometries) {
-			for (var geometry in scene_data[item].geometries) {
-				var element = document.getElementById(geometry);
+			for (var mod in scene_data[item].geometries) {
+				var index = Math.floor(Math.random() * scene_data[item].geometries[mod].length);
+				var geometry = scene_data[item].geometries[mod][index];
+
+				// set the geometry of the mod's element to the new geometry
+				var element = document.getElementById(mod);
 				if (element) {
-					var index = Math.floor(Math.random() * scene_data[item].geometries[geometry].length);
-					var geometry = get_geometry(scene_data[item].geometries[geometry][index]);
-					element.setAttribute("style", geometry);
+					element.setAttribute("style", get_geometry(geometry));
 				}
+
+				// set the distance of this mod for use by child sprites
+				sprite_parent_distance[mod] = get_geometry_distance(geometry);
 			}
 		}
 	}

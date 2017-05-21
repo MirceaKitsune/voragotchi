@@ -187,97 +187,97 @@
 		],
 		"pet_default_baby_background":[
 			{
-				"audio":{ "sound":"data/default_pet/gurgle.ogg", "volume":"0.1", "loop":"true", "id":"belly" },
+				"audio":{ "sound":"data/default_pet/gurgle.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
 				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat.gif)" }
 			}
 		],
 		"pet_default_baby_background_belly_1":[
 			{
-				"audio":{ "sound":"data/default_pet/gurgle_1.ogg", "volume":"0.1", "loop":"true", "id":"belly" },
+				"audio":{ "sound":"data/default_pet/gurgle_1.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
 				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_belly_1.gif)" }
 			}
 		],
 		"pet_default_baby_background_belly_2":[
 			{
-				"audio":{ "sound":"data/default_pet/gurgle_2.ogg", "volume":"0.1", "loop":"true", "id":"belly" },
+				"audio":{ "sound":"data/default_pet/gurgle_2.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
 				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_belly_2.gif)" }
 			}
 		],
 		"pet_default_baby_background_belly_3":[
 			{
-				"audio":{ "sound":"data/default_pet/gurgle_3.ogg", "volume":"0.1", "loop":"true", "id":"belly" },
+				"audio":{ "sound":"data/default_pet/gurgle_3.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
 				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_belly_3.gif)" }
 			}
 		],
 		"pet_default_baby_background_1":[
 			{
-				"audio":{ "sound":"data/default_pet/gurgle.ogg", "volume":"0.1", "loop":"true", "id":"belly" },
+				"audio":{ "sound":"data/default_pet/gurgle.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
 				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_1.gif)" }
 			}
 		],
 		"pet_default_baby_background_1_belly_1":[
 			{
-				"audio":{ "sound":"data/default_pet/gurgle_1.ogg", "volume":"0.1", "loop":"true", "id":"belly" },
+				"audio":{ "sound":"data/default_pet/gurgle_1.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
 				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_1_belly_1.gif)" }
 			}
 		],
 		"pet_default_baby_background_1_belly_2":[
 			{
-				"audio":{ "sound":"data/default_pet/gurgle_2.ogg", "volume":"0.1", "loop":"true", "id":"belly" },
+				"audio":{ "sound":"data/default_pet/gurgle_2.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
 				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_1_belly_2.gif)" }
 			}
 		],
 		"pet_default_baby_background_1_belly_3":[
 			{
-				"audio":{ "sound":"data/default_pet/gurgle_3.ogg", "volume":"0.1", "loop":"true", "id":"belly" },
+				"audio":{ "sound":"data/default_pet/gurgle_3.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
 				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_1_belly_3.gif)" }
 			}
 		],
 		"pet_default_baby_background_2":[
 			{
-				"audio":{ "sound":"data/default_pet/gurgle.ogg", "volume":"0.1", "loop":"true", "id":"belly" },
+				"audio":{ "sound":"data/default_pet/gurgle.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
 				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_2.gif)" }
 			}
 		],
 		"pet_default_baby_background_2_belly_1":[
 			{
-				"audio":{ "sound":"data/default_pet/gurgle_1.ogg", "volume":"0.1", "loop":"true", "id":"belly" },
+				"audio":{ "sound":"data/default_pet/gurgle_1.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
 				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_2_belly_1.gif)" }
 			}
 		],
 		"pet_default_baby_background_2_belly_2":[
 			{
-				"audio":{ "sound":"data/default_pet/gurgle_2.ogg", "volume":"0.1", "loop":"true", "id":"belly" },
+				"audio":{ "sound":"data/default_pet/gurgle_2.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
 				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_2_belly_2.gif)" }
 			}
 		],
 		"pet_default_baby_background_2_belly_3":[
 			{
-				"audio":{ "sound":"data/default_pet/gurgle_3.ogg", "volume":"0.1", "loop":"true", "id":"belly" },
+				"audio":{ "sound":"data/default_pet/gurgle_3.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
 				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_2_belly_3.gif)" }
 			}
 		],
 		"pet_default_baby_background_3":[
 			{
-				"audio":{ "sound":"data/default_pet/gurgle.ogg", "volume":"0.1", "loop":"true", "id":"belly" },
+				"audio":{ "sound":"data/default_pet/gurgle.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
 				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_3.gif)" }
 			}
 		],
 		"pet_default_baby_background_3_belly_1":[
 			{
-				"audio":{ "sound":"data/default_pet/gurgle_1.ogg", "volume":"0.1", "loop":"true", "id":"belly" },
+				"audio":{ "sound":"data/default_pet/gurgle_1.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
 				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_3_belly_1.gif)" }
 			}
 		],
 		"pet_default_baby_background_3_belly_2":[
 			{
-				"audio":{ "sound":"data/default_pet/gurgle_2.ogg", "volume":"0.1", "loop":"true", "id":"belly" },
+				"audio":{ "sound":"data/default_pet/gurgle_2.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
 				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_3_belly_2.gif)" }
 			}
 		],
 		"pet_default_baby_background_3_belly_3":[
 			{
-				"audio":{ "sound":"data/default_pet/gurgle_3.ogg", "volume":"0.1", "loop":"true", "id":"belly" },
+				"audio":{ "sound":"data/default_pet/gurgle_3.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
 				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_3_belly_3.gif)" }
 			}
 		],
