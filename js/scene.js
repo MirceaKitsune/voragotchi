@@ -298,25 +298,6 @@ function scene_load() {
 	scene_data.variables = data_field_get("variables");
 	scene_data.sprites = {};
 
-	// configure the geometries of mods
-	for (var item in scene_data) {
-		if (item.substring(0, 5) == "mods_" && scene_data[item].geometries) {
-			for (var mod in scene_data[item].geometries) {
-				var index = Math.floor(Math.random() * scene_data[item].geometries[mod].length);
-				var geometry = scene_data[item].geometries[mod][index];
-
-				// set the geometry of the mod's element to the new geometry
-				var element = document.getElementById(mod);
-				if (element) {
-					element.setAttribute("style", get_geometry(geometry));
-				}
-
-				// set the distance of this mod for use by child sprites
-				sprite_parent_distance[mod] = get_geometry_distance(geometry);
-			}
-		}
-	}
-
 	// run the inverval function
 	scene_interval();
 	scene_interval_timer = setInterval(scene_interval, 100); // 1000 = 1 second

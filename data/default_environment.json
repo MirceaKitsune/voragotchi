@@ -44,56 +44,71 @@
 			{ "layer":{ "geometry":"0% 0% 100% 100% 3", "alpha":"0.75", "image":"url(data/default_environment/sun.png)" } }
 		],
 		"environment_default_control":[
-			{ "actions":[
-				{ "trigger":"interval", "conditional":"$date_hours == 00", "action":"$light = 0.00" },
-				{ "trigger":"interval", "conditional":"$date_hours == 01", "action":"$light = 0.00" },
-				{ "trigger":"interval", "conditional":"$date_hours == 02", "action":"$light = 0.00" },
-				{ "trigger":"interval", "conditional":"$date_hours == 03", "action":"$light = 0.00" },
-				{ "trigger":"interval", "conditional":"$date_hours == 04", "action":"$light = 0.05" },
-				{ "trigger":"interval", "conditional":"$date_hours == 05", "action":"$light = 0.10" },
-				{ "trigger":"interval", "conditional":"$date_hours == 06", "action":"$light = 0.25" },
-				{ "trigger":"interval", "conditional":"$date_hours == 07", "action":"$light = 0.50" },
-				{ "trigger":"interval", "conditional":"$date_hours == 08", "action":"$light = 0.75" },
-				{ "trigger":"interval", "conditional":"$date_hours == 09", "action":"$light = 0.90" },
-				{ "trigger":"interval", "conditional":"$date_hours == 10", "action":"$light = 0.95" },
-				{ "trigger":"interval", "conditional":"$date_hours == 11", "action":"$light = 1.00" },
-				{ "trigger":"interval", "conditional":"$date_hours == 12", "action":"$light = 1.00" },
-				{ "trigger":"interval", "conditional":"$date_hours == 13", "action":"$light = 1.00" },
-				{ "trigger":"interval", "conditional":"$date_hours == 14", "action":"$light = 1.00" },
-				{ "trigger":"interval", "conditional":"$date_hours == 15", "action":"$light = 1.00" },
-				{ "trigger":"interval", "conditional":"$date_hours == 16", "action":"$light = 0.95" },
-				{ "trigger":"interval", "conditional":"$date_hours == 17", "action":"$light = 0.90" },
-				{ "trigger":"interval", "conditional":"$date_hours == 18", "action":"$light = 0.75" },
-				{ "trigger":"interval", "conditional":"$date_hours == 19", "action":"$light = 0.50" },
-				{ "trigger":"interval", "conditional":"$date_hours == 20", "action":"$light = 0.25" },
-				{ "trigger":"interval", "conditional":"$date_hours == 21", "action":"$light = 0.10" },
-				{ "trigger":"interval", "conditional":"$date_hours == 22", "action":"$light = 0.05" },
-				{ "trigger":"interval", "conditional":"$date_hours == 23", "action":"$light = 0.00" },
-				{ "trigger":"interval", "conditional":"$date_hours == 00", "action":"environment_background = environment_default_background_night" },
-				{ "trigger":"interval", "conditional":"$date_hours == 01", "action":"environment_background = environment_default_background_night" },
-				{ "trigger":"interval", "conditional":"$date_hours == 02", "action":"environment_background = environment_default_background_night" },
-				{ "trigger":"interval", "conditional":"$date_hours == 03", "action":"environment_background = environment_default_background_night" },
-				{ "trigger":"interval", "conditional":"$date_hours == 04", "action":"environment_background = environment_default_background_night" },
-				{ "trigger":"interval", "conditional":"$date_hours == 05", "action":"environment_background = environment_default_background_night" },
-				{ "trigger":"interval", "conditional":"$date_hours == 06", "action":"environment_background = environment_default_background_dawn" },
-				{ "trigger":"interval", "conditional":"$date_hours == 07", "action":"environment_background = environment_default_background_dawn" },
-				{ "trigger":"interval", "conditional":"$date_hours == 08", "action":"environment_background = environment_default_background_dawn" },
-				{ "trigger":"interval", "conditional":"$date_hours == 09", "action":"environment_background = environment_default_background_day" },
-				{ "trigger":"interval", "conditional":"$date_hours == 10", "action":"environment_background = environment_default_background_day" },
-				{ "trigger":"interval", "conditional":"$date_hours == 11", "action":"environment_background = environment_default_background_day" },
-				{ "trigger":"interval", "conditional":"$date_hours == 12", "action":"environment_background = environment_default_background_day" },
-				{ "trigger":"interval", "conditional":"$date_hours == 13", "action":"environment_background = environment_default_background_day" },
-				{ "trigger":"interval", "conditional":"$date_hours == 14", "action":"environment_background = environment_default_background_day" },
-				{ "trigger":"interval", "conditional":"$date_hours == 15", "action":"environment_background = environment_default_background_day" },
-				{ "trigger":"interval", "conditional":"$date_hours == 16", "action":"environment_background = environment_default_background_day" },
-				{ "trigger":"interval", "conditional":"$date_hours == 17", "action":"environment_background = environment_default_background_day" },
-				{ "trigger":"interval", "conditional":"$date_hours == 18", "action":"environment_background = environment_default_background_dusk" },
-				{ "trigger":"interval", "conditional":"$date_hours == 19", "action":"environment_background = environment_default_background_dusk" },
-				{ "trigger":"interval", "conditional":"$date_hours == 20", "action":"environment_background = environment_default_background_dusk" },
-				{ "trigger":"interval", "conditional":"$date_hours == 21", "action":"environment_background = environment_default_background_night" },
-				{ "trigger":"interval", "conditional":"$date_hours == 22", "action":"environment_background = environment_default_background_night" },
-				{ "trigger":"interval", "conditional":"$date_hours == 23", "action":"environment_background = environment_default_background_night" }
-			] }
+			{
+				"geometries":{
+					"mods_actions":[
+						"2.5% 2.5% 25% 40% 1"
+					],
+					"mods_pets":[
+						"40% 20% 30% 70% 1",
+						"40% 10% 40% 80% 2"
+					],
+					"mods_people":[
+						"0% 25% 20% 65% 1",
+						"0% 15% 30% 75% 2"
+					]
+				},
+				"actions":[
+					{ "trigger":"interval", "conditional":"$date_hours == 00", "action":"$light = 0.00" },
+					{ "trigger":"interval", "conditional":"$date_hours == 01", "action":"$light = 0.00" },
+					{ "trigger":"interval", "conditional":"$date_hours == 02", "action":"$light = 0.00" },
+					{ "trigger":"interval", "conditional":"$date_hours == 03", "action":"$light = 0.00" },
+					{ "trigger":"interval", "conditional":"$date_hours == 04", "action":"$light = 0.05" },
+					{ "trigger":"interval", "conditional":"$date_hours == 05", "action":"$light = 0.10" },
+					{ "trigger":"interval", "conditional":"$date_hours == 06", "action":"$light = 0.25" },
+					{ "trigger":"interval", "conditional":"$date_hours == 07", "action":"$light = 0.50" },
+					{ "trigger":"interval", "conditional":"$date_hours == 08", "action":"$light = 0.75" },
+					{ "trigger":"interval", "conditional":"$date_hours == 09", "action":"$light = 0.90" },
+					{ "trigger":"interval", "conditional":"$date_hours == 10", "action":"$light = 0.95" },
+					{ "trigger":"interval", "conditional":"$date_hours == 11", "action":"$light = 1.00" },
+					{ "trigger":"interval", "conditional":"$date_hours == 12", "action":"$light = 1.00" },
+					{ "trigger":"interval", "conditional":"$date_hours == 13", "action":"$light = 1.00" },
+					{ "trigger":"interval", "conditional":"$date_hours == 14", "action":"$light = 1.00" },
+					{ "trigger":"interval", "conditional":"$date_hours == 15", "action":"$light = 1.00" },
+					{ "trigger":"interval", "conditional":"$date_hours == 16", "action":"$light = 0.95" },
+					{ "trigger":"interval", "conditional":"$date_hours == 17", "action":"$light = 0.90" },
+					{ "trigger":"interval", "conditional":"$date_hours == 18", "action":"$light = 0.75" },
+					{ "trigger":"interval", "conditional":"$date_hours == 19", "action":"$light = 0.50" },
+					{ "trigger":"interval", "conditional":"$date_hours == 20", "action":"$light = 0.25" },
+					{ "trigger":"interval", "conditional":"$date_hours == 21", "action":"$light = 0.10" },
+					{ "trigger":"interval", "conditional":"$date_hours == 22", "action":"$light = 0.05" },
+					{ "trigger":"interval", "conditional":"$date_hours == 23", "action":"$light = 0.00" },
+					{ "trigger":"interval", "conditional":"$date_hours == 00", "action":"environment_background = environment_default_background_night" },
+					{ "trigger":"interval", "conditional":"$date_hours == 01", "action":"environment_background = environment_default_background_night" },
+					{ "trigger":"interval", "conditional":"$date_hours == 02", "action":"environment_background = environment_default_background_night" },
+					{ "trigger":"interval", "conditional":"$date_hours == 03", "action":"environment_background = environment_default_background_night" },
+					{ "trigger":"interval", "conditional":"$date_hours == 04", "action":"environment_background = environment_default_background_night" },
+					{ "trigger":"interval", "conditional":"$date_hours == 05", "action":"environment_background = environment_default_background_night" },
+					{ "trigger":"interval", "conditional":"$date_hours == 06", "action":"environment_background = environment_default_background_dawn" },
+					{ "trigger":"interval", "conditional":"$date_hours == 07", "action":"environment_background = environment_default_background_dawn" },
+					{ "trigger":"interval", "conditional":"$date_hours == 08", "action":"environment_background = environment_default_background_dawn" },
+					{ "trigger":"interval", "conditional":"$date_hours == 09", "action":"environment_background = environment_default_background_day" },
+					{ "trigger":"interval", "conditional":"$date_hours == 10", "action":"environment_background = environment_default_background_day" },
+					{ "trigger":"interval", "conditional":"$date_hours == 11", "action":"environment_background = environment_default_background_day" },
+					{ "trigger":"interval", "conditional":"$date_hours == 12", "action":"environment_background = environment_default_background_day" },
+					{ "trigger":"interval", "conditional":"$date_hours == 13", "action":"environment_background = environment_default_background_day" },
+					{ "trigger":"interval", "conditional":"$date_hours == 14", "action":"environment_background = environment_default_background_day" },
+					{ "trigger":"interval", "conditional":"$date_hours == 15", "action":"environment_background = environment_default_background_day" },
+					{ "trigger":"interval", "conditional":"$date_hours == 16", "action":"environment_background = environment_default_background_day" },
+					{ "trigger":"interval", "conditional":"$date_hours == 17", "action":"environment_background = environment_default_background_day" },
+					{ "trigger":"interval", "conditional":"$date_hours == 18", "action":"environment_background = environment_default_background_dusk" },
+					{ "trigger":"interval", "conditional":"$date_hours == 19", "action":"environment_background = environment_default_background_dusk" },
+					{ "trigger":"interval", "conditional":"$date_hours == 20", "action":"environment_background = environment_default_background_dusk" },
+					{ "trigger":"interval", "conditional":"$date_hours == 21", "action":"environment_background = environment_default_background_night" },
+					{ "trigger":"interval", "conditional":"$date_hours == 22", "action":"environment_background = environment_default_background_night" },
+					{ "trigger":"interval", "conditional":"$date_hours == 23", "action":"environment_background = environment_default_background_night" }
+				]
+			}
 		]
 	},
 	"mods_environments":{
@@ -102,19 +117,6 @@
 				"environment_background":"",
 				"environment_bars":"default_environment_bars",
 				"environment_control":"environment_default_control"
-			},
-			"geometries":{
-				"mods_actions":[
-					"2.5% 2.5% 25% 40% 1"
-				],
-				"mods_pets":[
-					"40% 20% 30% 70% 1",
-					"40% 10% 40% 80% 2"
-				],
-				"mods_people":[
-					"0% 25% 20% 65% 1",
-					"0% 15% 30% 75% 2"
-				]
 			},
 			"variables":{
 				"light":{ "value":"0.5" },

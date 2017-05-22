@@ -52,6 +52,7 @@ Data and mods are defined in json files. Those files are specified in the mods m
 
 "data_sprites": The global data object for sprites. Sprite definitions:
 	"<sprite_name>": The name of this sprite array, by which it will be referenced. Layers definition:
+		"geometries": Contains an object of geometry strings for mods. The element of each mod will be given a random position from this list when the scene loads. Example: Defining "mods_mymod":["25% 25% 10% 10% 1"] will always give the object of mods_mymod this geometry.
 		"layer": Object which defines the visual information of this sprite. Layer definition:
 			"geometry": Optional geometry string. If not defined, the layer will cover the entire area of the sprite.
 			"color": The fill color of this layer.
@@ -67,7 +68,7 @@ Data and mods are defined in json files. Those files are specified in the mods m
 		"audio": Object which defines the audio of this sprite. The audio is always triggered when the sprite appears. Audio definition:
 			"sound": The sound file.
 			"volume": The volume of this sound, ranges between 0 and 1.
-			"distance": Amount by which the distance of this sound source affects its volume. Distance is calculated based on the z-index of the mod this audio is on (not the layer). A z-index smaller than 0 gradually decreases the volume, whereas a z-index greater than 0 gradually increases it. This exist so that mods with probabilistic positioning can have different volumes... see "geometries" under the mods section below.
+			"distance": Amount by which the distance of this sound source affects its volume. Distance is calculated based on the z-index of the mod this audio is on (not the layer). A z-index smaller than 0 gradually decreases the volume, whereas a z-index greater than 0 gradually increases it. This exist so that mods with probabilistic positioning can have different volumes... see the "geometries" section.
 			"loop": If true, this sound will loop.
 			"id": Registered name of this sound. Any existing sound source with this id will be replaced by the sound defined here.
 		"text": Object which defines the text of this layer. Text definition:
@@ -84,7 +85,6 @@ Data and mods are defined in json files. Those files are specified in the mods m
 			"action": Actions to execute. The string must contain a property, an action, and another property or a value. Multiple actions may be separated by the ; operator (don't add spaces around it). Simple values represent sprites or strings, values starting with $ represent variables. Example: "$my_variable += 0.1" or "my_sprite = foo_bar". Valid action types: =, -=, +=, *=, /=. Note: If the action or value are null, this deletes the property.
 "<mod_category>": The global data object for mods. Each mod will create an unique element in the scene. Mods definition:
 	"<mod_name>": The name of this mod, by which it will be referenced. Mod definition:
-		"geometries": Contains an object of geometry strings for mods. The element of each mod will be given a random position from this list when the scene loads. Example: Defining "mods_mymod":["25% 25% 10% 10% 1"] will always give the object of mods_mymod this geometry.
 		"sprite": Object which defines the sprites (defined in data_sprites) this mod uses. The name may be anything you wish to set, while the string must be the name of a sprite from data_sprites.
 		"variables": Object containing a list of variables with rules. Variable definition:
 			"value": The initial value this variable will have when created.

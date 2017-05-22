@@ -128,6 +128,21 @@ function sprite_set(id, sprite, parent, sprite_def) {
 			var layer_element = document.createElement("div");
 			element.appendChild(layer_element);
 
+			// configure the geometries of all specified mods
+			for (var mod in layer_new.geometries) {
+				var index = Math.floor(Math.random() * layer_new.geometries[mod].length);
+				var geometry = layer_new.geometries[mod][index];
+
+				// set the geometry of the mod's element to the new geometry
+				var mod_element = document.getElementById(mod);
+				if (mod_element) {
+					mod_element.setAttribute("style", get_geometry(geometry));
+				}
+
+				// set the distance of this mod for use by child sprites
+				sprite_parent_distance[mod] = get_geometry_distance(geometry);
+			}
+
 			// configure the visuals of this layer
 			if (layer_new.layer) {
 				style += get_geometry(layer_new.layer.geometry);
