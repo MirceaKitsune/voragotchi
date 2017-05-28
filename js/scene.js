@@ -5,6 +5,7 @@
 // scene objects
 var scene_data = null;
 var scene_interval_timer = null;
+var scene_preload_images = null;
 
 // reads the given variable for a scene action
 // if the name starts with $ it represents a variable, otherwise it represent a sprite, if not then it represents a simple string
@@ -211,6 +212,8 @@ function scene_interval_variables(rules, seconds) {
 // interval function of the scene
 // executes every 1 second, updates variables and sprites
 function scene_interval() {
+	if (scene_preload()) return;
+
 	// get the amount of time that passed since this function last executed
 	var date = new Date();
 	var date_time = date.getTime();
@@ -250,10 +253,69 @@ function scene_interval() {
 	data_field_set("variables", scene_data.variables);
 }
 
+// handles the preloading of assets, ensuring the browser has them before the scene is actually drawn
+// if assets are still loading, the preload screen is shown and the function returns true, otherwise the function returns false
+function scene_preload() {
+	element = document.getElementById("preload");
+
+	// check if there are any images to verify, null means we've already checked
+	if (scene_preload_images == null) {
+		element && element.remove();
+		return false;
+	}
+
+	// add all images that may be used in this scene to an array
+	var images = [];
+	for (var item1 in scene_data) {
+		if (item1.substring(0, 5) != "data_") continue;
+		var object = scene_data[item1];
+		for (var item2 in object) {
+			var sprite = object[item2];
+			for (var item3 in sprite) {
+				var layer = sprite[item3];
+				if (layer && layer.layer && layer.layer.image) {
+					images.push(layer.layer.image);
+				}
+			}
+		}
+	}
+
+	// check if each image has loaded, if the number of reports matches the number of images then it has
+	if (images.length == scene_preload_images) {
+		element && element.remove();
+		scene_preload_images = null;
+		return false;
+	}
+
+	// if the element hasn't been created, prepare it and reset existing reports
+	// each image element reports to the code when it finishes loading, via its onload event adding 1 to the scene_preload_images variable
+	if (!element) {
+		scene_preload_images = 0;
+		element = document.createElement("div");
+		element.setAttribute("id", "preload");
+		element.setAttribute("style", "position: absolute; top: 45%; left: 0%; width: 100%; height: 10%; background-color: #c0c0c0; text-align: center");
+		element.innerText = "Preloading assets, please wait...";
+		canvas.appendChild(element);
+
+		var size = Math.min((1 / images.length) * 100, 2.5); // in %
+		for (var i = 0; i < images.length; i++) {
+			var name = images[i].split(/[()]+/)[1]; // image name in between "url(" and ")"
+			element_sprite = document.createElement("img");
+			element_sprite.setAttribute("src", name);
+			element_sprite.setAttribute("style", "position: absolute; top: 50%; left: " + (size * i) + "%; width: " + size + "%; height: 50%");
+			element_sprite.setAttribute("onload", "++scene_preload_images");
+			element.appendChild(element_sprite);
+		}
+	}
+
+	return true;
+}
+
 // unload the scene
 function scene_unload() {
 	clearInterval(scene_interval_timer);
 	scene_data = null;
+	scene_preload_images = 0;
 	canvas.innerHTML = "";
 
 	// set the page title
@@ -264,6 +326,8 @@ function scene_unload() {
 function scene_load() {
 	scene_unload();
 	scene_data = {};
+	scene_preload_images = 0;
+	canvas.innerHTML = "";
 
 	// load the objects of the scene from json files, using the fields stored in the data
 	var files = data_field_get("files");
