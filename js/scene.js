@@ -253,6 +253,12 @@ function scene_interval() {
 	data_field_set("variables", scene_data.variables);
 }
 
+// scene preload, skip button
+function scene_preload_button_skip() {
+	scene_preload_images = null;
+	scene_preload();
+}
+
 // handles the preloading of assets, ensuring the browser has them before the scene is actually drawn
 // if assets are still loading, the preload screen is shown and the function returns true, otherwise the function returns false
 function scene_preload() {
@@ -293,9 +299,21 @@ function scene_preload() {
 		scene_preload_images = 0;
 		element = document.createElement("div");
 		element.setAttribute("id", "preload");
-		element.setAttribute("style", "position: absolute; top: 45%; left: 0%; width: 100%; height: 10%; background-color: #c0c0c0; text-align: center");
-		element.innerText = "Preloading assets, please wait...";
+		element.setAttribute("style", "position: absolute; top: 45%; left: 0%; width: 100%; height: 10%; background-color: #c0c0c0; text-align: center; z-index: 9999");
 		canvas.appendChild(element);
+
+		element_label = document.createElement("div");
+		element_label.setAttribute("id", "preload_label");
+		element_label.setAttribute("style", "position: absolute; top: 0%; left: 0%; width: 100%; height: 25%");
+		element_label.innerText = "Checking and preloading assets...";
+		element.appendChild(element_label);
+
+		element_button_skip = document.createElement("button");
+		element_button_skip.setAttribute("id", "preload_button_skip");
+		element_button_skip.setAttribute("style", "position: absolute; top: 25%; left: 45%; width: 10%; height: 25%");
+		element_button_skip.setAttribute("onclick", "scene_preload_button_skip()");
+		element_button_skip.innerText = "Skip";
+		element.appendChild(element_button_skip);
 
 		var size = Math.min((1 / images.length) * 100, 2.5); // in %
 		for (var i = 0; i < images.length; i++) {
@@ -306,6 +324,12 @@ function scene_preload() {
 			element_sprite.setAttribute("onload", "++scene_preload_images");
 			element.appendChild(element_sprite);
 		}
+	}
+
+	// update image count on the label element
+	element_label = document.getElementById("preload_label");
+	if (element_label) {
+		element_label.innerText = "Checking and preloading assets (" + scene_preload_images + " / " + images.length + ")";
 	}
 
 	return true;
