@@ -120,6 +120,14 @@ function sprite_set(id, sprite, parent, sprite_def) {
 		element.innerHTML = "";
 		sprite_variable[id] = {};
 
+		// delete all sprite actions associated with this sprite
+		for (var entry in sprite_action) {
+			if (entry.substring(0, id.length) == id) {
+				delete sprite_action[entry];
+			}
+		}
+
+		// begin looping through the layers of the new sprite
 		var sprite_new = sprite_def[sprite];
 		for (var layer in sprite_new) {
 			var style = "";

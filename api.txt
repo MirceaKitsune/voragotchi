@@ -87,7 +87,7 @@ Data and mods are defined in json files. Those files are specified in the mods m
 	"<mod_name>": The name of this mod, by which it will be referenced. Mod definition:
 		"sprite": Object which defines the sprites (defined in data_sprites) this mod uses. The name may be anything you wish to set, while the string must be the name of a sprite from data_sprites.
 		"variables": Object containing a list of variables with rules. Variable definition:
-			"value": The initial value this variable will have when created.
+			"value": The initial value this variable will have when created. Can be either a number or the name of another variable, however the later will only work for variables defined above this one!
 			"value_min": The maximum value this variable may reach. You'll usually want this to be 0 (default).
 			"value_max": The minimum value this variable may reach. You'll usually want this to be 1 (default).
 			"per_second": The variable increases or decreases by this amount every second.

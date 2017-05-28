@@ -200,7 +200,7 @@ function scene_interval_variables(rules, seconds) {
 
 		// initiate this variable if it doesn't exist, then apply the offset and bounds
 		if (typeof scene_data.variables[rule] != "number") {
-			scene_data.variables[rule] = Number(rules[rule].value);
+			scene_data.variables[rule] = Number(scene_action_get(rules[rule].value));
 		}
 		var min = Number(rules[rule].value_min) || 0;
 		var max = Number(rules[rule].value_max) || 1;
