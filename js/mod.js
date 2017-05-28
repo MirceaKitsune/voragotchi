@@ -73,8 +73,6 @@ function mods_menu_remove() {
 
 // add the mod management menu
 function mods_menu_add() {
-	var text = "";
-
 	// load available mods from files
 	mods_menu_data_mods = {};
 	var files = mods_menu_data_files.split("\n");
@@ -88,65 +86,6 @@ function mods_menu_add() {
 		}
 	}
 
-	// menu HTML: file list
-	text +=
-		"<textarea id=\"menu_list\"" +
-		"style=\"resize: none; position:absolute; top: 0%; left: 0%;  width: 50%; height: 90%\">" +
-		mods_menu_data_files + "</textarea>";
-	// menu HTML: form
-	text +=
-		"<form id=\"menu_form\"" +
-		"style=\"overflow: auto; position:absolute; top: 0%; left: 50%;  width: 50%; height: 90%\">";
-	{
-		// menu HTML: form, name
-		text +=
-			"<p>data_name: " +
-			"<input type=\"text\" id=\"menu_form_name\" value=\"default\"></p>";
-		// menu HTML: form, mods
-		for (var item in mods_menu_data_mods) {
-			if (item.substring(0, 5) == "data_") {
-				// menu HTML: form, item (data)
-				text += "<p>" + item + ": [" + mods_menu_data_mods[item].length + "]</p>";
-			} else if (item.substring(0, 5) == "mods_") {
-				// menu HTML: form, item (mods)
-				text += "<p>" + item + ":</p>";
-				for(var i = 0; i < mods_menu_data_mods[item].length; i++) {
-					// menu HTML: form, item (mods), radio button
-					var name = mods_menu_data_mods[item][i];
-					text +=
-						"<input type=\"radio\" " +
-						"id=\"menu_form_" + item + "_" + i + "\" " +
-						"name=\"" + item + "\" " +
-						"value=\"" + name + "\" " +
-						(i == 0 ? "checked=\"checked\" " : "") +
-						">" + name + "<br\>";
-				}
-			}
-		}
-		text += "<hr\>";
-		// menu HTML: form, player
-		text +=
-			"<p>Player name: " +
-			"<input type=\"text\" id=\"menu_form_player\" value=\"Player\" onkeyup=\"mods_menu_title()\"></p>";
-		// menu HTML: form, difficulty
-		text +=
-			"<p>Difficulty: " +
-			"<input type=\"number\" id=\"menu_form_difficulty\" value=\"1\" step=\"0.1\" min=\"0.1\" max=\"10\"></p>";
-	}
-	text += "</form>";
-	// menu HTML: button (load)
-	text +=
-		"<button id=\"menu_form_button_load\"" +
-		"onclick=\"mods_menu_button_load()\"" +
-		"style=\"position:absolute; top: 90%; left: 0%; width: 50%; height: 10%\">" +
-		"Load JSON files</button>";
-	// menu HTML: button (start)
-	text +=
-		"<button id=\"menu_form_button_start\"" +
-		"onclick=\"mods_menu_button_start()\"" +
-		"style=\"position:absolute; top: 90%; left: 50%; width: 50%; height: 10%\">" +
-		"Start new world</button>";
-
 	// configure the HTML element of the menu
 	var element = document.getElementById("menu");
 	if (!element) {
@@ -155,7 +94,120 @@ function mods_menu_add() {
 		element.setAttribute("style", "width: 100%; height: 100%; background-color: #c0c0c0");
 		canvas.appendChild(element);
 	}
-	element.innerHTML = text;
+	element.innerHTML = "";
+
+	// menu HTML: file list
+	element_textarea = document.createElement("textarea");
+	element_textarea.setAttribute("id", "menu_list");
+	element_textarea.setAttribute("style", "resize: none; position:absolute; top: 0%; left: 0%; width: 50%; height: 90%");
+	element_textarea.innerHTML = mods_menu_data_files;
+	element.appendChild(element_textarea);
+
+	// menu HTML: form
+	element_form = document.createElement("form");
+	element_form.setAttribute("id", "menu_form");
+	element_form.setAttribute("style", "overflow: auto; position:absolute; top: 0%; left: 50%;  width: 50%; height: 90%");
+	element.appendChild(element_form);
+	{
+		// menu HTML: form, name
+		element_form_name = document.createElement("p");
+		element_form_name.innerHTML = "data_name: ";
+		element_form.appendChild(element_form_name);
+		{
+			// menu HTML: form, name, input
+			element_form_name_input = document.createElement("input");
+			element_form_name_input.setAttribute("id", "menu_form_name");
+			element_form_name_input.setAttribute("type", "text");
+			element_form_name_input.setAttribute("value", "default");
+			element_form_name.appendChild(element_form_name_input);
+		}
+
+		// menu HTML: form, mods
+		for (var item in mods_menu_data_mods) {
+			if (item.substring(0, 5) == "data_") {
+				// menu HTML: form, item (data)
+				element_form_item = document.createElement("p");
+				element_form_item.innerHTML = item + ": [" + mods_menu_data_mods[item].length + "]";
+				element_form.appendChild(element_form_item);
+			} else if (item.substring(0, 5) == "mods_") {
+				// menu HTML: form, item (mods)
+				element_form_item = document.createElement("p");
+				element_form_item.innerHTML = item + ":";
+				element_form.appendChild(element_form_item);
+				for(var i = 0; i < mods_menu_data_mods[item].length; i++) {
+					var name = mods_menu_data_mods[item][i];
+
+					// menu HTML: form, item (mods), br
+					element_form_item_br = document.createElement("br");
+					element_form_item.appendChild(element_form_item_br);
+
+					// menu HTML: form, item (mods), radio button
+					element_form_item_input = document.createElement("input");
+					element_form_item_input.setAttribute("id", "menu_form_" + item + "_" + i);
+					element_form_item_input.setAttribute("type", "radio");
+					element_form_item_input.setAttribute("name", item);
+					element_form_item_input.setAttribute("value", name);
+					if (i == 0) element_form_item_input.setAttribute("checked", true);
+					element_form_item.appendChild(element_form_item_input);
+
+					// menu HTML: form, item (mods), label
+					element_form_item_label = document.createElement("label");
+					element_form_item_label.innerHTML = name;
+					element_form_item.appendChild(element_form_item_label);
+				}
+			}
+		}
+
+		// menu HTML: form, hr
+		element_hr = document.createElement("hr");
+		element_form.appendChild(element_hr);
+
+		// menu HTML: form, player
+		element_form_player = document.createElement("p");
+		element_form_player.innerHTML = "Player name: ";
+		element_form.appendChild(element_form_player);
+		{
+			// menu HTML: form, player, input
+			element_form_player_input = document.createElement("input");
+			element_form_player_input.setAttribute("id", "menu_form_player");
+			element_form_player_input.setAttribute("type", "text");
+			element_form_player_input.setAttribute("value", "Player");
+			element_form_player_input.setAttribute("onkeyup", "mods_menu_title()");
+			element_form_player.appendChild(element_form_player_input);
+		}
+
+		// menu HTML: form, difficulty
+		element_form_difficulty = document.createElement("p");
+		element_form_difficulty.innerHTML = "Difficulty: ";
+		element_form.appendChild(element_form_difficulty);
+		{
+			// menu HTML: form, difficulty, input
+			element_form_difficulty_input = document.createElement("input");
+			element_form_difficulty_input.setAttribute("id", "menu_form_difficulty");
+			element_form_difficulty_input.setAttribute("type", "number");
+			element_form_difficulty_input.setAttribute("value", "1");
+			element_form_difficulty_input.setAttribute("step", "0.1");
+			element_form_difficulty_input.setAttribute("min", "0.1");
+			element_form_difficulty_input.setAttribute("max", "10");
+			element_form_difficulty.appendChild(element_form_difficulty_input);
+		}
+	}
+
+	// menu HTML: button (load)
+	element_button_load = document.createElement("button");
+	element_button_load.setAttribute("id", "menu_form_button_load");
+	element_button_load.setAttribute("style", "position:absolute; top: 90%; left: 0%; width: 50%; height: 10%");
+	element_button_load.setAttribute("onclick", "mods_menu_button_load()");
+	element_button_load.innerHTML = "Load JSON files";
+	element.appendChild(element_button_load);
+
+	// menu HTML: button (start)
+	element_button_start = document.createElement("button");
+	element_button_start.setAttribute("id", "menu_form_button_start");
+	element_button_start.setAttribute("style", "position:absolute; top: 90%; left: 50%; width: 50%; height: 10%");
+	element_button_start.setAttribute("onclick", "mods_menu_button_start()");
+	element_button_start.innerHTML = "Start new world";
+	element.appendChild(element_button_start);
 
 	// set the page title
 	mods_menu_title();

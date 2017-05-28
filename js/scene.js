@@ -296,18 +296,21 @@ function scene_preload() {
 	// if the element hasn't been created, prepare it and reset existing reports
 	// each image element reports to the code when it finishes loading, via its onload event adding 1 to the scene_preload_images variable
 	if (!element) {
+		// configure the HTML element of the preloader
 		scene_preload_images = 0;
 		element = document.createElement("div");
 		element.setAttribute("id", "preload");
 		element.setAttribute("style", "position: absolute; top: 45%; left: 0%; width: 100%; height: 10%; background-color: #c0c0c0; text-align: center; z-index: 9999");
 		canvas.appendChild(element);
 
-		element_label = document.createElement("div");
+		// preloader HTML: label
+		element_label = document.createElement("label");
 		element_label.setAttribute("id", "preload_label");
 		element_label.setAttribute("style", "position: absolute; top: 0%; left: 0%; width: 100%; height: 25%");
 		element_label.innerText = "Checking and preloading assets...";
 		element.appendChild(element_label);
 
+		// preloader HTML: button (skip)
 		element_button_skip = document.createElement("button");
 		element_button_skip.setAttribute("id", "preload_button_skip");
 		element_button_skip.setAttribute("style", "position: absolute; top: 25%; left: 45%; width: 10%; height: 25%");
@@ -315,6 +318,7 @@ function scene_preload() {
 		element_button_skip.innerText = "Skip";
 		element.appendChild(element_button_skip);
 
+		// preloader HTML: sprites
 		var size = Math.min((1 / images.length) * 100, 2.5); // in %
 		for (var i = 0; i < images.length; i++) {
 			var name = images[i].split(/[()]+/)[1]; // image name in between "url(" and ")"
