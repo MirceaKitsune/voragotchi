@@ -62,8 +62,8 @@ function text_replace(text) {
 	for(var entry_all in table_all) {
 		// table[1] is the variable name, table[2] is the optional visual multiplier
 		var table = table_all[entry_all].split("$");
-		if (scene_data.variables[table[1]] != null && scene_data.variables[table[1]] != "undefined") {
-			var value = scene_data.variables[table[1]];
+		if (typeof table[1] == "string" && table[1] != "") {
+			var value = scene_action_get("$" + table[1]);
 			if (Number(value) != NaN && Number(value) > 0) {
 				value = Number(value);
 

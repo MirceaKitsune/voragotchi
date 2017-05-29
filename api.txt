@@ -37,6 +37,14 @@ You will normally create and use your own variables, but the engine has a few sp
 "$time_last": The time when the world was last opened. Readonly property, do not set this!
 "$game_name": Game setting, safe to set. Specifies the name of the player. Note that this is not the same as the name of the world!
 "$game_speed": Game setting, safe to set. This is the speed offset, represents overall difficulty.
+"$info_browser_name": Returns the name of the browser. Readonly property, do not set this!
+"$info_browser_codename": Returns the code name of the browser. Readonly property, do not set this!
+"$info_browser_engine": Returns the engine name of the browser. Readonly property, do not set this!
+"$info_browser_version": Returns the version of the browser. Readonly property, do not set this!
+"$info_platform": Returns the name of the operating system the browser is running on. Readonly property, do not set this!
+"$info_language": Returns the language the browser is using. Readonly property, do not set this!
+"$info_online": Returns 1 when the browser is online, 0 otherwise. Readonly property, do not set this!
+"$info_cookies": Returns 1 when cookies are enabled, 0 otherwise. Readonly property, do not set this!
 
 Both sprites and variables are used by elements inside the "conditional" and "action" strings of actions, as explained further down. However there are a few fundamental differences between the two:
 First of all, sprites must be addressed directly by their name, whereas variables are addressed by $ followed by their name. "foobar" refers to a sprite, "$foobar" refers to a variable.
@@ -72,7 +80,7 @@ Data and mods are defined in json files. Those files are specified in the mods m
 			"loop": If true, this sound will loop.
 			"id": Registered name of this sound. Any existing sound source with this id will be replaced by the sound defined here.
 		"text": Object which defines the text of this layer. Text definition:
-			"content": Text to appear inside the element. This can be an array, in which case a random text will be chosen each time. Words beginning with $ represent the variable with that name if one exists. If followed by another $ and a number, that number acts as a visual multiplier for numeric variables. Example: "$myvar" becomes "1" if myvar is 1, "$myvar$5" becomes "15" if myvar is 3. Note: This only works for variables without special characters in their name (only a-z, A-Z, 0-9, _).
+			"content": Text to appear inside the element. This can be an array, in which case a random text will be chosen each time. Words beginning with $ represent the variable with that name if one exists, words that match a sprite return that sprite's name if one was set. If followed by another $ and a number, that number acts as a visual multiplier for numeric variables. Example: "$myvar" becomes "1" if myvar is 1, "$myvar$5" becomes "15" if myvar is 3. Note: This only works for variables without special characters in their name (only a-z, A-Z, 0-9, _).
 			"align": Alignment of the font inside the element. Valid values are: "left", "center", "right".
 			"size": Size of the text.
 			"weight": Thickness of the font. Example: "200", "400", "600", "800".

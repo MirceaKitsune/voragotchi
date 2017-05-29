@@ -28,6 +28,22 @@ function scene_action_get(name) {
 			var date = new Date();
 			var date_time = date.getTime();
 			return date.getSeconds();
+		case "$info_browser_name":
+			return navigator.appName;
+		case "$info_browser_codename":
+			return navigator.appCodeName;
+		case "$info_browser_engine":
+			return navigator.product;
+		case "$info_browser_version":
+			return navigator.appVersion;
+		case "$info_platform":
+			return navigator.platform;
+		case "$info_language":
+			return navigator.language;
+		case "$info_online":
+			return navigator.onLine;
+		case "$info_cookies":
+			return navigator.cookieEnabled;
 		default:
 			break;
 	}

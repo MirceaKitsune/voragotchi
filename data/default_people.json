@@ -46,7 +46,7 @@
 				"audio":{ "sound":"data/default_people/1.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"text":{
 					"color":"#000000", "size":"100%", "content":[
-						"Hi $game_name! Would you like to buy some apples? Only 10$ for 5!"
+						"Greetings, $game_name from $info_browser_codename! Would you like to buy some apples? Only 10$ for 5!"
 					]
 				},
 				"actions":[
@@ -87,7 +87,7 @@
 				"audio":{ "sound":"data/default_people/1_no.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"text":{
 					"color":"#000000", "size":"100%", "content":[
-						"Hi $game_name. I was going to sell you 5 apples for 10$, but it doesn't seem like you have the money. Maybe later?"
+						"Greetings, $game_name. I was going to sell you 5 apples for 10$, but it doesn't seem like you have the money. Maybe later?"
 					]
 				},
 				"actions":[
