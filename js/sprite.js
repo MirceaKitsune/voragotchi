@@ -224,11 +224,6 @@ function sprite_set(id, sprite, parent, sprite_def) {
 
 			// configure the audio of this layer
 			if (layer_new.audio) {
-				var distance = 1;
-				if (layer_new.audio.distance && sprite_parent_distance[parent]) {
-					distance = Math.pow(sprite_parent_distance[parent], layer_new.audio.distance);
-				}
-
 				var audio_id = (typeof layer_new.audio.id == "string" && layer_new.audio.id != "undefined") ? layer_new.audio.id : "audio";
 				audio_element = document.getElementById(audio_id);
 				if (!audio_element) {
@@ -237,10 +232,14 @@ function sprite_set(id, sprite, parent, sprite_def) {
 					canvas.appendChild(audio_element);
 				}
 
-				audio_element.src = layer_new.audio.sound;
+				audio_element.setAttribute("src", layer_new.audio.sound);
+				audio_element.setAttribute("volume", layer_new.audio.volume); // set later
+				if (layer_new.audio.loop == "true") audio_element.setAttribute("loop", true);
+				audio_element.setAttribute("autoplay", true);
+
+				// set the volume based on distance
+				var distance = (layer_new.audio.distance && sprite_parent_distance[parent]) ? Math.pow(sprite_parent_distance[parent], layer_new.audio.distance) : 1;
 				audio_element.volume = Math.min(Number(layer_new.audio.volume) * distance, 1);
-				audio_element.loop = (layer_new.audio.loop == "true");
-				audio_element.autoplay = true;
 			}
 
 			// configure the actions of this layer

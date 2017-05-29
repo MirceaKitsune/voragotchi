@@ -5,7 +5,7 @@
 // scene objects
 var scene_data = null;
 var scene_interval_timer = null;
-var scene_preload_images = null;
+var scene_preload_assets = null;
 
 // reads the given variable for a scene action
 // if the name starts with $ it represents a variable, otherwise it represent a sprite, if not then it represents a simple string
@@ -255,7 +255,7 @@ function scene_interval() {
 
 // scene preload, skip button
 function scene_preload_button_skip() {
-	scene_preload_images = null;
+	scene_preload_assets = null;
 	scene_preload();
 }
 
@@ -264,14 +264,15 @@ function scene_preload_button_skip() {
 function scene_preload() {
 	element = document.getElementById("preload");
 
-	// check if there are any images to verify, null means we've already checked
-	if (scene_preload_images == null) {
+	// check if there are any assets to verify, null means we've already checked
+	if (scene_preload_assets == null) {
 		element && element.remove();
 		return false;
 	}
 
-	// add all images that may be used in this scene to an array
+	// note all assets that may be used in this scene
 	var images = [];
+	var sounds = [];
 	for (var item1 in scene_data) {
 		if (item1.substring(0, 5) != "data_") continue;
 		var object = scene_data[item1];
@@ -282,22 +283,26 @@ function scene_preload() {
 				if (layer && layer.layer && layer.layer.image) {
 					images.push(layer.layer.image);
 				}
+				if (layer && layer.audio && layer.audio.sound) {
+					sounds.push(layer.audio.sound);
+				}
 			}
 		}
 	}
+	var assets_total = images.length + sounds.length;
 
-	// check if each image has loaded, if the number of reports matches the number of images then it has
-	if (images.length == scene_preload_images) {
+	// check if each asset has loaded, if the number of reports matches the number of assets then it has
+	if (assets_total == scene_preload_assets) {
 		element && element.remove();
-		scene_preload_images = null;
+		scene_preload_assets = null;
 		return false;
 	}
 
 	// if the element hasn't been created, prepare it and reset existing reports
-	// each image element reports to the code when it finishes loading, via its onload event adding 1 to the scene_preload_images variable
+	// each element reports to the code when it finishes loading, via its load event adding 1 to the scene_preload_assets variable
 	if (!element) {
 		// configure the HTML element of the preloader
-		scene_preload_images = 0;
+		scene_preload_assets = 0;
 		element = document.createElement("div");
 		element.setAttribute("id", "preload");
 		element.setAttribute("style", "position: absolute; top: 45%; left: 0%; width: 100%; height: 10%; background-color: #c0c0c0; text-align: center; z-index: 9999");
@@ -325,15 +330,24 @@ function scene_preload() {
 			element_sprite = document.createElement("img");
 			element_sprite.setAttribute("src", name);
 			element_sprite.setAttribute("style", "position: absolute; top: 50%; left: " + (size * i) + "%; width: " + size + "%; height: 50%");
-			element_sprite.setAttribute("onload", "++scene_preload_images");
+			element_sprite.setAttribute("onload", "++scene_preload_assets");
 			element.appendChild(element_sprite);
+		}
+
+		// preloader HTML: audios
+		for (var i = 0; i < sounds.length; i++) {
+			var name = sounds[i];
+			element_audio = document.createElement("audio");
+			element_audio.setAttribute("src", name);
+			element_audio.setAttribute("oncanplaythrough", "++scene_preload_assets");
+			element.appendChild(element_audio);
 		}
 	}
 
-	// update image count on the label element
+	// update asset count on the label element
 	element_label = document.getElementById("preload_label");
 	if (element_label) {
-		element_label.innerText = "Checking and preloading assets (" + scene_preload_images + " / " + images.length + ")";
+		element_label.innerText = "Checking and preloading assets: " + scene_preload_assets + " / " + assets_total + " (" + images.length + " images, " + sounds.length + " sounds)";
 	}
 
 	return true;
@@ -343,7 +357,7 @@ function scene_preload() {
 function scene_unload() {
 	clearInterval(scene_interval_timer);
 	scene_data = null;
-	scene_preload_images = 0;
+	scene_preload_assets = 0;
 	canvas.innerHTML = "";
 
 	// set the page title
@@ -354,7 +368,7 @@ function scene_unload() {
 function scene_load() {
 	scene_unload();
 	scene_data = {};
-	scene_preload_images = 0;
+	scene_preload_assets = 0;
 	canvas.innerHTML = "";
 
 	// load the objects of the scene from json files, using the fields stored in the data
