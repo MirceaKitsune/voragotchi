@@ -18,9 +18,7 @@ function get_json(url) {
 // returns the value of location.search from the URL
 function get_search(name) {
 	var search = location.search.substring(1).split("=");
-	if (name == search[0])
-	if (search[1] && search[1] != "") {
+	if(name === search[0] && search[1] !== "")
 		return search[1];
-	}
 	return null;
 }

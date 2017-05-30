@@ -8,12 +8,13 @@ var data = null;
 
 // initiates the data, returns true if initiated
 function data_init(name, message) {
-	if (message) alert(message);
-	if (name != null) {
+	if(message)
+		alert(message);
+	if(name !== null) {
 		data_name = name;
 		data_write();
 		location.search = "data=" + data_name;
-	} else if (!data_name) {
+	} else if(!data_name) {
 		data_name = get_search("data");
 	}
 
@@ -22,8 +23,10 @@ function data_init(name, message) {
 
 // clears data in cookie
 function data_clear(message) {
-	if (!data_init(null, null)) return;
-	if (message) alert(message);
+	if(!data_init(null, null))
+		return;
+	if(message)
+		alert(message);
 
 	data = null;
 	var time = new Date();
@@ -33,7 +36,8 @@ function data_clear(message) {
 
 // writes data to cookie
 function data_write() {
-	if (!data || !data_init(null, null)) return;
+	if(!data || !data_init(null, null))
+		return;
 
 	var expire = 365 * 24 * 60 * 60; // year, hour, minute, second
 	var string = JSON.stringify(data);
@@ -44,27 +48,29 @@ function data_write() {
 
 // reads data from a cookie
 function data_read() {
-	if (!data_init(null, null)) return;
+	if(!data_init(null, null))
+		return;
 
 	var table = document.cookie.match(new RegExp(data_name + "=([^;]+)"));
-	if (table) {
+	if(table)
 		data = JSON.parse(table[1]);
-	}
 }
 
 // load data if any exists
 data_read();
 
 // gets a field from the data
-function data_field_get (field) {
-	if (!data || !data_init(null, null)) return null;
+function data_field_get(field) {
+	if(!data || !data_init(null, null))
+		return null;
 
 	return data[field];
 }
 
 // sets a field in the data
-function data_field_set (field, value) {
-	if (!data || !data_init(null, null)) return;
+function data_field_set(field, value) {
+	if(!data || !data_init(null, null))
+		return;
 
 	data[field] = value;
 	data_write();
