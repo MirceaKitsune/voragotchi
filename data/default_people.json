@@ -3,6 +3,7 @@
 		"chat_people_default":[
 			{
 				"actions":[
+					{ "trigger":"load", "action":"environment_geometries_people = " },
 					{ "trigger":"load", "action":"background_people = " },
 					{ "trigger":"interval", "conditional":"0.0025 > $random", "action":"chat_people = chat_people_default_1" }
 				]
@@ -21,7 +22,7 @@
 				]
 			},
 			{
-				"layer":{ "geometry":"10% 20% 40% 5% 1", "shape":"10px", "alpha":"0.75", "color":"#00aa00" },
+				"layer":{ "geometry":"10% 20% 40% 5% 2", "shape":"10px", "alpha":"0.75", "color":"#00aa00" },
 				"text":{
 					"align":"center", "color":"#ffffff", "size":"100%", "content":"Accept"
 				},
@@ -31,7 +32,7 @@
 				]
 			},
 			{
-				"layer":{ "geometry":"50% 20% 40% 5% 1", "shape":"10px", "alpha":"0.75", "color":"#aa0000" },
+				"layer":{ "geometry":"50% 20% 40% 5% 2", "shape":"10px", "alpha":"0.75", "color":"#aa0000" },
 				"text":{
 					"align":"center", "color":"#ffffff", "size":"100%", "content":"Reject"
 				},
@@ -55,7 +56,7 @@
 				]
 			},
 			{
-				"layer":{ "geometry":"10% 40% 40% 5% 1", "shape":"10px", "alpha":"0.75", "color":"#aa0000" },
+				"layer":{ "geometry":"10% 40% 40% 5% 2", "shape":"10px", "alpha":"0.75", "color":"#aa0000" },
 				"text":{
 					"align":"center", "color":"#ffffff", "size":"100%", "content":"Don't buy"
 				},
@@ -64,7 +65,7 @@
 				]
 			},
 			{
-				"layer":{ "geometry":"50% 40% 40% 5% 1", "shape":"10px", "alpha":"0.75", "color":"#00aa00" },
+				"layer":{ "geometry":"50% 40% 40% 5% 2", "shape":"10px", "alpha":"0.75", "color":"#00aa00" },
 				"text":{
 					"align":"center", "color":"#ffffff", "size":"100%", "content":"Buy"
 				},
@@ -96,7 +97,7 @@
 				]
 			},
 			{
-				"layer":{ "geometry":"10% 40% 80% 5% 1", "shape":"10px", "alpha":"0.75", "color":"#aaaa00" },
+				"layer":{ "geometry":"10% 40% 80% 5% 2", "shape":"10px", "alpha":"0.75", "color":"#aaaa00" },
 				"text":{
 					"align":"center", "color":"#ffffff", "size":"100%", "content":"Dismiss"
 				},
@@ -119,7 +120,7 @@
 				]
 			},
 			{
-				"layer":{ "geometry":"10% 40% 80% 5% 1", "shape":"10px", "alpha":"0.75", "color":"#aaaa00" },
+				"layer":{ "geometry":"10% 40% 80% 5% 2", "shape":"10px", "alpha":"0.75", "color":"#aaaa00" },
 				"text":{
 					"align":"center", "color":"#ffffff", "size":"100%", "content":"Dismiss"
 				},
@@ -144,7 +145,7 @@
 				]
 			},
 			{
-				"layer":{ "geometry":"10% 40% 80% 5% 1", "shape":"10px", "alpha":"0.75", "color":"#aaaa00" },
+				"layer":{ "geometry":"10% 40% 80% 5% 2", "shape":"10px", "alpha":"0.75", "color":"#aaaa00" },
 				"text":{
 					"align":"center", "color":"#ffffff", "size":"100%", "content":"Dismiss"
 				},
@@ -155,10 +156,10 @@
 		],
 		"background_people_default":[{}],
 		"background_people_default_1_1":[
-			{ "layer":{ "geometry":"25% 50% 50% 50% 1", "alpha":"1.00", "image":"url(data/default_people/people_1_1.png)" } }
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/people_1_1.png)" } }
 		],
 		"background_people_default_1_2":[
-			{ "layer":{ "geometry":"25% 50% 50% 50% 1", "alpha":"1.00", "image":"url(data/default_people/people_1_2.png)" } }
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/people_1_2.png)" } }
 		]
 	},
 	"mods_people":{

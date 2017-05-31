@@ -285,7 +285,7 @@ function sprite_set(id, sprite, parent, sprite_def) {
 					scene_action(func_interval[func_interval_action], false, false);
 			}
 
-			style += style_pointer ? "pointer-events: all; " : "pointer-events: none; ";
+			style += style_pointer ? "pointer-events: all" : "pointer-events: none";
 			layer_element.setAttribute("style", style);
 			sprite_current[id] = sprite;
 		}

@@ -17,7 +17,7 @@
 		"pet_default_baby_chat":[{}],
 		"pet_default_baby_chat_apple_hype_0":[
 			{
-				"layer":{ "geometry":"10% 10% 80% 20% 2", "shape":"10px", "alpha":"0.75", "color":"#ffffff" },
+				"layer":{ "geometry":"10% 10% 80% 20% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff" },
 				"text":{
 					"color":"#000000", "size":"100%", "content":[
 						"Hover 0"
@@ -39,7 +39,7 @@
 		],
 		"pet_default_baby_chat_apple_hype_1":[
 			{
-				"layer":{ "geometry":"10% 10% 80% 20% 2", "shape":"10px", "alpha":"0.75", "color":"#ffffff" },
+				"layer":{ "geometry":"10% 10% 80% 20% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff" },
 				"text":{
 					"color":"#000000", "size":"100%", "content":[
 						"Hover 1"
@@ -61,7 +61,7 @@
 		],
 		"pet_default_baby_chat_apple_hype_2":[
 			{
-				"layer":{ "geometry":"10% 10% 80% 20% 2", "shape":"10px", "alpha":"0.75", "color":"#ffffff" },
+				"layer":{ "geometry":"10% 10% 80% 20% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff" },
 				"text":{
 					"color":"#000000", "size":"100%", "content":[
 						"Hover 2"
@@ -83,7 +83,7 @@
 		],
 		"pet_default_baby_chat_apple_hype_3":[
 			{
-				"layer":{ "geometry":"10% 10% 80% 20% 2", "shape":"10px", "alpha":"0.75", "color":"#ffffff" },
+				"layer":{ "geometry":"10% 10% 80% 20% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff" },
 				"text":{
 					"color":"#000000", "size":"100%", "content":[
 						"Hover 3"
@@ -105,7 +105,7 @@
 		],
 		"pet_default_baby_chat_apple_eat":[
 			{
-				"layer":{ "geometry":"10% 10% 80% 20% 2", "shape":"10px", "alpha":"0.75", "color":"#ffffff" },
+				"layer":{ "geometry":"10% 10% 80% 20% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff" },
 				"text":{
 					"color":"#000000", "size":"100%", "content":[
 						"Eating"
@@ -135,7 +135,7 @@
 		],
 		"pet_default_baby_interact_apple":[
 			{
-				"layer":{ "geometry":"40% 55% 25% 20% 2", "shape":"100%", "alpha":"0", "color":"#ffffff", "cursor":"url(data/default_pet/cursor_food_apple.gif), auto" },
+				"layer":{ "geometry":"45% 55% 15% 15% 2", "shape":"100%", "alpha":"0", "color":"#ffffff", "cursor":"url(data/default_pet/cursor_food_apple.gif), auto" },
 				"actions":[
 					{ "trigger":"interval", "conditional":"actions_button_apple != actions_default_button_apple_selected", "action":"pet_interact = pet_default_baby_interact" },
 					{ "trigger":"interval", "conditional":"$hype >= 0.00 && $hype <= 0.25", "action":"$hype += 0.00125" },
@@ -168,6 +168,7 @@
 		"pet_default_baby_control":[
 			{
 				"actions":[
+					{ "trigger":"load", "conditional":"0.1 > $random", "action":"environment_geometries_pet = " },
 					{ "trigger":"interval", "conditional":"$hype >= 0.00 && $hype <= 0.25 && $food >= 0.00 && $food <= 0.25", "action":"pet_background = pet_default_baby_background" },
 					{ "trigger":"interval", "conditional":"$hype >= 0.00 && $hype <= 0.25 && $food >= 0.25 && $food <= 0.50", "action":"pet_background = pet_default_baby_background_belly_1" },
 					{ "trigger":"interval", "conditional":"$hype >= 0.00 && $hype <= 0.25 && $food >= 0.50 && $food <= 0.75", "action":"pet_background = pet_default_baby_background_belly_2" },
@@ -200,102 +201,102 @@
 		"pet_default_baby_background":[
 			{
 				"audio":{ "sound":"data/default_pet/gurgle.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat.gif)" }
+				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat.gif)" }
 			}
 		],
 		"pet_default_baby_background_belly_1":[
 			{
 				"audio":{ "sound":"data/default_pet/gurgle_1.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_belly_1.gif)" }
+				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_belly_1.gif)" }
 			}
 		],
 		"pet_default_baby_background_belly_2":[
 			{
 				"audio":{ "sound":"data/default_pet/gurgle_2.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_belly_2.gif)" }
+				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_belly_2.gif)" }
 			}
 		],
 		"pet_default_baby_background_belly_3":[
 			{
 				"audio":{ "sound":"data/default_pet/gurgle_3.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_belly_3.gif)" }
+				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_belly_3.gif)" }
 			}
 		],
 		"pet_default_baby_background_1":[
 			{
 				"audio":{ "sound":"data/default_pet/gurgle.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_1.gif)" }
+				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_1.gif)" }
 			}
 		],
 		"pet_default_baby_background_1_belly_1":[
 			{
 				"audio":{ "sound":"data/default_pet/gurgle_1.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_1_belly_1.gif)" }
+				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_1_belly_1.gif)" }
 			}
 		],
 		"pet_default_baby_background_1_belly_2":[
 			{
 				"audio":{ "sound":"data/default_pet/gurgle_2.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_1_belly_2.gif)" }
+				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_1_belly_2.gif)" }
 			}
 		],
 		"pet_default_baby_background_1_belly_3":[
 			{
 				"audio":{ "sound":"data/default_pet/gurgle_3.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_1_belly_3.gif)" }
+				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_1_belly_3.gif)" }
 			}
 		],
 		"pet_default_baby_background_2":[
 			{
 				"audio":{ "sound":"data/default_pet/gurgle.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_2.gif)" }
+				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_2.gif)" }
 			}
 		],
 		"pet_default_baby_background_2_belly_1":[
 			{
 				"audio":{ "sound":"data/default_pet/gurgle_1.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_2_belly_1.gif)" }
+				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_2_belly_1.gif)" }
 			}
 		],
 		"pet_default_baby_background_2_belly_2":[
 			{
 				"audio":{ "sound":"data/default_pet/gurgle_2.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_2_belly_2.gif)" }
+				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_2_belly_2.gif)" }
 			}
 		],
 		"pet_default_baby_background_2_belly_3":[
 			{
 				"audio":{ "sound":"data/default_pet/gurgle_3.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_2_belly_3.gif)" }
+				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_2_belly_3.gif)" }
 			}
 		],
 		"pet_default_baby_background_3":[
 			{
 				"audio":{ "sound":"data/default_pet/gurgle.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_3.gif)" }
+				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_3.gif)" }
 			}
 		],
 		"pet_default_baby_background_3_belly_1":[
 			{
 				"audio":{ "sound":"data/default_pet/gurgle_1.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_3_belly_1.gif)" }
+				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_3_belly_1.gif)" }
 			}
 		],
 		"pet_default_baby_background_3_belly_2":[
 			{
 				"audio":{ "sound":"data/default_pet/gurgle_2.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_3_belly_2.gif)" }
+				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_3_belly_2.gif)" }
 			}
 		],
 		"pet_default_baby_background_3_belly_3":[
 			{
 				"audio":{ "sound":"data/default_pet/gurgle_3.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_3_belly_3.gif)" }
+				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_3_belly_3.gif)" }
 			}
 		],
 		"pet_default_baby_background_apple_eat":[
 			{
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_eat.gif)" }
+				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_eat.gif)" }
 			},
 			{
 				"layer":{ "geometry":"35% 80% 15% 15% 1", "alpha":"1", "image":"url(data/default_pet/food_apple.gif)" }
@@ -303,7 +304,7 @@
 		],
 		"pet_default_baby_background_apple_eat_belly_1":[
 			{
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_eat_belly_1.gif)" }
+				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_eat_belly_1.gif)" }
 			},
 			{
 				"layer":{ "geometry":"35% 80% 15% 15% 1", "alpha":"1", "image":"url(data/default_pet/food_apple.gif)" }
@@ -311,7 +312,7 @@
 		],
 		"pet_default_baby_background_apple_eat_belly_2":[
 			{
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_eat_belly_2.gif)" }
+				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_eat_belly_2.gif)" }
 			},
 			{
 				"layer":{ "geometry":"35% 80% 15% 15% 1", "alpha":"1", "image":"url(data/default_pet/food_apple.gif)" }
@@ -319,7 +320,7 @@
 		],
 		"pet_default_baby_background_apple_eat_belly_3":[
 			{
-				"layer":{ "geometry":"0% 20% 100% 80% 1", "alpha":"1.0", "image":"url(data/default_pet/cat_eat_belly_3.gif)" }
+				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_eat_belly_3.gif)" }
 			},
 			{
 				"layer":{ "geometry":"35% 80% 15% 15% 1", "alpha":"1", "image":"url(data/default_pet/food_apple.gif)" }

@@ -309,7 +309,7 @@ function scene_preload() {
 		scene_preload_assets = 0;
 		var element = document.createElement("div");
 		element.setAttribute("id", "preload");
-		element.setAttribute("style", "position: absolute; top: 45%; left: 0%; width: 100%; height: 10%; background-color: #c0c0c0; text-align: center; z-index: 9999");
+		element.setAttribute("style", "position: absolute; top: 45%; left: 0%; width: 100%; height: 10%; z-index: 9999; background-color: #c0c0c0; text-align: center; pointer-events: all");
 		canvas.appendChild(element);
 
 		// preloader HTML: label

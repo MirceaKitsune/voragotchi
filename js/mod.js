@@ -91,7 +91,7 @@ function mods_menu_add() {
 	if(!element) {
 		element = document.createElement("div");
 		element.setAttribute("id", "menu");
-		element.setAttribute("style", "width: 100%; height: 100%; background-color: #c0c0c0");
+		element.setAttribute("style", "width: 100%; height: 100%; background-color: #c0c0c0; pointer-events: all");
 		canvas.appendChild(element);
 	}
 	element.innerHTML = "";

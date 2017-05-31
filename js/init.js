@@ -4,7 +4,7 @@
 
 // configure the canvas
 var canvas = document.createElement("div");
-canvas.setAttribute("style", "overflow: auto; position: absolute; top: 0%; left: 0%; width: 100%; height: 100%");
+canvas.setAttribute("style", "overflow: auto; position: absolute; top: 0%; left: 0%; width: 100%; height: 100%; pointer-events: none");
 document.body.appendChild(canvas);
 
 // returns the contents of a json file
