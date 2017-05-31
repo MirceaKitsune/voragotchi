@@ -3,7 +3,8 @@
 // contains functions for creating and updating sprites
 
 // common objects
-var sprite_parent_distance = {};
+var sprite_distance_parent = {};
+var sprite_distance = {};
 var sprite_current = {};
 var sprite_variable = {};
 var sprite_action = {};
@@ -57,7 +58,9 @@ function get_gradient(color1, color2, direction, blend) {
 }
 
 // replaces variable names with their values in a text field
+// returns the modified text, as well as an array containing the names of all variables detected in the text
 function text_replace(text) {
+	var vars = [];
 	var table_all = text.split(/[^a-zA-Z0-9$_]+/); // anything that's not: a-z,A-Z,0-9,$,_
 	for(var entry_all in table_all) {
 		// table[1] is the variable name, table[2] is the optional visual multiplier
@@ -76,9 +79,10 @@ function text_replace(text) {
 				}
 			}
 			text = text.replace(table_all[entry_all], value);
+			vars.push(table[1]);
 		}
 	}
-	return text;
+	return { text: text, variables: vars };
 }
 
 // sets the sprite of an element
@@ -105,6 +109,8 @@ function sprite_set(id, sprite, parent, sprite_def) {
 	var update = false;
 	if(sprite_current[id] !== sprite) {
 		update = true;
+	} else if(sprite_distance[id] !== sprite_distance_parent[parent]) {
+		update = true;
 	} else {
 		for(var variable in sprite_variable[id]) {
 			if(scene_data.variables[variable] !== null && scene_data.variables[variable] !== undefined) {
@@ -121,6 +127,8 @@ function sprite_set(id, sprite, parent, sprite_def) {
 	// if we decided to update the sprite, set the layers from the new sprite
 	if(update) {
 		element.innerHTML = "";
+		sprite_current[id] = sprite;
+		sprite_distance[id] = sprite_distance_parent[parent];
 		sprite_variable[id] = {};
 
 		// delete all sprite actions associated with this sprite
@@ -149,7 +157,7 @@ function sprite_set(id, sprite, parent, sprite_def) {
 					mod_element.setAttribute("style", get_geometry(geometry));
 
 				// set the distance of this mod for use by child sprites
-				sprite_parent_distance[mod] = get_geometry_distance(geometry);
+				sprite_distance_parent[mod] = get_geometry_distance(geometry);
 			}
 
 			// configure the visuals of this layer
@@ -208,7 +216,14 @@ function sprite_set(id, sprite, parent, sprite_def) {
 					var index = Math.floor(Math.random() * text.length);
 					text = text[index];
 				}
-				layer_element.innerText = text_replace(text);
+
+				var text_new = text_replace(text);
+				layer_element.innerText = text_new.text;
+				for(var variable in text_new.variables) {
+					var name = text_new.variables[variable];
+					if(scene_data.variables[name] !== null && scene_data.variables[name] !== undefined)
+						sprite_variable[id][name] = scene_data.variables[name]; // track this variable
+				}
 			}
 
 			// configure the audio of this layer
@@ -228,7 +243,7 @@ function sprite_set(id, sprite, parent, sprite_def) {
 				audio_element.setAttribute("autoplay", true);
 
 				// set the volume based on distance
-				var distance = (layer_new.audio.distance && sprite_parent_distance[parent]) ? Math.pow(sprite_parent_distance[parent], layer_new.audio.distance) : 1;
+				var distance = (layer_new.audio.distance && sprite_distance[id]) ? Math.pow(sprite_distance[id], layer_new.audio.distance) : 1;
 				audio_element.volume = Math.min(Number(layer_new.audio.volume) * distance, 1);
 			}
 
@@ -287,7 +302,6 @@ function sprite_set(id, sprite, parent, sprite_def) {
 
 			style += style_pointer ? "pointer-events: all" : "pointer-events: none";
 			layer_element.setAttribute("style", style);
-			sprite_current[id] = sprite;
 		}
 	}
 }

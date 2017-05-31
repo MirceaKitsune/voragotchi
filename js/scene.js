@@ -247,7 +247,7 @@ function scene_interval() {
 			var name = mod.sprites[sprite];
 			if(typeof scene_data.sprites[sprite] === "string")
 				name = scene_data.sprites[sprite];
-			sprite_set("sprite_" + sprite, name, item, scene_data.data_sprites);
+			sprite_set(sprite, name, item, scene_data.data_sprites);
 		}
 	}
 
