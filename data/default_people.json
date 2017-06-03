@@ -11,7 +11,7 @@
 		],
 		"chat_people_default_1":[
 			{
-				"layer":{ "geometry":"10% 5% 80% 20% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff" },
+				"layer":{ "geometry":"10% 5% 80% 20% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 3px #000000" },
 				"audio":{ "sound":"data/default_people/new.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"text":{
 					"color":"#000000", "size":"100%", "content":"Person 1 wants to see you, about apples."
@@ -43,7 +43,7 @@
 		],
 		"chat_people_default_1_available":[
 			{
-				"layer":{ "geometry":"10% 5% 80% 40% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff" },
+				"layer":{ "geometry":"10% 5% 80% 40% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 3px #000000" },
 				"audio":{ "sound":"data/default_people/1.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"text":{
 					"color":"#000000", "size":"100%", "content":[
@@ -84,7 +84,7 @@
 		],
 		"chat_people_default_1_unavailable":[
 			{
-				"layer":{ "geometry":"10% 5% 80% 40% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff" },
+				"layer":{ "geometry":"10% 5% 80% 40% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 3px #000000" },
 				"audio":{ "sound":"data/default_people/1_no.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"text":{
 					"color":"#000000", "size":"100%", "content":[
@@ -108,7 +108,7 @@
 		],
 		"chat_people_default_1_no":[
 			{
-				"layer":{ "geometry":"10% 5% 80% 40% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff" },
+				"layer":{ "geometry":"10% 5% 80% 40% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 3px #000000" },
 				"audio":{ "sound":"data/default_people/1_no.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"text":{
 					"color":"#000000", "size":"100%", "content":[
@@ -131,7 +131,7 @@
 		],
 		"chat_people_default_1_yes":[
 			{
-				"layer":{ "geometry":"10% 5% 80% 40% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff" },
+				"layer":{ "geometry":"10% 5% 80% 40% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 3px #000000" },
 				"audio":{ "sound":"data/default_people/1_yes.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"text":{
 					"color":"#000000", "size":"100%", "content":[

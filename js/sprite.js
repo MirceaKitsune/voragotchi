@@ -190,6 +190,8 @@ function sprite_set(id, sprite, parent, sprite_def) {
 				}
 				if(layer_new.layer.alpha)
 					style += "opacity: " + layer_new.layer.alpha + "; ";
+				if(layer_new.layer.shadow)
+					style += "box-shadow: " + layer_new.layer.shadow + "; ";
 				if(layer_new.layer.shape)
 					style += "border-radius: " + layer_new.layer.shape + "; ";
 				if(layer_new.layer.cursor) {
@@ -202,6 +204,8 @@ function sprite_set(id, sprite, parent, sprite_def) {
 			if(layer_new.text) {
 				if(layer_new.text.align)
 					style += "text-align: " + layer_new.text.align + "; ";
+				if(layer_new.text.shadow)
+					style += "text-shadow: " + layer_new.text.shadow + "; ";
 				if(layer_new.text.size)
 					style += "font-size: " + layer_new.text.size + "; ";
 				if(layer_new.text.weight)

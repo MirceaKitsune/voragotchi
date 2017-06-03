@@ -71,6 +71,7 @@ Data and mods are defined in json files. Those files are specified in the mods m
 				"color2": The color of the empty side of the bar.
 				"direction": The direction of the gradient. Can be: "left", "right", "top", "bottom".
 			"alpha": The transparency of the layer between 0 and 1.
+			"shadow": Specifies the shadow that surrounds this element. Format: x-offset, y-offset, blur, thickness, color. Example: "0px 0px 0px 3px #ffffffff".
 			"shape": How round the corners are, in pixels or a percentage.
 			"cursor": The image or cursor style used by the mouse pointer, as it hovers over this layer. Always have a backup cursor specified when using images, if you want none use "auto"! Example: "crosshair" or "url(foo/bar.png), auto". Note: Only images of certain sizes are supported... 32px is most compatible, 128px is the known maximum.
 		"audio": Object which defines the audio of this sprite. The audio is always triggered when the sprite appears. Audio definition:
@@ -82,6 +83,7 @@ Data and mods are defined in json files. Those files are specified in the mods m
 		"text": Object which defines the text of this layer. Text definition:
 			"content": Text to appear inside the element. This can be an array, in which case a random text will be chosen each time. Words beginning with $ represent the variable with that name if one exists. If followed by another $ and a number, that number acts as a visual multiplier for numeric variables. Example: "$myvar" becomes "1" if myvar is 1, "$myvar$5" becomes "15" if myvar is 3. Note: This only works for variables without special characters in their name (only a-z, A-Z, 0-9, _).
 			"align": Alignment of the font inside the element. Valid values are: "left", "center", "right".
+			"shadow": Specifies the shadow that surrounds this text. Format: x-offset, y-offset, blur, color. Example: "0px 0px 1px #000000".
 			"size": Size of the text.
 			"weight": Thickness of the font. Example: "200", "400", "600", "800".
 			"family": Font family to be used. If a comma separated list is present, fonts are used in that order... if left empty, the default browser font is used. Example: "Times, serif".
