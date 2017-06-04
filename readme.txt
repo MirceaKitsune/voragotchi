@@ -39,6 +39,16 @@ Independent.nu
 CC0
 https://opengameart.org/content/16-button-clicks
 
+- default_actions_daytime_sun
+oldifluff
+CC0
+https://openclipart.org/detail/268740/smiling-sun-character-radiating
+
+- default_actions_daytime_moon
+qubodup
+CC0
+https://openclipart.org/detail/201739/moon
+
 - default_people
 anarres
 CC0
