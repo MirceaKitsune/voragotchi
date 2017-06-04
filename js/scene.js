@@ -29,6 +29,12 @@ function scene_action_get(name) {
 			var date = new Date();
 			var date_time = date.getTime();
 			return date.getSeconds();
+		case "$time_hour":
+			var date = new Date();
+			return date.toLocaleTimeString();
+		case "$time_date":
+			var date = new Date();
+			return date.toLocaleDateString();
 		case "$info_browser_name":
 			return navigator.appName;
 		case "$info_browser_codename":

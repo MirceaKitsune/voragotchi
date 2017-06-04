@@ -33,6 +33,8 @@ You will normally create and use your own variables, but the engine has a few sp
 "$date_hours": The current hour. Readonly property, do not set this!
 "$date_minutes": The current minute. Readonly property, do not set this!
 "$date_seconds": The current second. Readonly property, do not set this!
+"$time_hour": Returns the time in standard format. Readonly property, do not set this!
+"$time_date": Returns the date in standard format. Readonly property, do not set this!
 "$time_start": The time when the world was created. Readonly property, do not set this!
 "$time_last": The time when the world was last opened. Readonly property, do not set this!
 "$game_name": Game setting, safe to set. Specifies the name of the player. Note that this is not the same as the name of the world!
