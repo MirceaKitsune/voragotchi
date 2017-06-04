@@ -11,95 +11,76 @@
 		],
 		"chat_people_default_1":[
 			{
-				"layer":{ "geometry":"10% 5% 80% 20% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 3px #000000" },
+				"layer":{ "geometry":"45% 40% 10% 5% 2", "shape":"10px", "alpha":"1.0", "color":"#000000" },
 				"audio":{ "sound":"data/default_people/new.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"text":{
-					"color":"#000000", "size":"100%", "content":"Person 1 wants to see you, about apples."
+					"align":"center", "color":"#ffffff", "size":"100%", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":"..."
 				},
 				"actions":[
-					{ "trigger":"load", "action":"background_people = " },
-					{ "trigger":"load", "delay":"10", "action":"chat_people = " }
-				]
-			},
-			{
-				"layer":{ "geometry":"10% 20% 40% 5% 2", "shape":"10px", "alpha":"0.75", "color":"#00aa00" },
-				"text":{
-					"align":"center", "color":"#ffffff", "size":"100%", "content":"Accept"
-				},
-				"actions":[
+					{ "trigger":"load", "action":"background_people = background_people_default_1_1" },
+					{ "trigger":"load", "delay":"10", "action":"chat_people = " },
 					{ "trigger":"click", "conditional":"$money >= 0.00001", "action":"chat_people = chat_people_default_1_available" },
 					{ "trigger":"click", "conditional":"$money < 0.00001", "action":"chat_people = chat_people_default_1_unavailable" }
-				]
-			},
-			{
-				"layer":{ "geometry":"50% 20% 40% 5% 2", "shape":"10px", "alpha":"0.75", "color":"#aa0000" },
-				"text":{
-					"align":"center", "color":"#ffffff", "size":"100%", "content":"Reject"
-				},
-				"actions":[
-					{ "trigger":"click", "action":"chat_people = " }
 				]
 			}
 		],
 		"chat_people_default_1_available":[
 			{
-				"layer":{ "geometry":"10% 5% 80% 40% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 3px #000000" },
+				"layer":{ "geometry":"10% 0% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"audio":{ "sound":"data/default_people/1.wav", "volume":"0.5", "loop":"false", "id":"people" },
-				"text":{
-					"color":"#000000", "size":"100%", "content":[
-						"Greetings, $game_name from $info_browser_codename! Would you like to buy some apples? Only 10$ for 5!"
-					]
-				},
 				"actions":[
 					{ "trigger":"load", "action":"background_people = background_people_default_1_1" },
 					{ "trigger":"load", "delay":"20", "action":"chat_people = " }
 				]
 			},
 			{
-				"layer":{ "geometry":"10% 40% 40% 5% 2", "shape":"10px", "alpha":"0.75", "color":"#aa0000" },
+				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
 				"text":{
-					"align":"center", "color":"#ffffff", "size":"100%", "content":"Don't buy"
+					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Greetings, $game_name from $info_browser_codename! Would you like to buy some apples? Only 10$ for 5!"
+					]
+				}
+			},
+			{
+				"layer":{ "geometry":"25% 30% 25% 5% 2", "shape":"10px 0px 0px 100%", "alpha":"1.0", "shadow":"0px 0px 0px 2px #222222" },
+				"text":{
+					"align":"center", "color":"#ffffff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":"Don't buy"
 				},
 				"actions":[
 					{ "trigger":"click", "action":"chat_people = chat_people_default_1_no" }
 				]
 			},
 			{
-				"layer":{ "geometry":"50% 40% 40% 5% 2", "shape":"10px", "alpha":"0.75", "color":"#00aa00" },
+				"layer":{ "geometry":"50% 30% 25% 5% 2", "shape":"0px 10px 100% 0px", "alpha":"1.0", "shadow":"0px 0px 0px 2px #222222" },
 				"text":{
-					"align":"center", "color":"#ffffff", "size":"100%", "content":"Buy"
+					"align":"center", "color":"#ffffff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":"Buy"
 				},
 				"actions":[
 					{ "trigger":"click", "conditional":"$money >= 0.00001", "action":"chat_people = chat_people_default_1_yes" }
 				]
-			},
-			{
-				"layer":{ "geometry":"10% 35% 40% 2.5% 1", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$money", "color1":"#aaaa00", "color2":"#111100", "direction":"right" } },
-				"text":{ "content":"Money: $money$1000000 $", "align":"center", "color":"#ffffff", "size":"75%" }
-			},
-			{
-				"layer":{ "geometry":"50% 35% 40% 2.5% 1", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$stock_apple", "color1":"#00aa00", "color2":"#001100", "direction":"right" } },
-				"text":{ "content":"Stock: $stock_apple$100 apples", "align":"center", "color":"#ffffff", "size":"75%" }
 			}
 		],
 		"chat_people_default_1_unavailable":[
 			{
-				"layer":{ "geometry":"10% 5% 80% 40% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 3px #000000" },
+				"layer":{ "geometry":"10% 0% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"audio":{ "sound":"data/default_people/1_no.wav", "volume":"0.5", "loop":"false", "id":"people" },
-				"text":{
-					"color":"#000000", "size":"100%", "content":[
-						"Greetings, $game_name. I was going to sell you 5 apples for 10$, but it doesn't seem like you have the money. Maybe later?"
-					]
-				},
 				"actions":[
 					{ "trigger":"load", "action":"background_people = background_people_default_1_1" },
 					{ "trigger":"load", "delay":"5", "action":"chat_people = " }
 				]
 			},
 			{
-				"layer":{ "geometry":"10% 40% 80% 5% 2", "shape":"10px", "alpha":"0.75", "color":"#aaaa00" },
+				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
 				"text":{
-					"align":"center", "color":"#ffffff", "size":"100%", "content":"Dismiss"
+					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Greetings, $game_name. I was going to sell you 5 apples for 10$, but it doesn't seem like you have the money. Maybe later?"
+					]
+				}
+			},
+			{
+				"layer":{ "geometry":"30% 30% 40% 5% 2", "shape":"10px 10px 100% 100%", "alpha":"1.0", "shadow":"0px 0px 0px 2px #222222" },
+				"text":{
+					"align":"center", "color":"#ffffff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":"Dismiss"
 				},
 				"actions":[
 					{ "trigger":"click", "action":"chat_people = " }
@@ -108,21 +89,25 @@
 		],
 		"chat_people_default_1_no":[
 			{
-				"layer":{ "geometry":"10% 5% 80% 40% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 3px #000000" },
+				"layer":{ "geometry":"10% 0% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"audio":{ "sound":"data/default_people/1_no.wav", "volume":"0.5", "loop":"false", "id":"people" },
-				"text":{
-					"color":"#000000", "size":"100%", "content":[
-						"Okay... maybe later!"
-					]
-				},
 				"actions":[
+					{ "trigger":"load", "action":"background_people = background_people_default_1_1" },
 					{ "trigger":"load", "delay":"5", "action":"chat_people = " }
 				]
 			},
 			{
-				"layer":{ "geometry":"10% 40% 80% 5% 2", "shape":"10px", "alpha":"0.75", "color":"#aaaa00" },
+				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
 				"text":{
-					"align":"center", "color":"#ffffff", "size":"100%", "content":"Dismiss"
+					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Okay... maybe later!"
+					]
+				}
+			},
+			{
+				"layer":{ "geometry":"30% 30% 40% 5% 2", "shape":"10px 10px 100% 100%", "alpha":"1.0", "shadow":"0px 0px 0px 2px #222222" },
+				"text":{
+					"align":"center", "color":"#ffffff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":"Dismiss"
 				},
 				"actions":[
 					{ "trigger":"click", "action":"chat_people = " }
@@ -131,23 +116,27 @@
 		],
 		"chat_people_default_1_yes":[
 			{
-				"layer":{ "geometry":"10% 5% 80% 40% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 3px #000000" },
+				"layer":{ "geometry":"10% 0% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"audio":{ "sound":"data/default_people/1_yes.wav", "volume":"0.5", "loop":"false", "id":"people" },
-				"text":{
-					"color":"#000000", "size":"100%", "content":[
-						"Here you go. Thanks!"
-					]
-				},
 				"actions":[
+					{ "trigger":"load", "action":"background_people = background_people_default_1_1" },
+					{ "trigger":"load", "delay":"5", "action":"chat_people = " },
 					{ "trigger":"load", "action":"$money -= 0.00001" },
-					{ "trigger":"load", "action":"$stock_apple += 0.05" },
-					{ "trigger":"load", "delay":"5", "action":"chat_people = " }
+					{ "trigger":"load", "action":"$stock_apple += 0.05" }
 				]
 			},
 			{
-				"layer":{ "geometry":"10% 40% 80% 5% 2", "shape":"10px", "alpha":"0.75", "color":"#aaaa00" },
+				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
 				"text":{
-					"align":"center", "color":"#ffffff", "size":"100%", "content":"Dismiss"
+					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Here you go. Thanks!"
+					]
+				}
+			},
+			{
+				"layer":{ "geometry":"30% 30% 40% 5% 2", "shape":"10px 10px 100% 100%", "alpha":"1.0", "shadow":"0px 0px 0px 2px #222222" },
+				"text":{
+					"align":"center", "color":"#ffffff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":"Dismiss"
 				},
 				"actions":[
 					{ "trigger":"click", "action":"chat_people = " }

@@ -1,128 +1,105 @@
 {
 	"data_sprites":{
-		"pet_default_baby_bars":[
+		"pet_default_baby_info":[
 			{
-				"layer":{ "geometry":"0% 0% 5% 5% 1", "shape":"100%", "alpha":"1.0", "gradient":{ "value":"$health", "color1":"#aa0000", "color2":"#110000", "direction":"top" } },
-				"text":{ "content":"+\n$health$100", "align":"center", "color":"#ffffff", "size":"75%" }
+				"layer":{ "geometry":"32.5% 0% 35% 10% 1", "shape":"10px", "alpha":"0.5", "color":"#000000" }
 			},
 			{
-				"layer":{ "geometry":"5% 0% 90% 2.5% 1", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$food", "color1":"#aaaa00", "color2":"#111100", "direction":"right" } },
-				"text":{ "content":"Food: $food$100%", "align":"center", "color":"#ffffff", "size":"75%" }
+				"layer":{ "geometry":"37.5% 0% 25% 5% 2", "shape":"10px", "alpha":"1.0" },
+				"text":{ "content":"$game_name's kitty", "align":"center", "color":"#ffffff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
 			},
 			{
-				"layer":{ "geometry":"5% 2.5% 90% 2.5% 1", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$hype", "color1":"#00aa00", "color2":"#001100", "direction":"right" } },
-				"text":{ "content":"Excitement: $hype$100%", "align":"center", "color":"#ffffff", "size":"75%" }
+				"layer":{ "geometry":"32.5% 0% 5% 5% 2", "shape":"100%", "alpha":"1.0", "gradient":{ "value":"$health", "color1":"#ff0000", "color2":"#110000", "direction":"top" } },
+				"text":{ "content":"❤\n$health$100", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+			},
+			{
+				"layer":{ "geometry":"35% 5% 30% 2.5% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$food", "color1":"#ffaa00", "color2":"#111100", "direction":"right" } },
+				"text":{ "content":"Food", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+			},
+			{
+				"layer":{ "geometry":"35% 7.5% 30% 2.5% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$hype", "color1":"#00aaff", "color2":"#001111", "direction":"right" } },
+				"text":{ "content":"Excitement", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
 			}
 		],
 		"pet_default_baby_chat":[{}],
 		"pet_default_baby_chat_apple_hype_0":[
 			{
-				"layer":{ "geometry":"10% 10% 80% 20% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 3px #000000" },
-				"text":{
-					"color":"#000000", "size":"100%", "content":[
-						"Hover 0"
-					]
-				},
+				"layer":{ "geometry":"10% 10% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"actions":[
 					{ "trigger":"load", "delay":"10", "action":"pet_chat = " }
 				]
 			},
 			{
-				"layer":{ "geometry":"10% 25% 80% 5% 2", "shape":"10px", "alpha":"0.75", "color":"#aaaa00" },
+				"layer":{ "geometry":"15% 20% 70% 20% 1", "alpha":"1" },
 				"text":{
-					"align":"center", "color":"#ffffff", "size":"100%", "content":"Dismiss"
-				},
-				"actions":[
-					{ "trigger":"click", "action":"pet_chat = " }
-				]
+					"align":"center", "color":"#ffbbbb", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Hover 0"
+					]
+				}
 			}
 		],
 		"pet_default_baby_chat_apple_hype_1":[
 			{
-				"layer":{ "geometry":"10% 10% 80% 20% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 3px #000000" },
-				"text":{
-					"color":"#000000", "size":"100%", "content":[
-						"Hover 1"
-					]
-				},
+				"layer":{ "geometry":"10% 10% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"actions":[
 					{ "trigger":"load", "delay":"10", "action":"pet_chat = " }
 				]
 			},
 			{
-				"layer":{ "geometry":"10% 25% 80% 5% 2", "shape":"10px", "alpha":"0.75", "color":"#aaaa00" },
+				"layer":{ "geometry":"15% 20% 70% 20% 1", "alpha":"1" },
 				"text":{
-					"align":"center", "color":"#ffffff", "size":"100%", "content":"Dismiss"
-				},
-				"actions":[
-					{ "trigger":"click", "action":"pet_chat = " }
-				]
+					"align":"center", "color":"#ffbbbb", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Hover 1"
+					]
+				}
 			}
 		],
 		"pet_default_baby_chat_apple_hype_2":[
 			{
-				"layer":{ "geometry":"10% 10% 80% 20% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 3px #000000" },
-				"text":{
-					"color":"#000000", "size":"100%", "content":[
-						"Hover 2"
-					]
-				},
+				"layer":{ "geometry":"10% 10% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"actions":[
 					{ "trigger":"load", "delay":"10", "action":"pet_chat = " }
 				]
 			},
 			{
-				"layer":{ "geometry":"10% 25% 80% 5% 2", "shape":"10px", "alpha":"0.75", "color":"#aaaa00" },
+				"layer":{ "geometry":"15% 20% 70% 20% 1", "alpha":"1" },
 				"text":{
-					"align":"center", "color":"#ffffff", "size":"100%", "content":"Dismiss"
-				},
-				"actions":[
-					{ "trigger":"click", "action":"pet_chat = " }
-				]
+					"align":"center", "color":"#ffbbbb", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Hover 2"
+					]
+				}
 			}
 		],
 		"pet_default_baby_chat_apple_hype_3":[
 			{
-				"layer":{ "geometry":"10% 10% 80% 20% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 3px #000000" },
-				"text":{
-					"color":"#000000", "size":"100%", "content":[
-						"Hover 3"
-					]
-				},
+				"layer":{ "geometry":"10% 10% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"actions":[
 					{ "trigger":"load", "delay":"10", "action":"pet_chat = " }
 				]
 			},
 			{
-				"layer":{ "geometry":"10% 25% 80% 5% 2", "shape":"10px", "alpha":"0.75", "color":"#aaaa00" },
+				"layer":{ "geometry":"15% 20% 70% 20% 1", "alpha":"1" },
 				"text":{
-					"align":"center", "color":"#ffffff", "size":"100%", "content":"Dismiss"
-				},
-				"actions":[
-					{ "trigger":"click", "action":"pet_chat = " }
-				]
+					"align":"center", "color":"#ffbbbb", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Hover 3"
+					]
+				}
 			}
 		],
 		"pet_default_baby_chat_apple_eat":[
 			{
-				"layer":{ "geometry":"10% 10% 80% 20% 1", "shape":"10px", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 3px #000000" },
-				"text":{
-					"color":"#000000", "size":"100%", "content":[
-						"Eating"
-					]
-				},
+				"layer":{ "geometry":"10% 10% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"actions":[
 					{ "trigger":"load", "delay":"10", "action":"pet_chat = " }
 				]
 			},
 			{
-				"layer":{ "geometry":"10% 25% 80% 5% 2", "shape":"10px", "alpha":"0.75", "color":"#aaaa00" },
+				"layer":{ "geometry":"15% 20% 70% 20% 1", "alpha":"1" },
 				"text":{
-					"align":"center", "color":"#ffffff", "size":"100%", "content":"Dismiss"
-				},
-				"actions":[
-					{ "trigger":"click", "action":"pet_chat = " }
-				]
+					"align":"center", "color":"#ffbbbb", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Eating"
+					]
+				}
 			}
 		],
 		"pet_default_baby_interact":[
@@ -330,7 +307,7 @@
 	"mods_pets":{
 		"default_pet":{
 			"sprites":{
-				"pet_bars":"pet_default_baby_bars",
+				"pet_info":"pet_default_baby_info",
 				"pet_chat":"pet_default_baby_chat",
 				"pet_interact":"pet_default_baby_interact",
 				"pet_control":"pet_default_baby_control",

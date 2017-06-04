@@ -15,10 +15,10 @@
 		],
 		"actions_default_info":[
 			{
-				"layer":{ "geometry":"75% 0% 5% 3.75% 1", "shape":"10px", "alpha":"0.5", "color":"#000000" }
+				"layer":{ "geometry":"75% 0% 5% 3.75% 1", "shape":"0px 0px 10px 10px", "alpha":"0.5", "color":"#000000" }
 			},
 			{
-				"layer":{ "geometry":"80% 0% 20% 10% 1", "shape":"10px", "alpha":"0.5", "color":"#000000" }
+				"layer":{ "geometry":"80% 0% 20% 10% 1", "shape":"0px 0px 0px 10px", "alpha":"0.5", "color":"#000000" }
 			},
 			{
 				"layer":{ "geometry":"75% 0% 5% 3.75% 2", "shape":"10px", "alpha":"1.0" },
