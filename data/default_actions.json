@@ -22,7 +22,7 @@
 			},
 			{
 				"layer":{ "geometry":"75% 0% 5% 3.75% 2", "shape":"10px", "alpha":"1.0" },
-				"text":{ "content":"$ $money$1000000", "align":"center", "color":"#ffffff", "size":"125%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+				"text":{ "content":"$ $money$1", "align":"center", "color":"#ffffff", "size":"125%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
 			},
 			{
 				"layer":{ "geometry":"85% 0% 10% 3.75% 2", "shape":"10px", "alpha":"1.0" },
@@ -95,13 +95,13 @@
 				"text":{ "content":"Apple", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" },
 				"audio":{ "sound":"data/default_actions/click_1.wav", "volume":"0.5", "loop":"false", "id":"actions" },
 				"actions":[
-					{ "trigger":"interval", "conditional":"$stock_apple < 0.01", "action":"actions_button_apple = actions_default_button_apple_inactive" },
+					{ "trigger":"interval", "conditional":"$stock_apple < 1", "action":"actions_button_apple = actions_default_button_apple_inactive" },
 					{ "trigger":"click", "action":"actions_button_apple = actions_default_button_apple_inactive" }
 				]
 			},
 			{
 				"layer":{ "geometry":"3% 6% 1.5% 3% 2", "shape":"100%", "alpha":"1", "color":"#880000" },
-				"text":{ "content":"$stock_apple$100", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+				"text":{ "content":"$stock_apple$1", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
 			}
 		],
 		"actions_default_button_apple_hover":[
@@ -110,13 +110,13 @@
 				"text":{ "content":"Apple", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" },
 				"audio":{ "sound":"data/default_actions/hover_1.wav", "volume":"0.5", "loop":"false", "id":"actions" },
 				"actions":[
-					{ "trigger":"click", "conditional":"$stock_apple >= 0.01", "action":"actions_button_apple = actions_default_button_apple_selected" },
+					{ "trigger":"click", "conditional":"$stock_apple >= 1", "action":"actions_button_apple = actions_default_button_apple_selected" },
 					{ "trigger":"hover_end", "action":"actions_button_apple = actions_default_button_apple_inactive" }
 				]
 			},
 			{
 				"layer":{ "geometry":"3% 6% 1.5% 3% 2", "shape":"100%", "alpha":"1", "color":"#880000" },
-				"text":{ "content":"$stock_apple$100", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+				"text":{ "content":"$stock_apple$1", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
 			}
 		],
 		"actions_default_button_apple_inactive":[
@@ -124,13 +124,13 @@
 				"layer":{ "geometry":"1% 2% 3% 6% 2", "shape":"100%", "alpha":"1", "color":"#880000", "image":"url(data/default_actions/food_apple_inactive.png)", "cursor":"url(data/default_actions/cursor_hand_off.gif), auto" },
 				"text":{ "content":"Apple", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" },
 				"actions":[
-					{ "trigger":"click", "conditional":"$stock_apple >= 0.01", "action":"actions_button_apple = actions_default_button_apple_selected" },
+					{ "trigger":"click", "conditional":"$stock_apple >= 1", "action":"actions_button_apple = actions_default_button_apple_selected" },
 					{ "trigger":"hover_start", "action":"actions_button_apple = actions_default_button_apple_hover" }
 				]
 			},
 			{
 				"layer":{ "geometry":"3% 6% 1.5% 3% 2", "shape":"100%", "alpha":"1", "color":"#880000" },
-				"text":{ "content":"$stock_apple$100", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+				"text":{ "content":"$stock_apple$1", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
 			}
 		]
 	},
@@ -142,9 +142,10 @@
 				"actions_button_apple":"actions_default_button_apple_inactive"
 			},
 			"variables":{
-				"stock_apple":{ "value":"0.1" },
+				"stock_apple":{ "value":"10", "value_min":"0", "value_max":"100" },
+				"money":{"value":"100", "value_min":"0", "value_max":"10000" },
 				"light":{ "value":"0.5" },
-				"temperature":{ "value":"0.5", "per_variable":{ "$light":"0.0001" } }
+				"temperature":{ "value":"0.5", "per_variable":{ "$light":"0.00005" } }
 			}
 		}
 	}

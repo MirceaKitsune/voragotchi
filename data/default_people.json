@@ -20,8 +20,8 @@
 					{ "trigger":"load", "action":"background_people = background_people_default_1_1" },
 					{ "trigger":"load", "delay":"10", "action":"chat_people = " },
 					{ "trigger":"interval", "conditional":"$food < $random && $max_food > $random && $mental > $random && 0.025 > $random", "action":"chat_people = chat_people_default_1_auto" },
-					{ "trigger":"click", "conditional":"$money >= 0.00001", "action":"chat_people = chat_people_default_1_available" },
-					{ "trigger":"click", "conditional":"$money < 0.00001", "action":"chat_people = chat_people_default_1_unavailable" }
+					{ "trigger":"click", "conditional":"$money >= 10", "action":"chat_people = chat_people_default_1_available" },
+					{ "trigger":"click", "conditional":"$money < 10", "action":"chat_people = chat_people_default_1_unavailable" }
 				]
 			}
 		],
@@ -57,7 +57,7 @@
 					"align":"center", "color":"#ffffff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":"Buy"
 				},
 				"actions":[
-					{ "trigger":"click", "conditional":"$money >= 0.00001", "action":"chat_people = chat_people_default_1_yes" }
+					{ "trigger":"click", "conditional":"$money >= 10", "action":"chat_people = chat_people_default_1_yes" }
 				]
 			}
 		],
@@ -122,8 +122,8 @@
 				"actions":[
 					{ "trigger":"load", "action":"background_people = background_people_default_1_1" },
 					{ "trigger":"load", "delay":"5", "action":"chat_people = " },
-					{ "trigger":"load", "action":"$money -= 0.00001" },
-					{ "trigger":"load", "action":"$stock_apple += 0.05" }
+					{ "trigger":"load", "action":"$money -= 10" },
+					{ "trigger":"load", "action":"$stock_apple += 5" }
 				]
 			},
 			{
@@ -151,7 +151,7 @@
 				"actions":[
 					{ "trigger":"load", "action":"background_people = background_people_default_1_1" },
 					{ "trigger":"load", "delay":"5", "action":"chat_people = " },
-					{ "trigger":"load", "action":"$stock_apple += 0.01" },
+					{ "trigger":"load", "action":"$stock_apple += 1" },
 					{ "trigger":"load", "action":"pet_interact = pet_default_baby_interact_apple_eat" }
 				]
 			},
@@ -186,9 +186,6 @@
 			"sprites":{
 				"chat_people":"chat_people_default",
 				"background_people":"background_people_default"
-			},
-			"variables":{
-				"money":{"value":"0.00005" }
 			}
 		}
 	}

@@ -148,8 +148,8 @@
 				"actions":[
 					{ "trigger":"load", "action":"pet_control = pet_default_baby_control_apple_eat" },
 					{ "trigger":"load", "conditional":"0.5 > $random", "action":"pet_chat = pet_default_baby_chat_apple_eat" },
-					{ "trigger":"load", "delay":"1", "action":"$food += 0.1" },
-					{ "trigger":"load", "delay":"1", "action":"$stock_apple -= 0.01" },
+					{ "trigger":"load", "delay":"1", "action":"$food += 0.05" },
+					{ "trigger":"load", "delay":"1", "action":"$stock_apple -= 1" },
 					{ "trigger":"load", "delay":"1", "action":"pet_interact = pet_default_baby_interact" }
 				]
 			}
@@ -328,11 +328,11 @@
 				"pet_background":"pet_default_baby_background"
 			},
 			"variables":{
-				"food":{ "value":"0.5", "per_second":"-0.005" },
+				"food":{ "value":"0.5", "per_second":"-0.00005" },
 				"hype":{ "value":"0.0", "per_second":"-0.015", "per_variable":{ "$food":"-0.02" } },
 				"max_food":{ "value":"$food", "per_second":"-0.00001" },
 				"max_hype":{ "value":"$hype", "per_second":"-0.00001" },
-				"health":{ "value":"1", "per_variable":{ "$food":"0.01" } },
+				"health":{ "value":"1", "per_variable":{ "$food":"0.0005", "$temperature":"0.00025" } },
 				"mental":{ "value":"$random", "per_variable":{ "$hype":"0.00005" } }
 			}
 		}
