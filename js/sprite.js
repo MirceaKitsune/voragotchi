@@ -106,18 +106,19 @@ function sprite_set(id, sprite, parent, sprite_def) {
 	}
 
 	// decide whether to update the sprite, based on whether the sprite has changed or any tracked variable has been modified
-	var update = false;
+	// 0 = no update, 1 = update visuals and actions, 2 = update visuals and actions and audio
+	var update = 0;
 	if(sprite_current[id] !== sprite) {
-		update = true;
+		update = 2;
 	} else if(sprite_distance[id] !== sprite_distance_parent[parent]) {
-		update = true;
+		update = 2;
 	} else {
 		for(var variable in sprite_variable[id]) {
 			if(scene_data.variables[variable] !== null && scene_data.variables[variable] !== undefined) {
 				var value1 = sprite_variable[id][variable];
 				var value2 = scene_data.variables[variable];
 				if(value1 !== value2) {
-					update = true;
+					update = 1;
 					break;
 				}
 			}
@@ -125,7 +126,7 @@ function sprite_set(id, sprite, parent, sprite_def) {
 	}
 
 	// if we decided to update the sprite, set the layers from the new sprite
-	if(update) {
+	if(update > 0) {
 		element.innerHTML = "";
 		sprite_current[id] = sprite;
 		sprite_distance[id] = sprite_distance_parent[parent];
@@ -231,7 +232,7 @@ function sprite_set(id, sprite, parent, sprite_def) {
 			}
 
 			// configure the audio of this layer
-			if(layer_new.audio) {
+			if(layer_new.audio && update > 1) {
 				var audio_id = (layer_new.audio.id !== undefined) ? layer_new.audio.id : "audio";
 				var audio_element = document.getElementById(audio_id);
 				if(!audio_element) {

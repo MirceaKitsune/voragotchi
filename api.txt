@@ -29,6 +29,7 @@ Worlds are dynamically modified by changing two different things: Sprites and va
 Sprites are collections of layers for the HTML elements defined by mods, defined in the data_sprites object of the json file, which can be swapped in between those elements.
 You will normally create and use your own variables, but the engine has a few special variables builtin. The following variables can be read or modified to obtain special effects:
 
+"$gameover": When set to any value, the current game ends and its save cookie its deleted. Writeonly property, do not read this!
 "$random": Returns a random number between 0 and 1. Readonly property, do not set this!
 "$date_hours": The current hour. Readonly property, do not set this!
 "$date_minutes": The current minute. Readonly property, do not set this!
@@ -62,7 +63,7 @@ Data and mods are defined in json files. Those files are specified in the mods m
 
 "data_sprites": The global data object for sprites. Sprite definitions:
 	"<sprite_name>": The name of this sprite array, by which it will be referenced. Layers definition:
-		"geometries": Contains an object of geometry strings for mods. The element of each mod will be given a random position from this list when the scene loads. Example: Defining "mods_mymod":["25% 25% 10% 10% 1"] will always give the object of mods_mymod this geometry.
+		"geometries": Object of geometry strings for mods. The element of each mod will be given a random position from this list when the scene loads. Example: Defining "mods_mymod":["25% 25% 10% 10% 1"] will always give the object of mods_mymod this geometry.
 		"layer": Object which defines the visual information of this sprite. Layer definition:
 			"geometry": Optional geometry string. If not defined, the layer will cover the entire area of the sprite.
 			"color": The fill color of this layer.
@@ -73,8 +74,8 @@ Data and mods are defined in json files. Those files are specified in the mods m
 				"color2": The color of the empty side of the bar.
 				"direction": The direction of the gradient. Can be: "left", "right", "top", "bottom".
 			"alpha": The transparency of the layer between 0 and 1.
-			"shadow": Specifies the shadow that surrounds this element. Format: x-offset, y-offset, blur, thickness, color. Example: "0px 0px 0px 3px #ffffffff".
-			"shape": How round the corners are, in pixels or a percentage.
+			"shadow": Specifies the shadow that surrounds this element. Format: x-offset, y-offset, blur, thickness, color. Example: "0px 0px 0px 3px #ffffffff". May contain a comma separated list of multiple shadow definitions.
+			"shape": How round the corners are, in pixels or a percentage. Four values can be specified for each corner if desired. Example: "10px 0px 100% 0%".
 			"cursor": The image or cursor style used by the mouse pointer, as it hovers over this layer. Always have a backup cursor specified when using images, if you want none use "auto"! Example: "crosshair" or "url(foo/bar.png), auto". Note: Only images of certain sizes are supported... 32px is most compatible, 128px is the known maximum.
 		"audio": Object which defines the audio of this sprite. The audio is always triggered when the sprite appears. Audio definition:
 			"sound": The sound file.
@@ -85,7 +86,7 @@ Data and mods are defined in json files. Those files are specified in the mods m
 		"text": Object which defines the text of this layer. Text definition:
 			"content": Text to appear inside the element. This can be an array, in which case a random text will be chosen each time. Words beginning with $ represent the variable with that name if one exists. If followed by another $ and a number, that number acts as a visual multiplier for numeric variables. Example: "$myvar" becomes "1" if myvar is 1, "$myvar$5" becomes "15" if myvar is 3. Note: This only works for variables without special characters in their name (only a-z, A-Z, 0-9, _).
 			"align": Alignment of the font inside the element. Valid values are: "left", "center", "right".
-			"shadow": Specifies the shadow that surrounds this text. Format: x-offset, y-offset, blur, color. Example: "0px 0px 1px #000000".
+			"shadow": Specifies the shadow that surrounds this text. Format: x-offset, y-offset, blur, color. Example: "0px 0px 1px #000000". May contain a comma separated list of multiple shadow definitions.
 			"size": Size of the text.
 			"weight": Thickness of the font. Example: "200", "400", "600", "800".
 			"family": Font family to be used. If a comma separated list is present, fonts are used in that order... if left empty, the default browser font is used. Example: "Times, serif".

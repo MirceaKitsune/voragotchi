@@ -259,6 +259,10 @@ function scene_interval() {
 
 	// update data
 	data_field_set("variables", scene_data.variables);
+
+	// handle gameover variable
+	if(scene_data.variables.gameover)
+		data_clear(null);
 }
 
 // scene preload, skip button
