@@ -10,15 +10,25 @@
 			},
 			{
 				"layer":{ "geometry":"32.5% 0% 5% 5% 2", "shape":"100%", "alpha":"1.0", "gradient":{ "value":"$health", "color1":"#ff0000", "color2":"#110000", "direction":"top" } },
-				"text":{ "content":"❤\n$health$100", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+				"text":{ "content":"♥\n$health$100", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+			},
+			{
+				"layer":{ "geometry":"62.5% 0% 5% 5% 2", "shape":"100%", "alpha":"1.0", "gradient":{ "value":"$mental", "color1":"#0000ff", "color2":"#000011", "direction":"top" } },
+				"text":{ "content":"☼\n$mental$100", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
 			},
 			{
 				"layer":{ "geometry":"35% 5% 30% 2.5% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$food", "color1":"#ffaa00", "color2":"#111100", "direction":"right" } },
 				"text":{ "content":"Food", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
 			},
 			{
+				"layer":{ "geometry":"35.75% 5.625% 1.25% 1.25% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$max_food", "color1":"#ffaa00", "color2":"#111100", "direction":"top" }, "shadow":"0px 0px 0px 2px #000000" }
+			},
+			{
 				"layer":{ "geometry":"35% 7.5% 30% 2.5% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$hype", "color1":"#00aaff", "color2":"#001111", "direction":"right" } },
 				"text":{ "content":"Excitement", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+			},
+			{
+				"layer":{ "geometry":"35.75% 8.125% 1.25% 1.25% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$max_hype", "color1":"#00aaff", "color2":"#001111", "direction":"top" }, "shadow":"0px 0px 0px 2px #000000" }
 			}
 		],
 		"pet_default_baby_chat":[{}],
@@ -106,6 +116,7 @@
 			{
 				"actions":[
 					{ "trigger":"load", "action":"pet_control = " },
+					{ "trigger":"interval", "conditional":"$food < $random && $max_food > $random && $mental > $random && 0.0025 > $random", "action":"pet_interact = pet_default_baby_interact_apple_eat" },
 					{ "trigger":"interval", "conditional":"actions_button_apple == actions_default_button_apple_selected", "action":"pet_interact = pet_default_baby_interact_apple" }
 				]
 			}
@@ -127,6 +138,7 @@
 					{ "trigger":"hover_start", "conditional":"$hype >= 0.25 && $hype <= 0.50 && 0.1 > $random", "action":"pet_chat = pet_default_baby_chat_apple_hype_1" },
 					{ "trigger":"hover_start", "conditional":"$hype >= 0.50 && $hype <= 0.75 && 0.1 > $random", "action":"pet_chat = pet_default_baby_chat_apple_hype_2" },
 					{ "trigger":"hover_start", "conditional":"$hype >= 0.75 && $hype <= 1.00 && 0.1 > $random", "action":"pet_chat = pet_default_baby_chat_apple_hype_3" },
+					{ "trigger":"hover_end", "conditional":"$food < $random && $max_food > $random && $mental > $random && 0.1 > $random", "action":"pet_interact = pet_default_baby_interact_apple_eat" },
 					{ "trigger":"click", "conditional":"$hype >= 0.25", "action":"pet_interact = pet_default_baby_interact_apple_eat" }
 				]
 			}
@@ -146,6 +158,8 @@
 			{
 				"actions":[
 					{ "trigger":"load", "conditional":"0.1 > $random", "action":"environment_geometries_pet = " },
+					{ "trigger":"interval", "conditional":"$food > $max_food", "action":"$max_food = $food" },
+					{ "trigger":"interval", "conditional":"$hype > $max_hype", "action":"$max_hype = $hype" },
 					{ "trigger":"interval", "conditional":"$hype >= 0.00 && $hype <= 0.25 && $food >= 0.00 && $food <= 0.25", "action":"pet_background = pet_default_baby_background" },
 					{ "trigger":"interval", "conditional":"$hype >= 0.00 && $hype <= 0.25 && $food >= 0.25 && $food <= 0.50", "action":"pet_background = pet_default_baby_background_belly_1" },
 					{ "trigger":"interval", "conditional":"$hype >= 0.00 && $hype <= 0.25 && $food >= 0.50 && $food <= 0.75", "action":"pet_background = pet_default_baby_background_belly_2" },
@@ -314,9 +328,12 @@
 				"pet_background":"pet_default_baby_background"
 			},
 			"variables":{
-				"health":{ "value":"1", "per_variable":{ "$food":"0.01" } },
 				"food":{ "value":"0.5", "per_second":"-0.005" },
-				"hype":{ "value":"0.0", "per_second":"-0.015", "per_variable":{ "$food":"-0.02" } }
+				"hype":{ "value":"0.0", "per_second":"-0.015", "per_variable":{ "$food":"-0.02" } },
+				"max_food":{ "value":"$food", "per_second":"-0.00001" },
+				"max_hype":{ "value":"$hype", "per_second":"-0.00001" },
+				"health":{ "value":"1", "per_variable":{ "$food":"0.01" } },
+				"mental":{ "value":"$random", "per_variable":{ "$hype":"0.00005" } }
 			}
 		}
 	}

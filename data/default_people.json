@@ -5,7 +5,7 @@
 				"actions":[
 					{ "trigger":"load", "action":"environment_geometries_people = " },
 					{ "trigger":"load", "action":"background_people = " },
-					{ "trigger":"interval", "conditional":"0.0025 > $random", "action":"chat_people = chat_people_default_1" }
+					{ "trigger":"interval", "conditional":"0.005 > $random && $mental < $random", "action":"chat_people = chat_people_default_1" }
 				]
 			}
 		],
@@ -19,6 +19,7 @@
 				"actions":[
 					{ "trigger":"load", "action":"background_people = background_people_default_1_1" },
 					{ "trigger":"load", "delay":"10", "action":"chat_people = " },
+					{ "trigger":"interval", "conditional":"$food < $random && $max_food > $random && $mental > $random && 0.025 > $random", "action":"chat_people = chat_people_default_1_auto" },
 					{ "trigger":"click", "conditional":"$money >= 0.00001", "action":"chat_people = chat_people_default_1_available" },
 					{ "trigger":"click", "conditional":"$money < 0.00001", "action":"chat_people = chat_people_default_1_unavailable" }
 				]
@@ -130,6 +131,35 @@
 				"text":{
 					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
 						"Here you go. Thanks!"
+					]
+				}
+			},
+			{
+				"layer":{ "geometry":"30% 30% 40% 5% 2", "shape":"10px 10px 100% 100%", "alpha":"1.0", "shadow":"0px 0px 0px 2px #222222" },
+				"text":{
+					"align":"center", "color":"#ffffff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":"Dismiss"
+				},
+				"actions":[
+					{ "trigger":"click", "action":"chat_people = " }
+				]
+			}
+		],
+		"chat_people_default_1_auto":[
+			{
+				"layer":{ "geometry":"10% 0% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
+				"audio":{ "sound":"data/default_people/1_no.wav", "volume":"0.5", "loop":"false", "id":"people" },
+				"actions":[
+					{ "trigger":"load", "action":"background_people = background_people_default_1_1" },
+					{ "trigger":"load", "delay":"5", "action":"chat_people = " },
+					{ "trigger":"load", "action":"$stock_apple += 0.01" },
+					{ "trigger":"load", "action":"pet_interact = pet_default_baby_interact_apple_eat" }
+				]
+			},
+			{
+				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
+				"text":{
+					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Hey, your pet stole my apple! I'm out of here..."
 					]
 				}
 			},

@@ -34,7 +34,7 @@
 			},
 			{
 				"layer":{ "geometry":"85% 7.25% 10% 2.5% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$temperature", "color1":"#ff4400", "color2":"#110000", "direction":"right" }, "shadow":"0px 0px 0px 2px #222222" },
-				"text":{ "content":"Temperature: $temperature$50 *C", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+				"text":{ "content":"Temperature: $temperature$50 °C", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
 			},
 			{
 				"actions":[
