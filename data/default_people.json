@@ -5,7 +5,7 @@
 				"actions":[
 					{ "trigger":"load", "action":"environment_geometries_people = " },
 					{ "trigger":"load", "action":"background_people = " },
-					{ "trigger":"interval", "conditional":"0.005 > $random && $mental < $random", "action":"chat_people = chat_people_default_1" }
+					{ "trigger":"interval", "conditional":"0.005 > $random && $wanted < $random", "action":"chat_people = chat_people_default_1" }
 				]
 			}
 		],
@@ -19,7 +19,7 @@
 				"actions":[
 					{ "trigger":"load", "action":"background_people = background_people_default_1_1" },
 					{ "trigger":"load", "delay":"10", "action":"chat_people = " },
-					{ "trigger":"interval", "conditional":"$food < $random && $max_food > $random && $mental > $random && 0.025 > $random", "action":"chat_people = chat_people_default_1_auto" },
+					{ "trigger":"interval", "conditional":"$max_food > $random && $mental > $random && 0.025 > $random", "action":"chat_people = chat_people_default_1_auto" },
 					{ "trigger":"click", "conditional":"$money >= 10", "action":"chat_people = chat_people_default_1_available" },
 					{ "trigger":"click", "conditional":"$money < 10", "action":"chat_people = chat_people_default_1_unavailable" }
 				]
@@ -151,6 +151,7 @@
 				"actions":[
 					{ "trigger":"load", "action":"background_people = background_people_default_1_1" },
 					{ "trigger":"load", "delay":"5", "action":"chat_people = " },
+					{ "trigger":"load", "action":"$wanted += 0.05" },
 					{ "trigger":"load", "action":"$stock_apple += 1" },
 					{ "trigger":"load", "action":"pet_interact = pet_default_baby_interact_apple_eat" }
 				]

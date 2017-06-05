@@ -49,6 +49,11 @@ qubodup
 CC0
 https://openclipart.org/detail/201739/moon
 
+- default_actions_star
+studio_hades
+CC0
+https://openclipart.org/detail/160033/sheriff-star
+
 - default_people
 anarres
 CC0
