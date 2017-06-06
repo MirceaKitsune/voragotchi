@@ -295,10 +295,12 @@ function scene_preload() {
 			for(var item3 in sprite) {
 				var layer = sprite[item3];
 				if(layer && layer.layer && layer.layer.image) {
-					images.push(layer.layer.image);
+					if(images.indexOf(layer.layer.image) < 0)
+						images.push(layer.layer.image);
 				}
 				if(layer && layer.audio && layer.audio.sound) {
-					sounds.push(layer.audio.sound);
+					if(sounds.indexOf(layer.audio.sound) < 0)
+						sounds.push(layer.audio.sound);
 				}
 			}
 		}

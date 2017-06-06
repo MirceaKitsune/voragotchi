@@ -13,35 +13,71 @@
 		"actions_default_info_daytime_dawn":[
 			{ "layer":{ "geometry":"80% 0% 5% 10% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/daytime_dawn.png)" } }
 		],
-		"actions_default_info_star_1_inactive":[
-			{ "layer":{ "geometry":"70% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_inactive.png)" } }
-		],
-		"actions_default_info_star_1_active":[
-			{ "layer":{ "geometry":"70% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_active.png)" } }
-		],
-		"actions_default_info_star_2_inactive":[
-			{ "layer":{ "geometry":"72% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_inactive.png)" } }
-		],
-		"actions_default_info_star_2_active":[
-			{ "layer":{ "geometry":"72% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_active.png)" } }
-		],
-		"actions_default_info_star_3_inactive":[
-			{ "layer":{ "geometry":"74% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_inactive.png)" } }
-		],
-		"actions_default_info_star_3_active":[
-			{ "layer":{ "geometry":"74% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_active.png)" } }
-		],
-		"actions_default_info_star_4_inactive":[
-			{ "layer":{ "geometry":"76% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_inactive.png)" } }
-		],
-		"actions_default_info_star_4_active":[
-			{ "layer":{ "geometry":"76% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_active.png)" } }
-		],
-		"actions_default_info_star_5_inactive":[
+		"actions_default_info_stars_0":[
+			{ "layer":{ "geometry":"70% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_inactive.png)" } },
+			{ "layer":{ "geometry":"72% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_inactive.png)" } },
+			{ "layer":{ "geometry":"74% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_inactive.png)" } },
+			{ "layer":{ "geometry":"76% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_inactive.png)" } },
 			{ "layer":{ "geometry":"78% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_inactive.png)" } }
 		],
-		"actions_default_info_star_5_active":[
+		"actions_default_info_stars_1":[
+			{ "layer":{ "geometry":"70% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_active.png)" } },
+			{ "layer":{ "geometry":"72% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_inactive.png)" } },
+			{ "layer":{ "geometry":"74% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_inactive.png)" } },
+			{ "layer":{ "geometry":"76% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_inactive.png)" } },
+			{ "layer":{ "geometry":"78% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_inactive.png)" } }
+		],
+		"actions_default_info_stars_2":[
+			{ "layer":{ "geometry":"70% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_active.png)" } },
+			{ "layer":{ "geometry":"72% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_active.png)" } },
+			{ "layer":{ "geometry":"74% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_inactive.png)" } },
+			{ "layer":{ "geometry":"76% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_inactive.png)" } },
+			{ "layer":{ "geometry":"78% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_inactive.png)" } }
+		],
+		"actions_default_info_stars_3":[
+			{ "layer":{ "geometry":"70% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_active.png)" } },
+			{ "layer":{ "geometry":"72% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_active.png)" } },
+			{ "layer":{ "geometry":"74% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_active.png)" } },
+			{ "layer":{ "geometry":"76% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_inactive.png)" } },
+			{ "layer":{ "geometry":"78% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_inactive.png)" } }
+		],
+		"actions_default_info_stars_4":[
+			{ "layer":{ "geometry":"70% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_active.png)" } },
+			{ "layer":{ "geometry":"72% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_active.png)" } },
+			{ "layer":{ "geometry":"74% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_active.png)" } },
+			{ "layer":{ "geometry":"76% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_active.png)" } },
+			{ "layer":{ "geometry":"78% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_inactive.png)" } }
+		],
+		"actions_default_info_stars_5":[
+			{ "layer":{ "geometry":"70% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_active.png)" } },
+			{ "layer":{ "geometry":"72% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_active.png)" } },
+			{ "layer":{ "geometry":"74% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_active.png)" } },
+			{ "layer":{ "geometry":"76% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_active.png)" } },
 			{ "layer":{ "geometry":"78% 3.75% 2% 3.75% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/star_active.png)" } }
+		],
+		"actions_default_info_money":[
+			{
+				"layer":{ "geometry":"70% 0% 10% 3.75% 2", "shape":"10px", "alpha":"1.0" },
+				"text":{ "content":"$ $money$1", "align":"center", "color":"#ffffff", "size":"125%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+			}
+		],
+		"actions_default_info_time":[
+			{
+				"layer":{ "geometry":"85% 0% 10% 3.75% 2", "shape":"10px", "alpha":"1.0" },
+				"text":{ "content":"$time_hour", "align":"center", "color":"#ffffff", "size":"125%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+			}
+		],
+		"actions_default_info_light":[
+			{
+				"layer":{ "geometry":"85% 4.25% 10% 2.5% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$light", "color1":"#ffaa00", "color2":"#111100", "direction":"right" }, "shadow":"0px 0px 0px 2px #222222" },
+				"text":{ "content":"Light: $light$1000 lx", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+			}
+		],
+		"actions_default_info_temperature":[
+			{
+				"layer":{ "geometry":"85% 7.25% 10% 2.5% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$temperature", "color1":"#ff4400", "color2":"#110000", "direction":"right" }, "shadow":"0px 0px 0px 2px #222222" },
+				"text":{ "content":"Temperature: $temperature$50 °C", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+			}
 		],
 		"actions_default_info":[
 			{
@@ -51,81 +87,37 @@
 				"layer":{ "geometry":"80% 0% 20% 10% 1", "shape":"0px 0px 0px 10px", "alpha":"0.5", "color":"#000000" }
 			},
 			{
-				"layer":{ "geometry":"70% 0% 10% 3.75% 2", "shape":"10px", "alpha":"1.0" },
-				"text":{ "content":"$ $money$1", "align":"center", "color":"#ffffff", "size":"125%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
-			},
-			{
-				"layer":{ "geometry":"85% 0% 10% 3.75% 2", "shape":"10px", "alpha":"1.0" },
-				"text":{ "content":"$time_hour", "align":"center", "color":"#ffffff", "size":"125%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
-			},
-			{
-				"layer":{ "geometry":"85% 4.25% 10% 2.5% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$light", "color1":"#ffaa00", "color2":"#111100", "direction":"right" }, "shadow":"0px 0px 0px 2px #222222" },
-				"text":{ "content":"Light: $light$1000 lx", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
-			},
-			{
-				"layer":{ "geometry":"85% 7.25% 10% 2.5% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$temperature", "color1":"#ff4400", "color2":"#110000", "direction":"right" }, "shadow":"0px 0px 0px 2px #222222" },
-				"text":{ "content":"Temperature: $temperature$50 °C", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
-			},
-			{
 				"actions":[
-					{ "trigger":"interval", "conditional":"$date_hours == 00", "action":"$light = 0.00" },
-					{ "trigger":"interval", "conditional":"$date_hours == 01", "action":"$light = 0.00" },
-					{ "trigger":"interval", "conditional":"$date_hours == 02", "action":"$light = 0.00" },
-					{ "trigger":"interval", "conditional":"$date_hours == 03", "action":"$light = 0.00" },
-					{ "trigger":"interval", "conditional":"$date_hours == 04", "action":"$light = 0.05" },
-					{ "trigger":"interval", "conditional":"$date_hours == 05", "action":"$light = 0.10" },
-					{ "trigger":"interval", "conditional":"$date_hours == 06", "action":"$light = 0.25" },
-					{ "trigger":"interval", "conditional":"$date_hours == 07", "action":"$light = 0.50" },
-					{ "trigger":"interval", "conditional":"$date_hours == 08", "action":"$light = 0.75" },
-					{ "trigger":"interval", "conditional":"$date_hours == 09", "action":"$light = 0.90" },
-					{ "trigger":"interval", "conditional":"$date_hours == 10", "action":"$light = 0.95" },
-					{ "trigger":"interval", "conditional":"$date_hours == 11", "action":"$light = 1.00" },
-					{ "trigger":"interval", "conditional":"$date_hours == 12", "action":"$light = 1.00" },
-					{ "trigger":"interval", "conditional":"$date_hours == 13", "action":"$light = 1.00" },
-					{ "trigger":"interval", "conditional":"$date_hours == 14", "action":"$light = 1.00" },
-					{ "trigger":"interval", "conditional":"$date_hours == 15", "action":"$light = 1.00" },
-					{ "trigger":"interval", "conditional":"$date_hours == 16", "action":"$light = 0.95" },
-					{ "trigger":"interval", "conditional":"$date_hours == 17", "action":"$light = 0.90" },
-					{ "trigger":"interval", "conditional":"$date_hours == 18", "action":"$light = 0.75" },
-					{ "trigger":"interval", "conditional":"$date_hours == 19", "action":"$light = 0.50" },
-					{ "trigger":"interval", "conditional":"$date_hours == 20", "action":"$light = 0.25" },
-					{ "trigger":"interval", "conditional":"$date_hours == 21", "action":"$light = 0.10" },
-					{ "trigger":"interval", "conditional":"$date_hours == 22", "action":"$light = 0.05" },
-					{ "trigger":"interval", "conditional":"$date_hours == 23", "action":"$light = 0.00" },
-					{ "trigger":"interval", "conditional":"$date_hours == 00", "action":"actions_info_daytime = actions_default_info_daytime_night" },
-					{ "trigger":"interval", "conditional":"$date_hours == 01", "action":"actions_info_daytime = actions_default_info_daytime_night" },
-					{ "trigger":"interval", "conditional":"$date_hours == 02", "action":"actions_info_daytime = actions_default_info_daytime_night" },
-					{ "trigger":"interval", "conditional":"$date_hours == 03", "action":"actions_info_daytime = actions_default_info_daytime_night" },
-					{ "trigger":"interval", "conditional":"$date_hours == 04", "action":"actions_info_daytime = actions_default_info_daytime_night" },
-					{ "trigger":"interval", "conditional":"$date_hours == 05", "action":"actions_info_daytime = actions_default_info_daytime_night" },
-					{ "trigger":"interval", "conditional":"$date_hours == 06", "action":"actions_info_daytime = actions_default_info_daytime_dawn" },
-					{ "trigger":"interval", "conditional":"$date_hours == 07", "action":"actions_info_daytime = actions_default_info_daytime_dawn" },
-					{ "trigger":"interval", "conditional":"$date_hours == 08", "action":"actions_info_daytime = actions_default_info_daytime_dawn" },
-					{ "trigger":"interval", "conditional":"$date_hours == 09", "action":"actions_info_daytime = actions_default_info_daytime_day" },
-					{ "trigger":"interval", "conditional":"$date_hours == 10", "action":"actions_info_daytime = actions_default_info_daytime_day" },
-					{ "trigger":"interval", "conditional":"$date_hours == 11", "action":"actions_info_daytime = actions_default_info_daytime_day" },
-					{ "trigger":"interval", "conditional":"$date_hours == 12", "action":"actions_info_daytime = actions_default_info_daytime_day" },
-					{ "trigger":"interval", "conditional":"$date_hours == 13", "action":"actions_info_daytime = actions_default_info_daytime_day" },
-					{ "trigger":"interval", "conditional":"$date_hours == 14", "action":"actions_info_daytime = actions_default_info_daytime_day" },
-					{ "trigger":"interval", "conditional":"$date_hours == 15", "action":"actions_info_daytime = actions_default_info_daytime_day" },
-					{ "trigger":"interval", "conditional":"$date_hours == 16", "action":"actions_info_daytime = actions_default_info_daytime_day" },
-					{ "trigger":"interval", "conditional":"$date_hours == 17", "action":"actions_info_daytime = actions_default_info_daytime_day" },
-					{ "trigger":"interval", "conditional":"$date_hours == 18", "action":"actions_info_daytime = actions_default_info_daytime_dusk" },
-					{ "trigger":"interval", "conditional":"$date_hours == 19", "action":"actions_info_daytime = actions_default_info_daytime_dusk" },
-					{ "trigger":"interval", "conditional":"$date_hours == 20", "action":"actions_info_daytime = actions_default_info_daytime_dusk" },
-					{ "trigger":"interval", "conditional":"$date_hours == 21", "action":"actions_info_daytime = actions_default_info_daytime_night" },
-					{ "trigger":"interval", "conditional":"$date_hours == 22", "action":"actions_info_daytime = actions_default_info_daytime_night" },
-					{ "trigger":"interval", "conditional":"$date_hours == 23", "action":"actions_info_daytime = actions_default_info_daytime_night" },
-					{ "trigger":"interval", "conditional":"$wanted <= 0.0", "action":"actions_info_star_1 = actions_default_info_star_1_inactive" },
-					{ "trigger":"interval", "conditional":"$wanted > 0.0", "action":"actions_info_star_1 = actions_default_info_star_1_active" },
-					{ "trigger":"interval", "conditional":"$wanted <= 0.2", "action":"actions_info_star_2 = actions_default_info_star_2_inactive" },
-					{ "trigger":"interval", "conditional":"$wanted > 0.2", "action":"actions_info_star_2 = actions_default_info_star_2_active" },
-					{ "trigger":"interval", "conditional":"$wanted <= 0.4", "action":"actions_info_star_3 = actions_default_info_star_3_inactive" },
-					{ "trigger":"interval", "conditional":"$wanted > 0.4", "action":"actions_info_star_3 = actions_default_info_star_3_active" },
-					{ "trigger":"interval", "conditional":"$wanted <= 0.6", "action":"actions_info_star_4 = actions_default_info_star_4_inactive" },
-					{ "trigger":"interval", "conditional":"$wanted > 0.6", "action":"actions_info_star_4 = actions_default_info_star_4_active" },
-					{ "trigger":"interval", "conditional":"$wanted <= 0.8", "action":"actions_info_star_5 = actions_default_info_star_5_inactive" },
-					{ "trigger":"interval", "conditional":"$wanted > 0.8", "action":"actions_info_star_5 = actions_default_info_star_5_active" }
+					{ "trigger":"interval", "conditional":"$date_hours == 00", "action":"$light = 0.00;actions_info_daytime = actions_default_info_daytime_night" },
+					{ "trigger":"interval", "conditional":"$date_hours == 01", "action":"$light = 0.00;actions_info_daytime = actions_default_info_daytime_night" },
+					{ "trigger":"interval", "conditional":"$date_hours == 02", "action":"$light = 0.00;actions_info_daytime = actions_default_info_daytime_night" },
+					{ "trigger":"interval", "conditional":"$date_hours == 03", "action":"$light = 0.00;actions_info_daytime = actions_default_info_daytime_night" },
+					{ "trigger":"interval", "conditional":"$date_hours == 04", "action":"$light = 0.05;actions_info_daytime = actions_default_info_daytime_night" },
+					{ "trigger":"interval", "conditional":"$date_hours == 05", "action":"$light = 0.10;actions_info_daytime = actions_default_info_daytime_night" },
+					{ "trigger":"interval", "conditional":"$date_hours == 06", "action":"$light = 0.25;actions_info_daytime = actions_default_info_daytime_dawn" },
+					{ "trigger":"interval", "conditional":"$date_hours == 07", "action":"$light = 0.50;actions_info_daytime = actions_default_info_daytime_dawn" },
+					{ "trigger":"interval", "conditional":"$date_hours == 08", "action":"$light = 0.75;actions_info_daytime = actions_default_info_daytime_dawn" },
+					{ "trigger":"interval", "conditional":"$date_hours == 09", "action":"$light = 0.90;actions_info_daytime = actions_default_info_daytime_day" },
+					{ "trigger":"interval", "conditional":"$date_hours == 10", "action":"$light = 0.95;actions_info_daytime = actions_default_info_daytime_day" },
+					{ "trigger":"interval", "conditional":"$date_hours == 11", "action":"$light = 1.00;actions_info_daytime = actions_default_info_daytime_day" },
+					{ "trigger":"interval", "conditional":"$date_hours == 12", "action":"$light = 1.00;actions_info_daytime = actions_default_info_daytime_day" },
+					{ "trigger":"interval", "conditional":"$date_hours == 13", "action":"$light = 1.00;actions_info_daytime = actions_default_info_daytime_day" },
+					{ "trigger":"interval", "conditional":"$date_hours == 14", "action":"$light = 1.00;actions_info_daytime = actions_default_info_daytime_day" },
+					{ "trigger":"interval", "conditional":"$date_hours == 15", "action":"$light = 1.00;actions_info_daytime = actions_default_info_daytime_day" },
+					{ "trigger":"interval", "conditional":"$date_hours == 16", "action":"$light = 0.95;actions_info_daytime = actions_default_info_daytime_day" },
+					{ "trigger":"interval", "conditional":"$date_hours == 17", "action":"$light = 0.90;actions_info_daytime = actions_default_info_daytime_day" },
+					{ "trigger":"interval", "conditional":"$date_hours == 18", "action":"$light = 0.75;actions_info_daytime = actions_default_info_daytime_dusk" },
+					{ "trigger":"interval", "conditional":"$date_hours == 19", "action":"$light = 0.50;actions_info_daytime = actions_default_info_daytime_dusk" },
+					{ "trigger":"interval", "conditional":"$date_hours == 20", "action":"$light = 0.25;actions_info_daytime = actions_default_info_daytime_dusk" },
+					{ "trigger":"interval", "conditional":"$date_hours == 21", "action":"$light = 0.10;actions_info_daytime = actions_default_info_daytime_night" },
+					{ "trigger":"interval", "conditional":"$date_hours == 22", "action":"$light = 0.05;actions_info_daytime = actions_default_info_daytime_night" },
+					{ "trigger":"interval", "conditional":"$date_hours == 23", "action":"$light = 0.00;actions_info_daytime = actions_default_info_daytime_night" },
+					{ "trigger":"interval", "conditional":"$wanted <= 0.0", "action":"actions_info_stars = actions_default_info_stars_0" },
+					{ "trigger":"interval", "conditional":"$wanted > 0.0 && $wanted <= 0.2", "action":"actions_info_stars = actions_default_info_stars_1" },
+					{ "trigger":"interval", "conditional":"$wanted > 0.2 && $wanted <= 0.4", "action":"actions_info_stars = actions_default_info_stars_2" },
+					{ "trigger":"interval", "conditional":"$wanted > 0.4 && $wanted <= 0.6", "action":"actions_info_stars = actions_default_info_stars_3" },
+					{ "trigger":"interval", "conditional":"$wanted > 0.6 && $wanted <= 0.8", "action":"actions_info_stars = actions_default_info_stars_4" },
+					{ "trigger":"interval", "conditional":"$wanted > 0.8", "action":"actions_info_stars = actions_default_info_stars_5" }
 				]
 			}
 		],
@@ -179,11 +171,11 @@
 			"sprites":{
 				"actions_info":"actions_default_info",
 				"actions_info_daytime":"actions_default_info_daytime",
-				"actions_info_star_1":"actions_default_info_star_1_inactive",
-				"actions_info_star_2":"actions_default_info_star_2_inactive",
-				"actions_info_star_3":"actions_default_info_star_3_inactive",
-				"actions_info_star_4":"actions_default_info_star_4_inactive",
-				"actions_info_star_5":"actions_default_info_star_5_inactive",
+				"actions_info_stars":"actions_default_info_stars_0",
+				"actions_info_money":"actions_default_info_money",
+				"actions_info_time":"actions_default_info_time",
+				"actions_info_light":"actions_default_info_light",
+				"actions_info_temperature":"actions_default_info_temperature",
 				"actions_button_apple":"actions_default_button_apple_inactive"
 			},
 			"variables":{
