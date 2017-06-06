@@ -171,7 +171,7 @@
 		"actions_default_foreground":[{}],
 		"actions_default_foreground_apple":[
 			{
-				"layer":{ "geometry":"20% 50% 60% 50% 3", "alpha":"1", "image":"url(data/default_actions/hands_single.png)" }
+				"layer":{ "geometry":"20% 50% 60% 50% 3", "alpha":"1", "image":"url(data/default_actions/hands_single.gif)" }
 			},
 			{
 				"layer":{ "geometry":"50% 60% 15% 25% 3", "alpha":"1", "image":"url(data/default_actions/food_apple.gif)" }

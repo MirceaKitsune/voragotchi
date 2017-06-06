@@ -49,7 +49,7 @@ data/default_people/4_*.wav
 	Author: wobbleboxx
 	URL: https://opengameart.org/content/level-up-power-up-coin-get-13-sounds
 
-data/default_actions/hands_*.png
+data/default_actions/hands_*.gif
 	Author: rones
 	URL: https://openclipart.org/detail/203909/hands
 
