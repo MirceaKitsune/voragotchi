@@ -1,75 +1,83 @@
-- default_environment
-bevouliin
-CC0
-http://opengameart.org/content/bevouliin-free-fence-game-background-for-game-developers
-http://opengameart.org/content/bevouliin-free-nature-game-background-for-gamedevs
+Voragotchi credits. Every asset listed here is licensed under the CC0 / Public Domain license.
 
-- default_environment_ambience_day
-isaiah658
-CC0
-https://opengameart.org/content/ambient-bird-sounds
+data/default_environment/clouds.png
+data/default_environment/ground.png
+data/default_environment/mountains.png
+data/default_environment/sun.png
+data/default_environment/tint_dawn.png
+data/default_environment/tint_day.png
+data/default_environment/tint_dusk.png
+data/default_environment/tint_night.png
+	Author: bevouliin
+	URL: http://opengameart.org/content/bevouliin-free-fence-game-background-for-game-developers
+	URL: http://opengameart.org/content/bevouliin-free-nature-game-background-for-gamedevs
 
-- default_environment_ambience_dusk
-LokiF
-CC0
-https://opengameart.org/content/swamp-environment-audio
+data/default_environment/ambience_day.ogg
+	Author: isaiah658
+	URL: https://opengameart.org/content/ambient-bird-sounds
 
-- default_environment_ambience_night
-syncopika
-CC0
-https://opengameart.org/content/cricket-sounds
+data/default_environment/ambience_dusk.ogg
+	Author: LokiF
+	URL: https://opengameart.org/content/swamp-environment-audio
 
-- default_environment_ambience_dawn
-TinyWorlds
-CC0
-https://opengameart.org/content/forest-ambience
+data/default_environment/ambience_night.ogg
+	Author: syncopika
+	URL: https://opengameart.org/content/cricket-sounds
 
-- default_pet
-pzUH
-CC0
-http://opengameart.org/content/cat-dog-free-sprites
+data/default_environment/ambience_dawn.ogg
+	Author: TinyWorlds
+	URL: https://opengameart.org/content/forest-ambience
 
-- default_pet_gurgle
-CC0
-Esther
-http://www.pdsounds.org/sounds/tummy_grumble
+data/default_pet/cat_*.gif
+data/default_pet/dog_*.gif
+	Author: pzUH
+	URL: http://opengameart.org/content/cat-dog-free-sprites
 
-- default_actions_sound
-Independent.nu
-CC0
-https://opengameart.org/content/16-button-clicks
+data/default_pet/gurgle_*.ogg
+	Author: Esther
+	URL: http://www.pdsounds.org/sounds/tummy_grumble
 
-- default_actions_daytime_sun
-oldifluff
-CC0
-https://openclipart.org/detail/268740/smiling-sun-character-radiating
+data/default_people/people_*.png
+	Author: anarres
+	URL: https://openclipart.org/detail/184601/mix-and-match-comic-characters
 
-- default_actions_daytime_moon
-qubodup
-CC0
-https://openclipart.org/detail/201739/moon
+data/default_people/new.wav
+data/default_people/1_*.wav
+data/default_people/2_*.wav
+data/default_people/3_*.wav
+data/default_people/4_*.wav
+	Author: wobbleboxx
+	URL: https://opengameart.org/content/level-up-power-up-coin-get-13-sounds
 
-- default_actions_star
-studio_hades
-CC0
-https://openclipart.org/detail/160033/sheriff-star
+data/default_actions/hands_*.png
+	Author: rones
+	URL: https://openclipart.org/detail/203909/hands
 
-- default_people
-anarres
-CC0
-https://openclipart.org/detail/184601/mix-and-match-comic-characters
+data/default_actions/daytime_day.png
+data/default_actions/daytime_dusk.png
+data/default_actions/daytime_dawn.png
+	Author: oldifluff
+	URL: https://openclipart.org/detail/268740/smiling-sun-character-radiating
 
-- default_people_sound
-wobbleboxx
-CC0
-https://opengameart.org/content/level-up-power-up-coin-get-13-sounds
+data/default_actions/daytime_night.png
+	Author: qubodup
+	URL: https://openclipart.org/detail/201739/moon
 
-- cursor_hand
-3Dline
-CC0
-https://openclipart.org/detail/103567/pointer
+data/default_actions/star_*.png
+	Author: studio_hades
+	URL: https://openclipart.org/detail/160033/sheriff-star
 
-- cursor_apple
-yamachem
-CC0
-https://openclipart.org/detail/215910/apple-02
+data/default_actions/click_*.wav
+data/default_actions/hover_*.wav
+	Author: Independent.nu
+	URL: https://opengameart.org/content/16-button-clicks
+
+data/default_actions/cursor_hand_*.gif
+	Author: 3Dline
+	URL: https://openclipart.org/detail/103567/pointer
+
+data/default_actions/cursor_food_apple.gif
+data/default_actions/food_apple_*.gif
+data/default_actions/food_apple_*.png
+	Author: yamachem
+	URL: https://openclipart.org/detail/215910/apple-02

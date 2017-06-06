@@ -133,7 +133,7 @@
 		],
 		"pet_default_baby_interact_apple":[
 			{
-				"layer":{ "geometry":"45% 55% 15% 15% 2", "shape":"100%", "alpha":"0", "color":"#ffffff", "cursor":"url(data/default_pet/cursor_food_apple.gif), auto" },
+				"layer":{ "geometry":"45% 55% 15% 15% 2", "shape":"100%", "alpha":"0", "color":"#ffffff", "cursor":"url(data/default_actions/cursor_food_apple.gif), auto" },
 				"actions":[
 					{ "trigger":"interval", "conditional":"actions_button_apple != actions_default_button_apple_selected", "action":"pet_interact = pet_default_baby_interact" },
 					{ "trigger":"interval", "conditional":"$hype <= $max_food", "action":"$hype += 0.0025" },
@@ -295,7 +295,7 @@
 				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_eat.gif)" }
 			},
 			{
-				"layer":{ "geometry":"35% 80% 15% 15% 1", "alpha":"1", "image":"url(data/default_pet/food_apple.gif)" }
+				"layer":{ "geometry":"35% 80% 15% 15% 1", "alpha":"1", "image":"url(data/default_actions/food_apple.gif)" }
 			}
 		],
 		"pet_default_baby_background_apple_eat_belly_1":[
@@ -303,7 +303,7 @@
 				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_eat_belly_1.gif)" }
 			},
 			{
-				"layer":{ "geometry":"35% 80% 15% 15% 1", "alpha":"1", "image":"url(data/default_pet/food_apple.gif)" }
+				"layer":{ "geometry":"35% 80% 15% 15% 1", "alpha":"1", "image":"url(data/default_actions/food_apple.gif)" }
 			}
 		],
 		"pet_default_baby_background_apple_eat_belly_2":[
@@ -311,7 +311,7 @@
 				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_eat_belly_2.gif)" }
 			},
 			{
-				"layer":{ "geometry":"35% 80% 15% 15% 1", "alpha":"1", "image":"url(data/default_pet/food_apple.gif)" }
+				"layer":{ "geometry":"35% 80% 15% 15% 1", "alpha":"1", "image":"url(data/default_actions/food_apple.gif)" }
 			}
 		],
 		"pet_default_baby_background_apple_eat_belly_3":[
@@ -319,7 +319,7 @@
 				"layer":{ "geometry":"10% 20% 80% 80% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_eat_belly_3.gif)" }
 			},
 			{
-				"layer":{ "geometry":"35% 80% 15% 15% 1", "alpha":"1", "image":"url(data/default_pet/food_apple.gif)" }
+				"layer":{ "geometry":"35% 80% 15% 15% 1", "alpha":"1", "image":"url(data/default_actions/food_apple.gif)" }
 			}
 		]
 	},
