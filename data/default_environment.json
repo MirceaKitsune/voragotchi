@@ -7,7 +7,7 @@
 			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"1.00", "image":"url(data/default_environment/clouds.png)" } },
 			{ "layer":{ "geometry":"0% 0% 100% 100% 0", "alpha":"1.00", "image":"url(data/default_environment/mountains.png)" } },
 			{ "layer":{ "geometry":"0% 0% 100% 100% 2", "alpha":"1.00", "image":"url(data/default_environment/ground.png)" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% 3", "alpha":"0.25", "image":"url(data/default_environment/tint_day.png)" } }
+			{ "layer":{ "geometry":"0% 0% 100% 100% 4", "alpha":"0.25", "image":"url(data/default_environment/tint_day.png)" } }
 		],
 		"environment_default_background_dusk":[
 			{ "audio":{ "sound":"data/default_environment/ambience_dusk.ogg", "volume":"0.1", "loop":"true", "id":"ambience" } },
@@ -15,7 +15,7 @@
 			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"0.75", "image":"url(data/default_environment/clouds.png)" } },
 			{ "layer":{ "geometry":"0% 0% 100% 100% 0", "alpha":"1.00", "image":"url(data/default_environment/mountains.png)" } },
 			{ "layer":{ "geometry":"0% 0% 100% 100% 2", "alpha":"1.00", "image":"url(data/default_environment/ground.png)" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% 3", "alpha":"0.25", "image":"url(data/default_environment/tint_dusk.png)" } }
+			{ "layer":{ "geometry":"0% 0% 100% 100% 4", "alpha":"0.25", "image":"url(data/default_environment/tint_dusk.png)" } }
 		],
 		"environment_default_background_night":[
 			{ "audio":{ "sound":"data/default_environment/ambience_night.ogg", "volume":"0.1", "loop":"true", "id":"ambience" } },
@@ -23,7 +23,7 @@
 			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"0.25", "image":"url(data/default_environment/clouds.png)" } },
 			{ "layer":{ "geometry":"0% 0% 100% 100% 0", "alpha":"1.00", "image":"url(data/default_environment/mountains.png)" } },
 			{ "layer":{ "geometry":"0% 0% 100% 100% 2", "alpha":"1.00", "image":"url(data/default_environment/ground.png)" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% 3", "alpha":"0.50", "image":"url(data/default_environment/tint_night.png)" } }
+			{ "layer":{ "geometry":"0% 0% 100% 100% 4", "alpha":"0.50", "image":"url(data/default_environment/tint_night.png)" } }
 		],
 		"environment_default_background_dawn":[
 			{ "audio":{ "sound":"data/default_environment/ambience_dawn.ogg", "volume":"0.1", "loop":"true", "id":"ambience" } },
@@ -31,8 +31,8 @@
 			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"0.50", "image":"url(data/default_environment/clouds.png)" } },
 			{ "layer":{ "geometry":"0% 0% 100% 100% 0", "alpha":"1.00", "image":"url(data/default_environment/mountains.png)" } },
 			{ "layer":{ "geometry":"0% 0% 100% 100% 2", "alpha":"1.00", "image":"url(data/default_environment/ground.png)" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% 3", "alpha":"0.50", "image":"url(data/default_environment/tint_dawn.png)" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% 3", "alpha":"0.75", "image":"url(data/default_environment/sun.png)" } }
+			{ "layer":{ "geometry":"0% 0% 100% 100% 4", "alpha":"0.50", "image":"url(data/default_environment/tint_dawn.png)" } },
+			{ "layer":{ "geometry":"0% 0% 100% 100% 4", "alpha":"0.75", "image":"url(data/default_environment/sun.png)" } }
 		],
 		"environment_default_control":[
 			{
