@@ -39,7 +39,8 @@ function mods_menu_button_start() {
 		time_start: date_time,
 		time_last: date_time,
 		game_name: elements["menu_form_player"].value || "Player",
-		game_speed: elements["menu_form_difficulty"].value || "1"
+		game_altname: elements["menu_form_other"].value || "Unnamed",
+		game_speed: elements["menu_form_speed"].value || "1"
 	};
 
 	// create new data with the selected files and mods
@@ -177,20 +178,33 @@ function mods_menu_add() {
 			element_form_player.appendChild(element_form_player_input);
 		}
 
-		// menu HTML: form, difficulty
-		var element_form_difficulty = document.createElement("p");
-		element_form_difficulty.innerHTML = "Difficulty: ";
-		element_form.appendChild(element_form_difficulty);
+		// menu HTML: form, other
+		var element_form_other = document.createElement("p");
+		element_form_other.innerHTML = "Other name: ";
+		element_form.appendChild(element_form_other);
 		{
-			// menu HTML: form, difficulty, input
-			var element_form_difficulty_input = document.createElement("input");
-			element_form_difficulty_input.setAttribute("id", "menu_form_difficulty");
-			element_form_difficulty_input.setAttribute("type", "number");
-			element_form_difficulty_input.setAttribute("value", "1");
-			element_form_difficulty_input.setAttribute("step", "0.1");
-			element_form_difficulty_input.setAttribute("min", "0.1");
-			element_form_difficulty_input.setAttribute("max", "10");
-			element_form_difficulty.appendChild(element_form_difficulty_input);
+			// menu HTML: form, other, input
+			var element_form_other_input = document.createElement("input");
+			element_form_other_input.setAttribute("id", "menu_form_other");
+			element_form_other_input.setAttribute("type", "text");
+			element_form_other_input.setAttribute("value", "Unnamed");
+			element_form_other.appendChild(element_form_other_input);
+		}
+
+		// menu HTML: form, speed
+		var element_form_speed = document.createElement("p");
+		element_form_speed.innerHTML = "Speed: ";
+		element_form.appendChild(element_form_speed);
+		{
+			// menu HTML: form, speed, input
+			var element_form_speed_input = document.createElement("input");
+			element_form_speed_input.setAttribute("id", "menu_form_speed");
+			element_form_speed_input.setAttribute("type", "number");
+			element_form_speed_input.setAttribute("value", "1");
+			element_form_speed_input.setAttribute("step", "0.1");
+			element_form_speed_input.setAttribute("min", "0.1");
+			element_form_speed_input.setAttribute("max", "10");
+			element_form_speed.appendChild(element_form_speed_input);
 		}
 	}
 

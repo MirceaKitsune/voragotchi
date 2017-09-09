@@ -39,6 +39,7 @@ You will normally create and use your own variables, but the engine has a few sp
 "$time_start": The time when the world was created. Readonly property, do not set this!
 "$time_last": The time when the world was last opened. Readonly property, do not set this!
 "$game_name": Game setting, safe to set. Specifies the name of the player. Note that this is not the same as the name of the world!
+"$game_altname": Game setting, safe to set. Specifies a special name, games can optionally use this.
 "$game_speed": Game setting, safe to set. This is the speed offset, represents overall difficulty.
 "$info_browser_name": Returns the name of the browser. Readonly property, do not set this!
 "$info_browser_codename": Returns the code name of the browser. Readonly property, do not set this!
