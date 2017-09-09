@@ -165,7 +165,7 @@
 					{ "trigger":"load", "conditional":"0.1 > $random", "action":"environment_geometries_pet = " },
 					{ "trigger":"interval", "conditional":"$food > $max_food", "action":"$max_food = $food" },
 					{ "trigger":"interval", "conditional":"$hype > $max_hype", "action":"$max_hype = $hype" },
-					{ "trigger":"interval", "conditional":"chat_people == chat_people_default_1 && $max_food > $random && $mental > $random && 0.025 > $random", "action":"chat_people = chat_people_default_1_auto" },
+					{ "trigger":"interval", "conditional":"chat_people == chat_people_default_11 && $max_food > $random && $mental > $random && 0.025 > $random", "action":"chat_people = chat_people_default_11_auto" },
 					{ "trigger":"interval", "conditional":"$hype >= 0.00 && $hype <= 0.25 && $food >= 0.00 && $food <= 0.25", "action":"pet_background = pet_default_baby_background" },
 					{ "trigger":"interval", "conditional":"$hype >= 0.00 && $hype <= 0.25 && $food >= 0.25 && $food <= 0.50", "action":"pet_background = pet_default_baby_background_belly_1" },
 					{ "trigger":"interval", "conditional":"$hype >= 0.00 && $hype <= 0.25 && $food >= 0.50 && $food <= 0.75", "action":"pet_background = pet_default_baby_background_belly_2" },

@@ -37,9 +37,12 @@ data/default_pet/gurgle_*.ogg
 	Author: Esther
 	URL: http://www.pdsounds.org/sounds/tummy_grumble
 
-data/default_people/people_*.png
+data/default_people/*.gif
+data/default_people/expression_*.gif
 	Author: anarres
 	URL: https://openclipart.org/detail/184601/mix-and-match-comic-characters
+	URL: https://openclipart.org/detail/190359/character-with-cornrows
+	URL: https://openclipart.org/detail/185051/miserable-mix-and-math-comic-character
 
 data/default_people/new.wav
 data/default_people/1_*.wav
