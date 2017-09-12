@@ -3,7 +3,7 @@
 		"pet_default_baby_info_name":[
 			{
 				"layer":{ "geometry":"37.5% 0% 25% 5% 2", "shape":"10px", "alpha":"1.0" },
-				"text":{ "content":"$game_altname", "align":"center", "color":"#ffffff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+				"text":{ "content":"$name", "align":"center", "color":"#ffffff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
 			}
 		],
 		"pet_default_baby_info_health":[
@@ -339,6 +339,7 @@
 				"pet_background":"pet_default_baby_background"
 			},
 			"variables":{
+				"name":{ "value":"Unnamed", "label":"Pet name"},
 				"food":{ "value":"0.5", "per_second":"-0.00005" },
 				"hype":{ "value":"0.0", "per_second":"-0.015", "per_variable":{ "$food":"-0.02" } },
 				"max_food":{ "value":"$food", "per_second":"-0.00001" },

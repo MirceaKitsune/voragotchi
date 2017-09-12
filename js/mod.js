@@ -25,23 +25,29 @@ function mods_menu_button_start() {
 	var date_time = date.getTime();
 	var elements = document.forms["menu_form"].elements;
 
-	// store the indexes of the mods we've selected
+	// prepare mods and variables
 	var data_mods = {};
+	var data_variables = {
+		time_start: date_time,
+		time_last: date_time,
+		game_name: elements["menu_form_player"].value || "Anonymous",
+		game_speed: elements["menu_form_speed"].value || "1"
+	};
+
+	// read mods and variables from the menu
+	// note: mods must come before variables, as the variable check requires knowing which mods were set
 	for(var i = 0; i < elements.length; i++) {
+		// store the indexes of the mods we've selected
 		if(elements[i].name.substring(0, 5) === "mods_" && elements[i].checked) {
 			var name = elements[i].name;
 			data_mods[name] = elements[i].value;
 		}
-	}
 
-	// store the starting variables
-	var data_variables = {
-		time_start: date_time,
-		time_last: date_time,
-		game_name: elements["menu_form_player"].value || "Player",
-		game_altname: elements["menu_form_other"].value || "Unnamed",
-		game_speed: elements["menu_form_speed"].value || "1"
-	};
+		// store the values of the settings variables for the mods we've selected
+		// the class attribute always represents the name of a mod if set, so just check if its value exists anywhere in the mods list
+		if(Object.values(data_mods).indexOf(elements[i].class) >= 0)
+			data_variables[elements[i].name] = elements[i].value;
+	}
 
 	// create new data with the selected files and mods
 	// note: we rely on the function below refreshing the page to load the scene
@@ -57,7 +63,7 @@ function mods_menu_button_start() {
 // update the page title
 function mods_menu_title() {
 	var elements = document.forms["menu_form"].elements;
-	var name = elements["menu_form_player"].value || "Player";
+	var name = elements["menu_form_player"].value || "Anonymous";
 	document.title = name + "'s world (new)";
 }
 
@@ -77,12 +83,22 @@ function mods_menu_add() {
 	// load available mods from files
 	mods_menu_data_mods = {};
 	var files = mods_menu_data_files.split("\n");
+	var settings = {};
 	for(var i = 0; i < files.length; i++) {
 		var file = get_json(files[i]);
 		for(var item in file) {
 			for(var mod in file[item]) {
 				mods_menu_data_mods[item] = mods_menu_data_mods[item] || [];
 				mods_menu_data_mods[item].push(mod);
+
+				// persist variables that represent settings
+				var variables = file[item][mod].variables;
+				for(var variable in variables) {
+					if(typeof variables[variable].label === "string") {
+						settings[mod] = settings[mod] || {};
+						settings[mod][variable] = variables[variable];
+					}
+				}
 			}
 		}
 	}
@@ -112,7 +128,7 @@ function mods_menu_add() {
 	{
 		// menu HTML: form, name
 		var element_form_name = document.createElement("p");
-		element_form_name.innerHTML = "data_name: ";
+		element_form_name.innerHTML = "<b>data_name:</b> ";
 		element_form.appendChild(element_form_name);
 		{
 			// menu HTML: form, name, input
@@ -128,12 +144,12 @@ function mods_menu_add() {
 			if(item.substring(0, 5) === "data_") {
 				// menu HTML: form, item (data)
 				var element_form_item = document.createElement("p");
-				element_form_item.innerHTML = item + ": [" + mods_menu_data_mods[item].length + "]";
+				element_form_item.innerHTML = "<b>" + item + ":</b> [" + mods_menu_data_mods[item].length + "]";
 				element_form.appendChild(element_form_item);
 			} else if(item.substring(0, 5) === "mods_") {
 				// menu HTML: form, item (mods)
 				var element_form_item = document.createElement("p");
-				element_form_item.innerHTML = item + ":";
+				element_form_item.innerHTML = "<b>" + item + ":</b>";
 				element_form.appendChild(element_form_item);
 				for(var i = 0; i < mods_menu_data_mods[item].length; i++) {
 					var name = mods_menu_data_mods[item][i];
@@ -166,34 +182,21 @@ function mods_menu_add() {
 
 		// menu HTML: form, player
 		var element_form_player = document.createElement("p");
-		element_form_player.innerHTML = "Player name: ";
+		element_form_player.innerHTML = "<b>default:</b> Player: ";
 		element_form.appendChild(element_form_player);
 		{
 			// menu HTML: form, player, input
 			var element_form_player_input = document.createElement("input");
 			element_form_player_input.setAttribute("id", "menu_form_player");
 			element_form_player_input.setAttribute("type", "text");
-			element_form_player_input.setAttribute("value", "Player");
+			element_form_player_input.setAttribute("value", "Anonymous");
 			element_form_player_input.setAttribute("onkeyup", "mods_menu_title()");
 			element_form_player.appendChild(element_form_player_input);
 		}
 
-		// menu HTML: form, other
-		var element_form_other = document.createElement("p");
-		element_form_other.innerHTML = "Other name: ";
-		element_form.appendChild(element_form_other);
-		{
-			// menu HTML: form, other, input
-			var element_form_other_input = document.createElement("input");
-			element_form_other_input.setAttribute("id", "menu_form_other");
-			element_form_other_input.setAttribute("type", "text");
-			element_form_other_input.setAttribute("value", "Unnamed");
-			element_form_other.appendChild(element_form_other_input);
-		}
-
 		// menu HTML: form, speed
 		var element_form_speed = document.createElement("p");
-		element_form_speed.innerHTML = "Speed: ";
+		element_form_speed.innerHTML = "<b>default:</b> Speed: ";
 		element_form.appendChild(element_form_speed);
 		{
 			// menu HTML: form, speed, input
@@ -205,6 +208,39 @@ function mods_menu_add() {
 			element_form_speed_input.setAttribute("min", "0.1");
 			element_form_speed_input.setAttribute("max", "10");
 			element_form_speed.appendChild(element_form_speed_input);
+		}
+
+		for(var settings_mod in settings) {
+			for(var settings_variable in settings[settings_mod]) {
+				var variable = settings[settings_mod][settings_variable];
+
+				// menu HTML: form, variables
+				var element_form_variables = document.createElement("p");
+				element_form_variables.innerHTML = "<b>" + settings_mod + ":</b> " + variable.label + ": ";
+				element_form.appendChild(element_form_variables);
+				{
+					// menu HTML: form, variables, input
+					var element_form_variables_input = document.createElement("input");
+					element_form_variables_input.setAttribute("id", "menu_form_" + settings_variable);
+					element_form_variables_input.setAttribute("name", settings_variable);
+					element_form_variables_input.setAttribute("class", settings_mod);
+					element_form_variables_input.class = settings_mod;
+					if(typeof variable.value === "number" || !isNaN(variable.value)) {
+						var value_min = (variable.value_min && variable.value_max) ? variable.value_min : 0;
+						var value_max = (variable.value_min && variable.value_max) ? variable.value_max : 1;
+						var value_step = (value_max - value_min) / 20;
+						element_form_variables_input.setAttribute("type", "number");
+						element_form_variables_input.setAttribute("value", variable.value);
+						element_form_variables_input.setAttribute("step", value_step);
+						element_form_variables_input.setAttribute("min", value_min);
+						element_form_variables_input.setAttribute("max", value_max);
+					} else {
+						element_form_variables_input.setAttribute("type", "text");
+						element_form_variables_input.setAttribute("value", variable.value);
+					}
+					element_form_variables.appendChild(element_form_variables_input);
+				}
+			}
 		}
 	}
 

@@ -39,7 +39,6 @@ You will normally create and use your own variables, but the engine has a few sp
 "$time_start": The time when the world was created. Readonly property, do not set this!
 "$time_last": The time when the world was last opened. Readonly property, do not set this!
 "$game_name": Game setting, safe to set. Specifies the name of the player. Note that this is not the same as the name of the world!
-"$game_altname": Game setting, safe to set. Specifies a special name, games can optionally use this.
 "$game_speed": Game setting, safe to set. This is the speed offset, represents overall difficulty.
 "$info_browser_name": Returns the name of the browser. Readonly property, do not set this!
 "$info_browser_codename": Returns the code name of the browser. Readonly property, do not set this!
@@ -101,8 +100,9 @@ Data and mods are defined in json files. Those files are specified in the mods m
 	"<mod_name>": The name of this mod, by which it will be referenced. Mod definition:
 		"sprite": Object which defines the sprites (defined in data_sprites) this mod uses. The name may be anything you wish to set, while the string must be the name of a sprite from data_sprites.
 		"variables": Object containing a list of variables with rules. Variable definition:
-			"value": The initial value this variable will have when created. Can be either a number or the name of another variable, however the later will only work for variables defined above this one!
-			"value_min": The maximum value this variable may reach. You'll usually want this to be 0 (default).
-			"value_max": The minimum value this variable may reach. You'll usually want this to be 1 (default).
-			"per_second": The variable increases or decreases by this amount every second.
-			"per_variable": The variables listed here increase or decrease this variable by the given amount, as follows: -this if the other variable is 0%, no effect if it's 50%, +this if it's 100%. Only use this for variables defined above it! Example: ""per_variable":{ "$myvar1":"0.01", "$myvar2":"-0.01" }".
+			"value": The initial value this variable will have when created. Can be either a number / string or the name of another variable, however the later will only work for variables defined above this one!
+			"value_min": The maximum value this variable may reach. You'll usually want this to be 0 (default). Only applies to numeric variables.
+			"value_max": The minimum value this variable may reach. You'll usually want this to be 1 (default). Only applies to numeric variables.
+			"per_second": The variable increases or decreases by this amount every second. Only applies to numeric variables.
+			"per_variable": The variables listed here increase or decrease this variable by the given amount, as follows: -this if the other variable is 0%, no effect if it's 50%, +this if it's 100%. Only use this for variables defined above it! Example: ""per_variable":{ "$myvar1":"0.01", "$myvar2":"-0.01" }". Only applies to numeric variables.
+			"label": If this is set, the variable will appear in the settings panel of the menu prior to starting your world, and its name will show up as this value. Use this if your variable is intended as a custom setting.

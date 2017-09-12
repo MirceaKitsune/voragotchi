@@ -189,6 +189,10 @@ function scene_action(id, update, delayed) {
 // ran by the scene_interval function, calculates changes in variables based on the given rule set
 function scene_interval_variables(rules, seconds) {
 	for(var rule in rules) {
+		// skip if this variable already exists and is a string
+		if(typeof scene_data.variables[rule] === "string")
+			continue;
+
 		var offset = 0;
 
 		// if there's a per second rule, add it to the offset
