@@ -331,25 +331,24 @@ function scene_preload() {
 		// preloader HTML: label
 		var element_label = document.createElement("label");
 		element_label.setAttribute("id", "preload_label");
-		element_label.setAttribute("style", "position: absolute; top: 0%; left: 0%; width: 100%; height: 25%");
-		element_label.innerText = "Checking and preloading assets...";
+		element_label.setAttribute("style", "position: absolute; top: 0%; left: 0%; width: 100%; height: 50%");
+		element_label.innerHTML = "Checking and preloading assets...";
 		element.appendChild(element_label);
 
 		// preloader HTML: button (skip)
 		var element_button_skip = document.createElement("button");
 		element_button_skip.setAttribute("id", "preload_button_skip");
-		element_button_skip.setAttribute("style", "position: absolute; top: 25%; left: 45%; width: 10%; height: 25%");
+		element_button_skip.setAttribute("style", "position: absolute; top: 50%; left: 45%; width: 10%; height: 50%");
 		element_button_skip.setAttribute("onclick", "scene_preload_button_skip()");
-		element_button_skip.innerText = "Skip";
+		element_button_skip.innerHTML = "Skip";
 		element.appendChild(element_button_skip);
 
 		// preloader HTML: sprites
-		var size = Math.min((1 / images.length) * 100, 2.5); // in %
 		for(var i = 0; i < images.length; i++) {
 			var name = images[i].split(/[()]+/)[1]; // image name in between "url(" and ")"
 			var element_sprite = document.createElement("img");
 			element_sprite.setAttribute("src", name);
-			element_sprite.setAttribute("style", "position: absolute; top: 50%; left: " + (size * i) + "%; width: " + size + "%; height: 50%");
+			element_sprite.setAttribute("style", "position: absolute; top: 0%; left: 0%; width: 0%; height: 0%; display: none");
 			element_sprite.setAttribute("onload", "++scene_preload_assets");
 			element.appendChild(element_sprite);
 		}
@@ -367,7 +366,9 @@ function scene_preload() {
 	// update asset count on the label element
 	var element_label = document.getElementById("preload_label");
 	if(element_label)
-		element_label.innerText = "Checking and preloading assets: " + scene_preload_assets + " / " + assets_total + " (" + images.length + " images, " + sounds.length + " sounds)";
+		element_label.innerHTML =
+			"Checking and preloading assets: <b>" + scene_preload_assets + "</b> of <b>" + assets_total + "</b> (<b>" + images.length + "</b> images + <b>" + sounds.length + "</b> sounds)<br>" +
+			"If you're stuck at this screen, your internet connection isn't working or the world contains an invalid URL. You may press 'skip' to continue, but expect missing images or sounds!";
 
 	return true;
 }
