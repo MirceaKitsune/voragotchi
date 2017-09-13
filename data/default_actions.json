@@ -1,6 +1,6 @@
 {
 	"data_sprites":{
-		"actions_default_info_daytime":[{}],
+		"none":[{}],
 		"actions_default_info_daytime_day":[
 			{ "layer":{ "geometry":"80% 0% 5% 10% 2", "shape":"100%", "alpha":"1", "image":"url(data/default_actions/daytime_day.png)" } }
 		],
@@ -125,7 +125,7 @@
 			{
 				"layer":{ "geometry":"1% 2% 3% 6% 2", "shape":"100%", "alpha":"1", "color":"#880000", "image":"url(data/default_actions/food_apple_selected.png)", "cursor":"url(data/default_actions/cursor_hand_on.gif), auto" },
 				"text":{ "content":"Apple", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" },
-				"audio":{ "sound":"data/default_actions/click_1.wav", "volume":"0.5", "loop":"false", "id":"actions" },
+				"audio":{ "sound":"data/default_actions/click_1.wav", "volume":"1.0", "loop":"false", "id":"actions" },
 				"actions":[
 					{ "trigger":"load", "action":"actions_foreground = actions_default_foreground_apple" },
 					{ "trigger":"interval", "conditional":"$stock_apple < 1", "action":"actions_button_apple = actions_default_button_apple_inactive" },
@@ -141,7 +141,7 @@
 			{
 				"layer":{ "geometry":"1% 2% 3% 6% 2", "shape":"100%", "alpha":"1", "color":"#880000", "image":"url(data/default_actions/food_apple_hover.png)", "cursor":"url(data/default_actions/cursor_hand_off.gif), auto" },
 				"text":{ "content":"Apple", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" },
-				"audio":{ "sound":"data/default_actions/hover_1.wav", "volume":"0.5", "loop":"false", "id":"actions" },
+				"audio":{ "sound":"data/default_actions/hover_1.wav", "volume":"1.0", "loop":"false", "id":"actions" },
 				"actions":[
 					{ "trigger":"load", "action":"actions_foreground = " },
 					{ "trigger":"click", "conditional":"$stock_apple >= 1", "action":"actions_button_apple = actions_default_button_apple_selected" },
@@ -182,7 +182,7 @@
 		"default_actions":{
 			"sprites":{
 				"actions_info":"actions_default_info",
-				"actions_info_daytime":"actions_default_info_daytime",
+				"actions_info_daytime":"none",
 				"actions_info_stars":"actions_default_info_stars_0",
 				"actions_info_money":"actions_default_info_money",
 				"actions_info_time":"actions_default_info_time",
