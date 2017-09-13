@@ -138,8 +138,21 @@ function sprite_set(id, sprite, parent, sprite_def) {
 				delete sprite_action[entry];
 		}
 
+		// store the layers inherited by each layer in this sprite, followed by the parent layer
+		var sprite_new = [];
+		for(var layer1 in sprite_def[sprite]) {
+			var layer_this = sprite_def[sprite][layer1];
+			for(var inherit in layer_this.inherit) {
+				var inherited = layer_this.inherit[inherit];
+				for(var layer2 in sprite_def[inherited]) {
+					layer_inherit = sprite_def[inherited][layer2];
+					sprite_new.push(layer_inherit);
+				}
+			}
+			sprite_new.push(layer_this);
+		}
+
 		// begin looping through the layers of the new sprite
-		var sprite_new = sprite_def[sprite];
 		for(var layer in sprite_new) {
 			var style = "";
 			var style_pointer = false;

@@ -63,6 +63,7 @@ Data and mods are defined in json files. Those files are specified in the mods m
 
 "data_sprites": The global data object for sprites. Sprite definitions:
 	"<sprite_name>": The name of this sprite array, by which it will be referenced. Layers definition:
+		"inherit": Array containing the names of sprites to inherit. If set, the layers of each sprite listed here will precede this layer. Does not recurse, only goes as deep as one sprite. Example: "inherit":[ "foo", "bar" ] will cause all the layers of sprites "foo" and "bar" to be included before this layer.
 		"geometries": Object of geometry strings for mods. The element of each mod will be given a random position from this list when the scene loads. Example: Defining "mods_mymod":["25% 25% 10% 10% 1"] will always give the object of mods_mymod this geometry.
 		"layer": Object which defines the visual information of this sprite. Layer definition:
 			"geometry": Optional geometry string. If not defined, the layer will cover the entire area of the sprite.
