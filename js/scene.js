@@ -235,13 +235,6 @@ function scene_interval() {
 	if(last_seconds > 0)
 		scene_data.variables.time_last = date_time;
 
-	// execute the interval functions of sprites
-	for(var entry in sprite_action) {
-		var action = sprite_action[entry];
-		if(action.trigger === "interval")
-			scene_action(entry, false, false);
-	}
-
 	// mod specific updates
 	for(var item in scene_data) {
 		if(item.substring(0, 5) !== "mods_")
@@ -259,6 +252,13 @@ function scene_interval() {
 				name = scene_data.sprites[sprite];
 			sprite_set(sprite, name, item, scene_data.data_sprites);
 		}
+	}
+
+	// execute the interval functions of sprites
+	for(var entry in sprite_action) {
+		var action = sprite_action[entry];
+		if(action.trigger === "interval")
+			scene_action(entry, false, false);
 	}
 
 	// update data
