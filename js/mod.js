@@ -45,8 +45,12 @@ function mods_menu_button_start() {
 
 		// store the values of the settings variables for the mods we've selected
 		// the class attribute always represents the name of a mod if set, so just check if its value exists anywhere in the mods list
-		if(Object.values(data_mods).indexOf(elements[i].class) >= 0)
-			data_variables[elements[i].name] = elements[i].value;
+		if(Object.values(data_mods).indexOf(elements[i].class) >= 0) {
+			if(typeof elements[i].value === "number" || !isNaN(elements[i].value))
+				data_variables[elements[i].name] = Number(elements[i].value);
+			else
+				data_variables[elements[i].name] = elements[i].value;
+		}
 	}
 
 	// create new data with the selected files and mods
