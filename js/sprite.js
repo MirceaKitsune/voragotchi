@@ -114,13 +114,14 @@ function sprite_set(id, sprite, parent, sprite_def) {
 		update = 2;
 	} else {
 		for(var variable in sprite_variable[id]) {
-			if(scene_data.variables[variable] !== null && scene_data.variables[variable] !== undefined) {
-				var value1 = sprite_variable[id][variable];
-				var value2 = scene_data.variables[variable];
-				if(value1 !== value2) {
-					update = 1;
-					break;
-				}
+			var value1 = sprite_variable[id][variable];
+			var value2 = scene_data.variables[variable];
+			if(value1 === "*") {
+				update = 1;
+				break;
+			} else if(value1 !== value2 && value2 !== null && value2 !== undefined) {
+				update = 1;
+				break;
 			}
 		}
 	}
@@ -239,8 +240,10 @@ function sprite_set(id, sprite, parent, sprite_def) {
 				layer_element.innerText = text_new.text;
 				for(var variable in text_new.variables) {
 					var name = text_new.variables[variable];
-					if(scene_data.variables[name] !== null && scene_data.variables[name] !== undefined)
-						sprite_variable[id][name] = scene_data.variables[name]; // track this variable
+					if(name.substring(0, 5) === "date_" || name.substring(0, 5) === "time_") {
+						sprite_variable[id][name] = "*"; // always update 
+					} else if(scene_data.variables[name] !== null && scene_data.variables[name] !== undefined)
+						sprite_variable[id][name] = scene_data.variables[name]; // update if changed
 				}
 			}
 
