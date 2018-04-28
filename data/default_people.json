@@ -6,7 +6,172 @@
 				"actions":[
 					{ "trigger":"load", "action":"environment_geometries_people = " },
 					{ "trigger":"load", "action":"background_people = " },
-					{ "trigger":"interval", "conditional":"0.0025 > $random && $wanted < $random", "action":"chat_people = chat_people_default_11" }
+					{ "trigger":"interval", "conditional":"0.0030 > $random && $wanted < $random", "action":"chat_people = chat_people_default_12" },
+					{ "trigger":"interval", "conditional":"0.0020 > $random && $wanted < $random", "action":"chat_people = chat_people_default_11" }
+				]
+			}
+		],
+		"chat_people_default_12":[
+			{
+				"layer":{ "geometry":"45% 40% 10% 5% 2", "shape":"10px", "alpha":"1.0", "color":"#000000" },
+				"audio":{ "sound":"data/default_people/new.wav", "volume":"0.5", "loop":"false", "id":"people" },
+				"text":{
+					"align":"center", "color":"#ffffff", "size":"100%", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":"..."
+				},
+				"actions":[
+					{ "trigger":"load", "action":"background_people = background_people_default_12_normal_left" },
+					{ "trigger":"load", "delay":"10", "action":"chat_people = " },
+					{ "trigger":"click", "conditional":"$money >= 10", "action":"chat_people = chat_people_default_12_available" },
+					{ "trigger":"click", "conditional":"$money < 10", "action":"chat_people = chat_people_default_12_unavailable" }
+				]
+			}
+		],
+		"chat_people_default_12_available":[
+			{
+				"layer":{ "geometry":"10% 0% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
+				"audio":{ "sound":"data/default_people/1.wav", "volume":"0.5", "loop":"false", "id":"people" },
+				"actions":[
+					{ "trigger":"load", "action":"background_people = background_people_default_12_smiling_left" },
+					{ "trigger":"load", "delay":"20", "action":"chat_people = " }
+				]
+			},
+			{
+				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
+				"text":{
+					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Greetings, $game_name from $info_browser_codename! Would you like to buy some milk? Only 10$ for 5!"
+					]
+				}
+			},
+			{
+				"layer":{ "geometry":"25% 30% 25% 5% 2", "shape":"10px 0px 0px 100%", "alpha":"1.0", "shadow":"0px 0px 0px 2px #222222" },
+				"text":{
+					"align":"center", "color":"#ffffff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":"Don't buy"
+				},
+				"actions":[
+					{ "trigger":"click", "action":"chat_people = chat_people_default_12_no" }
+				]
+			},
+			{
+				"layer":{ "geometry":"50% 30% 25% 5% 2", "shape":"0px 10px 100% 0px", "alpha":"1.0", "shadow":"0px 0px 0px 2px #222222" },
+				"text":{
+					"align":"center", "color":"#ffffff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":"Buy"
+				},
+				"actions":[
+					{ "trigger":"click", "conditional":"$money >= 10", "action":"chat_people = chat_people_default_12_yes" }
+				]
+			}
+		],
+		"chat_people_default_12_unavailable":[
+			{
+				"layer":{ "geometry":"10% 0% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
+				"audio":{ "sound":"data/default_people/1_no.wav", "volume":"0.5", "loop":"false", "id":"people" },
+				"actions":[
+					{ "trigger":"load", "action":"background_people = background_people_default_12_smiling_left" },
+					{ "trigger":"load", "delay":"5", "action":"chat_people = " }
+				]
+			},
+			{
+				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
+				"text":{
+					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Greetings, $game_name. I was going to sell you 5 milk for 10$, but it doesn't seem like you have the money. Maybe later?"
+					]
+				}
+			},
+			{
+				"layer":{ "geometry":"30% 30% 40% 5% 2", "shape":"10px 10px 100% 100%", "alpha":"1.0", "shadow":"0px 0px 0px 2px #222222" },
+				"text":{
+					"align":"center", "color":"#ffffff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":"Dismiss"
+				},
+				"actions":[
+					{ "trigger":"click", "action":"chat_people = " }
+				]
+			}
+		],
+		"chat_people_default_12_no":[
+			{
+				"layer":{ "geometry":"10% 0% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
+				"audio":{ "sound":"data/default_people/1_no.wav", "volume":"0.5", "loop":"false", "id":"people" },
+				"actions":[
+					{ "trigger":"load", "action":"background_people = background_people_default_12_sad_left" },
+					{ "trigger":"load", "delay":"5", "action":"chat_people = " }
+				]
+			},
+			{
+				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
+				"text":{
+					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Okay... maybe later!"
+					]
+				}
+			},
+			{
+				"layer":{ "geometry":"30% 30% 40% 5% 2", "shape":"10px 10px 100% 100%", "alpha":"1.0", "shadow":"0px 0px 0px 2px #222222" },
+				"text":{
+					"align":"center", "color":"#ffffff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":"Dismiss"
+				},
+				"actions":[
+					{ "trigger":"click", "action":"chat_people = " }
+				]
+			}
+		],
+		"chat_people_default_12_yes":[
+			{
+				"layer":{ "geometry":"10% 0% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
+				"audio":{ "sound":"data/default_people/1_yes.wav", "volume":"0.5", "loop":"false", "id":"people" },
+				"actions":[
+					{ "trigger":"load", "action":"background_people = background_people_default_12_happy_left" },
+					{ "trigger":"load", "delay":"5", "action":"chat_people = " },
+					{ "trigger":"load", "action":"$money -= 10" },
+					{ "trigger":"load", "action":"$stock_milk += 5" }
+				]
+			},
+			{
+				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
+				"text":{
+					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Here you go. Thanks!"
+					]
+				}
+			},
+			{
+				"layer":{ "geometry":"30% 30% 40% 5% 2", "shape":"10px 10px 100% 100%", "alpha":"1.0", "shadow":"0px 0px 0px 2px #222222" },
+				"text":{
+					"align":"center", "color":"#ffffff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":"Dismiss"
+				},
+				"actions":[
+					{ "trigger":"click", "action":"chat_people = " }
+				]
+			}
+		],
+		"chat_people_default_12_pet":[
+			{
+				"layer":{ "geometry":"10% 0% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
+				"audio":{ "sound":"data/default_people/1_no.wav", "volume":"0.5", "loop":"false", "id":"people" },
+				"actions":[
+					{ "trigger":"load", "action":"background_people = background_people_default_12_angry_left" },
+					{ "trigger":"load", "action":"environment_geometries_pet = " },
+					{ "trigger":"load", "delay":"5", "action":"chat_people = " },
+					{ "trigger":"load", "action":"$wanted += 0.05" },
+					{ "trigger":"load", "action":"$stock_milk += 1" }
+				]
+			},
+			{
+				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
+				"text":{
+					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Hey, your pet stole my milk! I'm out of here..."
+					]
+				}
+			},
+			{
+				"layer":{ "geometry":"30% 30% 40% 5% 2", "shape":"10px 10px 100% 100%", "alpha":"1.0", "shadow":"0px 0px 0px 2px #222222" },
+				"text":{
+					"align":"center", "color":"#ffffff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":"Dismiss"
+				},
+				"actions":[
+					{ "trigger":"click", "action":"chat_people = " }
 				]
 			}
 		],
@@ -175,6 +340,26 @@
 			}
 		],
 		"background_people_default":[{}],
+		"background_people_default_12_normal_left":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_left.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_normal_left.gif)" } }
+		],
+		"background_people_default_12_smiling_left":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_left.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_smiling_left.gif)" } }
+		],
+		"background_people_default_12_happy_left":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_left.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_happy_left.gif)" } }
+		],
+		"background_people_default_12_sad_left":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_left.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_sad_left.gif)" } }
+		],
+		"background_people_default_12_angry_left":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_left.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_angry_left.gif)" } }
+		],
 		"background_people_default_11_normal_left":[
 			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/11_left.gif)" } },
 			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_normal_left.gif)" } }
