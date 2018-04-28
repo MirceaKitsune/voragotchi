@@ -87,6 +87,12 @@ data/default_actions/cursor_hand_*.gif
 	Author: 3Dline
 	URL: https://openclipart.org/detail/103567/pointer
 
+data/default_actions/cursor_food_milk.gif
+data/default_actions/food_milk_*.gif
+data/default_actions/food_milk_*.png
+	Author: GDJ
+	URL: https://openclipart.org/detail/227104/girls-baby-bottle
+
 data/default_actions/cursor_food_apple.gif
 data/default_actions/food_apple_*.gif
 data/default_actions/food_apple_*.png

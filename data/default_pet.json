@@ -110,6 +110,91 @@
 				"layer":{ "geometry":"32.5% 0% 35% 10% 1", "shape":"10px", "alpha":"0.5", "color":"#000000" }
 			}
 		],
+		"pet_default_chat_baby_milk_hype_0":[
+			{
+				"audio":{ "sound":"data/default_pet/cat_1.ogg", "volume":"1.0", "loop":"false", "id":"chat" },
+				"layer":{ "geometry":"10% 10% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
+				"actions":[
+					{ "trigger":"load", "delay":"10", "action":"pet_chat = " }
+				]
+			},
+			{
+				"layer":{ "geometry":"15% 20% 70% 20% 1", "alpha":"1" },
+				"text":{
+					"align":"center", "color":"#ffbbbb", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Hover 0"
+					]
+				}
+			}
+		],
+		"pet_default_chat_baby_milk_hype_1":[
+			{
+				"audio":{ "sound":"data/default_pet/cat_1.ogg", "volume":"1.0", "loop":"false", "id":"chat" },
+				"layer":{ "geometry":"10% 10% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
+				"actions":[
+					{ "trigger":"load", "delay":"10", "action":"pet_chat = " }
+				]
+			},
+			{
+				"layer":{ "geometry":"15% 20% 70% 20% 1", "alpha":"1" },
+				"text":{
+					"align":"center", "color":"#ffbbbb", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Hover 1"
+					]
+				}
+			}
+		],
+		"pet_default_chat_baby_milk_hype_2":[
+			{
+				"audio":{ "sound":"data/default_pet/cat_1.ogg", "volume":"1.0", "loop":"false", "id":"chat" },
+				"layer":{ "geometry":"10% 10% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
+				"actions":[
+					{ "trigger":"load", "delay":"10", "action":"pet_chat = " }
+				]
+			},
+			{
+				"layer":{ "geometry":"15% 20% 70% 20% 1", "alpha":"1" },
+				"text":{
+					"align":"center", "color":"#ffbbbb", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Hover 2"
+					]
+				}
+			}
+		],
+		"pet_default_chat_baby_milk_hype_3":[
+			{
+				"audio":{ "sound":"data/default_pet/cat_1.ogg", "volume":"1.0", "loop":"false", "id":"chat" },
+				"layer":{ "geometry":"10% 10% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
+				"actions":[
+					{ "trigger":"load", "delay":"10", "action":"pet_chat = " }
+				]
+			},
+			{
+				"layer":{ "geometry":"15% 20% 70% 20% 1", "alpha":"1" },
+				"text":{
+					"align":"center", "color":"#ffbbbb", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Hover 3"
+					]
+				}
+			}
+		],
+		"pet_default_chat_baby_milk_eat":[
+			{
+				"audio":{ "sound":"data/default_pet/cat_2.ogg", "volume":"1.0", "loop":"false", "id":"chat" },
+				"layer":{ "geometry":"10% 10% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
+				"actions":[
+					{ "trigger":"load", "delay":"10", "action":"pet_chat = " }
+				]
+			},
+			{
+				"layer":{ "geometry":"15% 20% 70% 20% 1", "alpha":"1" },
+				"text":{
+					"align":"center", "color":"#ffbbbb", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Eating"
+					]
+				}
+			}
+		],
 		"pet_default_chat_baby_apple_hype_0":[
 			{
 				"audio":{ "sound":"data/default_pet/cat_1.ogg", "volume":"1.0", "loop":"false", "id":"chat" },
@@ -193,6 +278,51 @@
 						"Eating"
 					]
 				}
+			}
+		],
+		"pet_default_interact_baby_milk":[
+			{
+				"layer":{ "geometry":"46.25% 81.25% 10% 10% 2", "shape":"100%", "alpha":"0", "color":"#ffffff", "cursor":"url(data/default_actions/cursor_food_milk.gif), auto" },
+				"actions":[
+					{ "trigger":"interval", "conditional":"$hype <= $max_food_dead", "action":"$hype += 0.0025" },
+					{ "trigger":"hover_start", "conditional":"$hype <= $max_food_dead", "action":"$hype += 0.005" },
+					{ "trigger":"hover_start", "conditional":"$hype >= 0.00 && $hype <= 0.25 && 0.1 > $random", "action":"pet_chat = pet_default_chat_baby_milk_hype_0" },
+					{ "trigger":"hover_start", "conditional":"$hype >= 0.25 && $hype <= 0.50 && 0.1 > $random", "action":"pet_chat = pet_default_chat_baby_milk_hype_1" },
+					{ "trigger":"hover_start", "conditional":"$hype >= 0.50 && $hype <= 0.75 && 0.1 > $random", "action":"pet_chat = pet_default_chat_baby_milk_hype_2" },
+					{ "trigger":"hover_start", "conditional":"$hype >= 0.75 && $hype <= 1.00 && 0.1 > $random", "action":"pet_chat = pet_default_chat_baby_milk_hype_3" },
+					{ "trigger":"hover_end", "conditional":"$stock_milk >= 1 && $hype > $random && $mental > $random && 0.05 > $random", "action":"pet_control = pet_default_control_baby_milk_eat" },
+					{ "trigger":"click", "action":"pet_control = pet_default_control_baby_milk_eat" }
+				]
+			}
+		],
+		"pet_default_interact_teen_milk":[
+			{
+				"layer":{ "geometry":"43.75% 65% 15% 15% 2", "shape":"100%", "alpha":"0", "color":"#ffffff", "cursor":"url(data/default_actions/cursor_food_milk.gif), auto" },
+				"actions":[
+					{ "trigger":"interval", "conditional":"$hype <= $max_food_dead", "action":"$hype += 0.0025" },
+					{ "trigger":"hover_start", "conditional":"$hype <= $max_food_dead", "action":"$hype += 0.005" },
+					{ "trigger":"hover_start", "conditional":"$hype >= 0.00 && $hype <= 0.25 && 0.1 > $random", "action":"pet_chat = pet_default_chat_teen_chat_milk_hype_0" },
+					{ "trigger":"hover_start", "conditional":"$hype >= 0.25 && $hype <= 0.50 && 0.1 > $random", "action":"pet_chat = pet_default_chat_teen_chat_milk_hype_1" },
+					{ "trigger":"hover_start", "conditional":"$hype >= 0.50 && $hype <= 0.75 && 0.1 > $random", "action":"pet_chat = pet_default_chat_teen_chat_milk_hype_2" },
+					{ "trigger":"hover_start", "conditional":"$hype >= 0.75 && $hype <= 1.00 && 0.1 > $random", "action":"pet_chat = pet_default_chat_teen_chat_milk_hype_3" },
+					{ "trigger":"hover_end", "conditional":"$stock_milk >= 1 && $hype > $random && $mental > $random && 0.05 > $random", "action":"pet_control = pet_default_control_teen_milk_eat" },
+					{ "trigger":"click", "action":"pet_control = pet_default_control_teen_milk_eat" }
+				]
+			}
+		],
+		"pet_default_interact_adult_milk":[
+			{
+				"layer":{ "geometry":"42.5% 50% 20% 20% 2", "shape":"100%", "alpha":"0", "color":"#ffffff", "cursor":"url(data/default_actions/cursor_food_milk.gif), auto" },
+				"actions":[
+					{ "trigger":"interval", "conditional":"$hype <= $max_food_dead", "action":"$hype += 0.0025" },
+					{ "trigger":"hover_start", "conditional":"$hype <= $max_food_dead", "action":"$hype += 0.005" },
+					{ "trigger":"hover_start", "conditional":"$hype >= 0.00 && $hype <= 0.25 && 0.1 > $random", "action":"pet_chat = pet_default_chat_adult_chat_milk_hype_0" },
+					{ "trigger":"hover_start", "conditional":"$hype >= 0.25 && $hype <= 0.50 && 0.1 > $random", "action":"pet_chat = pet_default_chat_adult_chat_milk_hype_1" },
+					{ "trigger":"hover_start", "conditional":"$hype >= 0.50 && $hype <= 0.75 && 0.1 > $random", "action":"pet_chat = pet_default_chat_adult_chat_milk_hype_2" },
+					{ "trigger":"hover_start", "conditional":"$hype >= 0.75 && $hype <= 1.00 && 0.1 > $random", "action":"pet_chat = pet_default_chat_adult_chat_milk_hype_3" },
+					{ "trigger":"hover_end", "conditional":"$stock_milk >= 1 && $hype > $random && $mental > $random && 0.05 > $random", "action":"pet_control = pet_default_control_adult_milk_eat" },
+					{ "trigger":"click", "action":"pet_control = pet_default_control_adult_milk_eat" }
+				]
 			}
 		],
 		"pet_default_interact_baby_apple":[
@@ -336,6 +466,38 @@
 				"layer":{ "geometry":"30% 70% 40% 30% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_3_belly_3.gif)" }
 			}
 		],
+		"pet_default_background_baby_milk_eat":[
+			{
+				"layer":{ "geometry":"30% 70% 40% 30% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_eat.gif)" }
+			},
+			{
+				"layer":{ "geometry":"40% 90% 15% 15% 1", "alpha":"1", "image":"url(data/default_actions/food_milk.gif)" }
+			}
+		],
+		"pet_default_background_baby_milk_eat_belly_1":[
+			{
+				"layer":{ "geometry":"30% 70% 40% 30% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_eat_belly_1.gif)" }
+			},
+			{
+				"layer":{ "geometry":"40% 90% 15% 15% 1", "alpha":"1", "image":"url(data/default_actions/food_milk.gif)" }
+			}
+		],
+		"pet_default_background_baby_milk_eat_belly_2":[
+			{
+				"layer":{ "geometry":"30% 70% 40% 30% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_eat_belly_2.gif)" }
+			},
+			{
+				"layer":{ "geometry":"40% 90% 15% 15% 1", "alpha":"1", "image":"url(data/default_actions/food_milk.gif)" }
+			}
+		],
+		"pet_default_background_baby_milk_eat_belly_3":[
+			{
+				"layer":{ "geometry":"30% 70% 40% 30% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_eat_belly_3.gif)" }
+			},
+			{
+				"layer":{ "geometry":"40% 90% 15% 15% 1", "alpha":"1", "image":"url(data/default_actions/food_milk.gif)" }
+			}
+		],
 		"pet_default_background_baby_apple_eat":[
 			{
 				"layer":{ "geometry":"30% 70% 40% 30% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_eat.gif)" }
@@ -462,6 +624,38 @@
 			{
 				"audio":{ "sound":"data/default_pet/gurgle_3.ogg", "volume":"0.025", "distance":"1", "loop":"true", "id":"belly" },
 				"layer":{ "geometry":"20% 40% 60% 60% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_3_belly_3.gif)" }
+			}
+		],
+		"pet_default_background_teen_milk_eat":[
+			{
+				"layer":{ "geometry":"20% 40% 60% 60% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_eat.gif)" }
+			},
+			{
+				"layer":{ "geometry":"40% 85% 15% 15% 1", "alpha":"1", "image":"url(data/default_actions/food_milk.gif)" }
+			}
+		],
+		"pet_default_background_teen_milk_eat_belly_1":[
+			{
+				"layer":{ "geometry":"20% 40% 60% 60% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_eat_belly_1.gif)" }
+			},
+			{
+				"layer":{ "geometry":"40% 85% 15% 15% 1", "alpha":"1", "image":"url(data/default_actions/food_milk.gif)" }
+			}
+		],
+		"pet_default_background_teen_milk_eat_belly_2":[
+			{
+				"layer":{ "geometry":"20% 40% 60% 60% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_eat_belly_2.gif)" }
+			},
+			{
+				"layer":{ "geometry":"40% 85% 15% 15% 1", "alpha":"1", "image":"url(data/default_actions/food_milk.gif)" }
+			}
+		],
+		"pet_default_background_teen_milk_eat_belly_3":[
+			{
+				"layer":{ "geometry":"20% 40% 60% 60% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_eat_belly_3.gif)" }
+			},
+			{
+				"layer":{ "geometry":"40% 85% 15% 15% 1", "alpha":"1", "image":"url(data/default_actions/food_milk.gif)" }
 			}
 		],
 		"pet_default_background_teen_apple_eat":[
@@ -592,6 +786,38 @@
 				"layer":{ "geometry":"10% 10% 80% 90% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_3_belly_3.gif)" }
 			}
 		],
+		"pet_default_background_adult_milk_eat":[
+			{
+				"layer":{ "geometry":"10% 10% 80% 90% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_eat.gif)" }
+			},
+			{
+				"layer":{ "geometry":"40% 75% 15% 15% 1", "alpha":"1", "image":"url(data/default_actions/food_milk.gif)" }
+			}
+		],
+		"pet_default_background_adult_milk_eat_belly_1":[
+			{
+				"layer":{ "geometry":"10% 10% 80% 90% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_eat_belly_1.gif)" }
+			},
+			{
+				"layer":{ "geometry":"40% 75% 15% 15% 1", "alpha":"1", "image":"url(data/default_actions/food_milk.gif)" }
+			}
+		],
+		"pet_default_background_adult_milk_eat_belly_2":[
+			{
+				"layer":{ "geometry":"10% 10% 80% 90% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_eat_belly_2.gif)" }
+			},
+			{
+				"layer":{ "geometry":"40% 75% 15% 15% 1", "alpha":"1", "image":"url(data/default_actions/food_milk.gif)" }
+			}
+		],
+		"pet_default_background_adult_milk_eat_belly_3":[
+			{
+				"layer":{ "geometry":"10% 10% 80% 90% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_eat_belly_3.gif)" }
+			},
+			{
+				"layer":{ "geometry":"40% 75% 15% 15% 1", "alpha":"1", "image":"url(data/default_actions/food_milk.gif)" }
+			}
+		],
 		"pet_default_background_adult_apple_eat":[
 			{
 				"layer":{ "geometry":"10% 10% 80% 90% 0", "alpha":"1.0", "image":"url(data/default_pet/cat_eat.gif)" }
@@ -668,6 +894,7 @@
 					{ "trigger":"interval", "conditional":"$age >= 1.0 || $health <= 0.0", "action":"pet_control = pet_default_control" },
 					{ "trigger":"interval", "conditional":"", "action":"pet_interact = " },
 					{ "trigger":"interval", "conditional":"actions_button_apple == actions_default_button_apple_selected", "action":"pet_interact = pet_default_interact_baby_apple" },
+					{ "trigger":"interval", "conditional":"actions_button_milk == actions_default_button_milk_selected", "action":"pet_interact = pet_default_interact_baby_milk" },
 					{ "trigger":"interval", "conditional":"$hype >= 0.00 && $hype <= 0.25", "action":"pet_background = pet_default_background_baby" },
 					{ "trigger":"interval", "conditional":"$hype >= 0.00 && $hype <= 0.25 && $food_dead >= 0.5", "action":"pet_background = pet_default_background_baby_belly_1" },
 					{ "trigger":"interval", "conditional":"$hype >= 0.00 && $hype <= 0.25 && $food_animal >= 0.5", "action":"pet_background = pet_default_background_baby_belly_2" },
@@ -686,8 +913,25 @@
 					{ "trigger":"interval", "conditional":"$hype >= 0.75 && $hype <= 1.00 && $food_human >= 0.5", "action":"pet_background = pet_default_background_baby_3_belly_3" },
 					{ "trigger":"interval", "conditional":"$food_dead > $max_food_dead", "action":"$max_food_dead = $food_dead" },
 					{ "trigger":"interval", "conditional":"$hype > $max_hype", "action":"$max_hype = $hype" },
+					{ "trigger":"interval", "conditional":"$stock_milk >= 1 && $max_food_dead > $random && $mental > $random && 0.0010 > $random", "action":"pet_control = pet_default_control_baby_milk_eat" },
 					{ "trigger":"interval", "conditional":"$stock_apple >= 1 && $max_food_dead > $random && $mental > $random && 0.0025 > $random", "action":"pet_control = pet_default_control_baby_apple_eat" },
 					{ "trigger":"interval", "conditional":"chat_people == chat_people_default_11 && $max_food_dead > $random && $mental > $random && 0.025 > $random", "action":"chat_people = chat_people_default_11_pet" }
+				]
+			}
+		],
+		"pet_default_control_baby_milk_eat":[
+			{
+				"actions":[
+					{ "trigger":"load", "action":"actions_button_milk = " },
+					{ "trigger":"load", "action":"pet_interact = " },
+					{ "trigger":"load", "conditional":"0.5 > $random", "action":"pet_chat = pet_default_chat_baby_milk_eat" },
+					{ "trigger":"load", "delay":"2.0", "action":"$food_dead += 0.025" },
+					{ "trigger":"load", "delay":"2.0", "action":"$stock_milk -= 1" },
+					{ "trigger":"load", "delay":"2.0", "action":"pet_control = pet_default_control_baby" },
+					{ "trigger":"interval", "conditional":"", "action":"pet_background = pet_default_background_baby_milk_eat" },
+					{ "trigger":"interval", "conditional":"$food_dead >= 0.5", "action":"pet_background = pet_default_background_baby_milk_eat_belly_1" },
+					{ "trigger":"interval", "conditional":"$food_animal >= 0.5", "action":"pet_background = pet_default_background_baby_milk_eat_belly_2" },
+					{ "trigger":"interval", "conditional":"$food_human >= 0.5", "action":"pet_background = pet_default_background_baby_milk_eat_belly_3" }
 				]
 			}
 		],
@@ -727,6 +971,7 @@
 					{ "trigger":"interval", "conditional":"$age >= 1.0 || $health <= 0.0", "action":"pet_control = pet_default_control" },
 					{ "trigger":"interval", "conditional":"", "action":"pet_interact = " },
 					{ "trigger":"interval", "conditional":"actions_button_apple == actions_default_button_apple_selected", "action":"pet_interact = pet_default_interact_teen_apple" },
+					{ "trigger":"interval", "conditional":"actions_button_milk == actions_default_button_milk_selected", "action":"pet_interact = pet_default_interact_teen_milk" },
 					{ "trigger":"interval", "conditional":"$hype >= 0.00 && $hype <= 0.25", "action":"pet_background = pet_default_background_teen" },
 					{ "trigger":"interval", "conditional":"$hype >= 0.00 && $hype <= 0.25 && $food_dead >= 0.5", "action":"pet_background = pet_default_background_teen_belly_1" },
 					{ "trigger":"interval", "conditional":"$hype >= 0.00 && $hype <= 0.25 && $food_animal >= 0.5", "action":"pet_background = pet_default_background_teen_belly_2" },
@@ -745,8 +990,25 @@
 					{ "trigger":"interval", "conditional":"$hype >= 0.75 && $hype <= 1.00 && $food_human >= 0.5", "action":"pet_background = pet_default_background_teen_3_belly_3" },
 					{ "trigger":"interval", "conditional":"$food_dead > $max_food_dead", "action":"$max_food_dead = $food_dead" },
 					{ "trigger":"interval", "conditional":"$hype > $max_hype", "action":"$max_hype = $hype" },
+					{ "trigger":"interval", "conditional":"$stock_milk >= 1 && $max_food_dead > $random && $mental > $random && 0.0025 > $random", "action":"pet_control = pet_default_control_teen_milk_eat" },
 					{ "trigger":"interval", "conditional":"$stock_apple >= 1 && $max_food_dead > $random && $mental > $random && 0.0050 > $random", "action":"pet_control = pet_default_control_teen_apple_eat" },
 					{ "trigger":"interval", "conditional":"chat_people == chat_people_default_11 && $max_food_dead > $random && $mental > $random && 0.025 > $random", "action":"chat_people = chat_people_default_11_pet" }
+				]
+			}
+		],
+		"pet_default_control_teen_milk_eat":[
+			{
+				"actions":[
+					{ "trigger":"load", "action":"actions_button_milk = " },
+					{ "trigger":"load", "action":"pet_interact = " },
+					{ "trigger":"load", "conditional":"0.5 > $random", "action":"pet_chat = pet_default_chat_teen_milk_eat" },
+					{ "trigger":"load", "delay":"1.5", "action":"$food_dead += 0.025" },
+					{ "trigger":"load", "delay":"1.5", "action":"$stock_milk -= 1" },
+					{ "trigger":"load", "delay":"1.5", "action":"pet_control = pet_default_control_teen" },
+					{ "trigger":"interval", "conditional":"", "action":"pet_background = pet_default_background_teen_milk_eat" },
+					{ "trigger":"interval", "conditional":"$food_dead >= 0.5", "action":"pet_background = pet_default_background_teen_milk_eat_belly_1" },
+					{ "trigger":"interval", "conditional":"$food_animal >= 0.5", "action":"pet_background = pet_default_background_teen_milk_eat_belly_2" },
+					{ "trigger":"interval", "conditional":"$food_human >= 0.5", "action":"pet_background = pet_default_background_teen_milk_eat_belly_3" }
 				]
 			}
 		],
@@ -786,6 +1048,7 @@
 					{ "trigger":"interval", "conditional":"$age >= 1.0 || $health <= 0.0", "action":"pet_control = pet_default_control" },
 					{ "trigger":"interval", "conditional":"", "action":"pet_interact = " },
 					{ "trigger":"interval", "conditional":"actions_button_apple == actions_default_button_apple_selected", "action":"pet_interact = pet_default_interact_adult_apple" },
+					{ "trigger":"interval", "conditional":"actions_button_milk == actions_default_button_milk_selected", "action":"pet_interact = pet_default_interact_adult_milk" },
 					{ "trigger":"interval", "conditional":"$hype >= 0.00 && $hype <= 0.25", "action":"pet_background = pet_default_background_adult" },
 					{ "trigger":"interval", "conditional":"$hype >= 0.00 && $hype <= 0.25 && $food_dead >= 0.5", "action":"pet_background = pet_default_background_adult_belly_1" },
 					{ "trigger":"interval", "conditional":"$hype >= 0.00 && $hype <= 0.25 && $food_animal >= 0.5", "action":"pet_background = pet_default_background_adult_belly_2" },
@@ -804,8 +1067,25 @@
 					{ "trigger":"interval", "conditional":"$hype >= 0.75 && $hype <= 1.00 && $food_human >= 0.5", "action":"pet_background = pet_default_background_adult_3_belly_3" },
 					{ "trigger":"interval", "conditional":"$food_dead > $max_food_dead", "action":"$max_food_dead = $food_dead" },
 					{ "trigger":"interval", "conditional":"$hype > $max_hype", "action":"$max_hype = $hype" },
+					{ "trigger":"interval", "conditional":"$stock_milk >= 1 && $max_food_dead > $random && $mental > $random && 0.0050 > $random", "action":"pet_control = pet_default_control_adult_milk_eat" },
 					{ "trigger":"interval", "conditional":"$stock_apple >= 1 && $max_food_dead > $random && $mental > $random && 0.0075 > $random", "action":"pet_control = pet_default_control_adult_apple_eat" },
 					{ "trigger":"interval", "conditional":"chat_people == chat_people_default_11 && $max_food_dead > $random && $mental > $random && 0.025 > $random", "action":"chat_people = chat_people_default_11_pet" }
+				]
+			}
+		],
+		"pet_default_control_adult_milk_eat":[
+			{
+				"actions":[
+					{ "trigger":"load", "action":"actions_button_milk = " },
+					{ "trigger":"load", "action":"pet_interact = " },
+					{ "trigger":"load", "conditional":"0.5 > $random", "action":"pet_chat = pet_default_chat_adult_milk_eat" },
+					{ "trigger":"load", "delay":"1.0", "action":"$food_dead += 0.025" },
+					{ "trigger":"load", "delay":"1.0", "action":"$stock_milk -= 1" },
+					{ "trigger":"load", "delay":"1.0", "action":"pet_control = pet_default_control_adult" },
+					{ "trigger":"interval", "conditional":"", "action":"pet_background = pet_default_background_adult_milk_eat" },
+					{ "trigger":"interval", "conditional":"$food_dead >= 0.5", "action":"pet_background = pet_default_background_adult_milk_eat_belly_1" },
+					{ "trigger":"interval", "conditional":"$food_animal >= 0.5", "action":"pet_background = pet_default_background_adult_milk_eat_belly_2" },
+					{ "trigger":"interval", "conditional":"$food_human >= 0.5", "action":"pet_background = pet_default_background_adult_milk_eat_belly_3" }
 				]
 			}
 		],
