@@ -10,31 +10,36 @@
 		"pet_default_info_health":[
 			{
 				"layer":{ "geometry":"32.5% 0% 5% 5% 2", "shape":"100%", "alpha":"1.0", "gradient":{ "value":"$health", "color1":"#ff0000", "color2":"#110000", "direction":"top" } },
-				"text":{ "content":"♥\n$health$100", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+				"text":{ "content":"♥\n$health$100", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" },
+				"tooltip":"The physical health of your pet is $health$100%"
 			}
 		],
 		"pet_default_info_mental":[
 			{
 				"layer":{ "geometry":"62.5% 0% 5% 5% 2", "shape":"100%", "alpha":"1.0", "gradient":{ "value":"$mental", "color1":"#0000ff", "color2":"#000011", "direction":"top" } },
-				"text":{ "content":"♠\n$mental$100", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+				"text":{ "content":"♠\n$mental$100", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" },
+				"tooltip":"The mental health of your pet is $mental$100%"
 			}
 		],
 		"pet_default_info_age":[
 			{
 				"layer":{ "geometry":"32.5% 5% 1.25% 5% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$age", "color1":"#ff00aa", "color2":"#110011", "direction":"top" } },
-				"text":{ "content":"◘", "align":"center", "color":"#ffffff", "size":"50%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+				"text":{ "content":"◘", "align":"center", "color":"#ffffff", "size":"50%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" },
+				"tooltip":"The age of your pet is $age$100 years old"
 			}
 		],
 		"pet_default_info_act":[
 			{
 				"layer":{ "geometry":"66.25% 5% 1.25% 5% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$act", "color1":"#aa00ff", "color2":"#110011", "direction":"top" } },
-				"text":{ "content":"§", "align":"center", "color":"#ffffff", "size":"50%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+				"text":{ "content":"§", "align":"center", "color":"#ffffff", "size":"50%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" },
+				"tooltip":"The special interactions you can preform with your pet ($act$10 / 10)"
 			}
 		],
 		"pet_default_info_food_baby_dead":[
 			{
 				"layer":{ "geometry":"35% 5% 30% 2.5% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$food_dead", "color1":"#ffaa00", "color2":"#111100", "direction":"right" } },
-				"text":{ "content":"♦ ♣", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+				"text":{ "content":"♦ ♣", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" },
+				"tooltip":"Your pet's stomach contains $food_dead$100% normal food"
 			},
 			{
 				"layer":{ "geometry":"35.75% 5.625% 1.25% 1.25% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$max_food_dead", "color1":"#ffaa00", "color2":"#111100", "direction":"top" }, "shadow":"0px 0px 0px 2px #000000" }
@@ -43,7 +48,8 @@
 		"pet_default_info_food_teen_dead":[
 			{
 				"layer":{ "geometry":"35% 5% 15% 2.5% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$food_dead", "color1":"#ffaa00", "color2":"#111100", "direction":"right" } },
-				"text":{ "content":"♦ ♣", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+				"text":{ "content":"♦ ♣", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" },
+				"tooltip":"Your pet's stomach contains $food_dead$100% normal food"
 			},
 			{
 				"layer":{ "geometry":"35.75% 5.625% 1.25% 1.25% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$max_food_dead", "color1":"#ffaa00", "color2":"#111100", "direction":"top" }, "shadow":"0px 0px 0px 2px #000000" }
@@ -52,7 +58,8 @@
 		"pet_default_info_food_teen_animal":[
 			{
 				"layer":{ "geometry":"50% 5% 15% 2.5% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$food_animal", "color1":"#ffaa00", "color2":"#111100", "direction":"right" } },
-				"text":{ "content":"♦ ☻", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+				"text":{ "content":"♦ ☻", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" },
+				"tooltip":"Your pet's stomach contains $food_animal$100% animals"
 			},
 			{
 				"layer":{ "geometry":"50.75% 5.625% 1.25% 1.25% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$max_food_animal", "color1":"#ffaa00", "color2":"#111100", "direction":"top" }, "shadow":"0px 0px 0px 2px #000000" }
@@ -61,7 +68,8 @@
 		"pet_default_info_food_adult_dead":[
 			{
 				"layer":{ "geometry":"35% 5% 10% 2.5% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$food_dead", "color1":"#ffaa00", "color2":"#111100", "direction":"right" } },
-				"text":{ "content":"♦ ♣", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+				"text":{ "content":"♦ ♣", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" },
+				"tooltip":"Your pet's stomach contains $food_dead$100% normal food"
 			},
 			{
 				"layer":{ "geometry":"35.75% 5.625% 1.25% 1.25% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$max_food_dead", "color1":"#ffaa00", "color2":"#111100", "direction":"top" }, "shadow":"0px 0px 0px 2px #000000" }
@@ -70,7 +78,8 @@
 		"pet_default_info_food_adult_animal":[
 			{
 				"layer":{ "geometry":"45% 5% 10% 2.5% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$food_animal", "color1":"#ffaa00", "color2":"#111100", "direction":"right" } },
-				"text":{ "content":"♦ ☻", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+				"text":{ "content":"♦ ☻", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" },
+				"tooltip":"Your pet's stomach contains $food_animal$100% animals"
 			},
 			{
 				"layer":{ "geometry":"45.75% 5.625% 1.25% 1.25% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$max_food_animal", "color1":"#ffaa00", "color2":"#111100", "direction":"top" }, "shadow":"0px 0px 0px 2px #000000" }
@@ -79,7 +88,8 @@
 		"pet_default_info_food_adult_human":[
 			{
 				"layer":{ "geometry":"55% 5% 10% 2.5% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$food_human", "color1":"#ffaa00", "color2":"#111100", "direction":"right" } },
-				"text":{ "content":"♦ ☺", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+				"text":{ "content":"♦ ☺", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" },
+				"tooltip":"Your pet's stomach contains $food_human$100% people"
 			},
 			{
 				"layer":{ "geometry":"55.75% 5.625% 1.25% 1.25% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$max_food_human", "color1":"#ffaa00", "color2":"#111100", "direction":"top" }, "shadow":"0px 0px 0px 2px #000000" }
@@ -88,7 +98,8 @@
 		"pet_default_info_hype":[
 			{
 				"layer":{ "geometry":"35% 7.5% 30% 2.5% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$hype", "color1":"#00aaff", "color2":"#001111", "direction":"right" } },
-				"text":{ "content":"☼", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
+				"text":{ "content":"☼", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" },
+				"tooltip":"Your pet is $hype$100% excited"
 			},
 			{
 				"layer":{ "geometry":"35.75% 8.125% 1.25% 1.25% 2", "shape":"10px", "alpha":"1.0", "gradient":{ "value":"$max_hype", "color1":"#00aaff", "color2":"#001111", "direction":"top" }, "shadow":"0px 0px 0px 2px #000000" }

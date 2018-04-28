@@ -58,8 +58,8 @@ function get_gradient(color1, color2, direction, blend) {
 }
 
 // replaces variable names with their values in a text field
-// returns the modified text, as well as an array containing the names of all variables detected in the text
-function text_replace(text) {
+// returns the modified text, optionally stores the variables of a sprite if its ID is given
+function text_replace(text, id) {
 	var vars = [];
 	var table_all = text.split(/[^a-zA-Z0-9$_]+/); // anything that's not: a-z,A-Z,0-9,$,_
 	for(var entry_all in table_all) {
@@ -82,7 +82,20 @@ function text_replace(text) {
 			vars.push(table[1]);
 		}
 	}
-	return { text: text, variables: vars };
+
+	// if a sprite ID is given, store each variable that needs to be updated for this sprite
+	if(typeof id === "string" && id !== "")
+	{
+		for(var variable in vars) {
+			var name = vars[variable];
+			if(name.substring(0, 5) === "date_" || name.substring(0, 5) === "time_") {
+				sprite_variable[id][name] = "*"; // always update 
+			} else if(scene_data.variables[name] !== null && scene_data.variables[name] !== undefined)
+				sprite_variable[id][name] = scene_data.variables[name]; // update if changed
+		}
+	}
+
+	return text;
 }
 
 // sets the sprite of an element
@@ -236,15 +249,20 @@ function sprite_set(id, sprite, parent, sprite_def) {
 					text = text[index];
 				}
 
-				var text_new = text_replace(text);
-				layer_element.innerText = text_new.text;
-				for(var variable in text_new.variables) {
-					var name = text_new.variables[variable];
-					if(name.substring(0, 5) === "date_" || name.substring(0, 5) === "time_") {
-						sprite_variable[id][name] = "*"; // always update 
-					} else if(scene_data.variables[name] !== null && scene_data.variables[name] !== undefined)
-						sprite_variable[id][name] = scene_data.variables[name]; // update if changed
+				layer_element.innerText = text_replace(text, id);
+			}
+
+			// configure the tooltip of this layer
+			if(layer_new.tooltip)
+			{
+				var tooltip = layer_new.tooltip;
+				if(typeof tooltip === "object") {
+					var index = Math.floor(Math.random() * tooltip.length);
+					tooltip = tooltip[index];
 				}
+
+				layer_element.title = text_replace(tooltip, id);
+				style_pointer = true;
 			}
 
 			// configure the audio of this layer

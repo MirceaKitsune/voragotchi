@@ -92,6 +92,7 @@ Data and mods are defined in json files. Those files are specified in the mods m
 			"weight": Thickness of the font. Example: "200", "400", "600", "800".
 			"family": Font family to be used. If a comma separated list is present, fonts are used in that order... if left empty, the default browser font is used. Example: "Times, serif".
 			"color": Color of the text.
+		"tooltip": Tooltip to appear when hovering the mouse cursor over the element. This can be an array, in which case a random text will be chosen each time. Supports variables as described in "text":"content".
 		"actions": Object containing actions that can be set for this layer. Note that actions are evaluated in order, so later ones will override earlier ones! Action definition:
 			"trigger": What event will cause this action to fire. Can be: click, hover_start, hover_end, load, interval.
 			"conditional": Only execute those actions if the conditionals are true. The string must contain a property or value, a comparison type, and another property or value... all three may be separated by logical operators. Example: "my_var >= 0.5" or "my_str == foo_bar". Valid comparison types: ==, !=, <, <=, >, >=. Valid logical operators: &&, ||. Note: OR takes priotiry over AND, so "a == 1 || b == 2 && c == 3" will be treated as "a == 1 || (b == 2 && c == 3)", parenthesis are otherwise not supported by conditional strings.
