@@ -275,7 +275,13 @@ function sprite_set(id, sprite, parent, sprite_def) {
 					canvas.appendChild(audio_element);
 				}
 
-				audio_element.setAttribute("src", layer_new.audio.sound);
+				var sound = layer_new.audio.sound;
+				if(typeof sound === "object") {
+					var index = Math.floor(Math.random() * sound.length);
+					sound = sound[index];
+				}
+
+				audio_element.setAttribute("src", sound);
 				audio_element.setAttribute("volume", layer_new.audio.volume); // set later
 				if(layer_new.audio.loop === "true")
 					audio_element.setAttribute("loop", true);

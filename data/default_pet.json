@@ -112,6 +112,7 @@
 		],
 		"pet_default_chat_baby_apple_hype_0":[
 			{
+				"audio":{ "sound":"data/default_pet/cat_1.ogg", "volume":"1.0", "loop":"false", "id":"chat" },
 				"layer":{ "geometry":"10% 10% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"actions":[
 					{ "trigger":"load", "delay":"10", "action":"pet_chat = " }
@@ -128,6 +129,7 @@
 		],
 		"pet_default_chat_baby_apple_hype_1":[
 			{
+				"audio":{ "sound":"data/default_pet/cat_1.ogg", "volume":"1.0", "loop":"false", "id":"chat" },
 				"layer":{ "geometry":"10% 10% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"actions":[
 					{ "trigger":"load", "delay":"10", "action":"pet_chat = " }
@@ -144,6 +146,7 @@
 		],
 		"pet_default_chat_baby_apple_hype_2":[
 			{
+				"audio":{ "sound":"data/default_pet/cat_1.ogg", "volume":"1.0", "loop":"false", "id":"chat" },
 				"layer":{ "geometry":"10% 10% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"actions":[
 					{ "trigger":"load", "delay":"10", "action":"pet_chat = " }
@@ -160,6 +163,7 @@
 		],
 		"pet_default_chat_baby_apple_hype_3":[
 			{
+				"audio":{ "sound":"data/default_pet/cat_1.ogg", "volume":"1.0", "loop":"false", "id":"chat" },
 				"layer":{ "geometry":"10% 10% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"actions":[
 					{ "trigger":"load", "delay":"10", "action":"pet_chat = " }
@@ -176,6 +180,7 @@
 		],
 		"pet_default_chat_baby_apple_eat":[
 			{
+				"audio":{ "sound":"data/default_pet/cat_2.ogg", "volume":"1.0", "loop":"false", "id":"chat" },
 				"layer":{ "geometry":"10% 10% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"actions":[
 					{ "trigger":"load", "delay":"10", "action":"pet_chat = " }

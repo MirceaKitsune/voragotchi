@@ -37,6 +37,14 @@ data/default_pet/gurgle_*.ogg
 	Author: Esther
 	URL: http://www.pdsounds.org/sounds/tummy_grumble
 
+data/default_pet/cat_*.ogg
+	Author: AntumDeluge
+	URL: https://opengameart.org/content/kitten-mew
+
+data/default_pet/dog_*.ogg
+	Author: pauliuw
+	URL: https://opengameart.org/content/dog-sounds
+
 data/default_people/*.gif
 data/default_people/expression_*.gif
 	Author: anarres

@@ -79,7 +79,7 @@ Data and mods are defined in json files. Those files are specified in the mods m
 			"shape": How round the corners are, in pixels or a percentage. Four values can be specified for each corner if desired. Example: "10px 0px 100% 0%".
 			"cursor": The image or cursor style used by the mouse pointer, as it hovers over this layer. Always have a backup cursor specified when using images, if you want none use "auto"! Example: "crosshair" or "url(foo/bar.png), auto". Note: Only images of certain sizes are supported... 32px is most compatible, 128px is the known maximum.
 		"audio": Object which defines the audio of this sprite. The audio is always triggered when the sprite appears. Audio definition:
-			"sound": The sound file.
+			"sound": The sound file. This can be an array, in which case a random sound will be chosen each time.
 			"volume": The volume of this sound, ranges between 0 and 1.
 			"distance": Amount by which the distance of this sound source affects its volume. Distance is calculated based on the z-index of the mod this audio is on (not the layer). A z-index smaller than 0 gradually decreases the volume, whereas a z-index greater than 0 gradually increases it. This exist so that mods with probabilistic positioning can have different volumes... see the "geometries" section.
 			"loop": If true, this sound will loop.
