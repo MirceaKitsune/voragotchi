@@ -6,12 +6,12 @@
 				"actions":[
 					{ "trigger":"load", "action":"environment_geometries_people = " },
 					{ "trigger":"load", "action":"background_people = " },
-					{ "trigger":"interval", "conditional":"0.0030 > $random && $wanted < $random", "action":"chat_people = chat_people_default_12" },
-					{ "trigger":"interval", "conditional":"0.0020 > $random && $wanted < $random", "action":"chat_people = chat_people_default_11" }
+					{ "trigger":"interval", "conditional":"0.0010 > $random && $wanted < $random && $age >= 0.000", "action":"chat_people = chat_people_default_sales_milk" },
+					{ "trigger":"interval", "conditional":"0.0005 > $random && $wanted < $random && $age >= 0.025", "action":"chat_people = chat_people_default_sales_apple" }
 				]
 			}
 		],
-		"chat_people_default_12":[
+		"chat_people_default_sales_milk":[
 			{
 				"layer":{ "geometry":"45% 40% 10% 5% 2", "shape":"10px", "alpha":"1.0", "color":"#000000" },
 				"audio":{ "sound":"data/default_people/new.wav", "volume":"0.5", "loop":"false", "id":"people" },
@@ -19,27 +19,34 @@
 					"align":"center", "color":"#ffffff", "size":"100%", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":"..."
 				},
 				"actions":[
-					{ "trigger":"load", "action":"background_people = background_people_default_12_normal_left" },
+					{ "trigger":"load", "conditional":"$wanted >= 0.0 && $wanted <= 0.2", "action":"background_people = background_people_default_sales_milk_sleeping_right" },
+					{ "trigger":"load", "conditional":"$wanted >= 0.2 && $wanted <= 0.4", "action":"background_people = background_people_default_sales_milk_smiling_right" },
+					{ "trigger":"load", "conditional":"$wanted >= 0.4 && $wanted <= 0.6", "action":"background_people = background_people_default_sales_milk_normal_right" },
+					{ "trigger":"load", "conditional":"$wanted >= 0.6 && $wanted <= 0.8", "action":"background_people = background_people_default_sales_milk_sad_right" },
+					{ "trigger":"load", "conditional":"$wanted >= 0.8 && $wanted <= 1.0", "action":"background_people = background_people_default_sales_milk_angry_right" },
 					{ "trigger":"load", "delay":"10", "action":"chat_people = " },
-					{ "trigger":"click", "conditional":"$money >= 10", "action":"chat_people = chat_people_default_12_available" },
-					{ "trigger":"click", "conditional":"$money < 10", "action":"chat_people = chat_people_default_12_unavailable" }
+					{ "trigger":"click", "conditional":"$money >= 5", "action":"chat_people = chat_people_default_sales_milk_available" },
+					{ "trigger":"click", "conditional":"$money < 5", "action":"chat_people = chat_people_default_sales_milk_unavailable" }
 				]
 			}
 		],
-		"chat_people_default_12_available":[
+		"chat_people_default_sales_milk_available":[
 			{
 				"layer":{ "geometry":"10% 0% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"audio":{ "sound":"data/default_people/1.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"actions":[
-					{ "trigger":"load", "action":"background_people = background_people_default_12_smiling_left" },
-					{ "trigger":"load", "delay":"20", "action":"chat_people = " }
+					{ "trigger":"load", "action":"background_people = background_people_default_sales_milk_smiling_left" },
+					{ "trigger":"load", "delay":"20", "action":"chat_people = chat_people_default_sales_milk_no" }
 				]
 			},
 			{
 				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
 				"text":{
-					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
-						"Greetings, $game_name from $info_browser_codename! Would you like to buy some milk? Only 10$ for 5!"
+					"align":"center", "color":"#ffffbb", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Greetings! You're $game_name from $info_browser_codename, right? I was wondering: Would you like to buy some of my milk? It's still fresh, straight from my cow! Only 5$ for 3 bottles.",
+						"Hi $game_name. I'm doing another milk sale if you're interested. Would you like any milk? I'm selling 3 bottles for only 5$.",
+						"Hey $game_name! I was just passing through your area, thought I'd drop by. I have 3 bottles of fresh milk with me. Would you be interested? 5$ for all 4.",
+						"$game_name... good to see you again. I was just headed back home from today's milk sale. I still have 3 bottles of milk with me. Only 5$ for all! Are you interested?"
 					]
 				}
 			},
@@ -49,7 +56,7 @@
 					"align":"center", "color":"#ffffff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":"Don't buy"
 				},
 				"actions":[
-					{ "trigger":"click", "action":"chat_people = chat_people_default_12_no" }
+					{ "trigger":"click", "action":"chat_people = chat_people_default_sales_milk_no" }
 				]
 			},
 			{
@@ -58,24 +65,25 @@
 					"align":"center", "color":"#ffffff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":"Buy"
 				},
 				"actions":[
-					{ "trigger":"click", "conditional":"$money >= 10", "action":"chat_people = chat_people_default_12_yes" }
+					{ "trigger":"click", "conditional":"$money >= 5", "action":"chat_people = chat_people_default_sales_milk_yes" }
 				]
 			}
 		],
-		"chat_people_default_12_unavailable":[
+		"chat_people_default_sales_milk_unavailable":[
 			{
 				"layer":{ "geometry":"10% 0% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"audio":{ "sound":"data/default_people/1_no.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"actions":[
-					{ "trigger":"load", "action":"background_people = background_people_default_12_smiling_left" },
+					{ "trigger":"load", "action":"background_people = background_people_default_sales_milk_smiling_left" },
 					{ "trigger":"load", "delay":"5", "action":"chat_people = " }
 				]
 			},
 			{
 				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
 				"text":{
-					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
-						"Greetings, $game_name. I was going to sell you 5 milk for 10$, but it doesn't seem like you have the money. Maybe later?"
+					"align":"center", "color":"#ffffbb", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Hi there $game_name. I was going to sell you some milk bottles, but it doesn't seem like you currently have the money. I'll drop by again later!",
+						"Oh, $game_name. I'm out selling milk, but I understand your money is a bit tight right now. Normally I offer 3 bottles for 5$, so keep that in mind."
 					]
 				}
 			},
@@ -89,20 +97,21 @@
 				]
 			}
 		],
-		"chat_people_default_12_no":[
+		"chat_people_default_sales_milk_no":[
 			{
 				"layer":{ "geometry":"10% 0% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"audio":{ "sound":"data/default_people/1_no.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"actions":[
-					{ "trigger":"load", "action":"background_people = background_people_default_12_sad_left" },
+					{ "trigger":"load", "action":"background_people = background_people_default_sales_milk_sad_left" },
 					{ "trigger":"load", "delay":"5", "action":"chat_people = " }
 				]
 			},
 			{
 				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
 				"text":{
-					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
-						"Okay... maybe later!"
+					"align":"center", "color":"#ffffbb", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Ah... okay. I'll drop by later to check if you need anything in that case.",
+						"Okay. Just remember: 3 bottles for 5$, in case you're ever interested."
 					]
 				}
 			},
@@ -116,22 +125,23 @@
 				]
 			}
 		],
-		"chat_people_default_12_yes":[
+		"chat_people_default_sales_milk_yes":[
 			{
 				"layer":{ "geometry":"10% 0% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"audio":{ "sound":"data/default_people/1_yes.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"actions":[
-					{ "trigger":"load", "action":"background_people = background_people_default_12_happy_left" },
+					{ "trigger":"load", "action":"background_people = background_people_default_sales_milk_happy_left" },
 					{ "trigger":"load", "delay":"5", "action":"chat_people = " },
-					{ "trigger":"load", "action":"$money -= 10" },
-					{ "trigger":"load", "action":"$stock_milk += 5" }
+					{ "trigger":"load", "action":"$money -= 5" },
+					{ "trigger":"load", "action":"$stock_milk += 3" }
 				]
 			},
 			{
 				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
 				"text":{
-					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
-						"Here you go. Thanks!"
+					"align":"center", "color":"#ffffbb", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Wonderful! Here you go: 3 bottles of fresh tasty milk. Thanks for buying!",
+						"Thank you! And here are your bottles of milk. A pleasure having you as a customer $game_name!"
 					]
 				}
 			},
@@ -145,12 +155,12 @@
 				]
 			}
 		],
-		"chat_people_default_12_pet":[
+		"chat_people_default_sales_milk_pet":[
 			{
 				"layer":{ "geometry":"10% 0% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"audio":{ "sound":"data/default_people/1_no.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"actions":[
-					{ "trigger":"load", "action":"background_people = background_people_default_12_angry_left" },
+					{ "trigger":"load", "action":"background_people = background_people_default_sales_milk_angry_left" },
 					{ "trigger":"load", "action":"environment_geometries_pet = " },
 					{ "trigger":"load", "delay":"5", "action":"chat_people = " },
 					{ "trigger":"load", "action":"$wanted += 0.05" },
@@ -160,8 +170,9 @@
 			{
 				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
 				"text":{
-					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
-						"Hey, your pet stole my milk! I'm out of here..."
+					"align":"center", "color":"#ffffbb", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
+						"Are you serious? Your pet just stole a milk bottle from me! Please discipline it better, or else I'm not coming here again.",
+						"Hey, hey! Damn it $game_name: Please educate your pet, it's not okay for them to steal from people."
 					]
 				}
 			},
@@ -175,7 +186,7 @@
 				]
 			}
 		],
-		"chat_people_default_11":[
+		"chat_people_default_sales_apple":[
 			{
 				"layer":{ "geometry":"45% 40% 10% 5% 2", "shape":"10px", "alpha":"1.0", "color":"#000000" },
 				"audio":{ "sound":"data/default_people/new.wav", "volume":"0.5", "loop":"false", "id":"people" },
@@ -183,27 +194,33 @@
 					"align":"center", "color":"#ffffff", "size":"100%", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":"..."
 				},
 				"actions":[
-					{ "trigger":"load", "action":"background_people = background_people_default_11_normal_left" },
+					{ "trigger":"load", "conditional":"$mental >= 0.00 && $mental <= 0.25", "action":"background_people = background_people_default_sales_apple_smiling_right" },
+					{ "trigger":"load", "conditional":"$mental >= 0.25 && $mental <= 0.50", "action":"background_people = background_people_default_sales_apple_normal_right" },
+					{ "trigger":"load", "conditional":"$mental >= 0.50 && $mental <= 0.75", "action":"background_people = background_people_default_sales_apple_confused_right" },
+					{ "trigger":"load", "conditional":"$mental >= 0.75 && $mental <= 1.00", "action":"background_people = background_people_default_sales_apple_skeptic_right" },
 					{ "trigger":"load", "delay":"10", "action":"chat_people = " },
-					{ "trigger":"click", "conditional":"$money >= 10", "action":"chat_people = chat_people_default_11_available" },
-					{ "trigger":"click", "conditional":"$money < 10", "action":"chat_people = chat_people_default_11_unavailable" }
+					{ "trigger":"click", "conditional":"$money >= 10", "action":"chat_people = chat_people_default_sales_apple_available" },
+					{ "trigger":"click", "conditional":"$money < 10", "action":"chat_people = chat_people_default_sales_apple_unavailable" }
 				]
 			}
 		],
-		"chat_people_default_11_available":[
+		"chat_people_default_sales_apple_available":[
 			{
 				"layer":{ "geometry":"10% 0% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"audio":{ "sound":"data/default_people/1.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"actions":[
-					{ "trigger":"load", "action":"background_people = background_people_default_11_smiling_left" },
-					{ "trigger":"load", "delay":"20", "action":"chat_people = " }
+					{ "trigger":"load", "action":"background_people = background_people_default_sales_apple_smiling_left" },
+					{ "trigger":"load", "delay":"20", "action":"chat_people = chat_people_default_sales_apple_no" }
 				]
 			},
 			{
 				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
 				"text":{
 					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
-						"Greetings, $game_name from $info_browser_codename! Would you like to buy some apples? Only 10$ for 5!"
+						"Howdy, $game_name of $info_browser_codename! Would you like to buy some apples? Only 10$ for 5!",
+						"Why howdy there $game_name! Interested in some apples? They're fresh from my orchard, no pesticides used. I'm offering 5 apples for only 10$.",
+						"Howdy howdy. Here for the apples as usual. 5 for 10$. Think I might tempt ya?",
+						"Heya $game_name! Beautiful day today. Say... would you be interested in buying some of my apples? They're not much, just 10$ for 5."
 					]
 				}
 			},
@@ -213,7 +230,7 @@
 					"align":"center", "color":"#ffffff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":"Don't buy"
 				},
 				"actions":[
-					{ "trigger":"click", "action":"chat_people = chat_people_default_11_no" }
+					{ "trigger":"click", "action":"chat_people = chat_people_default_sales_apple_no" }
 				]
 			},
 			{
@@ -222,16 +239,16 @@
 					"align":"center", "color":"#ffffff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":"Buy"
 				},
 				"actions":[
-					{ "trigger":"click", "conditional":"$money >= 10", "action":"chat_people = chat_people_default_11_yes" }
+					{ "trigger":"click", "conditional":"$money >= 10", "action":"chat_people = chat_people_default_sales_apple_yes" }
 				]
 			}
 		],
-		"chat_people_default_11_unavailable":[
+		"chat_people_default_sales_apple_unavailable":[
 			{
 				"layer":{ "geometry":"10% 0% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"audio":{ "sound":"data/default_people/1_no.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"actions":[
-					{ "trigger":"load", "action":"background_people = background_people_default_11_smiling_left" },
+					{ "trigger":"load", "action":"background_people = background_people_default_sales_apple_smiling_left" },
 					{ "trigger":"load", "delay":"5", "action":"chat_people = " }
 				]
 			},
@@ -239,7 +256,8 @@
 				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
 				"text":{
 					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
-						"Greetings, $game_name. I was going to sell you 5 apples for 10$, but it doesn't seem like you have the money. Maybe later?"
+						"Howdy $game_name. I'm selling apples if ya want any, only 10$ for... oh. Ah no worries: I'll come back later when you have more money, aye?",
+						"Hey there. Just passing through, figured I'd drop by and say hello. I was gonna sell you 5 apples actually, but I hear yer a little broke so... I'll come back later."
 					]
 				}
 			},
@@ -253,12 +271,12 @@
 				]
 			}
 		],
-		"chat_people_default_11_no":[
+		"chat_people_default_sales_apple_no":[
 			{
 				"layer":{ "geometry":"10% 0% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"audio":{ "sound":"data/default_people/1_no.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"actions":[
-					{ "trigger":"load", "action":"background_people = background_people_default_11_sad_left" },
+					{ "trigger":"load", "action":"background_people = background_people_default_sales_apple_sad_left" },
 					{ "trigger":"load", "delay":"5", "action":"chat_people = " }
 				]
 			},
@@ -266,7 +284,8 @@
 				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
 				"text":{
 					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
-						"Okay... maybe later!"
+						"Nah? Okay. Well catch ya later then!",
+						"That's a shame. Hope ya change yer mind later! See ya."
 					]
 				}
 			},
@@ -280,12 +299,12 @@
 				]
 			}
 		],
-		"chat_people_default_11_yes":[
+		"chat_people_default_sales_apple_yes":[
 			{
 				"layer":{ "geometry":"10% 0% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"audio":{ "sound":"data/default_people/1_yes.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"actions":[
-					{ "trigger":"load", "action":"background_people = background_people_default_11_happy_left" },
+					{ "trigger":"load", "action":"background_people = background_people_default_sales_apple_happy_left" },
 					{ "trigger":"load", "delay":"5", "action":"chat_people = " },
 					{ "trigger":"load", "action":"$money -= 10" },
 					{ "trigger":"load", "action":"$stock_apple += 5" }
@@ -295,7 +314,8 @@
 				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
 				"text":{
 					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
-						"Here you go. Thanks!"
+						"Here ya go then: 5 apples fresh and clean! Thanks $game_name.",
+						"Yee haa! Happy doing business with ya $game_name. Here ya go. Come again!"
 					]
 				}
 			},
@@ -309,12 +329,12 @@
 				]
 			}
 		],
-		"chat_people_default_11_pet":[
+		"chat_people_default_sales_apple_pet":[
 			{
 				"layer":{ "geometry":"10% 0% 80% 40% 1", "shape":"100%", "alpha":"0.75", "color":"#ffffff", "shadow":"0px 0px 0px 2px #000000" },
 				"audio":{ "sound":"data/default_people/1_no.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"actions":[
-					{ "trigger":"load", "action":"background_people = background_people_default_11_angry_left" },
+					{ "trigger":"load", "action":"background_people = background_people_default_sales_apple_angry_left" },
 					{ "trigger":"load", "action":"environment_geometries_pet = " },
 					{ "trigger":"load", "delay":"5", "action":"chat_people = " },
 					{ "trigger":"load", "action":"$wanted += 0.05" },
@@ -325,7 +345,8 @@
 				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
 				"text":{
 					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
-						"Hey, your pet stole my apple! I'm out of here..."
+						"Oh gosh darn it! I can't believe your pet just stole my apple. Ya really gotta discipline them better. Please make sure it doesn't happen again, will ya?",
+						"Hey give that back you! For crying out loud $game_name, please teach yer pet some manners next time!"
 					]
 				}
 			},
@@ -340,45 +361,133 @@
 			}
 		],
 		"background_people_default":[{}],
-		"background_people_default_12_normal_left":[
-			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_left.gif)" } },
-			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_normal_left.gif)" } }
-		],
-		"background_people_default_12_smiling_left":[
-			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_left.gif)" } },
-			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_smiling_left.gif)" } }
-		],
-		"background_people_default_12_happy_left":[
-			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_left.gif)" } },
-			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_happy_left.gif)" } }
-		],
-		"background_people_default_12_sad_left":[
-			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_left.gif)" } },
-			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_sad_left.gif)" } }
-		],
-		"background_people_default_12_angry_left":[
+		"background_people_default_sales_milk_angry_left":[
 			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_left.gif)" } },
 			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_angry_left.gif)" } }
 		],
-		"background_people_default_11_normal_left":[
-			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/11_left.gif)" } },
+		"background_people_default_sales_milk_sad_left":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_left.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_sad_left.gif)" } }
+		],
+		"background_people_default_sales_milk_skeptic_left":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_left.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_skeptic_left.gif)" } }
+		],
+		"background_people_default_sales_milk_confused_left":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_left.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_confused_left.gif)" } }
+		],
+		"background_people_default_sales_milk_normal_left":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_left.gif)" } },
 			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_normal_left.gif)" } }
 		],
-		"background_people_default_11_smiling_left":[
-			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/11_left.gif)" } },
+		"background_people_default_sales_milk_smiling_left":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_left.gif)" } },
 			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_smiling_left.gif)" } }
 		],
-		"background_people_default_11_happy_left":[
-			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/11_left.gif)" } },
+		"background_people_default_sales_milk_happy_left":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_left.gif)" } },
 			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_happy_left.gif)" } }
 		],
-		"background_people_default_11_sad_left":[
+		"background_people_default_sales_milk_sleeping_left":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_left.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_sleeping_left.gif)" } }
+		],
+		"background_people_default_sales_milk_angry_right":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_right.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_angry_right.gif)" } }
+		],
+		"background_people_default_sales_milk_sad_right":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_right.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_sad_right.gif)" } }
+		],
+		"background_people_default_sales_milk_skeptic_right":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_right.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_skeptic_right.gif)" } }
+		],
+		"background_people_default_sales_milk_confused_right":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_right.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_confused_right.gif)" } }
+		],
+		"background_people_default_sales_milk_normal_right":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_right.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_normal_right.gif)" } }
+		],
+		"background_people_default_sales_milk_smiling_right":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_right.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_smiling_right.gif)" } }
+		],
+		"background_people_default_sales_milk_happy_right":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_right.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_happy_right.gif)" } }
+		],
+		"background_people_default_sales_milk_sleeping_right":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/12_right.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_sleeping_right.gif)" } }
+		],
+		"background_people_default_sales_apple_angry_left":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/11_left.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_angry_left.gif)" } }
+		],
+		"background_people_default_sales_apple_sad_left":[
 			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/11_left.gif)" } },
 			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_sad_left.gif)" } }
 		],
-		"background_people_default_11_angry_left":[
+		"background_people_default_sales_apple_skeptic_left":[
 			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/11_left.gif)" } },
-			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_angry_left.gif)" } }
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_skeptic_left.gif)" } }
+		],
+		"background_people_default_sales_apple_confused_left":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/11_left.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_confused_left.gif)" } }
+		],
+		"background_people_default_sales_apple_normal_left":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/11_left.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_normal_left.gif)" } }
+		],
+		"background_people_default_sales_apple_smiling_left":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/11_left.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_smiling_left.gif)" } }
+		],
+		"background_people_default_sales_apple_happy_left":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/11_left.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_happy_left.gif)" } }
+		],
+		"background_people_default_sales_apple_sleeping_left":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/11_left.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_sleeping_left.gif)" } }
+		],
+		"background_people_default_sales_apple_angry_right":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/11_right.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_angry_right.gif)" } }
+		],
+		"background_people_default_sales_apple_sad_right":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/11_right.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_sad_right.gif)" } }
+		],
+		"background_people_default_sales_apple_skeptic_right":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/11_right.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_skeptic_right.gif)" } }
+		],
+		"background_people_default_sales_apple_confused_right":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/11_right.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_confused_right.gif)" } }
+		],
+		"background_people_default_sales_apple_normal_right":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/11_right.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_normal_right.gif)" } }
+		],
+		"background_people_default_sales_apple_smiling_right":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/11_right.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_smiling_right.gif)" } }
+		],
+		"background_people_default_sales_apple_happy_right":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/11_right.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_happy_right.gif)" } }
+		],
+		"background_people_default_sales_apple_sleeping_right":[
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/11_right.gif)" } },
+			{ "layer":{ "geometry":"25% 50% 50% 50% 0", "alpha":"1.00", "image":"url(data/default_people/expression_sleeping_right.gif)" } }
 		]
 	},
 	"mods_people":{

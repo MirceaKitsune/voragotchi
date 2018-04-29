@@ -121,13 +121,20 @@
 				]
 			}
 		],
+		"actions_default_button_milk":[
+			{
+				"actions":[
+					{ "trigger":"interval", "conditional":"$age >= 0.000", "action":"actions_button_milk = actions_default_button_milk_inactive" }
+				]
+			}
+		],
 		"actions_default_button_milk_selected":[
 			{
 				"layer":{ "geometry":"1% 2% 3% 6% 2", "shape":"100%", "alpha":"1", "color":"#888800", "image":"url(data/default_actions/food_milk_selected.png)", "cursor":"url(data/default_actions/cursor_hand_on.gif), auto" },
 				"text":{ "content":"Milk", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" },
 				"audio":{ "sound":"data/default_actions/click_1.wav", "volume":"1.0", "loop":"false", "id":"actions" },
 				"actions":[
-					{ "trigger":"load", "action":"actions_button_apple = actions_default_button_apple_inactive" },
+					{ "trigger":"load", "conditional":"actions_button_apple == actions_default_button_apple_selected", "action":"actions_button_apple = actions_default_button_apple_inactive" },
 					{ "trigger":"load", "action":"actions_foreground = actions_default_foreground_milk" },
 					{ "trigger":"interval", "conditional":"$stock_milk < 1", "action":"actions_button_milk = actions_default_button_milk_inactive" },
 					{ "trigger":"click", "action":"actions_button_milk = actions_default_button_milk_inactive" }
@@ -169,13 +176,20 @@
 				"text":{ "content":"$stock_milk$1", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" }
 			}
 		],
+		"actions_default_button_apple":[
+			{
+				"actions":[
+					{ "trigger":"interval", "conditional":"$age >= 0.025", "action":"actions_button_apple = actions_default_button_apple_inactive" }
+				]
+			}
+		],
 		"actions_default_button_apple_selected":[
 			{
 				"layer":{ "geometry":"5% 2% 3% 6% 2", "shape":"100%", "alpha":"1", "color":"#880000", "image":"url(data/default_actions/food_apple_selected.png)", "cursor":"url(data/default_actions/cursor_hand_on.gif), auto" },
 				"text":{ "content":"Apple", "align":"center", "color":"#ffffff", "size":"75%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000" },
 				"audio":{ "sound":"data/default_actions/click_1.wav", "volume":"1.0", "loop":"false", "id":"actions" },
 				"actions":[
-					{ "trigger":"load", "action":"actions_button_milk = actions_default_button_milk_inactive" },
+					{ "trigger":"load", "conditional":"actions_button_milk == actions_default_button_milk_selected", "action":"actions_button_milk = actions_default_button_milk_inactive" },
 					{ "trigger":"load", "action":"actions_foreground = actions_default_foreground_apple" },
 					{ "trigger":"interval", "conditional":"$stock_apple < 1", "action":"actions_button_apple = actions_default_button_apple_inactive" },
 					{ "trigger":"click", "action":"actions_button_apple = actions_default_button_apple_inactive" }
@@ -245,16 +259,16 @@
 				"actions_info_time":"actions_default_info_time",
 				"actions_info_light":"actions_default_info_light",
 				"actions_info_temperature":"actions_default_info_temperature",
-				"actions_button_milk":"actions_default_button_milk_inactive",
-				"actions_button_apple":"actions_default_button_apple_inactive",
+				"actions_button_milk":"actions_default_button_milk",
+				"actions_button_apple":"actions_default_button_apple",
 				"actions_foreground":"actions_default_foreground"
 			},
 			"variables":{
-				"stock_milk":{ "value":"10", "value_min":"0", "value_max":"200" },
-				"stock_apple":{ "value":"5", "value_min":"0", "value_max":"100" },
-				"money":{"value":"100", "value_min":"0", "value_max":"10000" },
-				"wanted":{ "value":"0.0", "per_second":"-0.000025" },
-				"light":{ "value":"0.5" },
+				"stock_milk":{ "value":"0", "value_min":"0", "value_max":"200" },
+				"stock_apple":{ "value":"0", "value_min":"0", "value_max":"100" },
+				"money":{"value":"10", "value_min":"0", "value_max":"10000", "label":"Money" },
+				"wanted":{ "value":"0.0", "per_second":"-0.000025", "label":"Wanted" },
+				"light":{ "value":"0.0" },
 				"temperature":{ "value":"0.5", "per_variable":{ "$light":"0.00005" } }
 			}
 		}
