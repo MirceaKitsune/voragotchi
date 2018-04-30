@@ -112,7 +112,7 @@
 					{ "trigger":"interval", "conditional":"$date_hours == 21", "action":"$light = 0.10;actions_info_daytime = actions_default_info_daytime_night" },
 					{ "trigger":"interval", "conditional":"$date_hours == 22", "action":"$light = 0.05;actions_info_daytime = actions_default_info_daytime_night" },
 					{ "trigger":"interval", "conditional":"$date_hours == 23", "action":"$light = 0.00;actions_info_daytime = actions_default_info_daytime_night" },
-					{ "trigger":"interval", "conditional":"$wanted <= 0.0", "action":"actions_info_stars = actions_default_info_stars_0" },
+					{ "trigger":"interval", "conditional":"$wanted == 0.0", "action":"actions_info_stars = actions_default_info_stars_0" },
 					{ "trigger":"interval", "conditional":"$wanted > 0.0 && $wanted <= 0.2", "action":"actions_info_stars = actions_default_info_stars_1" },
 					{ "trigger":"interval", "conditional":"$wanted > 0.2 && $wanted <= 0.4", "action":"actions_info_stars = actions_default_info_stars_2" },
 					{ "trigger":"interval", "conditional":"$wanted > 0.4 && $wanted <= 0.6", "action":"actions_info_stars = actions_default_info_stars_3" },
@@ -124,7 +124,7 @@
 		"actions_default_button_milk":[
 			{
 				"actions":[
-					{ "trigger":"interval", "conditional":"$age >= 0.000", "action":"actions_button_milk = actions_default_button_milk_inactive" }
+					{ "trigger":"interval", "conditional":"$age >= $FOOD_MILK_UNLOCK_AGE", "action":"actions_button_milk = actions_default_button_milk_inactive" }
 				]
 			}
 		],
@@ -179,7 +179,7 @@
 		"actions_default_button_apple":[
 			{
 				"actions":[
-					{ "trigger":"interval", "conditional":"$age >= 0.025", "action":"actions_button_apple = actions_default_button_apple_inactive" }
+					{ "trigger":"interval", "conditional":"$age >= $FOOD_APPLE_UNLOCK_AGE", "action":"actions_button_apple = actions_default_button_apple_inactive" }
 				]
 			}
 		],
@@ -262,6 +262,14 @@
 				"actions_button_milk":"actions_default_button_milk",
 				"actions_button_apple":"actions_default_button_apple",
 				"actions_foreground":"actions_default_foreground"
+			},
+			"constants":{
+				"FOOD_MILK_UNLOCK_AGE":"0.000",
+				"FOOD_MILK_BUY_PRICE":"5",
+				"FOOD_MILK_BUY_AMOUNT":"3",
+				"FOOD_APPLE_UNLOCK_AGE":"0.025",
+				"FOOD_APPLE_BUY_PRICE":"10",
+				"FOOD_APPLE_BUY_AMOUNT":"5"
 			},
 			"variables":{
 				"stock_milk":{ "value":"0", "value_min":"0", "value_max":"200" },

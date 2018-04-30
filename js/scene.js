@@ -7,7 +7,7 @@ var scene_data = null;
 var scene_interval_timer = null;
 var scene_preload_assets = null;
 
-// reads the given variable for a scene action
+// reads the given constant or variable for a scene action
 // if the name starts with $ it represents a variable, otherwise it represent a sprite, if not then it represents a simple string
 function scene_action_get(name) {
 	if(typeof name !== "string")
@@ -56,6 +56,8 @@ function scene_action_get(name) {
 	}
 
 	if(name.substring(0, 1) === "$") {
+		if(scene_data.constants[name.substring(1)] !== null && scene_data.constants[name.substring(1)] !== undefined)
+			return scene_data.constants[name.substring(1)];
 		if(scene_data.variables[name.substring(1)] !== null && scene_data.variables[name.substring(1)] !== undefined)
 			return scene_data.variables[name.substring(1)];
 	} else {
@@ -99,7 +101,7 @@ function scene_action(id, update, delayed) {
 	if(action.delay && !delayed) {
 		if(sprite_delay[id] !== null && sprite_delay[id] !== undefined)
 			clearTimeout(sprite_delay[id]);
-		sprite_delay[id] = setTimeout(function() { scene_action(id, true, true) }, Number(action.delay) * 1000);
+		sprite_delay[id] = setTimeout(function() { scene_action(id, true, true) }, Number(scene_action_get(action.delay)) * 1000);
 		return;
 	}
 
@@ -387,9 +389,13 @@ function scene_unload() {
 // load the scene
 function scene_load() {
 	scene_unload();
-	scene_data = {};
 	scene_preload_assets = 0;
 	canvas.innerHTML = "";
+
+	scene_data = {};
+	scene_data.constants = {};
+	scene_data.variables = {};
+	scene_data.sprites = {};
 
 	// load the objects of the scene from json files, using the fields stored in the data
 	var files = data_field_get("files");
@@ -401,6 +407,28 @@ function scene_load() {
 			if(mods[item]) {
 				var name = mods[item];
 				scene_data[item] = file[item][name];
+
+				// load constants
+				var constants = scene_data[item].constants;
+				if(typeof constants === "object") {
+					for(var consts in constants) {
+						if(typeof constants[consts] === "number" || !isNaN(constants[consts]))
+							scene_data.constants[consts] = Number(constants[consts]);
+						else
+							scene_data.constants[consts] = scene_action_get(constants[consts]);
+					}
+				}
+
+				// load variables
+				var variables = scene_data[item].variables;
+				if(typeof variables === "object") {
+					for(var vars in variables) {
+						if(typeof variables[vars].value === "number" || !isNaN(variables[vars].value))
+							scene_data.variables[vars] = Number(variables[vars].value);
+						else
+							scene_data.variables[vars] = scene_action_get(variables[vars].value);
+					}
+				}
 
 				// configure the mod's element
 				var element = document.getElementById(item);
@@ -421,8 +449,13 @@ function scene_load() {
 	}
 
 	// load the variables of the scene from the data
-	scene_data.variables = data_field_get("variables");
-	scene_data.sprites = {};
+	var variables_data = data_field_get("variables");
+	for(var vars_data in variables_data) {
+		if(typeof variables_data[vars_data] === "number" || !isNaN(variables_data[vars_data]))
+			scene_data.variables[vars_data] = Number(variables_data[vars_data]);
+		else
+			scene_data.variables[vars_data] = scene_action_get(variables_data[vars_data]);
+	}
 
 	// run the inverval function
 	scene_interval();

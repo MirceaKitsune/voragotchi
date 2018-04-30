@@ -6,8 +6,8 @@
 				"actions":[
 					{ "trigger":"load", "action":"environment_geometries_people = " },
 					{ "trigger":"load", "action":"background_people = " },
-					{ "trigger":"interval", "conditional":"0.0010 > $random && $wanted < $random && $age >= 0.000", "action":"chat_people = chat_people_default_sales_milk" },
-					{ "trigger":"interval", "conditional":"0.0005 > $random && $wanted < $random && $age >= 0.025", "action":"chat_people = chat_people_default_sales_apple" }
+					{ "trigger":"interval", "conditional":"$SALES_MILK_CHANCE > $random && $wanted < $random && $age >= $FOOD_MILK_UNLOCK_AGE", "action":"chat_people = chat_people_default_sales_milk" },
+					{ "trigger":"interval", "conditional":"$SALES_APPLE_CHANCE > $random && $wanted < $random && $age >= $FOOD_APPLE_UNLOCK_AGE", "action":"chat_people = chat_people_default_sales_apple" }
 				]
 			}
 		],
@@ -24,9 +24,9 @@
 					{ "trigger":"load", "conditional":"$wanted >= 0.4 && $wanted <= 0.6", "action":"background_people = background_people_default_sales_milk_normal_right" },
 					{ "trigger":"load", "conditional":"$wanted >= 0.6 && $wanted <= 0.8", "action":"background_people = background_people_default_sales_milk_sad_right" },
 					{ "trigger":"load", "conditional":"$wanted >= 0.8 && $wanted <= 1.0", "action":"background_people = background_people_default_sales_milk_angry_right" },
-					{ "trigger":"load", "delay":"10", "action":"chat_people = " },
-					{ "trigger":"click", "conditional":"$money >= 5", "action":"chat_people = chat_people_default_sales_milk_available" },
-					{ "trigger":"click", "conditional":"$money < 5", "action":"chat_people = chat_people_default_sales_milk_unavailable" }
+					{ "trigger":"load", "delay":"$SALES_MILK_WAIT_ARRIVAL", "action":"chat_people = " },
+					{ "trigger":"click", "conditional":"$money >= $FOOD_MILK_BUY_PRICE", "action":"chat_people = chat_people_default_sales_milk_available" },
+					{ "trigger":"click", "conditional":"$money < $FOOD_MILK_BUY_PRICE", "action":"chat_people = chat_people_default_sales_milk_unavailable" }
 				]
 			}
 		],
@@ -36,17 +36,17 @@
 				"audio":{ "sound":"data/default_people/1.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"actions":[
 					{ "trigger":"load", "action":"background_people = background_people_default_sales_milk_smiling_left" },
-					{ "trigger":"load", "delay":"20", "action":"chat_people = chat_people_default_sales_milk_no" }
+					{ "trigger":"load", "delay":"$SALES_MILK_WAIT_INACTIVE", "action":"chat_people = chat_people_default_sales_milk_no" }
 				]
 			},
 			{
 				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
 				"text":{
 					"align":"center", "color":"#ffffbb", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
-						"Greetings! You're $game_name from $info_browser_codename, right? I was wondering: Would you like to buy some of my milk? It's still fresh, straight from my cow! Only 5$ for 3 bottles.",
-						"Hi $game_name. I'm doing another milk sale if you're interested. Would you like any milk? I'm selling 3 bottles for only 5$.",
-						"Hey $game_name! I was just passing through your area, thought I'd drop by. I have 3 bottles of fresh milk with me. Would you be interested? 5$ for all 4.",
-						"$game_name... good to see you again. I was just headed back home from today's milk sale. I still have 3 bottles of milk with me. Only 5$ for all! Are you interested?"
+						"Greetings! You're $game_name from $info_browser_codename, right? I was wondering: Would you like to buy some of my milk? It's still fresh, straight from my cow! Only $FOOD_MILK_BUY_PRICE$1 $ for $FOOD_MILK_BUY_AMOUNT$1 bottles.",
+						"Hi $game_name. I'm doing another milk sale if you're interested. Would you like any milk? I'm selling $FOOD_MILK_BUY_AMOUNT$1 bottles for only $FOOD_MILK_BUY_PRICE$1 $.",
+						"Hey $game_name! I was just passing through your area, thought I'd drop by. I have $FOOD_MILK_BUY_AMOUNT$1 bottles of fresh milk with me. Would you be interested? $FOOD_MILK_BUY_PRICE$1 $ for all $FOOD_MILK_BUY_AMOUNT$1.",
+						"$game_name... good to see you again. I was just headed back home from today's milk sale. I still have $FOOD_MILK_BUY_AMOUNT$1 bottles of milk with me. Only $FOOD_MILK_BUY_PRICE$1 $ for all! Are you interested?"
 					]
 				}
 			},
@@ -75,7 +75,7 @@
 				"audio":{ "sound":"data/default_people/1_no.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"actions":[
 					{ "trigger":"load", "action":"background_people = background_people_default_sales_milk_smiling_left" },
-					{ "trigger":"load", "delay":"5", "action":"chat_people = " }
+					{ "trigger":"load", "delay":"$SALES_MILK_WAIT_DEPARTURE", "action":"chat_people = " }
 				]
 			},
 			{
@@ -83,7 +83,7 @@
 				"text":{
 					"align":"center", "color":"#ffffbb", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
 						"Hi there $game_name. I was going to sell you some milk bottles, but it doesn't seem like you currently have the money. I'll drop by again later!",
-						"Oh, $game_name. I'm out selling milk, but I understand your money is a bit tight right now. Normally I offer 3 bottles for 5$, so keep that in mind."
+						"Oh, $game_name. I'm out selling milk, but I understand your money is a bit tight right now. Normally I offer $FOOD_MILK_BUY_AMOUNT$1 bottles for $FOOD_MILK_BUY_PRICE$1 $, so keep that in mind."
 					]
 				}
 			},
@@ -103,7 +103,7 @@
 				"audio":{ "sound":"data/default_people/1_no.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"actions":[
 					{ "trigger":"load", "action":"background_people = background_people_default_sales_milk_sad_left" },
-					{ "trigger":"load", "delay":"5", "action":"chat_people = " }
+					{ "trigger":"load", "delay":"$SALES_MILK_WAIT_DEPARTURE", "action":"chat_people = " }
 				]
 			},
 			{
@@ -111,7 +111,7 @@
 				"text":{
 					"align":"center", "color":"#ffffbb", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
 						"Ah... okay. I'll drop by later to check if you need anything in that case.",
-						"Okay. Just remember: 3 bottles for 5$, in case you're ever interested."
+						"Okay. Just remember: $FOOD_MILK_BUY_AMOUNT$1 bottles for $FOOD_MILK_BUY_PRICE$1 $, in case you're ever interested."
 					]
 				}
 			},
@@ -131,16 +131,16 @@
 				"audio":{ "sound":"data/default_people/1_yes.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"actions":[
 					{ "trigger":"load", "action":"background_people = background_people_default_sales_milk_happy_left" },
-					{ "trigger":"load", "delay":"5", "action":"chat_people = " },
-					{ "trigger":"load", "action":"$money -= 5" },
-					{ "trigger":"load", "action":"$stock_milk += 3" }
+					{ "trigger":"load", "delay":"$SALES_MILK_WAIT_DEPARTURE", "action":"chat_people = " },
+					{ "trigger":"load", "action":"$money -= $FOOD_MILK_BUY_PRICE" },
+					{ "trigger":"load", "action":"$stock_milk += $FOOD_MILK_BUY_AMOUNT" }
 				]
 			},
 			{
 				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
 				"text":{
 					"align":"center", "color":"#ffffbb", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
-						"Wonderful! Here you go: 3 bottles of fresh tasty milk. Thanks for buying!",
+						"Wonderful! Here you go: $FOOD_MILK_BUY_AMOUNT$1 bottles of fresh tasty milk. Thanks for buying!",
 						"Thank you! And here are your bottles of milk. A pleasure having you as a customer $game_name!"
 					]
 				}
@@ -162,16 +162,16 @@
 				"actions":[
 					{ "trigger":"load", "action":"background_people = background_people_default_sales_milk_angry_left" },
 					{ "trigger":"load", "action":"environment_geometries_pet = " },
-					{ "trigger":"load", "delay":"5", "action":"chat_people = " },
-					{ "trigger":"load", "action":"$wanted += 0.05" },
-					{ "trigger":"load", "action":"$stock_milk += 1" }
+					{ "trigger":"load", "delay":"$SALES_MILK_WAIT_DEPARTURE", "action":"chat_people = " },
+					{ "trigger":"load", "action":"$wanted += $SALES_MILK_THEFT_WANTED" },
+					{ "trigger":"load", "action":"$stock_milk += $SALES_MILK_THEFT_AMOUNT" }
 				]
 			},
 			{
 				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
 				"text":{
 					"align":"center", "color":"#ffffbb", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
-						"Are you serious? Your pet just stole a milk bottle from me! Please discipline it better, or else I'm not coming here again.",
+						"Are you serious? Your pet just stole $SALES_MILK_THEFT_AMOUNT$1 milk bottles from me! Please discipline it better, or else I'm not coming here again.",
 						"Hey, hey! Damn it $game_name: Please educate your pet, it's not okay for them to steal from people."
 					]
 				}
@@ -198,9 +198,9 @@
 					{ "trigger":"load", "conditional":"$mental >= 0.25 && $mental <= 0.50", "action":"background_people = background_people_default_sales_apple_normal_right" },
 					{ "trigger":"load", "conditional":"$mental >= 0.50 && $mental <= 0.75", "action":"background_people = background_people_default_sales_apple_confused_right" },
 					{ "trigger":"load", "conditional":"$mental >= 0.75 && $mental <= 1.00", "action":"background_people = background_people_default_sales_apple_skeptic_right" },
-					{ "trigger":"load", "delay":"10", "action":"chat_people = " },
-					{ "trigger":"click", "conditional":"$money >= 10", "action":"chat_people = chat_people_default_sales_apple_available" },
-					{ "trigger":"click", "conditional":"$money < 10", "action":"chat_people = chat_people_default_sales_apple_unavailable" }
+					{ "trigger":"load", "delay":"$SALES_APPLE_WAIT_ARRIVAL", "action":"chat_people = " },
+					{ "trigger":"click", "conditional":"$money >= $FOOD_APPLE_BUY_PRICE", "action":"chat_people = chat_people_default_sales_apple_available" },
+					{ "trigger":"click", "conditional":"$money < $FOOD_APPLE_BUY_PRICE", "action":"chat_people = chat_people_default_sales_apple_unavailable" }
 				]
 			}
 		],
@@ -210,17 +210,17 @@
 				"audio":{ "sound":"data/default_people/1.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"actions":[
 					{ "trigger":"load", "action":"background_people = background_people_default_sales_apple_smiling_left" },
-					{ "trigger":"load", "delay":"20", "action":"chat_people = chat_people_default_sales_apple_no" }
+					{ "trigger":"load", "delay":"$SALES_APPLE_WAIT_INACTIVE", "action":"chat_people = chat_people_default_sales_apple_no" }
 				]
 			},
 			{
 				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
 				"text":{
 					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
-						"Howdy, $game_name of $info_browser_codename! Would you like to buy some apples? Only 10$ for 5!",
-						"Why howdy there $game_name! Interested in some apples? They're fresh from my orchard, no pesticides used. I'm offering 5 apples for only 10$.",
-						"Howdy howdy. Here for the apples as usual. 5 for 10$. Think I might tempt ya?",
-						"Heya $game_name! Beautiful day today. Say... would you be interested in buying some of my apples? They're not much, just 10$ for 5."
+						"Howdy, $game_name of $info_browser_codename! Would you like to buy some apples? Only $FOOD_APPLE_BUY_PRICE$1 $ for $FOOD_APPLE_BUY_AMOUNT$1!",
+						"Why howdy there $game_name! Interested in some apples? They're fresh from my orchard, no pesticides used. I'm offering $FOOD_APPLE_BUY_AMOUNT$1 apples for only $FOOD_APPLE_BUY_PRICE$1 $.",
+						"Howdy howdy. Here for the apples as usual. $FOOD_APPLE_BUY_AMOUNT$1 for $FOOD_APPLE_BUY_PRICE$1 $. Think I might tempt ya?",
+						"Heya $game_name! Beautiful day today. Say... would you be interested in buying some of my apples? They're not much, just $FOOD_APPLE_BUY_PRICE$1 $ for $FOOD_APPLE_BUY_AMOUNT$1."
 					]
 				}
 			},
@@ -249,15 +249,15 @@
 				"audio":{ "sound":"data/default_people/1_no.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"actions":[
 					{ "trigger":"load", "action":"background_people = background_people_default_sales_apple_smiling_left" },
-					{ "trigger":"load", "delay":"5", "action":"chat_people = " }
+					{ "trigger":"load", "delay":"$SALES_APPLE_WAIT_DEPARTURE", "action":"chat_people = " }
 				]
 			},
 			{
 				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
 				"text":{
 					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
-						"Howdy $game_name. I'm selling apples if ya want any, only 10$ for... oh. Ah no worries: I'll come back later when you have more money, aye?",
-						"Hey there. Just passing through, figured I'd drop by and say hello. I was gonna sell you 5 apples actually, but I hear yer a little broke so... I'll come back later."
+						"Howdy $game_name. I'm selling apples if ya want any, only $FOOD_APPLE_BUY_PRICE$1 $ for... oh. Ah no worries: I'll come back later when you have more money, aye?",
+						"Hey there. Just passing through, figured I'd drop by and say hello. I was gonna sell you $FOOD_APPLE_BUY_AMOUNT$1 apples actually, but I hear yer a little broke so... I'll come back later."
 					]
 				}
 			},
@@ -277,7 +277,7 @@
 				"audio":{ "sound":"data/default_people/1_no.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"actions":[
 					{ "trigger":"load", "action":"background_people = background_people_default_sales_apple_sad_left" },
-					{ "trigger":"load", "delay":"5", "action":"chat_people = " }
+					{ "trigger":"load", "delay":"$SALES_APPLE_WAIT_DEPARTURE", "action":"chat_people = " }
 				]
 			},
 			{
@@ -305,16 +305,16 @@
 				"audio":{ "sound":"data/default_people/1_yes.wav", "volume":"0.5", "loop":"false", "id":"people" },
 				"actions":[
 					{ "trigger":"load", "action":"background_people = background_people_default_sales_apple_happy_left" },
-					{ "trigger":"load", "delay":"5", "action":"chat_people = " },
-					{ "trigger":"load", "action":"$money -= 10" },
-					{ "trigger":"load", "action":"$stock_apple += 5" }
+					{ "trigger":"load", "delay":"$SALES_APPLE_WAIT_DEPARTURE", "action":"chat_people = " },
+					{ "trigger":"load", "action":"$money -= $FOOD_APPLE_BUY_PRICE" },
+					{ "trigger":"load", "action":"$stock_apple += $FOOD_APPLE_BUY_AMOUNT" }
 				]
 			},
 			{
 				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
 				"text":{
 					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
-						"Here ya go then: 5 apples fresh and clean! Thanks $game_name.",
+						"Here ya go then: $FOOD_APPLE_BUY_AMOUNT$1 apples fresh and clean! Thanks $game_name.",
 						"Yee haa! Happy doing business with ya $game_name. Here ya go. Come again!"
 					]
 				}
@@ -336,16 +336,16 @@
 				"actions":[
 					{ "trigger":"load", "action":"background_people = background_people_default_sales_apple_angry_left" },
 					{ "trigger":"load", "action":"environment_geometries_pet = " },
-					{ "trigger":"load", "delay":"5", "action":"chat_people = " },
-					{ "trigger":"load", "action":"$wanted += 0.05" },
-					{ "trigger":"load", "action":"$stock_apple += 1" }
+					{ "trigger":"load", "delay":"$SALES_APPLE_WAIT_DEPARTURE", "action":"chat_people = " },
+					{ "trigger":"load", "action":"$wanted += $SALES_APPLE_THEFT_WANTED" },
+					{ "trigger":"load", "action":"$stock_apple += $SALES_APPLE_THEFT_AMOUNT" }
 				]
 			},
 			{
 				"layer":{ "geometry":"15% 10% 70% 20% 1", "alpha":"1" },
 				"text":{
 					"align":"center", "color":"#ffbbff", "size":"100%", "weight":"800", "shadow":"-1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000", "content":[
-						"Oh gosh darn it! I can't believe your pet just stole my apple. Ya really gotta discipline them better. Please make sure it doesn't happen again, will ya?",
+						"Oh gosh darn it! I can't believe your pet just stole $SALES_APPLE_THEFT_AMOUNT$1 of my apples. Ya really gotta discipline them better. Please make sure it doesn't happen again, will ya?",
 						"Hey give that back you! For crying out loud $game_name, please teach yer pet some manners next time!"
 					]
 				}
@@ -495,6 +495,22 @@
 			"sprites":{
 				"chat_people":"chat_people_default",
 				"background_people":"background_people_default"
+			},
+			"constants":{
+				"SALES_MILK_CHANCE":"0.0010",
+				"SALES_MILK_WAIT_ARRIVAL":"8",
+				"SALES_MILK_WAIT_DEPARTURE":"6",
+				"SALES_MILK_WAIT_INACTIVE":"10",
+				"SALES_MILK_THEFT_CHANCE":"0.005",
+				"SALES_MILK_THEFT_AMOUNT":"1",
+				"SALES_MILK_THEFT_WANTED":"0.05",
+				"SALES_APPLE_CHANCE":"0.0005",
+				"SALES_APPLE_WAIT_ARRIVAL":"8",
+				"SALES_APPLE_WAIT_DEPARTURE":"6",
+				"SALES_APPLE_WAIT_INACTIVE":"12",
+				"SALES_APPLE_THEFT_CHANCE":"0.010",
+				"SALES_APPLE_THEFT_AMOUNT":"1",
+				"SALES_APPLE_THEFT_WANTED":"0.05"
 			}
 		}
 	}

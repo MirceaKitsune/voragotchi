@@ -23,9 +23,10 @@ The default is "0% 0% 100% 100% auto". You can exclude any property you don't wi
 The first four values can be defined in either pixels or percentages. Example: "50% 100px 150% 300px". The fifth value is an integer.
 Note: If the z-index is negative, the image will scroll with the screen. Use this if you want a background layer to have a parallax effect!
 
-- Sprites and variables:
+- Sprites, constants and variables:
 
 Worlds are dynamically modified by changing two different things: Sprites and variables. Actions modify sprites to change the looks of an element, and variables to change values that persist world data.
+You can additionally define constants in your mods. Constants are basically read-only variables, which you can use to create shortcuts for special values.
 Sprites are collections of layers for the HTML elements defined by mods, defined in the data_sprites object of the json file, which can be swapped in between those elements.
 You will normally create and use your own variables, but the engine has a few special variables builtin. The following variables can be read or modified to obtain special effects:
 
@@ -54,8 +55,9 @@ First of all, sprites must be addressed directly by their name, whereas variable
 Note that sprite values can only be read for sprites that were set by an element! If a mod initializes "foo: bar", "foo" will return null... but if an action sets "foo = bar", "foo" will return "bar".
 Variables may be set to either a string or a number, but sprites must always be thought of as strings (even if they consist of numbers). You may preform arithmetics on variables, but never do it on sprites.
 When referring to a sprite or variable, you'll get its value if it exist and the reference string if not. So if "$apples" is a variable set to 1, you'll get "1"... if it's not a variable, the string "$apples" is used.
-Also keep in mind that sprites are not persisted in save cookies, whereas variables are. If you refresh the page of a running game, all changes to sprites will be lost.
+Also keep in mind that sprites and constants are not persisted in save cookies, whereas variables are. If you refresh the page of a running game, all changes to sprites will be lost.
 Lastly be mindful of how many variables you define! Browsers have cookie save limits; If there are too many variables or their names and values are too long, you might get a corrupt save.
+Note: Although not mandatory, it's recommended that you define variables in lower-case and constants in upper-case, to better separate the two throughout the code. For instance, "$my_var" versus "$MY_CONST".
 
 - Objects:
 
@@ -101,6 +103,7 @@ Data and mods are defined in json files. Those files are specified in the mods m
 "<mod_category>": The global data object for mods. Each mod will create an unique element in the scene. Mods definition:
 	"<mod_name>": The name of this mod, by which it will be referenced. Mod definition:
 		"sprite": Object which defines the sprites (defined in data_sprites) this mod uses. The name may be anything you wish to set, while the string must be the name of a sprite from data_sprites.
+		"constants": Object containing a list of constants. Each constant is defined as a name followed by a value.
 		"variables": Object containing a list of variables with rules. Variable definition:
 			"value": The initial value this variable will have when created. Can be either a number / string or the name of another variable, however the later will only work for variables defined above this one!
 			"value_min": The maximum value this variable may reach. You'll usually want this to be 0 (default). Only applies to numeric variables.
