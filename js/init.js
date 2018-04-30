@@ -22,3 +22,12 @@ function get_search(name) {
 		return search[1];
 	return null;
 }
+
+// returns a random entry if this is an array, or the same value if not
+function get_random(object) {
+	if(typeof object === "object") {
+		var index = Math.floor(Math.random() * object.length);
+		return object[index];
+	}
+	return object;
+}

@@ -56,10 +56,10 @@ function scene_action_get(name) {
 	}
 
 	if(name.substring(0, 1) === "$") {
-		if(scene_data.constants[name.substring(1)] !== null && scene_data.constants[name.substring(1)] !== undefined)
-			return scene_data.constants[name.substring(1)];
 		if(scene_data.variables[name.substring(1)] !== null && scene_data.variables[name.substring(1)] !== undefined)
 			return scene_data.variables[name.substring(1)];
+		if(scene_data.constants[name.substring(1)] !== null && scene_data.constants[name.substring(1)] !== undefined)
+			return scene_data.constants[name.substring(1)];
 	} else {
 		if(scene_data.sprites[name] !== null && scene_data.sprites[name] !== undefined)
 			return scene_data.sprites[name];

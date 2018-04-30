@@ -57,7 +57,7 @@ Variables may be set to either a string or a number, but sprites must always be 
 When referring to a sprite or variable, you'll get its value if it exist and the reference string if not. So if "$apples" is a variable set to 1, you'll get "1"... if it's not a variable, the string "$apples" is used.
 Also keep in mind that sprites and constants are not persisted in save cookies, whereas variables are. If you refresh the page of a running game, all changes to sprites will be lost.
 Lastly be mindful of how many variables you define! Browsers have cookie save limits; If there are too many variables or their names and values are too long, you might get a corrupt save.
-Note: Although not mandatory, it's recommended that you define variables in lower-case and constants in upper-case, to better separate the two throughout the code. For instance, "$my_var" versus "$MY_CONST".
+Note: It's recommended that you define variables in lower case and constants in upper case. For instance, "$my_var" versus "$MY_CONST". If a variable and a constant have the same name, the variable will be read.
 
 - Objects:
 
@@ -65,7 +65,7 @@ Data and mods are defined in json files. Those files are specified in the mods m
 
 "data_sprites": The global data object for sprites. Sprite definitions:
 	"<sprite_name>": The name of this sprite array, by which it will be referenced. Layers definition:
-		"inherit": Array containing the names of sprites to inherit. If set, the layers of each sprite listed here will precede this layer. Does not recurse, only goes as deep as one sprite. Example: "inherit":[ "foo", "bar" ] will cause all the layers of sprites "foo" and "bar" to be included before this layer.
+		"inherit": Object indicating the layer to inherit. When set, this layer gets the properties of the given layer from the given sprite... its own properties will then override those of the inherited layer. Does not stack. Property inheritance only goes one level deep, objects within objects will be fully overridden. If either the "sprite" or "layer" fields are arrays, a random entry will be chosen each time. Example: ""inherit":{ "sprite":"my_sprite", "layer":"1" }".
 		"geometries": Object of geometry strings for mods. The element of each mod will be given a random position from this list when the scene loads. Example: Defining "mods_mymod":["25% 25% 10% 10% 1"] will always give the object of mods_mymod this geometry.
 		"layer": Object which defines the visual information of this sprite. Layer definition:
 			"geometry": Optional geometry string. If not defined, the layer will cover the entire area of the sprite.

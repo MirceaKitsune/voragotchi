@@ -152,32 +152,39 @@ function sprite_set(id, sprite, parent, sprite_def) {
 				delete sprite_action[entry];
 		}
 
-		// store the layers inherited by each layer in this sprite, followed by the parent layer
-		var sprite_new = [];
-		for(var layer1 in sprite_def[sprite]) {
-			var layer_this = sprite_def[sprite][layer1];
-			for(var inherit in layer_this.inherit) {
-				var inherited = layer_this.inherit[inherit];
-				for(var layer2 in sprite_def[inherited]) {
-					layer_inherit = sprite_def[inherited][layer2];
-					sprite_new.push(layer_inherit);
-				}
-			}
-			sprite_new.push(layer_this);
-		}
-
 		// begin looping through the layers of the new sprite
-		for(var layer in sprite_new) {
+		for(var layer in sprite_def[sprite]) {
 			var style = "";
 			var style_pointer = false;
-			var layer_new = sprite_new[layer];
 			var layer_element = document.createElement("div");
 			element.appendChild(layer_element);
 
+			// if an inherited layer is set, first copy that layer then override its options with our layer's options where they are available
+			// note that entry replacements inside object go one level deep, objects within objects are overridden
+			var layer_this = sprite_def[sprite][layer];
+			var layer_new = layer_this;
+			if(typeof layer_this.inherit === "object") {
+				var inherit_sprite = get_random(layer_this.inherit.sprite);
+				var inherit_layer = Number(get_random(layer_this.inherit.layer)) - 1;
+				if(typeof sprite_def[inherit_sprite] === "object" && typeof sprite_def[inherit_sprite][inherit_layer] === "object") {
+					layer_new = sprite_def[inherit_sprite][inherit_layer];
+					for(var level1 in layer_this) {
+						layer_new[level1] = layer_new[level1] || {};
+						if(Array.isArray(layer_this[level1])) {
+							layer_new[level1] = layer_new[level1].concat(layer_this[level1]);
+						} else if(typeof layer_this[level1] === "object") {
+							for(var level2 in layer_this[level1])
+								layer_new[level1][level2] = layer_this[level1][level2];
+						} else {
+							layer_new[level1] = layer_this[level1];
+						}
+					}
+				}
+			}
+
 			// configure the geometries of all specified mods
 			for(var mod in layer_new.geometries) {
-				var index = Math.floor(Math.random() * layer_new.geometries[mod].length);
-				var geometry = layer_new.geometries[mod][index];
+				var geometry = get_random(layer_new.geometries[mod]);
 
 				// set the geometry of the mod's element to the new geometry
 				var mod_element = document.getElementById(mod);
@@ -243,24 +250,14 @@ function sprite_set(id, sprite, parent, sprite_def) {
 				if(layer_new.text.color)
 					style += "color: " + layer_new.text.color + "; ";
 
-				var text = layer_new.text.content;
-				if(typeof text === "object") {
-					var index = Math.floor(Math.random() * text.length);
-					text = text[index];
-				}
-
+				var text = get_random(layer_new.text.content);
 				layer_element.innerText = text_replace(text, id);
 			}
 
 			// configure the tooltip of this layer
 			if(layer_new.tooltip)
 			{
-				var tooltip = layer_new.tooltip;
-				if(typeof tooltip === "object") {
-					var index = Math.floor(Math.random() * tooltip.length);
-					tooltip = tooltip[index];
-				}
-
+				var tooltip = get_random(layer_new.tooltip);
 				layer_element.title = text_replace(tooltip, id);
 				style_pointer = true;
 			}
@@ -275,12 +272,7 @@ function sprite_set(id, sprite, parent, sprite_def) {
 					canvas.appendChild(audio_element);
 				}
 
-				var sound = layer_new.audio.sound;
-				if(typeof sound === "object") {
-					var index = Math.floor(Math.random() * sound.length);
-					sound = sound[index];
-				}
-
+				var sound = get_random(layer_new.audio.sound);
 				audio_element.setAttribute("src", sound);
 				audio_element.setAttribute("volume", layer_new.audio.volume); // set later
 				if(layer_new.audio.loop === "true")
