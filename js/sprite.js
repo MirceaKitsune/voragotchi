@@ -162,19 +162,19 @@ function sprite_set(id, sprite, parent, sprite_def) {
 			// if an inherited layer is set, first copy that layer then override its options with our layer's options where they are available
 			// note that entry replacements inside object go one level deep, objects within objects are overridden
 			var layer_this = sprite_def[sprite][layer];
-			var layer_new = layer_this;
+			var layer_new = Object.assign({}, layer_this); // copy the object, don't reference it
 			if(typeof layer_this.inherit === "object") {
 				var inherit_sprite = get_random(layer_this.inherit.sprite);
 				var inherit_layer = Number(get_random(layer_this.inherit.layer)) - 1;
 				if(typeof sprite_def[inherit_sprite] === "object" && typeof sprite_def[inherit_sprite][inherit_layer] === "object") {
-					layer_new = sprite_def[inherit_sprite][inherit_layer];
+					layer_new = Object.assign({}, sprite_def[inherit_sprite][inherit_layer]); // copy the object, don't reference it
 					for(var level1 in layer_this) {
-						layer_new[level1] = layer_new[level1] || {};
 						if(Array.isArray(layer_this[level1])) {
+							layer_new[level1] = layer_new[level1] || [];
 							layer_new[level1] = layer_new[level1].concat(layer_this[level1]);
 						} else if(typeof layer_this[level1] === "object") {
-							for(var level2 in layer_this[level1])
-								layer_new[level1][level2] = layer_this[level1][level2];
+							layer_new[level1] = layer_new[level1] || {};
+							layer_new[level1] = Object.assign(layer_new[level1], layer_this[level1]);
 						} else {
 							layer_new[level1] = layer_this[level1];
 						}

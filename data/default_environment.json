@@ -2,45 +2,45 @@
 	"data_sprites":{
 		"none":[{}],
 		"environment_default_background_day":[
-			{ "audio":{ "sound":"data/default_environment/ambience_day.ogg", "volume":"0.25", "loop":"true", "id":"ambience" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"1.00", "color":"#ddeeff" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"1.00", "image":"url(data/default_environment/clouds.png)" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% 0", "alpha":"1.00", "image":"url(data/default_environment/mountains.png)" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% 2", "alpha":"1.00", "image":"url(data/default_environment/ground.png)" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% 4", "alpha":"0.25", "image":"url(data/default_environment/tint_day.png)" } }
+			{"audio":{"sound":"data/default_environment/ambience_day.ogg", "volume":"0.25", "loop":"true", "id":"ambience"}},
+			{"layer":{"geometry":"0% 0% 100% 100% -1", "alpha":"1.00", "color":"#ddeeff"}},
+			{"layer":{"geometry":"0% 0% 100% 100% -1", "alpha":"1.00", "image":"url(data/default_environment/clouds.png)"}},
+			{"layer":{"geometry":"0% 0% 100% 100% 0", "alpha":"1.00", "image":"url(data/default_environment/mountains.png)"}},
+			{"layer":{"geometry":"0% 0% 100% 100% 2", "alpha":"1.00", "image":"url(data/default_environment/ground.png)"}},
+			{"layer":{"geometry":"0% 0% 100% 100% 4", "alpha":"0.25", "image":"url(data/default_environment/tint_day.png)"}}
 		],
 		"environment_default_background_dusk":[
-			{ "audio":{ "sound":"data/default_environment/ambience_dusk.ogg", "volume":"0.25", "loop":"true", "id":"ambience" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"1.00", "color":"#ff9988" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"0.75", "image":"url(data/default_environment/clouds.png)" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% 0", "alpha":"1.00", "image":"url(data/default_environment/mountains.png)" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% 2", "alpha":"1.00", "image":"url(data/default_environment/ground.png)" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% 4", "alpha":"0.25", "image":"url(data/default_environment/tint_dusk.png)" } }
+			{"audio":{"sound":"data/default_environment/ambience_dusk.ogg", "volume":"0.25", "loop":"true", "id":"ambience"}},
+			{"layer":{"geometry":"0% 0% 100% 100% -1", "alpha":"1.00", "color":"#ff9988"}},
+			{"layer":{"geometry":"0% 0% 100% 100% -1", "alpha":"0.75", "image":"url(data/default_environment/clouds.png)"}},
+			{"layer":{"geometry":"0% 0% 100% 100% 0", "alpha":"1.00", "image":"url(data/default_environment/mountains.png)"}},
+			{"layer":{"geometry":"0% 0% 100% 100% 2", "alpha":"1.00", "image":"url(data/default_environment/ground.png)"}},
+			{"layer":{"geometry":"0% 0% 100% 100% 4", "alpha":"0.25", "image":"url(data/default_environment/tint_dusk.png)"}}
 		],
 		"environment_default_background_night":[
-			{ "audio":{ "sound":"data/default_environment/ambience_night.ogg", "volume":"0.25", "loop":"true", "id":"ambience" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"1.00", "color":"#000011" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"0.25", "image":"url(data/default_environment/clouds.png)" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% 0", "alpha":"1.00", "image":"url(data/default_environment/mountains.png)" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% 2", "alpha":"1.00", "image":"url(data/default_environment/ground.png)" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% 4", "alpha":"0.50", "image":"url(data/default_environment/tint_night.png)" } }
+			{"audio":{"sound":"data/default_environment/ambience_night.ogg", "volume":"0.25", "loop":"true", "id":"ambience"}},
+			{"layer":{"geometry":"0% 0% 100% 100% -1", "alpha":"1.00", "color":"#000011"}},
+			{"layer":{"geometry":"0% 0% 100% 100% -1", "alpha":"0.25", "image":"url(data/default_environment/clouds.png)"}},
+			{"layer":{"geometry":"0% 0% 100% 100% 0", "alpha":"1.00", "image":"url(data/default_environment/mountains.png)"}},
+			{"layer":{"geometry":"0% 0% 100% 100% 2", "alpha":"1.00", "image":"url(data/default_environment/ground.png)"}},
+			{"layer":{"geometry":"0% 0% 100% 100% 4", "alpha":"0.50", "image":"url(data/default_environment/tint_night.png)"}}
 		],
 		"environment_default_background_dawn":[
-			{ "audio":{ "sound":"data/default_environment/ambience_dawn.ogg", "volume":"0.25", "loop":"true", "id":"ambience" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"1.00", "color":"#ffeedd" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% -1", "alpha":"0.50", "image":"url(data/default_environment/clouds.png)" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% 0", "alpha":"1.00", "image":"url(data/default_environment/mountains.png)" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% 2", "alpha":"1.00", "image":"url(data/default_environment/ground.png)" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% 4", "alpha":"0.50", "image":"url(data/default_environment/tint_dawn.png)" } },
-			{ "layer":{ "geometry":"0% 0% 100% 100% 4", "alpha":"0.50", "image":"url(data/default_environment/sun.png)" } }
+			{"audio":{"sound":"data/default_environment/ambience_dawn.ogg", "volume":"0.25", "loop":"true", "id":"ambience"}},
+			{"layer":{"geometry":"0% 0% 100% 100% -1", "alpha":"1.00", "color":"#ffeedd"}},
+			{"layer":{"geometry":"0% 0% 100% 100% -1", "alpha":"0.50", "image":"url(data/default_environment/clouds.png)"}},
+			{"layer":{"geometry":"0% 0% 100% 100% 0", "alpha":"1.00", "image":"url(data/default_environment/mountains.png)"}},
+			{"layer":{"geometry":"0% 0% 100% 100% 2", "alpha":"1.00", "image":"url(data/default_environment/ground.png)"}},
+			{"layer":{"geometry":"0% 0% 100% 100% 4", "alpha":"0.50", "image":"url(data/default_environment/tint_dawn.png)"}},
+			{"layer":{"geometry":"0% 0% 100% 100% 4", "alpha":"0.50", "image":"url(data/default_environment/sun.png)"}}
 		],
 		"environment_default_control":[
 			{
 				"actions":[
-					{ "trigger":"interval", "conditional":"actions_info_daytime == actions_default_info_daytime_day", "action":"environment_background = environment_default_background_day" },
-					{ "trigger":"interval", "conditional":"actions_info_daytime == actions_default_info_daytime_dusk", "action":"environment_background = environment_default_background_dusk" },
-					{ "trigger":"interval", "conditional":"actions_info_daytime == actions_default_info_daytime_night", "action":"environment_background = environment_default_background_night" },
-					{ "trigger":"interval", "conditional":"actions_info_daytime == actions_default_info_daytime_dawn", "action":"environment_background = environment_default_background_dawn" }
+					{"trigger":"interval", "conditional":"actions_info_daytime == actions_default_info_daytime_day", "action":"environment_background = environment_default_background_day"},
+					{"trigger":"interval", "conditional":"actions_info_daytime == actions_default_info_daytime_dusk", "action":"environment_background = environment_default_background_dusk"},
+					{"trigger":"interval", "conditional":"actions_info_daytime == actions_default_info_daytime_night", "action":"environment_background = environment_default_background_night"},
+					{"trigger":"interval", "conditional":"actions_info_daytime == actions_default_info_daytime_dawn", "action":"environment_background = environment_default_background_dawn"}
 				]
 			}
 		],
@@ -49,15 +49,17 @@
 			{
 				"geometries":{
 					"mods_pets":[
-						"35% 5% 30% 60% 0",
-						"10% 15% 35% 70% 1",
-						"55% 15% 35% 70% 1",
-						"10% 15% 40% 80% 2",
-						"30% 15% 40% 80% 2",
-						"50% 15% 40% 80% 2"
+						"35% 0% 30% 60% 0",
+						"10% 10% 35% 70% 1",
+						"55% 10% 35% 70% 1",
+						"10% 10% 40% 80% 2",
+						"30% 10% 40% 80% 2",
+						"50% 10% 40% 80% 2"
 					]
 				},
-				"actions":[{ "trigger":"load", "delay":"1", "action":"environment_geometries_pet = environment_default_geometries" }]
+				"actions":[
+					{"trigger":"load", "delay":"1", "action":"environment_geometries_pet = environment_default_geometries"}
+				]
 			}
 		],
 		"environment_default_geometries_people":[
@@ -66,11 +68,13 @@
 					"mods_people":[
 						"0% 15% 20% 65% 1",
 						"80% 15% 20% 65% 1",
-						"0% 20% 25% 75% 2",
-						"75% 20% 25% 75% 2"
+						"0% 15% 25% 75% 2",
+						"75% 15% 25% 75% 2"
 					]
 				},
-				"actions":[{ "trigger":"load", "delay":"1", "action":"environment_geometries_people = environment_default_geometries" }]
+				"actions":[
+					{"trigger":"load", "delay":"1", "action":"environment_geometries_people = environment_default_geometries"}
+				]
 			}
 		]
 	},
